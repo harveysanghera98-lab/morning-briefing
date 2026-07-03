@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-26",
+  "date": "2026-07-03",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -7,99 +7,99 @@
       "source": "x",
       "signal": "none",
       "latest_title": "",
-      "url": "https://x.com/leopoldasch",
-      "summary": "No new posts or essays found within the last 7 days. Most recent retrievable content dates to mid-2025 or earlier. His fund, Situational Awareness LP, has been widely covered for its ~270% 2026 gains and $20B AUM, but no fresh primary output from Aschenbrenner himself this week.",
-      "connection": "His AGI infrastructure thesis \u2014 long energy, chips, and Anthropic \u2014 is directly relevant to Anthropic's $30B run-rate story and the broader AI governance sprint, but no signal this week."
+      "url": "",
+      "summary": "No posts found within the last 7 days. His X profile shows pinned content from 2024 and his most recent findable activity predates the scan window. Situational Awareness LP's 13F filing and fund performance have attracted third-party commentary but no fresh first-person output.",
+      "connection": "His AGI infrastructure thesis \u2014 heavy on energy, chips, and compute buildout \u2014 is directly relevant to the chip sector rotation story and Meta's cloud entry. The 6.7% chip stock crater would be watched closely by a fund with positions in energy and semiconductor infrastructure."
     },
     {
       "name": "Dan Wang",
       "handle": "@danwwang",
-      "source": "blog",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
-      "url": "https://danwang.co/",
-      "summary": "No new posts or X activity found in the last 7 days. Dan Wang's book 'Breakneck: China's Quest to Engineer the Future' continues to circulate and he has been doing interviews, but no fresh primary writing this week.",
-      "connection": "His China tech-capability analysis is highly relevant to the EU Sovereign AI push, US-China AI race, and geopolitics topics, but no signal this week."
+      "url": "",
+      "summary": "No recent posts or essays found within the last 7 days. Dan Wang (@danwwang) publishes infrequently outside his annual letter cycle and no new output was retrievable for this period.",
+      "connection": "As a leading analyst of Chinese industrial and semiconductor policy, his perspective would be highly relevant to the Hormuz/geopolitics story and chip sector dynamics, but no fresh signal this week."
     },
     {
       "name": "Nathan Benaich",
       "handle": "@nathanbenaich",
-      "source": "newsletter",
-      "signal": "strong",
-      "latest_title": "Europe cannot rent its way to AI sovereignty",
-      "url": "https://nathanbenaich.substack.com/p/europe-ai-sovereignty",
-      "summary": "Published June 21, Benaich argues the real AI risk isn't rogue machines but that everyone outside the US and China 'rents their intelligence from a landlord who can cut them off' \u2014 illustrated by the US government ordering Anthropic to shut off its most capable model for all foreign nationals. He warns Europe is not moving fast enough to build sovereign AI capacity.",
-      "connection": "Directly addresses the EU Sovereign AI / EUROPA Consortium story, Anthropic's DoD legal battle and government controls, and the AI governance sprint \u2014 a rare piece that ties all three together through a European lens."
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Comment on Anthropic Fable 5 trial rollout",
+      "url": "https://x.com/nathanbenaich",
+      "summary": "On July 1, Benaich posted a brief quip \u2014 \"the fable continues to the ol world\" \u2014 in response to Anthropic's one-week Claude Fable 5 trial for Pro users. His recent posts this week have been light and off-topic (Wimbledon commentary on June 29).",
+      "connection": "His Fable 5 comment directly touches today's top story on Anthropic's Fable 5 global restoration and its consolidation as a de facto government clearance layer for AI."
     },
     {
       "name": "Stanley Druckenmiller",
       "handle": "",
-      "source": "x",
+      "source": "newsletter",
       "signal": "none",
       "latest_title": "",
-      "url": "https://www.cnbc.com/stanley-druckenmiller-founder-of-hedge-fund-duquesne-capital/",
-      "summary": "No new interview or public remarks found on CNBC, Bloomberg, or FT within the last 7 days. Most recent retrievable Druckenmiller content dates to early 2026 and prior.",
-      "connection": "His macro views on fiscal risk, rates, and AI investment are directly relevant to the Fed rate-hike signal and Bitcoin drop stories, but no signal this week."
+      "url": "",
+      "summary": "No new interview or public remarks found on CNBC, Bloomberg, or FT in the last 7 days. Most recent findable coverage is from early 2026 regarding his connections to Fed Chair nominee Warsh and Treasury Secretary Bessent.",
+      "connection": "His known views on fiscal discipline and the Warsh Fed would make his take on the June jobs miss (57K vs. 113K expected) and Warsh's room to hold rates highly relevant \u2014 but no fresh signal this week."
     },
     {
       "name": "Byrne Hobart",
       "handle": "@ByrneHobart",
       "source": "newsletter",
-      "signal": "strong",
-      "latest_title": "Anabasis, Memory, Height, Neo-Brandeisians, Canceled, Capacity, Compute, Realism",
-      "url": "https://www.thediff.co/author/byrne/",
-      "summary": "Hobart published multiple issues of The Diff this week (June 5\u20136 confirmed, with likely additional issues). Themes include compute capacity, automation and utilization, and software PE \u2014 consistent with his ongoing analysis of AI's economic footprint and market structure implications.",
-      "connection": "His compute and capacity framing connects to the Anthropic revenue surge, AI infrastructure investment, and the broader AI governance and market stories this week."
+      "signal": "light",
+      "latest_title": "The Diff (ongoing issues)",
+      "url": "https://thediff.co",
+      "summary": "Hobart's X activity in this window appears light and off-topic (quoting a viral post about finance professionals). His pinned content references a piece on \"Ring, Cloudflare, and the Supply Chain of State Capacity\" from April, and The Diff newsletter continues to publish but no specific issue title from the past 7 days was retrievable.",
+      "connection": "The Diff regularly covers market structure, tech sector dynamics, and capital allocation \u2014 themes directly relevant to Meta's cloud entry and the chip sector rotation this week."
     },
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
-      "source": "newsletter",
+      "source": "substack",
       "signal": "strong",
-      "latest_title": "Trading Post June 25, 2026",
-      "url": "https://michaeljburry.substack.com/p/trading-post-june-25-2026",
-      "summary": "Posted daily on Substack through June 25. His June 12 post is a pointed AI bear case: 'LLMs are language models, not AI. No one is using AI yet,' arguing AI capital flows are punishing fundamentally sound businesses at sub-10x earnings. His June 25 post flags Hong Kong stocks falling as chip narrative rotates capital to South Korea and Japan.",
-      "connection": "His AI skepticism directly counters the Anthropic $30B run-rate story and frames the Bitcoin/market dislocation as driven by irrational AI capital flows \u2014 a direct counterpoint to the bullish AI narrative."
+      "latest_title": "Trading Post July 2, 2026",
+      "url": "https://michaeljburry.substack.com/p/trading-post-july-2-2026",
+      "summary": "Burry published a paid Substack post on July 2 disclosing he shorted one stock (already down significantly) because he believes he knows how the situation resolves, and added to five existing long positions. He noted \"this time may be different, but not nearly different enough.\"",
+      "connection": "Burry's new short \u2014 taken against a stock already falling \u2014 and his contrarian framing connects to the chip stock crater (6.7% sector drop), where he has previously flagged hyperscaler depreciation accounting as a systematic earnings overstater. His active trading posture is notable given the weak jobs print and elevated CPI."
     },
     {
       "name": "Ben Thompson",
-      "handle": "@stratechery",
+      "handle": "@benthompson",
       "source": "newsletter",
-      "signal": "strong",
-      "latest_title": "Five Questions on WWDC 2026, Fable 5 And Its Guardrails, What Anthropic Has in Common With Apple",
-      "url": "https://stratechery.com/",
-      "summary": "Thompson published multiple pieces this week analyzing Anthropic's 'Fable' model being shut down by Trump administration export controls, framing Anthropic's 'safety superpower' as both its strength and its strategic liability. He also covered Apple price increases and Siri AI being blocked from the EU, and Google vs. Microsoft competitive dynamics.",
-      "connection": "Directly covers the Anthropic DoD/legal battle angle, US AI governance sprint (export controls as policy tool), EU AI sovereignty, and Apple Intelligence \u2014 hitting four of today's top story areas in one week."
+      "signal": "none",
+      "latest_title": "Summer Break: Week of June 29",
+      "url": "https://stratechery.com/2026/summer-break-week-of-june-29/",
+      "summary": "Stratechery is on scheduled summer break the week of June 29; no Weekly Article or Updates were published. Thompson announced the newsletter returns Monday, July 6, with Dithering, Sharp Tech, and Sharp China also resuming that week.",
+      "connection": "Thompson's recent work has covered Apple pricing, AI compute, and the SpaceX IPO. His return next week will likely address Meta's cloud entry and Fable 5's governance role \u2014 key stories from this scan."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
-      "source": "essay",
-      "signal": "strong",
-      "latest_title": "How to Earn a Billion Dollars",
-      "url": "https://paulgraham.com/earn.html",
-      "summary": "Published June 14, Graham released a new essay drawn from an Oxford Union talk laying out the mechanics of building billion-dollar wealth through startups, arguing wealth creation is not zero-sum and that the patterns apply even to non-founders such as future politicians. The piece went viral with 2.3M views on X.",
-      "connection": "Tangentially relevant to the AI startup ecosystem and capital formation themes; less directly tied to this week's geopolitical or regulatory stories, though his framing of founder leverage resonates with AI lab valuations like Anthropic's."
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "No substantive posts or essays found in the last 7 days. His X profile shows no recent on-topic activity; the most recent indexed posts are from April 2026 (quoting a 2020 GPT-3 tweet) and earlier.",
+      "connection": "Graham occasionally weighs in on AI and startup formation themes relevant to today's topics, but no signal this week."
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "essay",
-      "signal": "strong",
-      "latest_title": "AI eats the world (Spring 2026 deck, updated May 2026)",
+      "source": "blog",
+      "signal": "light",
+      "latest_title": "AI eats the world (Spring 2026 presentation, updated May 2026)",
       "url": "https://www.ben-evans.com/",
-      "summary": "Evans's X account is locked (approved followers only), limiting direct post retrieval. His May 2026 macro deck 'AI eats the world' remains the most recent substantive output, and his essay on OpenAI's strategic gaps (May 24) questioned whether OpenAI has unique tech, a sticky user base, or a clear plan given incumbents matching it on capability.",
-      "connection": "His OpenAI analysis connects to the Anthropic revenue surge story \u2014 if Anthropic is at $30B run-rate while OpenAI lacks a clear moat, Evans's strategic framework becomes highly relevant to the frontier AI governance and competitive landscape."
+      "summary": "Evans's X account is protected (approved followers only), limiting visibility. His website and Threads show his Spring 2026 macro presentation \"AI eats the world\" (updated May 2026) remains his most recent major output; no new essay was published in the past 7 days. On Threads he has been posting light commentary on tech regulation and iOS 26.",
+      "connection": "His Spring 2026 presentation thesis \u2014 AI eating across industry verticals \u2014 is directly relevant to Meta's cloud pivot, Fable 5 as governance infrastructure, and the broader sector rotation away from chip pure-plays."
     },
     {
       "name": "Packy McCormick",
       "handle": "@packyM",
-      "source": "mixed",
-      "signal": "light",
-      "latest_title": "Westmag: Why America Needs a Motor and Actuator Company",
-      "url": "https://x.com/packyM/status/2061835223470330100",
-      "summary": "On June 2, McCormick promoted his deep-dive on Westmag, an American motor and actuator company he invested in, arguing the US needs domestic capability in these physical components. No major new Not Boring essay found in the last 7 days.",
-      "connection": "The Westmag piece connects to industrial competitiveness and supply chain themes adjacent to the US-China geopolitics and defense/security topic areas; light relevance to this week's AI governance stories."
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "No new Not Boring essay or substantive X post found in the last 7 days. His most recent findable X activity dates to earlier in 2026 (the a16z deep dive in January, optimism posts). No fresh output this week.",
+      "connection": "McCormick's techno-optimist, deep-dive style would be well suited to covering Meta's cloud entry or Anthropic's Fable 5 governance role, but no signal this week."
     },
     {
       "name": "CJ Gustafson",
@@ -107,29 +107,29 @@
       "source": "newsletter",
       "signal": "none",
       "latest_title": "",
-      "url": "https://www.mostlymetrics.com/",
-      "summary": "No substantive new Mostly Metrics posts or X activity found within the last 7 days. Recent LinkedIn activity shows him participating in an Abacum webinar on AI-first FP&A, but no fresh primary written content this week.",
-      "connection": "His SaaS metrics and CFO-lens content would connect to Anthropic's revenue trajectory and the broader AI impact on software business models, but no signal this week."
+      "url": "https://cjgustafson.substack.com/",
+      "summary": "No new Mostly Metrics issue or X post found in the scan window. His Substack (69,000+ subscribers) publishes regularly on SaaS metrics and CFO playbooks but no specific recent piece was retrievable for this 7-day window.",
+      "connection": "Gustafson's SaaS/CFO focus intersects with the June jobs miss (57K) and its implications for enterprise software spend and labor market dynamics in tech \u2014 but no signal this week."
     },
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "x",
       "signal": "light",
-      "latest_title": "",
-      "url": "https://x.com/lennysan/status/2062574307667222798",
-      "summary": "On June 4, Rachitsky reacted to Anthropic's announcement that its engineers ship 8x as much code per quarter as they did in 2021\u20132025, commenting 'Wild.' His June 23 pinned post promoted a podcast episode on how the biggest workplace upheaval of our lifetime is underway, featuring OpenAI's executive coach.",
-      "connection": "His reaction to Anthropic's productivity stat directly ties to the Anthropic revenue/growth story and the Labor & Workforce topic; the OpenAI coaching podcast connects to AI's impact on work and talent."
+      "latest_title": "Pinned post on AI and work (Jun 23)",
+      "url": "https://x.com/lennysan",
+      "summary": "Lenny's most recent pinned/prominent post from June 23 promotes a podcast episode about how the \"biggest upheaval to work in our lifetime is here,\" featuring a coach to OpenAI's research team discussing what traits help people thrive in AI-forward work environments.",
+      "connection": "Directly relevant to today's Labor & Workforce topic area and the June jobs miss \u2014 the question of how AI reshapes white-collar work is central to both his content and today's macro signal."
     },
     {
       "name": "Andrej Karpathy",
       "handle": "@karpathy",
       "source": "x",
       "signal": "strong",
-      "latest_title": "Claude as an org-level team entity (third paradigm thread)",
-      "url": "https://digg.com/tech/3zhogr00",
-      "summary": "On June 23, Karpathy posted a widely discussed thread (6.1M views) proposing a 'third paradigm' for Claude: not a personal assistant or Slack bot, but an org-wide harness where AI writes the majority of code, is deeply integrated, and makes everyone feel like a manager. He defended Anthropic's approach against criticism and noted the distinction from simple agent frameworks.",
-      "connection": "Directly relevant to Anthropic's $30B run-rate story, the AI governance and applied tech topics, and the labor/workforce transformation theme \u2014 Karpathy's framing of 'everyone is a manager' is the clearest articulation of how AI reshapes enterprise work."
+      "latest_title": "Claude Tag / X toxicity thread (late June 2026)",
+      "url": "https://x.com/karpathy",
+      "summary": "Karpathy posted a thread in late June describing Anthropic's Claude Tag (launched June 23) as a persistent, context-aware AI teammate integrated across Slack, tools, memory, and compute \u2014 framing it as qualitatively more than a chatbot. He also posted that X \"has never been this toxic and Reddit-like\" and said he's spending more time on Anthropic's Slack, prompting Elon Musk to call for a complete algorithm overhaul.",
+      "connection": "Directly connects to today's Fable 5/Anthropic governance story \u2014 Karpathy (now at Anthropic on the pretraining team) is describing Claude's enterprise workflow penetration firsthand. His critique of X also touches the broader platform-and-discourse theme running through AI governance debates."
     },
     {
       "name": "Ilya Sutskever",
@@ -137,9 +137,9 @@
       "source": "x",
       "signal": "none",
       "latest_title": "",
-      "url": "https://x.com/ilyasut",
-      "summary": "No new posts found within the last 7 days. Most recent public X post dates to February 2026 (supporting Anthropic's stance on not backing down from safety obligations). SSI continues to operate under his formal CEO role after Daniel Gross's departure in July 2025.",
-      "connection": "SSI's safe superintelligence mission is adjacent to the AI governance and frontier AI topics, but no signal this week."
+      "url": "",
+      "summary": "No posts found in the last 7 days. The most recent significant post was from July 3, 2025 (one year ago), when he announced he was formally taking over as CEO of SSI after Daniel Gross departed. His X profile shows very infrequent posting.",
+      "connection": "SSI remains a wildcard in the frontier AI governance story \u2014 acquisition rumors cited in that earlier post remain live context for today's Fable 5 / AI clearance layer developments, but no fresh signal this week."
     },
     {
       "name": "Noam Brown",
@@ -147,19 +147,19 @@
       "source": "x",
       "signal": "none",
       "latest_title": "",
-      "url": "https://x.com/polynoamial",
-      "summary": "No new posts found within the last 7 days. His @NoamBrown handle has only 5 posts total and is inactive; @polynoamial has 1,671 posts but no recent content was retrievable in this window.",
-      "connection": "His reasoning and multi-agent AI research at OpenAI is relevant to the frontier AI topic area, but no signal this week."
+      "url": "",
+      "summary": "No posts found in the last 7 days on either @polynoamial or @NoamBrown. His account (@polynoamial) has 1,671 posts but no recent activity was indexable for this scan window.",
+      "connection": "Brown's work on reasoning models and reinforcement learning at OpenAI would be relevant to the Fable 5 / frontier AI governance story, but no signal this week."
     },
     {
       "name": "Fran\u00e7ois Chollet",
       "handle": "@fchollet",
       "source": "x",
       "signal": "light",
-      "latest_title": "",
-      "url": "https://x.com/fchollet",
-      "summary": "On June 22, Chollet pushed back against 'SaaS bears' claiming AI makes all software worthless, arguing the claim shows 'staggering short-sightedness' \u2014 AI-generated code benefits software developers most, code is not the product, and easier code means more software and more SaaS usage. On June 15, he posted that 'opaque and arbitrary regulatory strikes are counter-productive for the whole industry' even for those who favor AI regulation.",
-      "connection": "His June 15 post on arbitrary regulatory strikes speaks directly to the Anthropic/Fable export control episode and the AI governance sprint; his SaaS take connects to the Applied Tech & Industry and Markets topic areas."
+      "latest_title": "Post on AI and labor market (July 1, 2026)",
+      "url": "https://x.com/fchollet/status/2072290144519090248",
+      "summary": "On July 1, Chollet posted a direct, contrarian claim: \"The current wave of AI technology will not lead to mass unemployment. In fact, its impact on the labor market should be minimal, consisting mostly of increasing demand for software engineers.\" The post drew 121K views and significant pushback.",
+      "connection": "Directly counters the dominant narrative around today's Labor & Workforce topic. His skeptical take on AI-driven displacement lands against the backdrop of the June jobs miss (57K vs. 113K expected) \u2014 his argument that AI boosts software engineering demand rather than destroying jobs is a sharp counterpoint to fears driving current macro anxiety."
     }
   ]
 }
