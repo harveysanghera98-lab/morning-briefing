@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Monday, July 06, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Monday, July 06, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;2 URGENT</span>
+    <span class="status-count">11 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Energy</span>
+          </div>
+          <h3>Strait of Hormuz: Fragile Reopening Under Fire as Iran Issues New Tanker Threats</h3>
+          <div class="one-liner">Iran's military command issued new forced-routing ultimatums on July 2 even as partial shipping recovery continues under the US-Iran MoU, keeping global energy markets in a precarious state heading into this week.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Strait of Hormuz, which before the US-Israel strikes on Iran on February 28 carried roughly 25% of the world's seaborne oil trade and 20% of global LNG, remains deeply disrupted. Since March, Iranian IRGC forces have mined the strait, boarded commercial vessels, and effectively blockaded shipping. A June 17 US-Iran MoU initiated a 60-day window for transit without fees, and tanker traffic has begun to recover — Lloyd's List Intelligence counted 258 ships transiting in the last full week of June, up from 138 the prior week — but remains far below the pre-war norm of ~130 vessels per day. On July 2, Iran's Khatam al-Anbiya military command warned that all oil tankers must use Tehran-designated routes or face 'an immediate and forceful response.' Iran is simultaneously insisting on the right to charge transit fees and control routing, positions the US and Gulf Arab states flatly reject. Al Jazeera reported that Morgan Stanley has cut oil forecasts twice in two weeks amid concern that the recovery could flip into a glut if Chinese demand — already depressed — stays low. US sanctions relief for Iran expires August 21, and analysts warn the window could close entirely if permanent talks in Qatar collapse or if US midterm election pressures cause a policy shift. The structural damage is severe: QatarEnergy has warned that missile damage to a key LNG plant will take up to five years to repair, and OPEC production has fallen more than 30% since the start of the war. Bloomberg surveyed three dozen energy industry participants who warned the world 'still hasn't grasped the severity of the situation.' For AI infrastructure specifically, surging energy costs are beginning to bite data-center financing models that assumed stable power and feedstock prices.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.aljazeera.com/news/2026/7/2/with-hormuz-reopened-has-the-oil-shortage-turned-into-a-glut" target="_blank" rel="noopener">Al Jazeera</a><span class="source-sep">·</span><a class="source-link" href="https://www.pbs.org/newshour/world/iran-warns-oil-tankers-to-use-approved-routes-in-strait-of-hormuz-or-face-a-forceful-response" target="_blank" rel="noopener">PBS NewsHour / AP</a><span class="source-sep">·</span><a class="source-link" href="https://www.bloomberg.com/graphics/2026-iran-war-hormuz-closure-oil-shock/" target="_blank" rel="noopener">Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://www.brookings.edu/articles/from-chokepoint-to-crisis-the-strait-of-hormuz-and-global-oil-markets/" target="_blank" rel="noopener">Brookings Institution</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>Trump AI EO Deadline Hits Today: Classified Frontier-Model Benchmarks Due August 1</h3>
+          <div class="one-liner">The 60-day clock on Trump's June 2 AI executive order expires August 1, requiring NSA-led classified benchmarks defining 'covered frontier models' and a voluntary pre-release government access framework — a new operating reality for every major lab.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Trump administration's June 2 executive order 'Promoting Advanced Artificial Intelligence Innovation and Security' — its third major AI EO of the second term — passed its first 30-day milestone last week and now enters a critical final month before the August 1 deadline. By that date, the NSA (in consultation with CISA, the National Cyber Director, and the Office of Science and Technology Policy) must deliver a classified benchmarking process to determine which AI models qualify as 'covered frontier models.' Separately, agencies must finalize the voluntary framework under which AI developers can provide the government up to 30 days of pre-release access to those models. The framework expressly disclaims mandatory licensing or preclearance — but McDermott Will's analysis warns it could 'evolve into a standard of care' in practice. The practical consequences are already visible: Anthropic's Fable 5 was suspended for 19 days in June following an Amazon-discovered jailbreak; the US Commerce Department lifted export controls on June 30 only after Anthropic implemented new safety classifiers and agreed to pre-release government access for future models. OpenAI was separately asked by the White House to restrict the GPT-5.6 family to vetted US partners — a restriction CEO Sam Altman called a departure from the company's 'preferred' approach in a leaked memo. Tech Policy Press characterized June as 'an unprecedented expansion of federal oversight over frontier AI.' Analysts at Morrison Foerster note the EO's cybersecurity hiring mandate also requires OPM to expand federal tech-specialist pathways by August 1. The Financial Times reported the White House was in advanced talks with AI companies to finalize voluntary standards as of July 2 — watch for formal announcements this week.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/" target="_blank" rel="noopener">White House</a><span class="source-sep">·</span><a class="source-link" href="https://www.techpolicy.press/june-2026-us-tech-policy-roundup/" target="_blank" rel="noopener">Tech Policy Press</a><span class="source-sep">·</span><a class="source-link" href="https://www.mofo.com/resources/insights/260605-trump-issues-executive-order-seeking-to-promote-collaboration" target="_blank" rel="noopener">Morrison Foerster</a><span class="source-sep">·</span><a class="source-link" href="https://www.hklaw.com/en/insights/publications/2026/06/executive-order-on-artificial-intelligence-expands-cybersecurity" target="_blank" rel="noopener">Holland & Knight</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Microsoft's $2.5B 'Frontier Company' Signals Enterprise AI Moves from Demos to Deployment</h3>
+          <div class="one-liner">Microsoft's new operating business embedding 6,000 engineers inside enterprise customers marks a decisive shift — and a direct competitive response to AWS's $1B equivalent — as the industry accepts that AI ROI requires human change management, not just model access.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Microsoft announced the Microsoft Frontier Company on July 2, a $2.5 billion operating business that will embed 6,000 industry and engineering experts directly inside customer organizations to co-design, deploy, and continuously improve AI systems against measurable business outcomes. The venture will be led by Rodrigo Kede Lima, formerly president of Microsoft Asia, and is framed by Commercial Business CEO Judson Althoff as going 'beyond what has been labeled as Forward-Deployed Engineering' — though TechCrunch and GeekWire both noted it closely resembles the FDE model already used by Palantir, Scale AI, and others. Just two days earlier, AWS announced a $1 billion internal commitment for its own FDE-style AI deployment venture, making this a direct arms race. The structural rationale is clear: as Goldman Sachs' global asset and wealth management head Marc Nachmann told CNBC, 'Having the model alone doesn't change your workflows.' GeekWire observed that the venture is 'less a new company than a new push' behind work Microsoft was already doing through its Industry Solutions Delivery group, Accenture partnership, and $1 billion EY alliance. The deeper signal is about AI's maturation: enterprises that adopted Copilot, ChatGPT, and Claude at the demo stage are now demanding proven ROI, and AI vendors are concluding they must send engineers on-site to capture that value. Early Frontier Company customers include Unilever and Novo Nordisk. Mistral AI has pursued a similar Palantir-style forward-deployed model in Europe — and is now rumored to be raising €3 billion at a €20 billion valuation to fund data center buildout, nearly doubling its September 2025 Series C valuation of €11.7 billion.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://blogs.microsoft.com/blog/2026/07/02/microsoft-frontier-company-ai-engineering-that-amplifies-and-protects-your-intelligence/" target="_blank" rel="noopener">Microsoft Official Blog</a><span class="source-sep">·</span><a class="source-link" href="https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/" target="_blank" rel="noopener">TechCrunch</a><span class="source-sep">·</span><a class="source-link" href="https://www.geekwire.com/2026/microsoft-announces-2-5b-frontier-company-to-embed-ai-engineers-inside-customers/" target="_blank" rel="noopener">GeekWire</a><span class="source-sep">·</span><a class="source-link" href="https://techcrunch.com/2026/07/04/what-is-mistral-ai-everything-to-know-about-the-openai-competitor/" target="_blank" rel="noopener">TechCrunch (Mistral)</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Labor & Workforce</span>
+          </div>
+          <h3>June Jobs Miss: 57K Added vs. 185K Expected, as AI Displaces Finance and Tech Workers</h3>
+          <div class="one-liner">The weakest payroll print since 2024 — with labor-force participation at a five-year low and finance/info sectors shedding 28,000 jobs per month — is forcing a politically toxic reckoning for the White House: the same AI ecosystem it is championing is the primary structural drag on hiring.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Bureau of Labor Statistics reported on July 3 that the US economy added only 57,000 jobs in June, sharply below the 185,000 consensus estimate and about half of even the most pessimistic individual economist forecasts. April and May gains were revised down by a combined 74,000 jobs. Labor force participation fell to a five-year low of 61.5%, with Pantheon Macro noting that prime-age participation dropped sharply alongside the expected retirement-driven decline. CNN characterized the picture as 'a labor market that's decidedly stronger than its paltry state in 2025 — but one that's been steadily slowing since March.' Bloomberg separately reported that payrolls in financial-activities and information sectors — where AI adoption has been fastest — have declined by an average of 28,000 per month in 2026. Goldman Sachs' Joseph Briggs estimates roughly 9% of the US workforce, approximately 15 million workers, will ultimately be displaced as AI spreads. Year-to-date tech-sector layoffs have totaled 142,000, with companies redirecting headcount costs to AI infrastructure. The political paradox identified by multiple analysts: the White House is simultaneously promoting frontier AI and facing a midterm election cycle with softening employment, particularly for younger and non-college workers. New Fed Chair Kevin Warsh, hand-picked by Trump and aligned with his preference for lower rates, may use the weak print as cover for cuts despite inflation running at 4.2% — well above the 3.4% wage growth rate.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnn.com/2026/07/02/economy/us-jobs-report-june-final" target="_blank" rel="noopener">CNN Business</a><span class="source-sep">·</span><a class="source-link" href="https://www.bloomberg.com/news/articles/2026-07-01/tech-and-finance-sectors-losing-28-000-jobs-monthly-show-ai-impact-on-labor" target="_blank" rel="noopener">Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://www.financial-world.org/news/news/financial/30784/ai-job-risk-turns-into-a-test-of-us-labormarket-resilience/" target="_blank" rel="noopener">Financial World / Goldman Sachs</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Digital Finance</span>
+          </div>
+          <h3>GENIUS Act Signed; CLARITY Stablecoin Bill Grinds Through Senate Amid Trump Conflict-of-Interest Firestorm</h3>
+          <div class="one-liner">The GENIUS Act — now law — creates the first US federal stablecoin framework, but the larger CLARITY crypto market-structure bill faces 130+ Senate amendments and Democratic ethics attacks tied to Trump's $1.4B personal crypto income disclosure.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>President Trump signed the GENIUS Act (Guiding and Establishing National Innovation for US Stablecoins) into law, establishing the first-ever federal regulatory regime for stablecoins. The law requires 100% reserve backing with US dollars or short-term Treasuries, monthly public disclosures of reserve composition, and annual audits for issuers with market caps above $50 billion. It passed the House 308-122 and had already cleared the Senate. Industry leaders from Coinbase, Ripple, Tether, and Kraken praised it at the White House signing ceremony. The GENIUS Act now shifts competitive pressure onto Circle (USDC) and raises the compliance bar for foreign stablecoin issuers. The larger Digital Asset Market CLARITY Act — which would give the CFTC exclusive jurisdiction over spot markets for Bitcoin and Ethereum — is now in Senate markup but faces over 130 proposed amendments, 44 from Sen. Elizabeth Warren alone. Warren and other Democrats are targeting Trump family conflicts of interest: Trump's 2025 financial disclosure, released June 30, showed his crypto ventures generated more than $1.4 billion in reported income. Strategy (formerly MicroStrategy) saw its market valuation slip below the value of its Bitcoin holdings for the first time, a signal of weakening investor confidence in the Saylor playbook. Bitcoin itself is holding near $62,800 after last week's brush with $58,000, while Ripple achieved full MiCA compliance across all 30 EEA countries.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.theblock.co/post/363425/trump-signs-stablecoin-genius-act-cementing-first-major-crypto-framework-in-us-law" target="_blank" rel="noopener">The Block</a><span class="source-sep">·</span><a class="source-link" href="https://defi-planet.com/2026/07/your-weekend-crypto-roundup-july-2026-%C2%B7-1/" target="_blank" rel="noopener">DeFi Planet</a><span class="source-sep">·</span><a class="source-link" href="https://fortune.com/2026/05/13/crypto-clarity-act-senate-markup/" target="_blank" rel="noopener">Fortune</a><span class="source-sep">·</span><a class="source-link" href="https://www.whitehouse.gov/priorities/tech-innovation/" target="_blank" rel="noopener">White House</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Anthropic's Claude Fable 5 was restored globally on July 1 after a 19-day government-ordered suspension, with Anthropic agreeing to pre-release government access for future frontier models. Claude Sonnet 5 launched simultaneously as the new default model, offering near-Opus agentic performance at introductory API pricing of $2/$10 per million tokens through August 31. Google's Gemini 2.5 Pro with Deep Think topped science benchmarks (82.4% on GPQA Diamond), and Qualcomm is in early talks to acquire AI chip designer Tenstorrent (Jim Keller's firm) for $8–10 billion, which would mark a major challenge to Nvidia's hardware dominance.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Microsoft's $2.5B Frontier Company and AWS's $1B FDE venture signal a major industry pivot: AI vendors are embedding engineers inside enterprises rather than just selling model access. Mistral AI is rumored to be raising €3B at a €20B valuation — nearly double its September 2025 Series C — to fund European data center buildout targeting 1 GW by 2030. SpaceX continues trading on Nasdaq after its June 12 debut at $135/share, closing its first day at $192.46.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">The Trump AI EO's 60-day deadline falls August 1, requiring classified frontier-model benchmarks from NSA and a voluntary pre-release government access framework — making this week critical for implementation signaling. The White House was in advanced talks with AI companies as of July 2 to finalize voluntary standards. A wave of Senate AI bills from Democrats — including the SAFE KIDS Act, HALO Act on autonomous weapons, and AI Bubble Transparency Act — signals midterm-cycle opposition positioning.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The de facto government clearance layer for frontier AI releases is solidifying: both Anthropic (Fable 5) and OpenAI (GPT-5.6 restricted to vetted partners) have now complied with White House intervention. Anthropic is co-developing with Amazon, Microsoft, and Google a jailbreak severity scoring framework, and has publicly called for that framework to be codified in regulation applied equally to all frontier labs. The August 1 EO deadline will force concrete agency decisions on how 'covered frontier model' is defined.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The US-Iran war, now in its fifth month since Operation Epic Fury launched February 28, dominates the geopolitical landscape. Indirect US-Iran talks in Qatar continue under the June 17 MoU's 60-day window, but Iran's July 2 tanker-routing ultimatum and the August 21 sanctions-relief expiry date create compounding pressure. Myanmar is emerging as a new arena of China-India competition following dueling state visits, and Colombia's newly elected right-wing President de la Espriella is signaling closer alignment with the US.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">Z.ai's GLM-5.2 has intensified debate over whether China is closing the AI capability gap with US frontier labs, demonstrating competitive performance at significantly lower cost. China has cut oil imports as Hormuz transit recovers, potentially turning an oil shortage into a glut per Morgan Stanley. US-China trade has fallen roughly 30% from tariff-era peaks, with China pivoting upstream to supply manufacturing inputs globally. Doubts persist about full normalization of Hormuz transit before the August 21 sanctions deadline.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The Dow hit a peak on July 1 as the weak jobs report eased fears of Fed rate hikes under new Chair Kevin Warsh. With June CPI running at 4.2% vs. 3.4% wage growth, the macro squeeze on consumers is deepening. Oil price volatility from the Hormuz crisis drove a ~45% WTI spike in March; prices have since partially recovered as Hormuz transit resumes but remain elevated. Strategy's market cap dropping below the value of its Bitcoin holdings flagged new stress in leveraged crypto strategies.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      <div class="sector-summary">The GENIUS Act is now US law, creating the first federal stablecoin framework with 100% reserve requirements and monthly disclosures. The CLARITY Act's Senate markup faces 130+ amendments and a Trump-family conflict-of-interest firestorm following the disclosure that Trump's crypto ventures generated $1.4B in 2025 income. Open USD launched with 140+ partners including BlackRock, Visa, and Shopify, signaling stablecoins becoming core financial infrastructure. MiCA's transition period closed with 244 firms authorized across Europe.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">The Strait of Hormuz crisis remains the dominant energy story globally: partial reopening under the June 17 MoU is fragile, with Iran issuing new tanker-routing threats on July 2. US oil production hit a record 13.934 million bpd in April but has been slow to fully offset the supply shock. Morgan Stanley warns of a potential oil glut if Chinese demand stays depressed as Hormuz reopens, but the August 21 sanctions deadline and ongoing Qatar negotiations keep the outlook deeply uncertain.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">US naval operations in and around the Strait of Hormuz remain active, with CENTCOM reaffirming commitment to free commerce through the waterway hours before Iran's July 2 tanker ultimatum. Senate Democrats introduced the HALO Act to impose design and safety requirements on autonomous and semi-autonomous weapons systems. The 2026 Iran war has demonstrated the vulnerability of global energy infrastructure to sustained state-actor interdiction, reshaping risk premiums for maritime defense technology.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">June's 57,000 payroll print — less than a third of the consensus — accelerated debate about AI-driven displacement. Finance and information sectors are shedding 28,000 jobs per month as AI adoption rates in those industries outpace the rest of the economy. Labor force participation fell to a five-year low of 61.5%. The political paradox is acute: the White House is promoting the same AI ecosystem that analysts across Goldman Sachs, Bloomberg, and BCG cite as the structural drag on hiring heading into November midterms.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Mon 6</span>
+      <span class="week-event">Markets reopen after July 4 holiday; oil prices and Hormuz transit data closely watched after Iran's July 2 tanker-routing ultimatum</span>
+      <span class="week-tag" style="color:#fff;background:#6B7280">other</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 6</span>
+      <span class="week-event">Trump AI EO 30-day cyber-defense directives (Committee on National Security Systems, Dept of War) were due July 2 — expect agency implementation readouts or Congressional inquiries</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue 7</span>
+      <span class="week-event">Anthropic Fable 5 usage credit system activates for Pro/Max/Team plans (transition from 50% weekly limits set at restoration on July 1)</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 8</span>
+      <span class="week-event">US-Iran indirect talks in Qatar expected to continue; next scheduled diplomatic contact under June 17 MoU framework</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 8</span>
+      <span class="week-event">Senate CLARITY Act markup continues — floor vote timing depends on whether Chairman Tim Scott can resolve stablecoin-yield and ethics-guardrail amendments</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 9</span>
+      <span class="week-event">Fed minutes from June FOMC meeting released — markets watching for signals from new Chair Kevin Warsh on rate path given weak June jobs print and 4.2% inflation</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 9</span>
+      <span class="week-event">Weekly jobless claims — first post-June-payroll data point to assess whether 57K miss was seasonal anomaly or sustained trend</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 10</span>
+      <span class="week-event">June CPI release expected — critical for assessing Fed policy path; consensus around 3.9–4.1% YoY with energy volatility as key variable</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 10</span>
+      <span class="week-event">Mistral AI Series D fundraise status — Bloomberg-reported €3B at €20B valuation round expected to close or update this week</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Sat 11</span>
+      <span class="week-event">US sanctions relief for Iran (set to expire August 21) — diplomatic milestone check: any breakdown in Qatar talks this week would accelerate countdown clock</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The August 1 Chokepoint: Federal AI Gatekeeping Collides with Energy Crisis Pricing</h3>
+          <div class="subtitle">Trump's NSA-led frontier model benchmarks arrive precisely when Hormuz chaos forces AI datacenters to absorb 40%+ energy cost spikes, creating a hidden subsidy race between Commerce Dept and cloud vendors.</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The August 1 deadline for NSA classified benchmarks defining 'covered frontier models' lands in an energy market where datacenters are already bleeding cash. QatarEnergy's five-year LNG repair timeline and 30% OPEC production losses mean that AI infrastructure vendors—Microsoft, OpenAI, Google, Anthropic—are facing feedstock costs that Treasury models never priced in. Here's the dangerous dot: the White House's 'voluntary pre-release government access framework' is explicitly positioned as non-binding, but Anthropic and OpenAI have already complied because they need federal permission to operate. What happens when the NSA benchmark defines 'covered' models in a way that inadvertently creates competitive advantage for whoever can absorb Hormuz-driven energy costs? Microsoft's $2.5B Frontier Company and AWS's $1B equivalent are explicitly designed to lock in enterprise customers through on-site engineering. But those services are now priced against energy inputs that could spike another 20-30% if Iran closes the strait again after August 21. The real play: watch whether the Commerce Dept uses the August 1 announcement to impose energy-efficiency mandates on 'covered models' as a Trojan horse for industrial policy. If it does, only vendors with datacenter redundancy (Microsoft, Google, AWS) survive. Mistral's rumored €3B raise to fund European 1-GW buildout looks prescient—it's hedging against US regulatory chokepoints by building outside the zone where NSA benchmarks apply.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>AI Displacement Blowback: The White House Just Weaponized Its Own Hiring Crisis</h3>
+          <div class="subtitle">57K June jobs missed + 28K/month finance sector hemorrhage means Trump's frontier AI push now *is* the labor market's primary structural problem heading into midterms.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Labor & Workforce</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The Bureau of Labor Statistics' June disaster—57,000 jobs added versus 185,000 expected—arrived the same week the Trump administration locked in its AI governance framework through August 1 deadlines. This is not coincidental incompetence; it's a direct contradiction that will detonate politically. Goldman Sachs estimates 15 million US workers face displacement from AI adoption. The specific data point that matters: finance and information sectors are shedding 28,000 jobs per month in 2026, and these are the exact sectors where Anthropic, OpenAI, and Microsoft are deploying their Frontier Company models and government-approved frontline releases. Anthropic's Claude Fable 5 is now live in banking compliance, loan underwriting, and equity research. OpenAI's GPT-5.6 is 'restricted to vetted partners'—i.e., JPMorgan, Goldman, BlackRock. These companies explicitly deployed AI to cut headcount, and they're now the White House's flagship deployment customers. The political time bomb: Democratic Senate attacks on Trump's $1.4B crypto income will mutate into attacks on AI-driven job losses. Elizabeth Warren's 130+ amendments to CLARITY aren't really about stablecoins; they're about signaling to midterm voters that Trump profits from the same tech ecosystem destroying their jobs. Watch for a Democratic AI Bubble Transparency Act to pivot hard into job-loss disclosure requirements for 'covered frontier models.' If that passes, it redefines the August 1 NSA benchmarks from a security framework into a labor-impact surveillance mechanism. The White House will then face a choice: publish benchmarks that expose AI's hiring destruction, or classify them and invite a constitutional fight.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Hormuz Hostage-Taking Is Now AI Datacenter Hostage-Taking</h3>
+          <div class="subtitle">Iran's tanker routing ultimatum + 5-year Qatar LNG repair window = structural energy cost ceiling for any frontier AI vendor outside OPEC protection.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Iran's July 2 tanker-routing ultimatum isn't just about oil markets—it's about which AI vendors can afford to operate after August 21 when US sanctions relief expires. The structural arithmetic is brutal: Hormuz carries 25% of global seaborne oil and 20% of global LNG. A full closure would spike WTI to $140+ per barrel and cut LNG supplies by 6+ quads annually. Microsoft, Google, and OpenAI have announced multi-gigawatt datacenter buildouts—all dependent on stable power and stable feedstock pricing. Here's what makes this a real threat: Morgan Stanley has already cut oil forecasts twice in two weeks, and the message to investors is clear—the recovery window is closing. If Chinese demand stays depressed (it is) and Hormuz closes again (Iran's ultimatum suggests willingness), then AI vendors will face a choice between (a) paying 40-60% premiums for rerouted energy, (b) delaying datacenters, or (c) relocating to OPEC-aligned jurisdictions like UAE, Saudi Arabia, or Russia-adjacent zones. Mistral's €3B raise specifically targets European energy independence—it's pricing in a world where Middle East chokepoints become permanent leverage points. The hidden implication: Qualcomm's rumored $8-10B acquisition of Tenstorrent (Jim Keller's chip design firm) is being positioned as a hedge against GPU supply concentration, but the real read is datacenter energy arbitrage. Whoever controls efficient-enough chips can operate at the margin and survive Hormuz-driven cost spikes. The August 1 NSA benchmark deadline intersects with the August 21 sanctions cliff and the Qatar repair timeline. If Iran escalates after August 21, US frontier AI may face forced consolidation to vendors with either (a) legacy oil-industry contracts or (b) non-US datacenter footprints. Watch whether the White House uses sanctions relief as leverage to get Iran to guarantee Hormuz access in exchange for AI tech restrictions on Iran-facing vendors.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>GENIUS Act Passed, Trump Conflict-of-Interest Just Made Stablecoins Into Political Wildfire</h3>
+          <div class="subtitle">The $1.4B crypto income disclosure + CLARITY Act's 130-amendment slow-walk means Democrats are positioning crypto regulation as a 2026 midterm wealth-inequality cudgel against Trump directly.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Digital Finance</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The GENIUS Act's passage creates the first federal stablecoin regime, but Trump's June 30 financial disclosure—showing $1.4B from crypto ventures—just turned the entire crypto regulatory framework into a constitutional corruption fight. Elizabeth Warren's 130 amendments to CLARITY aren't legislative nitpicking; they're a deliberate slow-walk designed to force public hearings on Trump's personal crypto holdings and his administration's simultaneous promotion of crypto deregulation. This is a trap. Here's the mechanics: GENIUS passed cleanly because stablecoin reserve requirements and audits are boring technocratic reform that even Warren voted for. But CLARITY—which gives CFTC exclusive spot-market jurisdiction over Bitcoin and Ethereum—is now a proxy for wealth-concentration attacks. Warren's amendments will force testimony on whether Trump used his presidential platform to inflate the value of his own crypto portfolio. The White House will cry 'witch hunt.' Democrats will release polling showing millennial/Gen-Z voters support regulation when it's framed as 'taxing Trump's crypto gains.' By September, CLARITY becomes a referendum on presidential conflict-of-interest, not market structure. The play that matters: Strategy (formerly MicroStrategy) saw its market valuation slip below its Bitcoin holdings for the first time, which is a capital-structure death knell. Michael Saylor built a company predicated on investors trusting his Bitcoin thesis more than his software. That arbitrage just collapsed. Watch for Saylor to either dump Bitcoin or pivot hard into AI infrastructure (Tenstorrent acquisition chatter) to rebuild investor narrative. Ripple's full MiCA compliance across 30 EEA countries is the real winner here—it's now the only major crypto infrastructure vendor that can operate across both US and EU with genuine regulatory cover. If CLARITY stalls (likely) and becomes a midterm political football, Ripple becomes a proxy for 'US crypto without Trump corruption' for international investors. Bitcoin holding near $62.8K is fragile—any CLARITY headlines that remind voters of Trump's $1.4B will trigger institutional sell pressure.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>Beijing's Emotional AI Shutdown Forces 345 Million Users Into a New Regulatory Reality</h2>
+    <div class="standfirst">China's first law governing humanlike AI takes effect July 15, forcing ByteDance and Alibaba to kill their most popular consumer agent features rather than rebuild them from scratch — the most consequential AI emotional-safety regulation enacted anywhere in the world.</div>
+    <div class="deep-dive-why">ByteDance and Alibaba issued shutdown notices to hundreds of millions of users over the weekend, with the July 15 compliance deadline now just nine days away, making this week the final window for users to preserve their companion data and for the global AI industry to absorb what the world's most comprehensive emotional-AI law actually requires.</div>
+    <div class="body"><p>This weekend, with nine days to spare, ByteDance and Alibaba simultaneously notified hundreds of millions of users that their custom AI companions were disappearing. The announcement was corporate-clinical in tone — "product function adjustments" — but the reality is dramatic. On July 15, 2026, China's Interim Measures for the Administration of AI Anthropomorphic Interactive Services take effect, and neither company's agent architecture could survive contact with the new rules intact.</p>
+<p>The law, co-issued in April by five agencies including the Cyberspace Administration of China, the Ministry of Public Security, and the National Development and Reform Commission, is the first regulation anywhere in the world written specifically to govern AI systems that simulate human personality and emotional connection. Its reach is surgical but sweeping: customer service bots, workplace assistants, research tools, and productivity agents are explicitly exempt. The regulations target only what the law calls "continuous emotional interaction" — the AI companion that remembers your name, mirrors your mood, and builds a relationship across sessions. That is precisely the product ByteDance and Alibaba built, and precisely the product they have now shut down.</p>
+<p>The compliance math was unforgiving. The new measures require anti-addiction systems, mandatory two-hour break reminders, real-time detection of unhealthy dependence, instant-exit mechanisms allowing users to fully terminate AI interaction, and mandatory human takeover when a user shows signs of suicidal ideation or self-harm. Providers must also obtain explicit opt-in consent before using companion conversation data for model training — a structural reversal of existing Chinese standards that allow data collection by default. An agent built around persistent memory and deep personalization cannot simultaneously implement a clean break-upon-request while keeping its relationship architecture intact. Both companies concluded that rebuilding was more practical than retrofitting. Tencent reached the same conclusion in June, pulling a comparable feature from its Yuanbao product ahead of the deadline.</p>
+<p>The deeper context is that Beijing has been watching the American reckoning with AI companions closely. Chinese policy circles have extensively cited the lawsuits against Character.AI, in which families alleged the platform's design contributed to teenage suicides. The Carnegie Endowment and Chinese AI governance researchers have noted that while no similarly publicized domestic incidents had occurred in China, regulators moved proactively — encoding obligations to detect users in acute distress and escalate to human operators or emergency contacts. This is a regulatory philosophy China has previously applied to gaming and social media, now extended to the emotional AI frontier.</p>
+<p>The commercial consequences split along an interesting fault line. Enterprise-facing agent products from both ByteDance and Alibaba — including Doubao's enterprise SKU and Qwen's enterprise APIs — are untouched. Beijing is drawing a clear distinction: productivity agents are infrastructure to be encouraged; companion agents are emotional surfaces to be controlled. ByteDance is pivoting Doubao users toward Maoxiang, a standalone app purpose-built for compliance. Alibaba has announced no equivalent fallback for Qwen users, leaving millions facing permanent data deletion with no migration path — a gap in corporate communication that may reflect a slower internal rebuild timeline, or a different assessment of the commercial opportunity.</p>
+<p>Reasonable people disagree sharply about what this regulation actually represents. Optimists in Chinese tech policy circles argue it is genuinely protective — a public health intervention against emotionally manipulative design, enacted before a crisis rather than in response to one, modeled on China's proven anti-addiction playbook for gaming. Critics, particularly from industry, counter that the rules create compliance burdens so severe and vague — "continuous" and "emotional" are not defined with precision in the text — that enforcement will be arbitrary and innovation-chilling. A third view, held by Western observers including some at Carnegie, sees the regulation not merely as consumer protection but as a tool for tightening state visibility into the emotional and psychological data that AI companion systems harvest at industrial scale.</p>
+<p>The global implications are underappreciated. Shanghai authorities removed over 14,000 non-compliant agents in a single enforcement sweep on June 26, signaling the state is serious about enforcement. The framework also applies to any foreign anthropomorphic AI service operating in China, foreclosing any market entry by the likes of Replika or Character.AI without full compliance. And beyond China's borders, European and North American regulators are watching. California's SB 243, which took effect January 1, 2026, requires AI companions to disclose their non-human nature to minors every three hours — a disclosure-only approach. China's regulation goes orders of magnitude further, mandating architectural redesign, ongoing mental health monitoring, and life-intervention protocols. The gap between these two regulatory philosophies is itself a new axis of AI governance competition.</p>
+<p>Watch for three things on defined timelines. First, whether ByteDance's Maoxiang app successfully attracts the displaced Doubao user base under its compliance-first architecture — the product strategy test resolves over the next 60 days. Second, whether Alibaba publishes a data retention plan for Qwen users before the July 15 hard cutoff, or accepts the reputational hit of mass permanent data deletion. Third, and most consequentially, whether the July 15 enforcement moment triggers follow-on regulatory proposals from the EU or US state legislatures who have been studying Beijing's framework — potentially the first instance of China setting the pace in consumer AI governance rather than following it.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.scmp.com/tech/big-tech/article/3359482/bytedance-and-alibaba-disable-humanlike-ai-custom-agents-new-rules-loom" target="_blank" rel="noopener">South China Morning Post</a><span class="source-sep">·</span><a class="source-link" href="https://technode.com/2026/07/06/bytedances-doubao-and-alibabas-qwen-to-shut-down-ai-agent-features-on-july-15/" target="_blank" rel="noopener">TechNode</a><span class="source-sep">·</span><a class="source-link" href="https://www.artificialintelligence-news.com/news/china-ai-companion-rules/" target="_blank" rel="noopener">AI Intelligence News</a><span class="source-sep">·</span><a class="source-link" href="https://thenextweb.com/news/china-humanlike-ai-agent-rules" target="_blank" rel="noopener">The Next Web</a><span class="source-sep">·</span><a class="source-link" href="https://www.business-standard.com/amp/world-news/bytedance-alibaba-pull-ai-companion-features-as-china-tightens-rules-126070600221_1.html" target="_blank" rel="noopener">Business Standard (via Bloomberg)</a><span class="source-sep">·</span><a class="source-link" href="https://www.techtimes.com/articles/319703/20260704/china-ai-companion-law-arrives-july-15-doubao-qwen-agent-data-will-deleted.htm" target="_blank" rel="noopener">TechTimes</a><span class="source-sep">·</span><a class="source-link" href="https://carnegieendowment.org/russia-eurasia/research/2026/02/china-is-worried-about-ai-companions-heres-what-its-doing-about-them" target="_blank" rel="noopener">Carnegie Endowment for International Peace</a><span class="source-sep">·</span><a class="source-link" href="https://www.twobirds.com/en/insights/2026/china/china's-new-regulations-on-ai-anthropomorphic-interactive-services" target="_blank" rel="noopener">Bird & Bird Legal Analysis</a><span class="source-sep">·</span><a class="source-link" href="https://aintelligencehub.com/articles/china-anthropomorphic-rules-doubao-qwen" target="_blank" rel="noopener">AI Intelligence Hub</a><span class="source-sep">·</span><a class="source-link" href="https://startupfortune.com/bytedance-and-alibaba-are-killing-custom-ai-companions-before-chinas-new-law-bites/" target="_blank" rel="noopener">Startup Fortune</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/nathanbenaich" target="_blank" rel="noopener">Comment on Anthropic Fable 5 trial rollout</a><div class="sig-summary">On July 1, Benaich posted a brief quip — "the fable continues to the ol world" — in response to Anthropic's one-week Claude Fable 5 trial for Pro users. His recent posts this week have been light and off-topic (Wimbledon commentary on June 29).</div><div class="sig-connection">↳ His Fable 5 comment directly touches today's top story on Anthropic's Fable 5 global restoration and its consolidation as a de facto government clearance layer for AI.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@ByrneHobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://thediff.co" target="_blank" rel="noopener">The Diff (ongoing issues)</a><div class="sig-summary">Hobart's X activity in this window appears light and off-topic (quoting a viral post about finance professionals). His pinned content references a piece on "Ring, Cloudflare, and the Supply Chain of State Capacity" from April, and The Diff newsletter continues to publish but no specific issue title from the past 7 days was retrievable.</div><div class="sig-connection">↳ The Diff regularly covers market structure, tech sector dynamics, and capital allocation — themes directly relevant to Meta's cloud entry and the chip sector rotation this week.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://michaeljburry.substack.com/p/trading-post-july-2-2026" target="_blank" rel="noopener">Trading Post July 2, 2026</a><div class="sig-summary">Burry published a paid Substack post on July 2 disclosing he shorted one stock (already down significantly) because he believes he knows how the situation resolves, and added to five existing long positions. He noted "this time may be different, but not nearly different enough."</div><div class="sig-connection">↳ Burry's new short — taken against a stock already falling — and his contrarian framing connects to the chip stock crater (6.7% sector drop), where he has previously flagged hyperscaler depreciation accounting as a systematic earnings overstater. His active trading posture is notable given the weak jobs print and elevated CPI.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">BLOG</span>
+      </div>
+      <a class="sig-title" href="https://www.ben-evans.com/" target="_blank" rel="noopener">AI eats the world (Spring 2026 presentation, updated May 2026)</a><div class="sig-summary">Evans's X account is protected (approved followers only), limiting visibility. His website and Threads show his Spring 2026 macro presentation "AI eats the world" (updated May 2026) remains his most recent major output; no new essay was published in the past 7 days. On Threads he has been posting light commentary on tech regulation and iOS 26.</div><div class="sig-connection">↳ His Spring 2026 presentation thesis — AI eating across industry verticals — is directly relevant to Meta's cloud pivot, Fable 5 as governance infrastructure, and the broader sector rotation away from chip pure-plays.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/lennysan" target="_blank" rel="noopener">Pinned post on AI and work (Jun 23)</a><div class="sig-summary">Lenny's most recent pinned/prominent post from June 23 promotes a podcast episode about how the "biggest upheaval to work in our lifetime is here," featuring a coach to OpenAI's research team discussing what traits help people thrive in AI-forward work environments.</div><div class="sig-connection">↳ Directly relevant to today's Labor & Workforce topic area and the June jobs miss — the question of how AI reshapes white-collar work is central to both his content and today's macro signal.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/karpathy" target="_blank" rel="noopener">Claude Tag / X toxicity thread (late June 2026)</a><div class="sig-summary">Karpathy posted a thread in late June describing Anthropic's Claude Tag (launched June 23) as a persistent, context-aware AI teammate integrated across Slack, tools, memory, and compute — framing it as qualitatively more than a chatbot. He also posted that X "has never been this toxic and Reddit-like" and said he's spending more time on Anthropic's Slack, prompting Elon Musk to call for a complete algorithm overhaul.</div><div class="sig-connection">↳ Directly connects to today's Fable 5/Anthropic governance story — Karpathy (now at Anthropic on the pretraining team) is describing Claude's enterprise workflow penetration firsthand. His critique of X also touches the broader platform-and-discourse theme running through AI governance debates.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/fchollet/status/2072290144519090248" target="_blank" rel="noopener">Post on AI and labor market (July 1, 2026)</a><div class="sig-summary">On July 1, Chollet posted a direct, contrarian claim: "The current wave of AI technology will not lead to mass unemployment. In fact, its impact on the labor market should be minimal, consisting mostly of increasing demand for software engineers." The post drew 121K views and significant pushback.</div><div class="sig-connection">↳ Directly counters the dominant narrative around today's Labor & Workforce topic. His skeptical take on AI-driven displacement lands against the backdrop of the June jobs miss (57K vs. 113K expected) — his argument that AI boosts software engineering demand rather than destroying jobs is a sharp counterpoint to fears driving current macro anxiety.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 9 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <div class="sig-summary">No posts found within the last 7 days. His X profile shows pinned content from 2024 and his most recent findable activity predates the scan window. Situational Awareness LP's 13F filing and fund performance have attracted third-party commentary but no fresh first-person output.</div><div class="sig-connection">↳ His AGI infrastructure thesis — heavy on energy, chips, and compute buildout — is directly relevant to the chip sector rotation story and Meta's cloud entry. The 6.7% chip stock crater would be watched closely by a fund with positions in energy and semiconductor infrastructure.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@danwwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <div class="sig-summary">No recent posts or essays found within the last 7 days. Dan Wang (@danwwang) publishes infrequently outside his annual letter cycle and no new output was retrievable for this period.</div><div class="sig-connection">↳ As a leading analyst of Chinese industrial and semiconductor policy, his perspective would be highly relevant to the Hormuz/geopolitics story and chip sector dynamics, but no fresh signal this week.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <div class="sig-summary">No new interview or public remarks found on CNBC, Bloomberg, or FT in the last 7 days. Most recent findable coverage is from early 2026 regarding his connections to Fed Chair nominee Warsh and Treasury Secretary Bessent.</div><div class="sig-connection">↳ His known views on fiscal discipline and the Warsh Fed would make his take on the June jobs miss (57K vs. 113K expected) and Warsh's room to hold rates highly relevant — but no fresh signal this week.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@benthompson</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/summer-break-week-of-june-29/" target="_blank" rel="noopener">Summer Break: Week of June 29</a><div class="sig-summary">Stratechery is on scheduled summer break the week of June 29; no Weekly Article or Updates were published. Thompson announced the newsletter returns Monday, July 6, with Dithering, Sharp Tech, and Sharp China also resuming that week.</div><div class="sig-connection">↳ Thompson's recent work has covered Apple pricing, AI compute, and the SpaceX IPO. His return next week will likely address Meta's cloud entry and Fable 5's governance role — key stories from this scan.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <div class="sig-summary">No substantive posts or essays found in the last 7 days. His X profile shows no recent on-topic activity; the most recent indexed posts are from April 2026 (quoting a 2020 GPT-3 tweet) and earlier.</div><div class="sig-connection">↳ Graham occasionally weighs in on AI and startup formation themes relevant to today's topics, but no signal this week.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packyM</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <div class="sig-summary">No new Not Boring essay or substantive X post found in the last 7 days. His most recent findable X activity dates to earlier in 2026 (the a16z deep dive in January, optimism posts). No fresh output this week.</div><div class="sig-connection">↳ McCormick's techno-optimist, deep-dive style would be well suited to covering Meta's cloud entry or Anthropic's Fable 5 governance role, but no signal this week.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgustafson222</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <div class="sig-summary">No new Mostly Metrics issue or X post found in the scan window. His Substack (69,000+ subscribers) publishes regularly on SaaS metrics and CFO playbooks but no specific recent piece was retrievable for this 7-day window.</div><div class="sig-connection">↳ Gustafson's SaaS/CFO focus intersects with the June jobs miss (57K) and its implications for enterprise software spend and labor market dynamics in tech — but no signal this week.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <div class="sig-summary">No posts found in the last 7 days. The most recent significant post was from July 3, 2025 (one year ago), when he announced he was formally taking over as CEO of SSI after Daniel Gross departed. His X profile shows very infrequent posting.</div><div class="sig-connection">↳ SSI remains a wildcard in the frontier AI governance story — acquisition rumors cited in that earlier post remain live context for today's Fable 5 / AI clearance layer developments, but no fresh signal this week.</div>
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@polynoamial</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <div class="sig-summary">No posts found in the last 7 days on either @polynoamial or @NoamBrown. His account (@polynoamial) has 1,671 posts but no recent activity was indexable for this scan window.</div><div class="sig-connection">↳ Brown's work on reasoning models and reinforcement learning at OpenAI would be relevant to the Fable 5 / frontier AI governance story, but no signal this week.</div>
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
