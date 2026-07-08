@@ -34,6 +34,7 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -52,6 +53,97 @@ except ImportError:
 # ── Runtime constants ────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 MAX_RETRIES = 3
+
+# ── Cost profile ──────────────────────────────────────────────────────────────
+# BRIEFING_PROFILE=measure  → no search caps, deep dive runs daily. Reproduces the
+#                             original behaviour so you can log a true baseline.
+# BRIEFING_PROFILE=economy  → apply web-search caps + deep-dive schedule from config.
+# Default is economy. Cost logging is always on in both modes.
+BRIEFING_PROFILE = os.environ.get("BRIEFING_PROFILE", "economy").lower()
+
+# Per-token prices in USD. Estimates for mid-2026 — verify at console.anthropic.com.
+# Only relative attribution matters for tuning; absolute totals track console within
+# rounding as long as these are current.
+PRICING = {
+    "claude-sonnet-4-6":         {"in": 3.00e-6, "out": 15.00e-6, "cache_read": 0.30e-6, "cache_write": 3.75e-6},
+    "claude-haiku-4-5-20251001": {"in": 1.00e-6, "out":  5.00e-6, "cache_read": 0.10e-6, "cache_write": 1.25e-6},
+}
+WEB_SEARCH_COST = 10.0 / 1000  # USD per web-search request (server tool)
+
+_USAGE_LOCK = threading.Lock()
+_USAGE_TOTALS = {"cost": 0.0, "input": 0, "output": 0, "cache_read": 0, "searches": 0}
+
+
+def _track_usage(label, model, response):
+    """Record token usage and estimated cost from an API response. Thread-safe."""
+    u = getattr(response, "usage", None)
+    if u is None:
+        return
+    inp        = getattr(u, "input_tokens", 0) or 0
+    out        = getattr(u, "output_tokens", 0) or 0
+    cache_read = getattr(u, "cache_read_input_tokens", 0) or 0
+    cache_wr   = getattr(u, "cache_creation_input_tokens", 0) or 0
+    searches   = 0
+    stu = getattr(u, "server_tool_use", None)
+    if stu is not None:
+        searches = getattr(stu, "web_search_requests", 0) or 0
+    p = PRICING.get(model, PRICING["claude-sonnet-4-6"])
+    cost = (inp * p["in"] + out * p["out"]
+            + cache_read * p["cache_read"] + cache_wr * p["cache_write"]
+            + searches * WEB_SEARCH_COST)
+    with _USAGE_LOCK:
+        _USAGE_TOTALS["cost"]       += cost
+        _USAGE_TOTALS["input"]      += inp + cache_read + cache_wr
+        _USAGE_TOTALS["output"]     += out
+        _USAGE_TOTALS["cache_read"] += cache_read
+        _USAGE_TOTALS["searches"]   += searches
+    print(f"    [cost] {label}: {inp + cache_read + cache_wr:,} in / {out:,} out / "
+          f"{searches} search(es) ~ ${cost:.3f}")
+
+
+def print_usage_summary():
+    """Print the run's token + cost totals."""
+    t = _USAGE_TOTALS
+    total = t["input"] + t["output"]
+    print("\n-- Cost summary ---------------------------------------")
+    print(f"  Profile:       {BRIEFING_PROFILE}")
+    print(f"  Total tokens:  {total:,}  ({t['input']:,} in / {t['output']:,} out)")
+    print(f"  Cache reads:   {t['cache_read']:,} tokens (billed ~0.1x)")
+    print(f"  Web searches:  {t['searches']}")
+    print(f"  Est. cost:     ${t['cost']:.2f}")
+    print("  (prices are estimates — confirm against console.anthropic.com)")
+
+
+def _search_caps(cfg):
+    """Merge configured web-search caps over the built-in defaults."""
+    caps = {}
+    if isinstance(cfg, dict):
+        caps = cfg.get("cost", {}).get("search_caps", {}) or {}
+    merged = dict(DEFAULT_CONFIG["cost"]["search_caps"])
+    merged.update(caps)
+    return merged
+
+
+def web_search_tool(kind, cfg):
+    """Web-search tool spec. In economy mode, cap searches via max_uses."""
+    tool = {"type": "web_search_20250305", "name": "web_search"}
+    if BRIEFING_PROFILE == "economy":
+        cap = _search_caps(cfg).get(kind)
+        if cap:
+            tool["max_uses"] = cap
+    return tool
+
+
+def _deep_dive_due(cfg):
+    """Whether to run the search-heavy deep dive today."""
+    if BRIEFING_PROFILE != "economy":
+        return True
+    freq = "daily"
+    if isinstance(cfg, dict):
+        freq = cfg.get("cost", {}).get("deep_dive_frequency", "daily")
+    if freq == "alternate":
+        return datetime.date.today().toordinal() % 2 == 0
+    return True
 
 # ── Default config (Harvey's setup — used when no config.yaml is found) ──────
 DEFAULT_CONFIG = {
@@ -159,6 +251,12 @@ DEFAULT_CONFIG = {
     ],
     "output": {
         "dir": "~/briefings",
+    },
+    "cost": {
+        # Max web searches per call in economy mode. Lower = cheaper, less coverage.
+        "search_caps": {"main": 4, "deep_dive": 3, "signal": 10},
+        # "daily" or "alternate" (deep dive runs every other calendar day).
+        "deep_dive_frequency": "alternate",
     },
 }
 
@@ -1071,9 +1169,10 @@ def generate_briefing_data(cfg, output_dir):
             model="claude-sonnet-4-6",
             max_tokens=8000,
             system=system,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            tools=[web_search_tool("main", cfg)],
             messages=[{"role": "user", "content": f"Go. Today is {today}."}],
         )
+        _track_usage("main briefing", "claude-sonnet-4-6", response)
         text_parts = [
             b.text for b in response.content
             if hasattr(b, "text") and b.text.strip()
@@ -1115,9 +1214,10 @@ def generate_deep_dive(cfg, output_dir):
         response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=3000,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            tools=[web_search_tool("deep_dive", cfg)],
             messages=[{"role": "user", "content": prompt}],
         )
+        _track_usage("deep dive", "claude-sonnet-4-6", response)
         text_parts = [
             b.text for b in response.content
             if hasattr(b, "text") and b.text.strip()
@@ -1152,6 +1252,7 @@ def generate_patterns(briefing_data):
             max_tokens=2500,
             messages=[{"role": "user", "content": PATTERN_PROMPT_BASE + payload}],
         )
+        _track_usage("pattern watch", "claude-haiku-4-5-20251001", response)
         raw = response.content[0].text.strip()
         raw = re.sub(r"^```(?:json)?\s*", "", raw)
         raw = re.sub(r"\s*```\s*$", "", raw)
@@ -1332,9 +1433,10 @@ Return ONLY the JSON array. No markdown, no preamble."""
         response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=6000,
-            tools=[{"type": "web_search_20250305", "name": "web_search"}],
+            tools=[web_search_tool("signal", cfg)],
             messages=[{"role": "user", "content": prompt}],
         )
+        _track_usage("signal scan", "claude-sonnet-4-6", response)
         text_parts = [
             b.text for b in response.content
             if hasattr(b, "text") and b.text.strip()
@@ -1566,7 +1668,9 @@ def main():
     print(f"=== Morning Briefing — {date_str} ===\n")
 
     voices     = cfg.get("voices", DEFAULT_CONFIG["voices"])
-    do_dive    = sections.get("deep_dive",    True)
+    do_dive    = sections.get("deep_dive",    True) and _deep_dive_due(cfg)
+    if sections.get("deep_dive", True) and not _deep_dive_due(cfg):
+        print("  Deep dive skipped today (economy: alternate-day schedule)")
     do_pattern = sections.get("pattern_watch",True)
     frequency  = cfg.get("signal_scan_frequency", "weekly")
 
@@ -1622,6 +1726,7 @@ def main():
     update_archive(output_dir)
 
     elapsed = time.time() - start
+    print_usage_summary()
     print(f"\n✓ Done in {elapsed:.0f}s")
     print(f"  File:    {html_path}")
     print(f"  Data:    {json_path}")

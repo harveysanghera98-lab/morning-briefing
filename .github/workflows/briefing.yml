@@ -67,6 +67,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BRIEFING_OUTPUT_DIR: docs
+          BRIEFING_PROFILE: economy
         run: python morning_dashboard_v4.py ${{ github.event.inputs.force == 'true' && '--force' || '' }}
 
       - name: Commit generated files
