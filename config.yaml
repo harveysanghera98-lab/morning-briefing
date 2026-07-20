@@ -191,9 +191,9 @@ voices:
     rss: null
     x_handle: "fchollet"
 
-    cost:
+cost:
   search_caps:
     main: 4
     deep_dive: 3
     signal: 10
-  deep_dive_frequency: alternate   # or "daily"
+  deep_dive_frequency: alternate
