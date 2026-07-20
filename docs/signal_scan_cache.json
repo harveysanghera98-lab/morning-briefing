@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-03",
+  "date": "2026-07-20",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -8,28 +8,28 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No posts found within the last 7 days. His X profile shows pinned content from 2024 and his most recent findable activity predates the scan window. Situational Awareness LP's 13F filing and fund performance have attracted third-party commentary but no fresh first-person output.",
-      "connection": "His AGI infrastructure thesis \u2014 heavy on energy, chips, and compute buildout \u2014 is directly relevant to the chip sector rotation story and Meta's cloud entry. The 6.7% chip stock crater would be watched closely by a fund with positions in energy and semiconductor infrastructure."
+      "summary": "No retrievable posts from the last 7 days. Most recent indexed activity dates to mid-2025. His hedge fund Situational Awareness LP continues to attract attention for its concentrated AI infrastructure portfolio.",
+      "connection": "His AGI-race thesis and AI infrastructure investment framework remain highly relevant to the Kimi K3 open-model shock and the ongoing US-China AI competition storyline."
     },
     {
       "name": "Dan Wang",
       "handle": "@danwwang",
-      "source": "x",
+      "source": "blog",
       "signal": "none",
       "latest_title": "",
-      "url": "",
-      "summary": "No recent posts or essays found within the last 7 days. Dan Wang (@danwwang) publishes infrequently outside his annual letter cycle and no new output was retrievable for this period.",
-      "connection": "As a leading analyst of Chinese industrial and semiconductor policy, his perspective would be highly relevant to the Hormuz/geopolitics story and chip sector dynamics, but no fresh signal this week."
+      "url": "https://danwang.co/",
+      "summary": "No new posts detected in the last 7 days. His site reflects his annual-letter cadence and ongoing commentary on US-China industrial and technology dynamics.",
+      "connection": "His China tech-industrial analysis lens is directly relevant to the Kimi K3 open-model story and broader US-China AI competition."
     },
     {
       "name": "Nathan Benaich",
       "handle": "@nathanbenaich",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Comment on Anthropic Fable 5 trial rollout",
-      "url": "https://x.com/nathanbenaich",
-      "summary": "On July 1, Benaich posted a brief quip \u2014 \"the fable continues to the ol world\" \u2014 in response to Anthropic's one-week Claude Fable 5 trial for Pro users. His recent posts this week have been light and off-topic (Wimbledon commentary on June 29).",
-      "connection": "His Fable 5 comment directly touches today's top story on Anthropic's Fable 5 global restoration and its consolidation as a de facto government clearance layer for AI."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "Most recent retrievable X post dates to late June (a Wimbledon quip). No substantive AI or tech posts found within the last 7 days. Air Street Fund III close was the last major announcement.",
+      "connection": "As publisher of State of AI report and AI-first VC, his views on Kimi K3 and frontier AI regulation would be directly relevant, but no signal found this week."
     },
     {
       "name": "Stanley Druckenmiller",
@@ -38,98 +38,98 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No new interview or public remarks found on CNBC, Bloomberg, or FT in the last 7 days. Most recent findable coverage is from early 2026 regarding his connections to Fed Chair nominee Warsh and Treasury Secretary Bessent.",
-      "connection": "His known views on fiscal discipline and the Warsh Fed would make his take on the June jobs miss (57K vs. 113K expected) and Warsh's room to hold rates highly relevant \u2014 but no fresh signal this week."
+      "summary": "No interview or public remarks found on CNBC, Bloomberg, or FT within the last 7 days. Most recent indexed coverage dates to early 2026 portfolio tracking.",
+      "connection": "His macro views on AI infrastructure investment, oil price risk, and US fiscal trajectory would be highly pertinent to the current geopolitical and markets stories, but no fresh signal detected."
     },
     {
       "name": "Byrne Hobart",
       "handle": "@ByrneHobart",
-      "source": "newsletter",
-      "signal": "light",
-      "latest_title": "The Diff (ongoing issues)",
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "The Diff \u2014 movie business incentives and genre parody theory (Jul 6)",
       "url": "https://thediff.co",
-      "summary": "Hobart's X activity in this window appears light and off-topic (quoting a viral post about finance professionals). His pinned content references a piece on \"Ring, Cloudflare, and the Supply Chain of State Capacity\" from April, and The Diff newsletter continues to publish but no specific issue title from the past 7 days was retrievable.",
-      "connection": "The Diff regularly covers market structure, tech sector dynamics, and capital allocation \u2014 themes directly relevant to Meta's cloud entry and the chip sector rotation this week."
+      "summary": "His pinned July 6 post promoted a free Diff issue analyzing the movie industry's rational response to its structural incentives and the social utility of genre parody \u2014 a cultural-economic frame consistent with his broader institutional analysis style.",
+      "connection": "Tangential; his financial and institutional analysis lens applies to the Oracle/Stargate investor-disclosure lawsuit story and broader market incentive dynamics, though this week's piece was not directly on those topics."
     },
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
       "source": "substack",
       "signal": "strong",
-      "latest_title": "Trading Post July 2, 2026",
-      "url": "https://michaeljburry.substack.com/p/trading-post-july-2-2026",
-      "summary": "Burry published a paid Substack post on July 2 disclosing he shorted one stock (already down significantly) because he believes he knows how the situation resolves, and added to five existing long positions. He noted \"this time may be different, but not nearly different enough.\"",
-      "connection": "Burry's new short \u2014 taken against a stock already falling \u2014 and his contrarian framing connects to the chip stock crater (6.7% sector drop), where he has previously flagged hyperscaler depreciation accounting as a systematic earnings overstater. His active trading posture is notable given the weak jobs print and elevated CPI."
+      "latest_title": "Trading Post July 17, 2026 \u2014 Netflix & What's Up with the VIX",
+      "url": "https://michaeljburry.substack.com/p/trading-post-july-17-2026",
+      "summary": "Burry posted multiple Trading Posts and Short Thoughts this week, covering his IV15 valuation methodology, new shorts against Tesla, Nvidia, Micron, and semiconductor ETFs, and a detailed take on the Stripe/Advent bid for PayPal as undervaluing the business. He has been publicly defending his bearish AI-chip positions after being labeled 'Captain Broken Clock' on X.",
+      "connection": "His semiconductor and AI-infrastructure short thesis connects directly to the Kimi K3 open-model disruption (threatening US hyperscaler moats), Oracle/Stargate capex scrutiny, and the broader AI valuation debate central to this week's markets stories."
     },
     {
       "name": "Ben Thompson",
-      "handle": "@benthompson",
+      "handle": "@stratechery",
       "source": "newsletter",
-      "signal": "none",
-      "latest_title": "Summer Break: Week of June 29",
-      "url": "https://stratechery.com/2026/summer-break-week-of-june-29/",
-      "summary": "Stratechery is on scheduled summer break the week of June 29; no Weekly Article or Updates were published. Thompson announced the newsletter returns Monday, July 6, with Dithering, Sharp Tech, and Sharp China also resuming that week.",
-      "connection": "Thompson's recent work has covered Apple pricing, AI compute, and the SpaceX IPO. His return next week will likely address Meta's cloud entry and Fable 5's governance role \u2014 key stories from this scan."
+      "signal": "strong",
+      "latest_title": "Mainframes and Main Characters (week of July 13, 2026)",
+      "url": "https://stratechery.com/2026/mainframes-and-main-characters/",
+      "summary": "Thompson's week covered IBM's historic stock drop and the argument that AI's ability to port legacy mainframe workloads signals permanent, not temporary, revenue loss; he also tracked the continuing OpenAI saga including Apple's trade-secrets lawsuit and ChatGPT's Mac app relaunch as a signal of the company's platform priorities.",
+      "connection": "Directly relevant to Frontier Tech/AI and enterprise trust erosion themes; his IBM-mainframe analysis parallels the Gemini 3.5 Pro enterprise trust story, and his OpenAI coverage ties into the Oracle/Stargate and US lab competitive-pressure narratives."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "No substantive posts or essays found in the last 7 days. His X profile shows no recent on-topic activity; the most recent indexed posts are from April 2026 (quoting a 2020 GPT-3 tweet) and earlier.",
-      "connection": "Graham occasionally weighs in on AI and startup formation themes relevant to today's topics, but no signal this week."
+      "signal": "light",
+      "latest_title": "AI progress thought experiment \u2014 Fable vs GPT-3 analogy (Jul 7)",
+      "url": "https://x.com/paulg",
+      "summary": "On July 7, Graham posted a one-line thought experiment asking readers to imagine 2031 models improving on current frontier models (Fable) as dramatically as those models improved on GPT-3, sparking widespread debate about AI S-curves and the pace of progress.",
+      "connection": "Connects squarely to the Kimi K3 open-model shock and the broader frontier AI acceleration debate; his framing reinforces why China closing the gap so quickly is being taken seriously by the tech community."
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
       "source": "blog",
-      "signal": "light",
-      "latest_title": "AI eats the world (Spring 2026 presentation, updated May 2026)",
-      "url": "https://www.ben-evans.com/",
-      "summary": "Evans's X account is protected (approved followers only), limiting visibility. His website and Threads show his Spring 2026 macro presentation \"AI eats the world\" (updated May 2026) remains his most recent major output; no new essay was published in the past 7 days. On Threads he has been posting light commentary on tech regulation and iOS 26.",
-      "connection": "His Spring 2026 presentation thesis \u2014 AI eating across industry verticals \u2014 is directly relevant to Meta's cloud pivot, Fable 5 as governance infrastructure, and the broader sector rotation away from chip pure-plays."
+      "signal": "strong",
+      "latest_title": "Ways to think about token pricing (Jul 9, 2026)",
+      "url": "https://www.ben-evans.com/benedictevans/2026/7/9/ways-to-think-about-token-pricing",
+      "summary": "Evans published a substantive essay analyzing the AI token-pricing dynamic: today's supply crunch lets labs name their price, but the structural question is whether they commoditize into low-margin infrastructure as supply catches up to demand.",
+      "connection": "Directly relevant to the frontier AI and markets stories; the commoditization risk he outlines applies pressure to Google (Gemini trust erosion), Oracle (Stargate capex), and the open-model threat from Kimi K3 specifically."
     },
     {
       "name": "Packy McCormick",
-      "handle": "@packyM",
+      "handle": "@packym",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "No substantive posts or newsletter issues found in the last 7 days. Most recent indexed X activity dates to April\u2013May 2026.",
+      "connection": ""
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
       "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No new Not Boring essay or substantive X post found in the last 7 days. His most recent findable X activity dates to earlier in 2026 (the a16z deep dive in January, optimism posts). No fresh output this week.",
-      "connection": "McCormick's techno-optimist, deep-dive style would be well suited to covering Meta's cloud entry or Anthropic's Fable 5 governance role, but no signal this week."
-    },
-    {
-      "name": "CJ Gustafson",
-      "handle": "@cjgustafson222",
-      "source": "newsletter",
-      "signal": "none",
-      "latest_title": "",
-      "url": "https://cjgustafson.substack.com/",
-      "summary": "No new Mostly Metrics issue or X post found in the scan window. His Substack (69,000+ subscribers) publishes regularly on SaaS metrics and CFO playbooks but no specific recent piece was retrievable for this 7-day window.",
-      "connection": "Gustafson's SaaS/CFO focus intersects with the June jobs miss (57K) and its implications for enterprise software spend and labor market dynamics in tech \u2014 but no signal this week."
+      "summary": "No retrievable posts or newsletter content found within the last 7 days.",
+      "connection": ""
     },
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Pinned post on AI and work (Jun 23)",
-      "url": "https://x.com/lennysan",
-      "summary": "Lenny's most recent pinned/prominent post from June 23 promotes a podcast episode about how the \"biggest upheaval to work in our lifetime is here,\" featuring a coach to OpenAI's research team discussing what traits help people thrive in AI-forward work environments.",
-      "connection": "Directly relevant to today's Labor & Workforce topic area and the June jobs miss \u2014 the question of how AI reshapes white-collar work is central to both his content and today's macro signal."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "No retrievable posts or newsletter content found within the last 7 days.",
+      "connection": ""
     },
     {
       "name": "Andrej Karpathy",
       "handle": "@karpathy",
       "source": "x",
-      "signal": "strong",
-      "latest_title": "Claude Tag / X toxicity thread (late June 2026)",
-      "url": "https://x.com/karpathy",
-      "summary": "Karpathy posted a thread in late June describing Anthropic's Claude Tag (launched June 23) as a persistent, context-aware AI teammate integrated across Slack, tools, memory, and compute \u2014 framing it as qualitatively more than a chatbot. He also posted that X \"has never been this toxic and Reddit-like\" and said he's spending more time on Anthropic's Slack, prompting Elon Musk to call for a complete algorithm overhaul.",
-      "connection": "Directly connects to today's Fable 5/Anthropic governance story \u2014 Karpathy (now at Anthropic on the pretraining team) is describing Claude's enterprise workflow penetration firsthand. His critique of X also touches the broader platform-and-discourse theme running through AI governance debates."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "No retrievable posts found within the last 7 days from direct search. His ongoing commentary on AI education and software engineering in the agent era remains influential background context.",
+      "connection": "His framing of AI coding capabilities is directly relevant to the Kimi K3 coding leaderboard story."
     },
     {
       "name": "Ilya Sutskever",
@@ -138,28 +138,28 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No posts found in the last 7 days. The most recent significant post was from July 3, 2025 (one year ago), when he announced he was formally taking over as CEO of SSI after Daniel Gross departed. His X profile shows very infrequent posting.",
-      "connection": "SSI remains a wildcard in the frontier AI governance story \u2014 acquisition rumors cited in that earlier post remain live context for today's Fable 5 / AI clearance layer developments, but no fresh signal this week."
+      "summary": "No retrievable posts found within the last 7 days. SSI (Safe Superintelligence) remains in stealth mode with no public output detected.",
+      "connection": "As a key figure in the AGI safety and superintelligence race, his absence from public discourse is itself notable given the Kimi K3 open-model shock."
     },
     {
       "name": "Noam Brown",
-      "handle": "@polynoamial",
+      "handle": "@noambrown",
       "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No posts found in the last 7 days on either @polynoamial or @NoamBrown. His account (@polynoamial) has 1,671 posts but no recent activity was indexable for this scan window.",
-      "connection": "Brown's work on reasoning models and reinforcement learning at OpenAI would be relevant to the Fable 5 / frontier AI governance story, but no signal this week."
+      "summary": "No retrievable posts found within the last 7 days.",
+      "connection": "His work on reasoning and game-theoretic AI at OpenAI is relevant background to the coding-benchmark competition story, but no fresh signal detected."
     },
     {
       "name": "Fran\u00e7ois Chollet",
       "handle": "@fchollet",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Post on AI and labor market (July 1, 2026)",
-      "url": "https://x.com/fchollet/status/2072290144519090248",
-      "summary": "On July 1, Chollet posted a direct, contrarian claim: \"The current wave of AI technology will not lead to mass unemployment. In fact, its impact on the labor market should be minimal, consisting mostly of increasing demand for software engineers.\" The post drew 121K views and significant pushback.",
-      "connection": "Directly counters the dominant narrative around today's Labor & Workforce topic. His skeptical take on AI-driven displacement lands against the backdrop of the June jobs miss (57K vs. 113K expected) \u2014 his argument that AI boosts software engineering demand rather than destroying jobs is a sharp counterpoint to fears driving current macro anxiety."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "No retrievable posts found within the last 7 days. His ARC-AGI benchmark work remains a key reference point for evaluating claims like Kimi K3's leaderboard performance.",
+      "connection": "His long-running skepticism of benchmark-driven AGI claims is directly pertinent to interpreting the Kimi K3 coding-leaderboard story."
     }
   ]
 }
