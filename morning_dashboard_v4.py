@@ -33,6 +33,7 @@ import datetime
 import json
 import os
 import re
+import subprocess
 import sys
 import threading
 import time
@@ -106,6 +107,7 @@ def print_usage_summary():
     t = _USAGE_TOTALS
     total = t["input"] + t["output"]
     print("\n-- Cost summary ---------------------------------------")
+    print(f"  Backend:       {BRIEFING_BACKEND}")
     print(f"  Profile:       {BRIEFING_PROFILE}")
     print(f"  Total tokens:  {total:,}  ({t['input']:,} in / {t['output']:,} out)")
     print(f"  Cache reads:   {t['cache_read']:,} tokens (billed ~0.1x)")
@@ -144,6 +146,108 @@ def _deep_dive_due(cfg):
     if freq == "alternate":
         return datetime.date.today().toordinal() % 2 == 0
     return True
+
+
+# ── Model backend: API key vs Claude Code (Pro subscription) ──────────────────
+# BRIEFING_BACKEND=api  → call the Anthropic API with ANTHROPIC_API_KEY (per-token).
+# BRIEFING_BACKEND=pro  → run each call through the Claude Code CLI authenticated
+#                         with CLAUDE_CODE_OAUTH_TOKEN (draws on your subscription),
+#                         and fall back to the API automatically on any failure.
+BRIEFING_BACKEND = os.environ.get("BRIEFING_BACKEND", "api").lower()
+CLAUDE_CODE_OAUTH_TOKEN = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")
+_PRO_WARNED = False
+
+
+def _cc_model(model):
+    """Map a full model id to a Claude Code alias."""
+    m = (model or "").lower()
+    if "haiku" in m:
+        return "haiku"
+    if "opus" in m:
+        return "opus"
+    return "sonnet"
+
+
+def _track_pro_usage(label, env_json):
+    """Record usage/cost from a Claude Code JSON envelope. Cost is ~$0 on a
+    subscription — that's the saving showing up in the summary."""
+    cost = 0.0
+    inp = out = 0
+    if isinstance(env_json, dict):
+        cost = env_json.get("total_cost_usd") or 0.0
+        usage = env_json.get("usage") or {}
+        inp = (usage.get("input_tokens") or 0) + (usage.get("cache_read_input_tokens") or 0)
+        out = usage.get("output_tokens") or 0
+    with _USAGE_LOCK:
+        _USAGE_TOTALS["cost"]   += cost
+        _USAGE_TOTALS["input"]  += inp
+        _USAGE_TOTALS["output"] += out
+    print(f"    [pro] {label}: {inp:,} in / {out:,} out ~ ${cost:.3f} (subscription)")
+
+
+def _run_via_claude_code(label, model, prompt, system, use_search, max_turns):
+    """Run one generation through the Claude Code CLI on the Pro subscription.
+    Raises on any failure so the caller can fall back to the API."""
+    cmd = ["claude", "-p", prompt,
+           "--output-format", "json",
+           "--model", _cc_model(model),
+           "--max-turns", str(max_turns)]
+    if system:
+        cmd += ["--append-system-prompt", system]
+    if use_search:
+        cmd += ["--allowedTools", "WebSearch"]
+    proc = subprocess.run(cmd, capture_output=True, text=True,
+                          timeout=900, env=os.environ.copy())
+    if proc.returncode != 0:
+        raise RuntimeError(f"claude exit {proc.returncode}: {(proc.stderr or '')[-300:]}")
+    try:
+        env_json = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        raise ValueError(f"claude output not JSON: {(proc.stdout or '')[:200]}")
+    if isinstance(env_json, dict) and env_json.get("is_error"):
+        raise RuntimeError(f"claude reported error: {str(env_json.get('result', ''))[:200]}")
+    text = env_json.get("result", "") if isinstance(env_json, dict) else ""
+    if not text or not text.strip():
+        raise ValueError("empty result from claude code")
+    _track_pro_usage(label, env_json)
+    return text
+
+
+def _run_via_api(label, model, prompt, system, max_tokens, use_search, cfg, search_kind):
+    """Run one generation through the Anthropic API with the API key."""
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    kwargs = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    if system:
+        kwargs["system"] = system
+    if use_search:
+        kwargs["tools"] = [web_search_tool(search_kind, cfg)]
+    response = client.messages.create(**kwargs)
+    _track_usage(label, model, response)
+    parts = [b.text for b in response.content if hasattr(b, "text") and b.text.strip()]
+    return "\n".join(parts)
+
+
+def run_model(*, label, model, prompt, max_tokens, use_search, cfg,
+              system=None, search_kind=None, max_turns=6):
+    """Return assistant text. Prefer the Pro path when configured; always fall
+    back to the API so a run still ships if the subscription path fails."""
+    global _PRO_WARNED
+    if BRIEFING_BACKEND == "pro":
+        if not CLAUDE_CODE_OAUTH_TOKEN:
+            if not _PRO_WARNED:
+                print("    [pro] BRIEFING_BACKEND=pro but CLAUDE_CODE_OAUTH_TOKEN unset — using API")
+                _PRO_WARNED = True
+        else:
+            try:
+                return _run_via_claude_code(label, model, prompt, system, use_search, max_turns)
+            except Exception as e:
+                print(f"    [pro] {label} failed ({e}); falling back to API")
+    return _run_via_api(label, model, prompt, system, max_tokens,
+                        use_search, cfg, search_kind)
 
 # ── Default config (Harvey's setup — used when no config.yaml is found) ──────
 DEFAULT_CONFIG = {
@@ -254,7 +358,7 @@ DEFAULT_CONFIG = {
     },
     "cost": {
         # Max web searches per call in economy mode. Lower = cheaper, less coverage.
-        "search_caps": {"main": 4, "deep_dive": 3, "signal": 10},
+        "search_caps": {"main": 3, "deep_dive": 3, "signal": 10},
         # "daily" or "alternate" (deep dive runs every other calendar day).
         "deep_dive_frequency": "alternate",
     },
@@ -1160,24 +1264,21 @@ def _retry(fn, label, retries=MAX_RETRIES):
 
 def generate_briefing_data(cfg, output_dir):
     print("  Calling Claude Sonnet (web search) — main briefing...")
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     today = datetime.date.today().strftime("%A, %B %d, %Y")
     system = build_system_prompt(cfg) + "\n\n" + build_format_instructions(cfg)
 
     def attempt(n):
-        response = client.messages.create(
+        full_text = run_model(
+            label="main briefing",
             model="claude-sonnet-4-6",
-            max_tokens=8000,
+            prompt=f"Go. Today is {today}.",
             system=system,
-            tools=[web_search_tool("main", cfg)],
-            messages=[{"role": "user", "content": f"Go. Today is {today}."}],
+            max_tokens=8000,
+            use_search=True,
+            cfg=cfg,
+            search_kind="main",
+            max_turns=8,
         )
-        _track_usage("main briefing", "claude-sonnet-4-6", response)
-        text_parts = [
-            b.text for b in response.content
-            if hasattr(b, "text") and b.text.strip()
-        ]
-        full_text = "\n".join(text_parts)
 
         if not full_text.strip():
             raise ValueError("Empty response from API")
@@ -1205,24 +1306,22 @@ def generate_briefing_data(cfg, output_dir):
 
 def generate_deep_dive(cfg, output_dir):
     print("  Calling Claude Sonnet (web search) — deep dive...")
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     today = datetime.date.today().strftime("%A, %B %d, %Y")
     history = load_wildcard_history(output_dir)
     prompt = build_deep_dive_prompt(cfg, history) + f"\n\nToday is {today}."
 
     def attempt(n):
-        response = client.messages.create(
+        full_text = run_model(
+            label="deep dive",
             model="claude-sonnet-4-6",
+            prompt=prompt,
             max_tokens=3000,
-            tools=[web_search_tool("deep_dive", cfg)],
-            messages=[{"role": "user", "content": prompt}],
+            use_search=True,
+            cfg=cfg,
+            search_kind="deep_dive",
+            max_turns=6,
         )
-        _track_usage("deep dive", "claude-sonnet-4-6", response)
-        text_parts = [
-            b.text for b in response.content
-            if hasattr(b, "text") and b.text.strip()
-        ]
-        data = extract_json("\n".join(text_parts))
+        data = extract_json(full_text)
 
         if data is None or "headline" not in data:
             raise ValueError("Deep dive returned no valid JSON with 'headline' key")
@@ -1240,20 +1339,21 @@ def generate_deep_dive(cfg, output_dir):
 
 def generate_patterns(briefing_data):
     print("  Calling Claude Haiku — pattern analysis...")
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     payload = json.dumps({
         "top_stories": briefing_data["top_stories"],
         "sectors": briefing_data["sectors"],
     })
 
     def attempt(n):
-        response = client.messages.create(
+        raw = run_model(
+            label="pattern watch",
             model="claude-haiku-4-5-20251001",
+            prompt=PATTERN_PROMPT_BASE + payload,
             max_tokens=2500,
-            messages=[{"role": "user", "content": PATTERN_PROMPT_BASE + payload}],
-        )
-        _track_usage("pattern watch", "claude-haiku-4-5-20251001", response)
-        raw = response.content[0].text.strip()
+            use_search=False,
+            cfg=None,
+            max_turns=1,
+        ).strip()
         raw = re.sub(r"^```(?:json)?\s*", "", raw)
         raw = re.sub(r"\s*```\s*$", "", raw)
         patterns = json.loads(raw)
@@ -1350,7 +1450,6 @@ def fetch_rss_feeds(voices):
 def generate_signal_scan(voices, rss_content, briefing_data, cfg):
     """One Sonnet + web_search call: process RSS + search X for handles without RSS."""
     print("  Calling Claude Sonnet (web search) — signal scan...")
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     today  = datetime.date.today().strftime("%A, %B %d, %Y")
 
     # Build RSS context and identify voices needing X search
@@ -1430,18 +1529,16 @@ IMPORTANT: Make at most 1 web search per voice. Do not search exhaustively.
 Return ONLY the JSON array. No markdown, no preamble."""
 
     def attempt(n):
-        response = client.messages.create(
+        full_text = run_model(
+            label="signal scan",
             model="claude-sonnet-4-6",
+            prompt=prompt,
             max_tokens=6000,
-            tools=[web_search_tool("signal", cfg)],
-            messages=[{"role": "user", "content": prompt}],
+            use_search=True,
+            cfg=cfg,
+            search_kind="signal",
+            max_turns=12,
         )
-        _track_usage("signal scan", "claude-sonnet-4-6", response)
-        text_parts = [
-            b.text for b in response.content
-            if hasattr(b, "text") and b.text.strip()
-        ]
-        full_text = "\n".join(text_parts)
         data = extract_json(full_text)
         if data is None or not isinstance(data, list):
             # Log the raw response tail for debugging
@@ -1639,9 +1736,11 @@ def main():
     )
     args = parser.parse_args()
 
-    if not ANTHROPIC_API_KEY:
-        print("Error: set ANTHROPIC_API_KEY environment variable")
+    if not ANTHROPIC_API_KEY and not (BRIEFING_BACKEND == "pro" and CLAUDE_CODE_OAUTH_TOKEN):
+        print("Error: set ANTHROPIC_API_KEY (or BRIEFING_BACKEND=pro with CLAUDE_CODE_OAUTH_TOKEN)")
         sys.exit(1)
+    if BRIEFING_BACKEND == "pro" and not ANTHROPIC_API_KEY:
+        print("Note: Pro backend set without ANTHROPIC_API_KEY — no API fallback if a call fails.")
 
     cfg = load_config(args.config)
     output_dir = os.path.expanduser(
