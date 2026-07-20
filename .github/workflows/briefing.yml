@@ -5,12 +5,18 @@
 #
 # Setup (one-time):
 #   1. Fork this repo
-#   2. Go to Settings → Secrets → Actions → New repository secret
-#      Name:  ANTHROPIC_API_KEY
-#      Value: sk-ant-...
-#   3. Go to Settings → Pages → Source: GitHub Actions
+#   2. Settings → Secrets → Actions → New repository secret
+#        ANTHROPIC_API_KEY        = sk-ant-...            (fallback + default backend)
+#        CLAUDE_CODE_OAUTH_TOKEN  = <from `claude setup-token`>  (Pro subscription)
+#   3. Settings → Pages → Source: GitHub Actions
 #   4. Edit config.yaml with your topics and sources
 #   5. Push — your next scheduled run will generate a live briefing
+#
+# Cost controls (env on the "Generate briefing" step):
+#   BRIEFING_BACKEND=pro       → run generation on your Pro subscription via
+#                                Claude Code, falling back to the API automatically.
+#   BRIEFING_BACKEND=api       → API key only (per-token billing).
+#   BRIEFING_PROFILE=economy   → apply web-search caps + alternate-day deep dive.
 #
 # Manual trigger: Actions tab → Morning Briefing → Run workflow
 
@@ -56,6 +62,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Claude Code CLI — used when BRIEFING_BACKEND=pro to run generation on the
+      # Pro subscription. Harmless to install even if you stay on the API backend.
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Create output directory
         run: mkdir -p docs
 
@@ -65,9 +76,13 @@ jobs:
 
       - name: Generate briefing
         env:
+          # Pro subscription credential (Claude Code). Draws on your plan, not the API.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # API key — used as automatic fallback when a Pro call fails.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          BRIEFING_OUTPUT_DIR: docs
+          BRIEFING_BACKEND: pro
           BRIEFING_PROFILE: economy
+          BRIEFING_OUTPUT_DIR: docs
         run: python morning_dashboard_v4.py ${{ github.event.inputs.force == 'true' && '--force' || '' }}
 
       - name: Commit generated files
