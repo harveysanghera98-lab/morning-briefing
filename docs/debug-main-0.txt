@@ -1,0 +1,134 @@
+Now compiling the full briefing into the required JSON format.
+
+```json
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "US-Iran War Escalates as Ceasefire Collapses",
+      "one_liner": "Washington and Tehran are trading strikes for a second straight week with no diplomatic off-ramp in sight, and the fighting is spilling into the Strait of Hormuz and onto US allies.",
+      "detail": "The ceasefire brokered in mid-June has effectively disintegrated. Trump declared the memorandum of understanding with Iran \"over\" after Tehran attacked commercial shipping in the Strait of Hormuz, and the US military has since carried out repeated consecutive nights of strikes on Iranian targets, including missile and drone storage sites, air defense systems, and bridges near Bandar Abbas. Iranian state media reported at least eight killed and twenty injured in strikes on bridges in Hormozgan province. Iran has retaliated against US regional allies, with Jordan, Qatar and Kuwait hit by Iranian fire and Iran claiming strikes on US facilities in Bahrain and Syria.\n\nThe stakes are compounding: Houthi forces in Yemen have declared a naval blockade against Saudi Arabia, opening a new front, while Israel's finance minister Bezalel Smotrich has said Israel will not join US strikes on Iran, suggesting some daylight between Washington and Jerusalem on next steps. Markets are already pricing in the risk — silver has jumped roughly 5% to $59/oz and the 10-year Treasury yield hit a two-month high of 4.64% as investors weigh oil-driven inflation risk against the Fed's rate path.\n\nCNN and CBS News have been running rolling live coverage; CBS reports Iran's supreme leader has called Trump's signature on the original truce \"worthless,\" while mediators continue quiet efforts to restart talks. There is no consensus yet among outlets on how far this escalates — some framing suggests both sides are calibrating strikes to avoid all-out war, while Tehran's own statements suggest it sees no near-term off-ramp.\n\nWatch: whether the Strait of Hormuz stays open to shipping (a key driver of oil prices), whether Israel gets pulled in despite Smotrich's comments, and whether mediators can produce a durable truce before the conflict further destabilizes Gulf allies.",
+      "sector": "Geopolitics",
+      "sources": [
+        {"name": "CNN", "url": "https://www.cnn.com/2026/07/18/world/live-news/iran-war-trump"},
+        {"name": "CBS News", "url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-says-ceasefire-over/"},
+        {"name": "CNN", "url": "https://www.cnn.com/2026/07/17/world/live-news/iran-war-trump"}
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Trump's Global Tariff Truce Expires Friday, Replacement Levies Loom",
+      "one_liner": "The temporary 10% blanket tariff lapses at midnight Friday and the administration is preparing to reimpose duties on dozens of countries under a different legal authority, keeping trade policy a live risk for markets this week.",
+      "detail": "The Section 122 stopgap tariff — a flat 10% global duty imposed in February — expires at 12:01am ET on Friday, July 24, with little indication Congress will extend it. Rather than let tariffs lapse, the administration is preparing to invoke Section 301 authority to reimpose similar or higher rates: initial findings recommended 10% tariffs on the EU and 14 other countries, escalating to roughly 45 more countries including China. Trump has already moved on Canada specifically, imposing a fresh 50% Section 338 tariff on goods including wine, hockey sticks and cement, while carving out exemptions for energy, potash, fish and critical minerals.\n\nUS Trade Representative Jamieson Greer has said action is coming \"soon\" but declined to give a firm timeline, leaving businesses and trading partners in limbo just as Q2 earnings season peaks. Bloomberg and Foreign Policy both frame this as Trump working to keep his tariff regime structurally intact regardless of the legal vehicle, rather than a genuine pause in trade policy.\n\nThe timing overlaps awkwardly with the Fed's next meeting (July 28-29) and a week of major tech earnings, meaning any tariff shock could complicate the inflation picture the Fed is already watching amid a 4.64% 10-year yield. Watch for confirmation of the new tariff list before Friday's deadline and reactions from the EU and China, which face the steepest proposed increases.",
+      "sector": "US Policy & Power",
+      "sources": [
+        {"name": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-07-21/us-set-to-impose-new-duties-by-friday-with-stopgap-to-expire"},
+        {"name": "Foreign Policy", "url": "https://foreignpolicy.com/2026/07/21/trump-tariffs-canada-section-338-mexico-brazil-trade-usmca/"}
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "White House Moves to Vet Frontier AI Models Before Release",
+      "one_liner": "The administration is finalizing a framework giving federal agencies up to 30 days to review new frontier AI models for national-security risk, and it has already prompted OpenAI to restrict rollout of its newest model.",
+      "detail": "The White House's Office of the National Cyber Director and Office of Science and Technology Policy are close to finalizing a voluntary framework with OpenAI, Anthropic and Google that would give federal agencies a window — reportedly up to 30 days — to review new frontier models for national security risk before public release, with an announcement possible before August 1. Alongside this, the administration has launched a "Gold Eagle" initiative meant to serve as a cybersecurity clearinghouse helping federal agencies, critical infrastructure operators and AI developers patch flaws that advanced AI systems uncover.\n\nThe policy already has teeth: per Axios, TechCrunch and CNBC reporting, the administration asked OpenAI to slow the rollout of its newest flagship model, and OpenAI responded by limiting GPT-5.6 Sol to a preview for a small group of trusted partners. Sam Altman said OpenAI has told the government this isn't its "preferred long term model" for handling releases and that it will work with officials toward a "more sustainable approach." Google, Microsoft and xAI reportedly agreed in May to provide early access for similar national-security evaluations, while OpenAI and Anthropic were already informally doing so.\n\nThe administration is deliberately avoiding legal authority to block releases outright — this is being built as an informal-visibility arrangement rather than a licensing regime, according to Reuters' sourcing. That said, critics quoted in Biometric Update argue the plan leaves public-facing safeguards (as opposed to national-security ones) largely unaddressed.\n\nWatch for the formal framework announcement before August 1, how Anthropic and Google respond to similar review requests, and whether Congress moves to codify or push back on an executive-branch-only arrangement.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {"name": "CNBC", "url": "https://www.cnbc.com/2026/07/17/white-house-ai-access-anthropic-openai.html"},
+        {"name": "Axios", "url": "https://www.axios.com/2026/06/25/trump-administration-openai-gpt-model-release"},
+        {"name": "TechCrunch", "url": "https://techcrunch.com/2026/06/25/the-white-house-is-asking-openai-to-slow-roll-the-release-of-its-new-model-over-safety-concerns/"}
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Alphabet and Tesla Kick Off Big Tech's AI Capex Reckoning",
+      "one_liner": "Both companies report after the bell today, and Alphabet's guidance is the market's clearest read yet on whether hyperscaler AI spending is paying off or overheating.",
+      "detail": "Alphabet and Tesla both report Q2 earnings after the close on Wednesday, July 22, with Intel following Thursday. Analysts expect Alphabet EPS of $2.90 (+25.5% YoY) on revenue of $116.9 billion (+21.3% YoY); the number markets care most about is capex guidance for Q3 and full-year 2026, which will either confirm or challenge growing concern about AI infrastructure spending sustainability. Combined 2026 capex across Amazon, Microsoft, Alphabet and Meta is running as high as $725 billion, with the five largest cloud/AI infrastructure players committing $660-690 billion this year alone.\n\nTesla's report will be read as a proxy for global EV demand, with Wall Street modeling 54 cents adjusted EPS on $25.7-26.4 billion revenue. Intel's Thursday report will be watched for progress on its Terafab project, its 18A node yield improvements, and its recently announced Google tie-up, following a mid-2026 earnings beat that produced Intel's best single-day stock performance since 1987.\n\nThis earnings run lands directly on top of the Fed's July 28-29 meeting and the tariff deadline Friday, so equity markets face a dense run of catalysts this week even before the AI-capex question is answered. CNBC's earnings playbook and AskTraders both frame Alphabet as the single most important read of the week for the broader AI trade.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {"name": "CNBC", "url": "https://www.cnbc.com/2026/07/19/earnings-playbook-alphabet-tesla-headline-this-weeks-big-reports.html"},
+        {"name": "AskTraders", "url": "https://www.asktraders.com/analysis/alphabet-tesla-and-intel-headline-pivotal-earnings-week-for-wall-street/"}
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "AI Chip Boom Keeps Compounding: TSMC, Intel, Nvidia All Firing",
+      "one_liner": "AI semiconductor stocks have added roughly $2 trillion in market value this year, with TSMC posting a 77% net income surge and Intel notching a historic single-day rally.",
+      "detail": "The Philadelphia Semiconductor Index is up more than 47% year-to-date as AI chip demand continues to outrun supply. TSMC reported a 77% jump in net income on record quarterly revenue, driven by advanced-chip demand tied to the AI boom. Nvidia, holding an estimated 70-80% share of the AI GPU market, completed a $25 billion bond offering to fund Blackwell production ramp-up. Intel's turnaround is gaining real traction: it became the first company to ship high-volume logic chips on ASML's High-NA EUV scanners and posted major yield gains on its 18A node, after an earnings beat that drove its best single-day stock move since 1987.\n\nOn the model side, the open-weight AI race is intensifying: Moonshot AI paused new subscriptions to its Kimi K3 model after demand outstripped its compute capacity, just after the model topped a major coding leaderboard; open weights are promised by July 27. DeepSeek V4 is expected to go stable on July 24. Nvidia also released Cosmos 3 Edge, a smaller multimodal world model for its Jetson Thor robotics platform, combining autoregressive reasoning with diffusion-based prediction for local robot perception.\n\nThis is straightforwardly bullish for the AI infrastructure trade, but it raises the stakes on this week's hyperscaler capex commentary — if Alphabet or peers signal any capex pullback, the semiconductor rally is the most exposed segment. Global semiconductor sales are projected to hit $975 billion in 2026, with generative AI chips alone expected to generate $500 billion of that.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {"name": "Intellectia", "url": "https://intellectia.ai/blog/ai-semiconductor-stocks-rally-july-2026"},
+        {"name": "Kingy AI", "url": "https://kingy.ai/news/2026-07-21-ai-launch-radar/"}
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "AI chip stocks have added roughly $2 trillion in value this year on TSMC's 77% profit surge and Intel's node progress; Moonshot's Kimi K3 hit capacity limits while DeepSeek V4 and Kimi's open weights land this week, and Nvidia shipped a new edge world model for robotics."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Alphabet and Tesla report Wednesday in the week's most important earnings test for the AI-capex trade, with combined Big Four hyperscaler 2026 capex running as high as $725 billion; Intel reports Thursday on its 18A/data-center roadmap."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Trump's temporary 10% global tariff expires Friday and the administration is preparing Section 301 replacement duties on dozens of countries, plus a fresh 50% Section 338 tariff on select Canadian goods; the House is also considering FY2027 defense appropriations."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The White House is finalizing a framework giving agencies up to 30 days to review frontier models for national-security risk before release, and has already gotten OpenAI to restrict GPT-5.6 Sol to a limited preview; a new \"Gold Eagle\" cybersecurity clearinghouse was also announced."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "The US-Iran ceasefire has collapsed into active strikes with regional spillover into Jordan, Qatar, Kuwait, Bahrain and Syria; a US-Taiwan Security Forum convened in Washington amid rising Chinese military pressure, and Gaza's ceasefire continues to see deadly violations."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Beijing's own think tanks rank Taiwan tensions as its top 2026 geopolitical risk amid heavier PLA air and naval activity near Taiwan and reported PRC interference operations ahead of Taiwan's November local elections."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "Major US indices rose Tuesday (Dow +0.74%, S&P +0.89%, Nasdaq +1.29%) even as the 10-year yield hit a two-month high of 4.64% and silver jumped ~5% on Iran-conflict hedging; this week layers Big Tech earnings, the Friday tariff deadline, and next week's Fed meeting."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "US regulators are finalizing GENIUS Act stablecoin rules a year after the law's passage, including an OCC $5M capital floor and FDIC confirmation that stablecoins carry no deposit insurance, while Taiwan, India and South Korea advance their own stablecoin/tokenization frameworks."
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "AI data center power demand is forecast to more than double to 66 GW by 2027, straining grids (PJM capacity prices hit $325/MW-day) and prompting New York's first statewide data-center construction moratorium, even as oil prices have eased from their April peak."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "The US-Iran conflict continues to escalate with near-nightly strikes and regional retaliation; Houthi forces declared a new naval blockade against Saudi Arabia, and Israel has said it will not join US strikes on Iran."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "Tech and finance sectors are losing roughly 28,000 jobs a month amid AI-driven restructuring, with nearly 80,000 tech layoffs in 2026 so far; Meta faces a lawsuit from H-1B employees alleging it used AI to select workers for layoffs, spotlighting immigration-status fallout from AI-linked cuts."
+    }
+  ],
+  "week_ahead": [
+    {"day": "Wed 22", "event": "Alphabet and Tesla report Q2 earnings after market close", "tag": "earnings"},
+    {"day": "Wed 22", "event": "US-Iran strikes continue with no ceasefire in place; Strait of Hormuz shipping risk remains elevated", "tag": "defense"},
+    {"day": "Thu 23", "event": "Intel reports Q2 earnings; watch for 18A node and Terafab updates", "tag": "earnings"},
+    {"day": "Thu 23", "event": "Additional Q2 bank and industrial earnings continue to roll in", "tag": "earnings"},
+    {"day": "Fri 24", "event": "Trump's temporary 10% global (Section 122) tariff expires at 12:01am ET; Section 301 replacement tariffs expected on dozens of countries", "tag": "policy"},
+    {"day": "Fri 24", "event": "DeepSeek V4 expected to reach stable release", "tag": "tech"},
+    {"day": "Fri 24", "event": "New 50% Section 338 tariff on select Canadian goods (wine, hockey sticks, cement) in effect", "tag": "policy"},
+    {"day": "through Sun 26", "event": "US-Taiwan Security Forum follow-on discussions continue amid heightened PLA activity near Taiwan", "tag": "defense"},
+    {"day": "through Sun 26", "event": "White House expected to move toward finalizing frontier AI model national-security review framework ahead of August 1 target", "tag": "policy"},
+    {"day": "through Sun 26", "event": "Federal agencies continue finalizing GENIUS Act stablecoin implementing rules", "tag": "policy"}
+  ]
+}
+```
