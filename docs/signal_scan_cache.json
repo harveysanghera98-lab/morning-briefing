@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-20",
+  "date": "2026-07-27",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -8,18 +8,18 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No retrievable posts from the last 7 days. Most recent indexed activity dates to mid-2025. His hedge fund Situational Awareness LP continues to attract attention for its concentrated AI infrastructure portfolio.",
-      "connection": "His AGI-race thesis and AI infrastructure investment framework remain highly relevant to the Kimi K3 open-model shock and the ongoing US-China AI competition storyline."
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Dan Wang",
-      "handle": "@danwwang",
-      "source": "blog",
+      "handle": "@dkwang",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
-      "url": "https://danwang.co/",
-      "summary": "No new posts detected in the last 7 days. His site reflects his annual-letter cadence and ongoing commentary on US-China industrial and technology dynamics.",
-      "connection": "His China tech-industrial analysis lens is directly relevant to the Kimi K3 open-model story and broader US-China AI competition."
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Nathan Benaich",
@@ -28,77 +28,77 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "Most recent retrievable X post dates to late June (a Wimbledon quip). No substantive AI or tech posts found within the last 7 days. Air Street Fund III close was the last major announcement.",
-      "connection": "As publisher of State of AI report and AI-first VC, his views on Kimi K3 and frontier AI regulation would be directly relevant, but no signal found this week."
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Stanley Druckenmiller",
       "handle": "",
-      "source": "newsletter",
+      "source": "mixed",
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No interview or public remarks found on CNBC, Bloomberg, or FT within the last 7 days. Most recent indexed coverage dates to early 2026 portfolio tracking.",
-      "connection": "His macro views on AI infrastructure investment, oil price risk, and US fiscal trajectory would be highly pertinent to the current geopolitical and markets stories, but no fresh signal detected."
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Byrne Hobart",
-      "handle": "@ByrneHobart",
-      "source": "mixed",
-      "signal": "strong",
-      "latest_title": "The Diff \u2014 movie business incentives and genre parody theory (Jul 6)",
-      "url": "https://thediff.co",
-      "summary": "His pinned July 6 post promoted a free Diff issue analyzing the movie industry's rational response to its structural incentives and the social utility of genre parody \u2014 a cultural-economic frame consistent with his broader institutional analysis style.",
-      "connection": "Tangential; his financial and institutional analysis lens applies to the Oracle/Stargate investor-disclosure lawsuit story and broader market incentive dynamics, though this week's piece was not directly on those topics."
+      "handle": "@byrnehobart",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
-      "source": "substack",
-      "signal": "strong",
-      "latest_title": "Trading Post July 17, 2026 \u2014 Netflix & What's Up with the VIX",
-      "url": "https://michaeljburry.substack.com/p/trading-post-july-17-2026",
-      "summary": "Burry posted multiple Trading Posts and Short Thoughts this week, covering his IV15 valuation methodology, new shorts against Tesla, Nvidia, Micron, and semiconductor ETFs, and a detailed take on the Stripe/Advent bid for PayPal as undervaluing the business. He has been publicly defending his bearish AI-chip positions after being labeled 'Captain Broken Clock' on X.",
-      "connection": "His semiconductor and AI-infrastructure short thesis connects directly to the Kimi K3 open-model disruption (threatening US hyperscaler moats), Oracle/Stargate capex scrutiny, and the broader AI valuation debate central to this week's markets stories."
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Portfolio/trade alert",
+      "url": "https://x.com/michaeljburry",
+      "summary": "Posted a July 24 trade alert flagging a busy day with multiple new buys, increased short positions, and a pointed note on Palantir.",
+      "connection": "Ties to Markets and Digital Finance threads amid the Nvidia/OpenAI financing news and Monday's durable-goods-driven market stabilization."
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
-      "source": "newsletter",
+      "source": "blog",
       "signal": "strong",
-      "latest_title": "Mainframes and Main Characters (week of July 13, 2026)",
-      "url": "https://stratechery.com/2026/mainframes-and-main-characters/",
-      "summary": "Thompson's week covered IBM's historic stock drop and the argument that AI's ability to port legacy mainframe workloads signals permanent, not temporary, revenue loss; he also tracked the continuing OpenAI saga including Apple's trade-secrets lawsuit and ChatGPT's Mac app relaunch as a signal of the company's platform priorities.",
-      "connection": "Directly relevant to Frontier Tech/AI and enterprise trust erosion themes; his IBM-mainframe analysis parallels the Gemini 3.5 Pro enterprise trust story, and his OpenAI coverage ties into the Oracle/Stargate and US lab competitive-pressure narratives."
+      "latest_title": "Chinese models and frontier futures (Weekly Article roundup, week of July 20)",
+      "url": "https://stratechery.com/2026/",
+      "summary": "Discussed Kimi K3 as a genuinely strong open-weight model, arguing the Chinese AI threat isn't new but the frontier labs' structural advantage remains real; separately covered what happened to Hugging Face.",
+      "connection": "Directly engages today's lead story on Kimi K3's open-weight release and the broader US-China AI competition narrative."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "light",
-      "latest_title": "AI progress thought experiment \u2014 Fable vs GPT-3 analogy (Jul 7)",
-      "url": "https://x.com/paulg",
-      "summary": "On July 7, Graham posted a one-line thought experiment asking readers to imagine 2031 models improving on current frontier models (Fable) as dramatically as those models improved on GPT-3, sparking widespread debate about AI S-curves and the pace of progress.",
-      "connection": "Connects squarely to the Kimi K3 open-model shock and the broader frontier AI acceleration debate; his framing reinforces why China closing the gap so quickly is being taken seriously by the tech community."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "blog",
-      "signal": "strong",
-      "latest_title": "Ways to think about token pricing (Jul 9, 2026)",
-      "url": "https://www.ben-evans.com/benedictevans/2026/7/9/ways-to-think-about-token-pricing",
-      "summary": "Evans published a substantive essay analyzing the AI token-pricing dynamic: today's supply crunch lets labs name their price, but the structural question is whether they commoditize into low-margin infrastructure as supply catches up to demand.",
-      "connection": "Directly relevant to the frontier AI and markets stories; the commoditization risk he outlines applies pressure to Google (Gemini trust erosion), Oracle (Stargate capex), and the open-model threat from Kimi K3 specifically."
-    },
-    {
-      "name": "Packy McCormick",
-      "handle": "@packym",
       "source": "mixed",
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No substantive posts or newsletter issues found in the last 7 days. Most recent indexed X activity dates to April\u2013May 2026.",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
       "connection": ""
     },
     {
@@ -108,28 +108,28 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No retrievable posts or newsletter content found within the last 7 days.",
+      "summary": "",
       "connection": ""
     },
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "No retrievable posts or newsletter content found within the last 7 days.",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "On generalists vs. specialists (citing Netflix CPTO Elizabeth Stone)",
+      "url": "https://x.com/lennysan",
+      "summary": "Around July 21-22 shared reflections on taking a career sabbatical and amplified Netflix CPTO Elizabeth Stone's view that narrow deep specialization is losing ground to generalist skillsets.",
+      "connection": "Speaks to the Labor & Workforce theme as AI reshapes what skills and career paths are valued."
     },
     {
       "name": "Andrej Karpathy",
       "handle": "@karpathy",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "No retrievable posts found within the last 7 days from direct search. His ongoing commentary on AI education and software engineering in the agent era remains influential background context.",
-      "connection": "His framing of AI coding capabilities is directly relevant to the Kimi K3 coding leaderboard story."
+      "signal": "light",
+      "latest_title": "Replies on Anthropic rumor / LLM workflow tip",
+      "url": "https://x.com/karpathy",
+      "summary": "On July 26 batted down misinformation circulating about his role at Anthropic; on July 21 shared a tip about giving LLMs long, rambling context to get better output.",
+      "connection": "Minor but relevant to Frontier Tech/AI chatter given the day's AI-lab-focused headlines."
     },
     {
       "name": "Ilya Sutskever",
@@ -138,8 +138,8 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No retrievable posts found within the last 7 days. SSI (Safe Superintelligence) remains in stealth mode with no public output detected.",
-      "connection": "As a key figure in the AGI safety and superintelligence race, his absence from public discourse is itself notable given the Kimi K3 open-model shock."
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Noam Brown",
@@ -148,8 +148,8 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No retrievable posts found within the last 7 days.",
-      "connection": "His work on reasoning and game-theoretic AI at OpenAI is relevant background to the coding-benchmark competition story, but no fresh signal detected."
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Fran\u00e7ois Chollet",
@@ -158,8 +158,8 @@
       "signal": "none",
       "latest_title": "",
       "url": "",
-      "summary": "No retrievable posts found within the last 7 days. His ARC-AGI benchmark work remains a key reference point for evaluating claims like Kimi K3's leaderboard performance.",
-      "connection": "His long-running skepticism of benchmark-driven AGI claims is directly pertinent to interpreting the Kimi K3 coding-leaderboard story."
+      "summary": "",
+      "connection": ""
     }
   ]
 }
