@@ -1,0 +1,401 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Fed Meets as Oil-Driven Inflation Scare Muddies the Rate Call",
+      "one_liner": "A decision that looked like an easy hold two weeks ago is now a real toss-up as war-driven oil prices collide with sticky inflation.",
+      "detail": "The FOMC's two-day meeting concludes Wednesday with Chair Kevin Warsh, who has repeatedly said inflation is \"too high\" and that he has no tolerance for it, presiding over a committee that is more divided than it looked in June. Headline CPI is running near 4.1% and core near 3.4%, both well above the Fed's 2% target, and nine of nineteen policymakers have signaled they expect at least one more hike this year. Economists still lean toward a hold at 3.50%-3.75%, which would be a fifth straight standpat meeting, but CME FedWatch odds of a surprise hike more than tripled, from about 11% on July 15 to nearly 35% by July 22, after Brent crude spiked past $100 a barrel on Middle East escalation.\n\nThe timing compounds the difficulty: newly reinstated tariffs that lapsed Friday are adding fresh cost pressure just as oil-driven shipping, diesel and jet-fuel costs are climbing. Fed officials have grown more open-minded about AI's potential to be disinflationary over time, but that is a multi-year story, not one that resolves the near-term inflation print. Thursday's data dump of Q2 GDP, June PCE, personal income/spending and jobless claims lands one day after the decision, effectively grading the Fed's call in real time.\n\nCoverage differs on emphasis: Kiplinger and Chase frame this as Warsh drawing an inflation-fighting line in the sand, while Yahoo Finance and The Motley Fool stress how unusual it is for markets to be pricing meaningful hike odds this late in a cutting cycle. Watch for the language in Wednesday's statement on tariffs and energy prices, and whether any dissents emerge from hawks on the committee.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "U.S. News",
+          "url": "https://www.usnews.com/news/national-news/articles/2026-07-27/fed-rate-decision-tariffs-iran-pause-make-for-busy-economic-week"
+        },
+        {
+          "name": "The Motley Fool",
+          "url": "https://www.fool.com/investing/2026/07/27/fed-chair-kevin-warsh-committee-higher-rates/"
+        },
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/07/01/kevin-warsh-ecb-forum-live-updates.html"
+        }
+      ]
+    },
+    {
+      "priority": "urgent",
+      "headline": "Houthi Strikes on Saudi Oil Facilities Push Crude Toward $100",
+      "one_liner": "A widening Red Sea front in the Iran conflict is rattling the two chokepoints that carry a huge share of the world's oil.",
+      "detail": "Iran-backed Houthi forces fired missiles and drones at two of Saudi Arabia's most strategically important Red Sea oil facilities and claimed attacks on Saudi tankers, alongside threats to blockade the Bab al-Mandeb strait, a key bypass for the Strait of Hormuz. Brent crude jumped 7% to $100.69 a barrel on July 23, its highest level in nearly two months, before retreating to roughly $82.62 by July 27 as attacks paused and diplomacy resumed, according to trading data. Even with the pullback, futures are still up roughly 30% over the past month, and shipping, insurance, diesel and jet-fuel costs are rising faster than crude itself.\n\nPresident Trump warned of \"major military punishment\" against Iran if the Houthis target more ships, while Secretary of State Rubio publicly called on the group to de-escalate. UN Secretary-General Ant\u00f3nio Guterres warned the situation is \"getting out of control.\" Al Jazeera frames this explicitly as a new front opening in the broader US-Iran war, while CNN and Britannica emphasize the Strait of Hormuz as the bigger tail risk if the conflict widens further.\n\nThis is landing at the worst possible moment for the Fed, which meets this same week, and for global shippers already navigating elevated freight costs. Watch for whether the pause in strikes holds through the week, any OPEC+ response to the price swing, and whether Washington moves from rhetoric to direct military action against Iranian-linked targets.",
+      "sector": "Defense & Security",
+      "sources": [
+        {
+          "name": "CNN",
+          "url": "https://www.cnn.com/2026/07/23/world/live-news/iran-war-trump"
+        },
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/2026/7/26/new-front-in-us-iran-war-escalates-as-houthis-fire-at-saudi-oil-facilities"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Microsoft, Meta, Apple, Amazon Earnings Test the AI Capex Story",
+      "one_liner": "Wall Street's patience with hyperscaler AI spending is cracking right before the four biggest reports of the quarter land.",
+      "detail": "Alphabet shares plunged 7% on July 23 after the company raised its 2026 capex guidance to $195-205 billion (from $180-190 billion) and reported negative free cash flow, -$5.9 billion, for the first time since its 2004 IPO, even as cloud revenue jumped 82% to $24.8 billion. CFO Anat Ashkenazi warned 2027 capex will rise \"significantly\" further, and Morgan Stanley now sees Alphabet's spend climbing as high as $375 billion next year. That result set a tense tone for the rest of the Magnificent Seven reporting this week.\n\nMicrosoft and Meta report Wednesday, Apple and Amazon Thursday. Microsoft faces scrutiny over Azure growth guided at 39-40% constant-currency; Meta is expected to post $60.22 billion in revenue against flat year-over-year EPS of $7.14; Amazon's AWS growth, which accelerated to 28% in Q1, needs to clear a roughly $40.5 billion cloud-revenue consensus. Combined Big Tech capex is now pacing above $200 billion annually.\n\nFortune and Yahoo Finance describe a market in open \"revolt\" over whether AI infrastructure spending will ever show a clear return, while bulls point to accelerating cloud growth as vindication. The split will likely determine whether this week's reports trigger a broader tech selloff or a relief rally. Watch commentary on 2027 capex plans and any new disclosure of AI revenue attribution.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/07/26/big-tech-earnings-meta-microsoft-apple-amazon-market-revolt-ai-spending/"
+        },
+        {
+          "name": "Semafor",
+          "url": "https://www.semafor.com/article/07/23/2026/alphabets-free-cash-flow-turns-negative"
+        },
+        {
+          "name": "Benzinga",
+          "url": "https://www.benzinga.com/trading-ideas/previews/26/07/60700295/magnificent-seven-in-spotlight-what-to-expert-from-meta-microsoft-amazon-apple-earnings-this-week"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Nvidia Weighs $250 Billion Backstop for OpenAI's Ohio Megacampus",
+      "one_liner": "The size of this financing structure signals private debt markets alone won't underwrite AI's infrastructure buildout anymore.",
+      "detail": "Nvidia is reportedly in talks to guarantee roughly $250 billion in lease and construction debt so OpenAI can occupy SoftBank's 10-gigawatt \"PORTS Technology Campus\" being built in Piketon, Ohio, according to reporting cited by Tom's Hardware and Reuters-sourced accounts that outlets caution has not been independently confirmed. Under the structure, if OpenAI can't make lease payments, Nvidia covers the shortfall while OpenAI keeps the building; Nvidia is separately discussing financing roughly $350 billion in chip purchases for the same site. Total project cost, including Nvidia silicon, could eventually exceed $500 billion, with the first 800-megawatt phase targeted for 2028.\n\nTechTimes frames the arrangement as proof that conventional debt markets balked at underwriting AI infrastructure at this scale, forcing the chipmaker itself to absorb the credit risk of its biggest customer. Nvidia separately agreed to buy about $1 billion of new shares in South Korea's Naver, taking a 4.5% stake tied to that company's AI data-center expansion \u2014 another example of Nvidia using its balance sheet to lock in downstream demand.\n\nNothing is finalized, and terms could still change. Watch for confirmation of the deal structure, credit-rating agency commentary on Nvidia's expanding contingent liabilities, and whether other hyperscalers adopt similar vendor-financing arrangements.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Tom's Hardware",
+          "url": "https://www.tomshardware.com/tech-industry/data-centers/nvidia-weighs-250-billion-guarantee-so-openai-can-lease-softbanks-10-gigawatt-ohio-campus"
+        },
+        {
+          "name": "TechTimes",
+          "url": "https://www.techtimes.com/articles/321652/20260727/nvidias-250b-guarantee-openai-ohio-campus-proves-debt-markets-said-no.htm"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Moonshot's Kimi K3 Becomes the Largest Open-Weight Model Yet",
+      "one_liner": "China's push to give away frontier-scale weights for free is reshaping the AI race just as Washington weighs tighter chip export enforcement.",
+      "detail": "Moonshot AI's Kimi K3, a 2.8-trillion-parameter model, went live as a free download at 00:00 UTC on July 27 \u2014 the largest open-weight release to date. It lands days after Nvidia CEO Jensen Huang and other US executives publicly backed open-source AI development, a sign of widening strategic divides within the American AI industry over open versus closed models, per Semafor. Chinese open-weight models are reportedly gaining real traction among US developers despite the geopolitical backdrop.\n\nThat backdrop includes active enforcement: Taiwanese prosecutors are investigating roughly $22 million of smuggled Nvidia GB300 chips routed into China via 50 server sets, and Singaporean authorities have separately charged four people over similar smuggling. Beijing has taken a notably more aggressive tone toward US sanctions threats on Chinese AI firms even while muting its reaction to newly reinstated US tariffs, according to Semafor \u2014 a sign AI has become the sharper edge of superpower economic competition.\n\nThis all sets up a loaded few months: Anthropic's Claude Opus 5 release keeps the capability race hot on the US side, and Xi Jinping's confirmed September 24 state visit to Washington \u2014 being prepped via a Rubio-Wang Yi meeting in Manila \u2014 is expected to put AI cooperation back on the table. Watch for any new US export-control action and adoption data on Kimi K3 relative to US frontier labs.",
+      "sector": "China",
+      "sources": [
+        {
+          "name": "Tech Startups",
+          "url": "https://techstartups.com/2026/07/27/top-tech-news-today-july-27-2026-anthropic-monday-com-moonshot-ai-nvidia-openai-more/"
+        },
+        {
+          "name": "AEI",
+          "url": "https://www.aei.org/commentary/china-taiwan-update-july-24-2026/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Moonshot AI shipped Kimi K3, a free 2.8-trillion-parameter open-weight model and the largest yet released. Nvidia is weighing a roughly $250 billion financing backstop for OpenAI's Ohio data-center campus plus a separate $350 billion chip-financing discussion, and took a $1 billion, 4.5% stake in Naver tied to AI data-center expansion."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Alphabet's stock dropped 7% on a capex hike to $205 billion and its first-ever negative quarterly free cash flow, setting a tense backdrop for Microsoft and Meta (Wednesday) and Apple and Amazon (Thursday) earnings. Monday.com became the latest company to cite AI directly in layoffs, joining a growing tracked list."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "The Fed's July 28-29 FOMC meeting is the week's dominant story, with hike odds rising sharply on oil-driven inflation fears. Newly reinstated tariffs that lapsed Friday are back in effect, and the CLARITY Act's July 4 signing target has passed with the Senate still short of the 60 votes needed for cloture."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The EU AI Act's core Article 50 transparency obligations for general-purpose AI and synthetic media become enforceable August 2 following the finalized Digital Omnibus package. In the US, bipartisan legislation was introduced requiring AI companies to maintain the ability to shut down their models on short notice."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "The Iran conflict widened into the Red Sea with Houthi strikes on Saudi oil infrastructure, while Gaza's ceasefire remains fragile with fresh Israeli strikes killing Palestinians even as an international security force begins deploying. Rubio and Wang Yi met in Manila to lay groundwork for Xi Jinping's confirmed September 24 Washington visit."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Moonshot AI's Kimi K3 open-weight release intensifies US-China competition over AI openness, while Taiwanese and Singaporean authorities pursue chip-smuggling cases tied to diverted Nvidia GB300 hardware. Beijing struck an aggressive tone on US sanctions threats against Chinese AI firms and is accused of pressuring Taiwan's KMT to block defense drone procurement."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "Markets are bracing for a genuinely uncertain Fed decision Wednesday, oil-price volatility after crude's spike toward $100 and partial retreat, and a stacked earnings week (UPS, Coca-Cola, Boeing, Visa, Ford Tuesday; Microsoft, Meta Wednesday; Apple, Amazon Thursday) following Alphabet's selloff."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "Federal agencies finalized GENIUS Act stablecoin rules, including an OCC $5 million capital floor and no FDIC deposit insurance for token holders, alongside newly proposed bank-grade KYC requirements for issuers. The CLARITY Act remains stalled in the Senate short of cloture votes."
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Brent crude spiked 7% to over $100 a barrel after Houthi attacks on Saudi Red Sea oil facilities before retreating to roughly $82 by July 27, with shipping, insurance, diesel and jet-fuel costs rising faster than crude itself and both the Red Sea and Strait of Hormuz under pressure."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Houthi missile and drone attacks on Saudi oil facilities and tankers drew a Trump warning of \"major military punishment\" against Iran, while Rubio urged de-escalation. Israel has approved deployment of an international security force into Gaza under the ceasefire framework even as sporadic strikes continue."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "AI-linked job cuts continue at scale, with finance and information-sector payrolls shrinking by an estimated 28,000 jobs a month on average as adoption accelerates; Monday.com is the latest firm to cite AI explicitly, joining more than 20 companies tracked this year, even as firms simultaneously hire for AI, security and core product roles."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Tue 28",
+      "event": "UPS, Coca-Cola and Boeing report earnings before the bell; Visa and Ford report after the close",
+      "tag": "earnings"
+    },
+    {
+      "day": "Tue 28",
+      "event": "FOMC's two-day policy meeting begins; Consumer Confidence data released",
+      "tag": "critical"
+    },
+    {
+      "day": "Wed 29",
+      "event": "FOMC rate decision and press conference \u2014 markets pricing a meaningfully higher chance of a surprise hike after oil's spike",
+      "tag": "critical"
+    },
+    {
+      "day": "Wed 29",
+      "event": "Microsoft and Meta report Q2 earnings after the close",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 30",
+      "event": "Apple and Amazon report Q2 earnings",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 30",
+      "event": "Q2 GDP, June PCE inflation, personal income/spending and weekly jobless claims all released at 8:30am, a day after the Fed's decision",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 31",
+      "event": "Watch for further Houthi attacks on Red Sea shipping or Saudi facilities given Trump's \"major military punishment\" warning to Iran",
+      "tag": "defense"
+    },
+    {
+      "day": "Sun 2",
+      "event": "EU AI Act's core Article 50 transparency obligations for general-purpose AI and synthetic media become enforceable across the bloc",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "Warsh's Inflation Theatre Greenlights Trump's Oil Diplomacy",
+      "subtitle": "Fed rate-hike odds spiking to 35% on Houthi attacks serves as political cover for negotiations that keep crude elevated.",
+      "categories": [
+        "Markets",
+        "Defense & Security",
+        "US Policy & Power"
+      ],
+      "content": "Kevin Warsh just accidentally handed Trump the inflation narrative he needs. Houthi attacks spiked crude to $100, which triggered hike odds to spike from 11% to 35%, which gives Warsh political justification to signal toughness on inflation. But here's the move: if the Fed actually hikes even once on this oil shock, shipping and energy costs stay sticky above $80/barrel, inflation persists, and Warsh can credibly claim the Fed is \"fighting the good fight.\" That same persistence means Trump can negotiate a Houthi ceasefire (or claim to) without looking weak on inflation, because inflation already has an external scapegoat. The pause in attacks by July 27 was suspiciously convenient\u2014it handed crude back to $82 just as the Fed was deciding. Watch if Trump uses the board room at the September Xi meeting to frame an \"Iran de-escalation\" as mutually beneficial oil-price stability. If Warsh hikes on Wednesday, Trump has negotiating room. If Warsh holds, he looks dovish and crude volatility spikes again, forcing a later hike. Either way, Trump wins the diplomatic timeline."
+    },
+    {
+      "title": "Nvidia Is Financing Its Own Commoditization",
+      "subtitle": "A $250 billion vendor-financing backstop for OpenAI signals Nvidia has moved from chipmaker to systemically exposed infrastructure lender.",
+      "categories": [
+        "Frontier Tech / AI",
+        "China",
+        "Markets"
+      ],
+      "content": "The $250 billion Nvidia guarantee to backstop OpenAI's Ohio campus lease isn't venture capitalism\u2014it's a sign that debt markets refuse to touch AI infrastructure at this scale, so the chipmaker itself is absorbing the credit risk of its largest customer. Separately, Nvidia is financing $350 billion in chip purchases for the same site and just bought $1 billion in Naver equity tied to AI data-center expansion. This isn't vendor lock-in; it's vendor vulnerability. Here's the speculative thesis: Nvidia is betting its balance sheet that OpenAI's capex returns exist, but if they don't materialize (capex ROI remaining murky), Nvidia's contingent liabilities blow up the moment the Fed doesn't cut rates as expected or recession fears hit. Simultaneously, Moonshot AI releases Kimi K3\u2014a free 2.8-trillion-parameter model anyone can download and run. In five years, Nvidia's shareholders will look back at these financing deals and ask why the company spent hundreds of billions anchoring US AI infrastructure that was being commoditized by Chinese open-weight models released for free. Nvidia moved from selling chips to betting on outcomes it doesn't control."
+    },
+    {
+      "title": "Big Tech Capex Is Trapped in a Coordination Problem",
+      "subtitle": "Alphabet's negative free cash flow isn't failure; it's evidence every hyperscaler is spending not for ROI but to avoid losing the race.",
+      "categories": [
+        "Applied Tech & Industry",
+        "Markets",
+        "Frontier Tech / AI"
+      ],
+      "content": "Alphabet dropped 7% after reporting negative $5.9 billion free cash flow for the first time since its 2004 IPO, while announcing capex is rising to $205 billion and 2027 will go \"significantly\" higher. Morgan Stanley now estimates Alphabet alone could be at $375 billion annually. But here's the dark insight: Alphabet probably knows this capex doesn't independently pencil out. The company is trapped in a prisoner's dilemma with Microsoft, Meta, and Amazon. Each one must spend because if they don't, competitors will seize the AI race, even if the ROI never materializes. Alphabet's negative FCF is a feature of the trap, not a bug. The moment any major player signals they're slowing capex\u2014which a Fed hike or a forced recession could trigger\u2014the entire game inverts. Everyone cuts simultaneously. When that happens, these valuations reset hard because investors will realize the capex was coerced competition, not rational investment. Watch the 2027 capex guidance closely this week. If Microsoft, Meta, Apple, or Amazon signal meaningful slowdowns on capital plans, the entire $200+ billion annual spend thesis collapses in a cascade. That's a 20-30% correction in Big Tech within six months."
+    },
+    {
+      "title": "China's Open-Weight Model Release Is Asymmetric Geopolitical Warfare",
+      "subtitle": "Kimi K3 free download creates a US developer constituency dependent on Chinese models just as Xi prepares his September Washington visit.",
+      "categories": [
+        "China",
+        "Frontier Tech / AI",
+        "Geopolitics"
+      ],
+      "content": "Moonshot AI released Kimi K3, a 2.8-trillion-parameter frontier model, as a free download on July 27\u2014the same week Nvidia's chip-smuggling problems in Taiwan and Singapore are being prosecuted and Xi Jinping's September 24 Washington visit is being prepped. This is not coincidental. China is executing a long-horizon play: release frontier-scale models for free, create a constituency of American developers who depend on Chinese models, build geopolitical leverage, then use that leverage during \"strategic competition\" negotiations at the Xi-Trump meeting. Meanwhile, the US AI industry is internally fractured\u2014Nvidia CEO Jensen Huang publicly backed open-source development, while Anthropic (Claude Opus 5) is doubling down on proprietary models. The US has no unified policy response because it can't agree on strategy. By September, millions of American developers will have Kimi K3 in production environments. Revoking or blocking access becomes politically costly. Rubio's call for de-escalation on Houthi attacks and the Xi state visit prep are the overture; AI cooperation will be the centerpiece. The real leverage has already shifted: Kimi adoption is the currency, not chip sales or export controls. By 2027, watch whether US AI firms face implicit pressure to open-source more aggressively as a condition of market access in China, and whether Moonshot's free model strategy forces Anthropic and OpenAI into a race-to-the-bottom on pricing or openness."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Portfolio/trade alert",
+      "url": "https://x.com/michaeljburry",
+      "summary": "Posted a July 24 trade alert flagging a busy day with multiple new buys, increased short positions, and a pointed note on Palantir.",
+      "connection": "Ties to Markets and Digital Finance threads amid the Nvidia/OpenAI financing news and Monday's durable-goods-driven market stabilization."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "blog",
+      "signal": "strong",
+      "latest_title": "Chinese models and frontier futures (Weekly Article roundup, week of July 20)",
+      "url": "https://stratechery.com/2026/",
+      "summary": "Discussed Kimi K3 as a genuinely strong open-weight model, arguing the Chinese AI threat isn't new but the frontier labs' structural advantage remains real; separately covered what happened to Hugging Face.",
+      "connection": "Directly engages today's lead story on Kimi K3's open-weight release and the broader US-China AI competition narrative."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "On generalists vs. specialists (citing Netflix CPTO Elizabeth Stone)",
+      "url": "https://x.com/lennysan",
+      "summary": "Around July 21-22 shared reflections on taking a career sabbatical and amplified Netflix CPTO Elizabeth Stone's view that narrow deep specialization is losing ground to generalist skillsets.",
+      "connection": "Speaks to the Labor & Workforce theme as AI reshapes what skills and career paths are valued."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Replies on Anthropic rumor / LLM workflow tip",
+      "url": "https://x.com/karpathy",
+      "summary": "On July 26 batted down misinformation circulating about his role at Anthropic; on July 21 shared a tip about giving LLMs long, rambling context to get better output.",
+      "connection": "Minor but relevant to Frontier Tech/AI chatter given the day's AI-lab-focused headlines."
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
