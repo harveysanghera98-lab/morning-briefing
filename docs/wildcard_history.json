@@ -1,10 +1,6 @@
 [
   {
     "date": "2026-06-04",
-    "topic": "AI Data Centers vs. US Grid: Who Pays the Bill?"
-  },
-  {
-    "date": "2026-06-04",
     "topic": "Microsoft Majorana 2: Quantum Leap or Hype Cycle?"
   },
   {
@@ -118,5 +114,9 @@
   {
     "date": "2026-07-27",
     "topic": "Nvidia's $250B OpenAI Backstop: AI's Circular Debt Reckoning"
+  },
+  {
+    "date": "2026-07-29",
+    "topic": "Big Tech AI Capex Reckoning: The Show-Me-the-Money Moment"
   }
 ]
