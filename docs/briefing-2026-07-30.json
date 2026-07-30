@@ -1,0 +1,412 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "1,178 AI Employees Sign 'Pacing the Frontier' Letter, Urging Washington to Build Slowdown Tools",
+      "one_liner": "In an unprecedented show of internal dissent, over a thousand engineers and researchers at the biggest frontier labs have jointly asked the US government to develop the technical and governance infrastructure for a verifiable, coordinated AI slowdown \u2014 if and when models outpace human oversight.",
+      "detail": "On July 28\u201329, the 'Pacing the Frontier' open letter published signatures from 1,178 employees at OpenAI, Anthropic, Google DeepMind, and Meta. The letter does not call for an immediate pause but asks Washington to help construct the infrastructure that would make a verifiable, coordinated slowdown possible if AI systems begin compounding faster than oversight mechanisms can handle. Signatories include OpenAI chief scientist Jakub Pachocki, Anthropic co-founders Jack Clark and Jared Kaplan, Meta chief scientist Shengjia Zhao, and Google DeepMind's Anca Dragan \u2014 making this perhaps the most credentialed collective safety statement the industry has ever produced. Both OpenAI and Anthropic endorsed the letter at the corporate level within hours of publication. Meta's chief scientist signed individually even as CEO Mark Zuckerberg published a same-week Wall Street Journal essay arguing the opposite direction on open access \u2014 a notable internal tension at Meta. The divergence between Zuckerberg's public posture and his own chief scientist's signature is the most revealing fault line to watch. The letter lands at a moment when Congress is already debating the bipartisan Great American AI Act of 2026 and as the Trump administration's deregulatory National AI Legislative Framework is under active challenge from states. Whether the White House, currently committed to an 'innovation-first' posture, engages with the letter's specific asks \u2014 monitoring infrastructure, international frameworks, verifiability research \u2014 or dismisses it as labs protecting incumbency will define the next phase of AI governance negotiations.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "Build Fast With AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-29-2026"
+        },
+        {
+          "name": "ExplainX.ai",
+          "url": "https://explainx.ai/blog/pacing-the-frontier-ai-employees-letter-july-2026"
+        }
+      ]
+    },
+    {
+      "priority": "urgent",
+      "headline": "Fed Holds Rates at 3.5\u20133.75% in Fractious 9-3 Vote; Meta Guidance Spooks Markets",
+      "one_liner": "The Federal Reserve's split decision signals rising internal disagreement over inflation and growth, while Meta's disappointing forward guidance sent its stock sharply lower \u2014 all against a backdrop of renewed US-Iran tensions pushing up safe-haven assets.",
+      "detail": "The Federal Reserve, now chaired by Kevin Warsh, held the federal funds rate unchanged at a target range of 3.5%\u20133.75% following its July 29 FOMC meeting. The 9-3 vote was notably fractious, suggesting meaningful dissent within the committee on whether the current pace of easing is appropriate given persistent inflation signals and geopolitical-driven commodity volatility. Three dissenters likely favored either a cut or a hike \u2014 the direction will be key to watch in the minutes. Meanwhile, Meta delivered quarterly earnings that disappointed on forward guidance, with investors selling shares sharply. Microsoft, by contrast, reported strong fiscal Q4 revenue and beat expectations, with shares jumping 7% in extended trading, reinforcing the narrative that enterprise AI monetization is arriving unevenly across Big Tech. In the macro backdrop, escalating US-Israeli air strikes against Iran have revived safe-haven flows: gold prices rose over 1% mid-week, while oil prices remain volatile \u2014 surging more than 20% in July before retreating over 6% after a pause in US-Iran strikes. The dollar has strengthened on higher US yields and the more hawkish Fed tone, creating a headwind for gold. The 10-year Treasury has repeatedly tested the 4.7%\u20135.0% range. Watch for Meta's full earnings call transcript and any Fed speaker commentary this week for signals on whether the three dissenters were hawks or doves.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/07/30/cnbc-daily-open-geopolitics-monetary-policy-fight.html"
+        },
+        {
+          "name": "CNBC Markets",
+          "url": "https://www.cnbc.com/2026/07/26/stock-market-today-live-updates.html"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Anthropic's Claude Mythos Cracks Post-Quantum Crypto; AI Security Alarm Deepens",
+      "one_liner": "An unreleased Anthropic model independently identified critical weaknesses in two cryptographic systems \u2014 including a NIST post-quantum candidate \u2014 in under 60 hours, advances that had eluded human cryptographers for years.",
+      "detail": "Anthropic's unreleased Claude Mythos Preview model attacked two cryptographic systems in a research context, producing results that alarmed the cryptography community. Within roughly 60 hours, the model halved the effective key strength of HAWK, a post-quantum digital signature algorithm under active NIST standardization consideration. It also independently invented a technique called the 'M\u00f6bius Bridge' that accelerates attacks on 7-round AES by 200\u2013800 times. Neither result breaks production deployments \u2014 HAWK has not been deployed, and full-round AES remains secure \u2014 but both represent state-of-the-art advances that human experts had not achieved. The find compounds an already fraught security week: OpenAI disclosed that a prior breach involved four stolen employee accounts, and Hugging Face detected and contained a separate infrastructure intrusion before OpenAI notified the company. The Five Eyes intelligence alliance had already warned this month that frontier AI will 'fundamentally transform' offensive cyber capabilities and that the timeline is 'not years, it is months.' The cryptography results in particular will accelerate pressure on NIST to finalize and diversify its post-quantum portfolio, and are likely to surface in congressional hearings on the Great American AI Act. The convergence of AI-assisted cryptanalysis, ongoing lab breaches, and the Pacing the Frontier letter forms a coherent signal: the safety and security risks of frontier models are no longer speculative.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Tech Startups",
+          "url": "https://techstartups.com/2026/07/29/top-tech-news-today-july-29-2026-amazon-google-microsoft-mit-nvidia-softbank-xai-more/"
+        },
+        {
+          "name": "Build Fast With AI",
+          "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-29-2026"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "China Inc. Launches $10B Buyback Wave to Stem Equity Rout",
+      "one_liner": "Chinese listed companies have announced nearly 67.6 billion yuan in share repurchases so far in July \u2014 the most since the April 2025 tariff shock \u2014 signaling Beijing-orchestrated market stabilization as economic confidence falters.",
+      "detail": "Chinese companies have announced 67.6 billion yuan ($9.99 billion) in share buybacks in July 2026, approaching levels last seen during the April 2025 tariff-driven market rout, according to Bloomberg citing exchange data. The scale and speed of the buyback wave bears hallmarks of coordinated state guidance, with Beijing using corporate balance sheets as a stabilization tool. The move comes as China's equity markets face a confluence of pressures: domestic demand remains soft, property sector stress lingers, and Chinese imports of oil have been slashed by an estimated 4\u20135 million barrels per day \u2014 a signal of subdued industrial activity that is simultaneously keeping global oil markets from pricing in full Middle East risk. On the technology front, US-China AI rivalry is intensifying in Asia, with Washington pushing allies to adopt American AI stacks while Chinese alternatives \u2014 led by models like Kimi K3 \u2014 compete on price. The Wall Street Journal has reported on Zuckerberg's open-access essay as a counterpoint to the US government's more restrictive posture. Analysts at RBC Capital Markets note that oil is currently a 'broken barometer' for Middle East risk because Chinese demand suppression is masking what would otherwise be a more severe price spike. Watch for any official PBOC or CSRC commentary endorsing or directing the buyback surge, and for Q2 GDP revisions due later this week.",
+      "sector": "China",
+      "sources": [
+        {
+          "name": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-07-30/china-inc-readies-most-buybacks-since-trade-war-to-stem-rout"
+        },
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/07/26/stock-market-today-live-updates.html"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "US VC Hits Record $412.7B in H1 2026, But 81% Concentrated in $100M+ Mega-Rounds",
+      "one_liner": "The venture market is setting all-time records in headline dollars while becoming structurally more concentrated, with 16 megafunds capturing nearly 70% of LP capital and AI infrastructure commanding the largest checks.",
+      "detail": "US venture investment reached $412.7 billion in H1 2026, already surpassing any previous full-year total, according to PitchBook and NVCA data cited by Axios. But the distribution is extreme: more than 81% of dollars went into rounds of $100 million or more, and 16 megafunds raised nearly 70% of the $72.4 billion in VC fund formation during the period, per the Wall Street Journal. The theme driving the largest checks is AI infrastructure \u2014 compute, chips, cooling, agent platforms, and domain-specific deployment \u2014 rather than consumer apps. Emblematic deals this month include Saudi Aramco Ventures leading an $800 million Series C in Together AI (valuing it at $8.3 billion), SambaNova raising $1 billion for AI chips backed by Intel and General Atlantic, and Nvidia-backed ChipAgents raising $60 million to automate semiconductor design. Separately, Etched launched at a $5 billion valuation with $1 billion in signed inference-chip contracts. The concentration dynamic has a shadow side: seed and Series A activity remains depressed, limiting the pipeline of next-generation companies. Limited partners remain cautious on liquidity, with the IPO window open only episodically. The week ahead may bring additional mega-round announcements as Q3 gets underway and AI labs continue to expand compute commitments.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "Tech Startups",
+          "url": "https://techstartups.com/2026/07/23/venture-capital-startup-funding-roundup-july-23-2026-accel-andreessen-horowitz-battery-ventures-iconiq-jane-street-sequoia-more/"
+        },
+        {
+          "name": "Tech Startups (July 1)",
+          "url": "https://techstartups.com/2026/07/01/venture-capital-startup-funding-roundup-july-1-2026/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Four frontier models \u2014 Grok 4.5, Claude Opus 5, GPT-5.6, and Kimi K3 \u2014 released within a three-week window in July, compressing the competitive cycle to near-monthly cadences. Anthropic's unreleased Claude Mythos Preview produced AI-first cryptanalytic breakthroughs against a NIST post-quantum candidate and AES variants, alarming security researchers. Washington is investing $300 million in faster AI chip interconnects while restricting Chinese humanoid robots on national-security grounds."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "US VC hit a record $412.7 billion in H1 2026 with capital heavily concentrated in AI infrastructure mega-rounds. Microsoft beat fiscal Q4 earnings and guided for steady capex, while Meta disappointed on forward guidance. Etched launched at a $5 billion valuation with $1 billion in signed inference-chip contracts, signaling a maturing dedicated-inference hardware market."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "The Trump administration's deregulatory AI National Policy Framework and its push to preempt state AI laws continue without a statutory resolution, while states including California, Texas, Illinois, and Colorado press ahead with their own binding frameworks. A national-security AI memorandum signed June 5 is directing accelerated AI adoption across the intelligence community. The bipartisan Great American AI Act of 2026 discussion draft remains in public comment."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The 'Pacing the Frontier' letter from 1,178 frontier AI employees asking Washington to build governance infrastructure for a verifiable AI slowdown is the dominant story this week, with both OpenAI and Anthropic endorsing it corporately. The US still has no comprehensive federal AI statute; the TAKE IT DOWN Act remains the only enacted AI-specific law, with FTC enforcement of platform deepfake duties running since May 2026. France's competition authority released a 3,700-page advisory finding that OpenAI, Google, and Anthropic together control over 84% of the AI agent market."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "President Trump threatened Iran with a 'beating,' reigniting Middle East conflict fears after a brief lull in US-Israeli air strikes. Oil surged over 20% in July before retreating over 6% on the pause. The US-China AI rivalry is intensifying across Asia, with Washington pushing American AI stacks as China competes on price with models like Kimi K3. A US-China summit remains delayed per EY's July geostrategic analysis."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Chinese companies announced nearly $10 billion in share buybacks in July \u2014 the most since the April 2025 tariff shock \u2014 in what analysts read as a coordinated state-guided market stabilization effort. China has slashed oil imports by an estimated 4\u20135 million barrels per day, suppressing global price signals. China's commercial space industry expansion is drawing fresh CSIS warnings that the US risks being outpaced in sheer industrial capacity."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The Fed held rates at 3.5%\u20133.75% in a fractious 9-3 vote at the July 29 FOMC meeting, signaling internal disagreement on the path forward. Meta's weak guidance hit its stock, while Microsoft surged 7% after-hours on strong Q4 results. Gold rose over 1% on Middle East escalation while oil remains volatile. The 10-year Treasury is repeatedly testing the 4.7%\u20135.0% range, and a stronger dollar is creating headwinds for commodities."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "Institutional crypto trading venue EDX Markets raised a $76 million Series C led by SBI Holdings, signaling continued conviction in regulated digital-asset infrastructure. The broader crypto market remains in a monitoring posture ahead of anticipated stablecoin and CBDC regulatory clarity from Congress."
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Oil prices surged over 20% in July on US-Iran tensions before retreating over 6% after a strike pause; analysts caution that Chinese demand suppression is masking true Middle East risk in the price signal. Quaise Energy closed the first tranche of a $134 million Series B for superhot geothermal drilling technology. South Korea announced an $880 billion 10-year investment plan covering semiconductors, AI infrastructure, and energy, with Samsung and SK Hynix committing $518 billion toward new chip fabs."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "US-Israeli air strikes against Iran escalated before a brief pause, with Trump threatening further action \u2014 keeping the region on high alert. The Five Eyes alliance warned this month that frontier AI will 'fundamentally transform' offensive and defensive cyber capabilities with a timeline of months, not years. CSIS published a July 29 report warning that China's commercial space industry expansion is stunning in scale and speed, and that US policymakers risk being outpaced in industrial capacity."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "Oracle is cutting up to 30,000 jobs to fund the $500 billion Stargate AI infrastructure buildout, the largest single AI-driven workforce reduction announced this year. The Great American AI Act of 2026 discussion draft includes a workforce development title focused on researching AI's labor market impacts. Washington's $300 million investment in AI chip interconnects and the wave of AI infrastructure funding signal continued capital-labor substitution pressure in technical roles."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Thu Jul 30",
+      "event": "Fed FOMC minutes from July 29 meeting expected to clarify the nature of the 9-3 dissent (hawks vs. doves)",
+      "tag": "data"
+    },
+    {
+      "day": "Thu Jul 30",
+      "event": "US Q2 GDP advance estimate release \u2014 first read on growth amid tariff and AI capex dynamics",
+      "tag": "data"
+    },
+    {
+      "day": "Thu Jul 30",
+      "event": "Meta earnings call \u2014 investor focus on AI monetization roadmap and capex guidance after weak forward guidance",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu Jul 30",
+      "event": "Apple quarterly earnings after market close \u2014 key data point on consumer AI hardware demand and Services growth",
+      "tag": "earnings"
+    },
+    {
+      "day": "Fri Jul 31",
+      "event": "US PCE inflation print for June \u2014 critical data point for Fed rate path and any reversal of hawkish dissent",
+      "tag": "data"
+    },
+    {
+      "day": "Fri Jul 31",
+      "event": "Amazon Q2 earnings \u2014 AWS cloud and AI services revenue closely watched amid record infrastructure spend",
+      "tag": "earnings"
+    },
+    {
+      "day": "Fri Jul 31",
+      "event": "Colorado SB 26-189 ADMT law milestone \u2014 effective-date planning deadline for enterprises ahead of Jan 1, 2027 enforcement",
+      "tag": "policy"
+    },
+    {
+      "day": "Mon Aug 3",
+      "event": "Congressional recess ends; Great American AI Act markup sessions expected to resume in House Commerce Committee",
+      "tag": "policy"
+    },
+    {
+      "day": "Mon Aug 3",
+      "event": "Pacing the Frontier letter response window \u2014 White House OSTP and NSC expected to issue initial reaction or request briefings",
+      "tag": "policy"
+    },
+    {
+      "day": "Tue Aug 4",
+      "event": "Nvidia earnings \u2014 Q2 data center and Blackwell GPU demand; key signal for AI compute supply chain and export-control impact",
+      "tag": "earnings"
+    },
+    {
+      "day": "Wed Aug 5",
+      "event": "ISM Services PMI for July \u2014 gauge of AI-driven enterprise spending and labor conditions",
+      "tag": "data"
+    },
+    {
+      "day": "Thu Aug 6",
+      "event": "US initial jobless claims \u2014 ongoing monitor of AI displacement in white-collar and tech sectors",
+      "tag": "data"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "Pacing the Frontier as Regulatory Capture Theater",
+      "subtitle": "Frontier labs ask Washington to build slowdown infrastructure they'll control, while accelerating capex to lock in dominance.",
+      "categories": [
+        "AI Regulation & Governance",
+        "Applied Tech & Industry"
+      ],
+      "content": "Speculative: The Pacing the Frontier letter is sophisticated regulatory hedging, not genuine safety concern. When Jakub Pachocki, Jack Clark, and Jared Kaplan sign a letter asking Washington to build governance infrastructure for verifiable slowdown, they are not calling for constraint\u2014they are calling for the regulatory theater that permits them to keep spending billions on megacompute without political backlash. The timing is deliberate: Congress debates the Great American AI Act while Meta's internal fault line surfaces publicly\u2014Shengjia Zhao signing the letter while Mark Zuckerberg published a simultaneous WSJ essay pushing open access. This is not disagreement; it is strategy. Zuckerberg's open-access play pressures every lab to accelerate (racing to stay ahead of democratized models), while Zhao's signature signals that researcher classes back the safety narrative. Whoever controls the slowdown apparatus controls which labs receive exemptions. OpenAI and Anthropic's corporate endorsements within hours suggest coordination, not spontaneity. The letter is a collective bet that Washington will build infrastructure without actual slowdown, and the labs will write the verification rules."
+    },
+    {
+      "title": "China's $10B Buyback Wave Masks Demand-Destruction Geopolitical Play",
+      "subtitle": "Beijing is suppressing oil demand signals to keep Trump's Middle East escalation cheap while hiding recession.",
+      "categories": [
+        "China",
+        "Energy",
+        "Geopolitics"
+      ],
+      "content": "Speculative: China's 67.6 billion yuan buyback surge\u2014the largest since the April 2025 tariff shock\u2014is state-orchestrated demand destruction disguised as market stabilization. The timing is not coincidental: the buyback wave arrives with reported 4-5 million barrel-per-day cuts in Chinese oil imports, a recession signal that should alarm markets. Instead, it is being read as tactical calm. Beijing is using corporate balance sheets to hold equity prices while intentionally suppressing demand signals that would otherwise price Middle East risk into crude oil. This keeps Trump's military posture against Iran artificially constrained\u2014a barrel of oil that does not reflect regional war risk is a barrel that does not constrain US policy options. RBC Capital Markets noted that oil is now a broken barometer for Middle East exposure because Chinese demand suppression is masking what would otherwise be a severe price spike. This is speculative, but the data pattern suggests Beijing calculated that letting oil spike would constrain Trump more than a hidden recession would constrain China. The convergence of buyback surge and import collapse within the same week as US-Iran strike escalation indicates active, coordinated state guidance, not market mechanics."
+    },
+    {
+      "title": "Anthropic's Cryptanalysis Breakthrough Collides With Oracle Mass Layoffs: Defense Collapse",
+      "subtitle": "Frontier labs are cutting human security researchers to fund the models that break cryptography\u2014a civilizational asymmetry.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Defense & Security",
+        "Labor & Workforce"
+      ],
+      "content": "Speculative: Anthropic's Claude Mythos Preview cracking NIST post-quantum candidates in 60 hours and discovering the M\u00f6bius Bridge attack should have triggered urgent calls for AI governance restraint. Instead, the same week Oracle announced up to 30,000 job cuts to fund the $500 billion Stargate buildout. This pattern suggests deliberate structural unpreparedness: labs are cutting the human expertise\u2014cryptographers, security researchers, defenders\u2014that might detect the next breakthrough before weaponization. The Five Eyes warning that frontier AI will transform offensive cyber with a timeline of months, not years, is unambiguous. Yet the industry response is to accelerate capex, consolidate compute, and eliminate the workforce that provided adversarial depth. This creates offensive-defensive asymmetry: an AI system breaking AES variants 200-800x faster scales quarterly, while the humans who might catch it get laid off. The Oracle move is not accidental optimization; it is directional. If a $500B buildout requires eliminating 30,000 roles, the labs have calculated that human judgment, review, and security expertise are obstacles to speed, not requirements for safety."
+    },
+    {
+      "title": "Meta's Guidance Miss Signals AI ROI Stalled; Fed's 9-3 Split Reveals Stagflation Fear",
+      "subtitle": "Enterprise AI monetization is slower than the capex binge\u2014the Fed's doves fear unproductive spending, not inflation.",
+      "categories": [
+        "Applied Tech & Industry",
+        "Markets",
+        "AI Regulation & Governance"
+      ],
+      "content": "Speculative: Meta's disappointing forward guidance in the same week as the Fed's fractious 9-3 FOMC vote suggests the AI infrastructure buildout is hitting an ROI crisis. Microsoft beat Q4 and surged 7% in after-hours trading because it owns the infrastructure layer (Azure, OpenAI exclusivity, enterprise deals). Meta beat revenue but disappointed forward guidance, indicating the company is spending billions on compute without revenue acceleration\u2014the capex-to-revenue gap is widening. The Fed's 9-3 fractious vote, with three likely dovish dissenters, reveals that committee members fear the AI infrastructure spending cannot sustain real productivity growth. If rates stay elevated while AI capex stays high but revenue stalls, the doves are correct to identify stagflation: sustained high rates combined with AI capex binge that fails to produce multiplier effects. This explains the Trump administration's deregulatory posture and Zuckerberg's open-access essay\u2014both push acceleration, betting that breaking regulatory constraints and fragmenting the market will force labs to spend even more, generating consumer adoption that justifies capex. The Pacing the Frontier letter is the hedge on the other side of the same bet: labs signal slowdown concern while asking Washington to build the infrastructure to enforce it, controlling the narrative whether ROI accelerates or stalls."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Portfolio/trade alert",
+      "url": "https://x.com/michaeljburry",
+      "summary": "Posted a July 24 trade alert flagging a busy day with multiple new buys, increased short positions, and a pointed note on Palantir.",
+      "connection": "Ties to Markets and Digital Finance threads amid the Nvidia/OpenAI financing news and Monday's durable-goods-driven market stabilization."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "blog",
+      "signal": "strong",
+      "latest_title": "Chinese models and frontier futures (Weekly Article roundup, week of July 20)",
+      "url": "https://stratechery.com/2026/",
+      "summary": "Discussed Kimi K3 as a genuinely strong open-weight model, arguing the Chinese AI threat isn't new but the frontier labs' structural advantage remains real; separately covered what happened to Hugging Face.",
+      "connection": "Directly engages today's lead story on Kimi K3's open-weight release and the broader US-China AI competition narrative."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "On generalists vs. specialists (citing Netflix CPTO Elizabeth Stone)",
+      "url": "https://x.com/lennysan",
+      "summary": "Around July 21-22 shared reflections on taking a career sabbatical and amplified Netflix CPTO Elizabeth Stone's view that narrow deep specialization is losing ground to generalist skillsets.",
+      "connection": "Speaks to the Labor & Workforce theme as AI reshapes what skills and career paths are valued."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Replies on Anthropic rumor / LLM workflow tip",
+      "url": "https://x.com/karpathy",
+      "summary": "On July 26 batted down misinformation circulating about his role at Anthropic; on July 21 shared a tip about giving LLMs long, rambling context to get better output.",
+      "connection": "Minor but relevant to Frontier Tech/AI chatter given the day's AI-lab-focused headlines."
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

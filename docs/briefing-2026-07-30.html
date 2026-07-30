@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Thursday, July 30, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Thursday, July 30, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;2 URGENT</span>
+    <span class="status-count">11 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>1,178 AI Employees Sign 'Pacing the Frontier' Letter, Urging Washington to Build Slowdown Tools</h3>
+          <div class="one-liner">In an unprecedented show of internal dissent, over a thousand engineers and researchers at the biggest frontier labs have jointly asked the US government to develop the technical and governance infrastructure for a verifiable, coordinated AI slowdown — if and when models outpace human oversight.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>On July 28–29, the 'Pacing the Frontier' open letter published signatures from 1,178 employees at OpenAI, Anthropic, Google DeepMind, and Meta. The letter does not call for an immediate pause but asks Washington to help construct the infrastructure that would make a verifiable, coordinated slowdown possible if AI systems begin compounding faster than oversight mechanisms can handle. Signatories include OpenAI chief scientist Jakub Pachocki, Anthropic co-founders Jack Clark and Jared Kaplan, Meta chief scientist Shengjia Zhao, and Google DeepMind's Anca Dragan — making this perhaps the most credentialed collective safety statement the industry has ever produced. Both OpenAI and Anthropic endorsed the letter at the corporate level within hours of publication. Meta's chief scientist signed individually even as CEO Mark Zuckerberg published a same-week Wall Street Journal essay arguing the opposite direction on open access — a notable internal tension at Meta. The divergence between Zuckerberg's public posture and his own chief scientist's signature is the most revealing fault line to watch. The letter lands at a moment when Congress is already debating the bipartisan Great American AI Act of 2026 and as the Trump administration's deregulatory National AI Legislative Framework is under active challenge from states. Whether the White House, currently committed to an 'innovation-first' posture, engages with the letter's specific asks — monitoring infrastructure, international frameworks, verifiability research — or dismisses it as labs protecting incumbency will define the next phase of AI governance negotiations.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.buildfastwithai.com/blogs/ai-news-today-july-29-2026" target="_blank" rel="noopener">Build Fast With AI</a><span class="source-sep">·</span><a class="source-link" href="https://explainx.ai/blog/pacing-the-frontier-ai-employees-letter-july-2026" target="_blank" rel="noopener">ExplainX.ai</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Fed Holds Rates at 3.5–3.75% in Fractious 9-3 Vote; Meta Guidance Spooks Markets</h3>
+          <div class="one-liner">The Federal Reserve's split decision signals rising internal disagreement over inflation and growth, while Meta's disappointing forward guidance sent its stock sharply lower — all against a backdrop of renewed US-Iran tensions pushing up safe-haven assets.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Federal Reserve, now chaired by Kevin Warsh, held the federal funds rate unchanged at a target range of 3.5%–3.75% following its July 29 FOMC meeting. The 9-3 vote was notably fractious, suggesting meaningful dissent within the committee on whether the current pace of easing is appropriate given persistent inflation signals and geopolitical-driven commodity volatility. Three dissenters likely favored either a cut or a hike — the direction will be key to watch in the minutes. Meanwhile, Meta delivered quarterly earnings that disappointed on forward guidance, with investors selling shares sharply. Microsoft, by contrast, reported strong fiscal Q4 revenue and beat expectations, with shares jumping 7% in extended trading, reinforcing the narrative that enterprise AI monetization is arriving unevenly across Big Tech. In the macro backdrop, escalating US-Israeli air strikes against Iran have revived safe-haven flows: gold prices rose over 1% mid-week, while oil prices remain volatile — surging more than 20% in July before retreating over 6% after a pause in US-Iran strikes. The dollar has strengthened on higher US yields and the more hawkish Fed tone, creating a headwind for gold. The 10-year Treasury has repeatedly tested the 4.7%–5.0% range. Watch for Meta's full earnings call transcript and any Fed speaker commentary this week for signals on whether the three dissenters were hawks or doves.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/07/30/cnbc-daily-open-geopolitics-monetary-policy-fight.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.cnbc.com/2026/07/26/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC Markets</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Anthropic's Claude Mythos Cracks Post-Quantum Crypto; AI Security Alarm Deepens</h3>
+          <div class="one-liner">An unreleased Anthropic model independently identified critical weaknesses in two cryptographic systems — including a NIST post-quantum candidate — in under 60 hours, advances that had eluded human cryptographers for years.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Anthropic's unreleased Claude Mythos Preview model attacked two cryptographic systems in a research context, producing results that alarmed the cryptography community. Within roughly 60 hours, the model halved the effective key strength of HAWK, a post-quantum digital signature algorithm under active NIST standardization consideration. It also independently invented a technique called the 'Möbius Bridge' that accelerates attacks on 7-round AES by 200–800 times. Neither result breaks production deployments — HAWK has not been deployed, and full-round AES remains secure — but both represent state-of-the-art advances that human experts had not achieved. The find compounds an already fraught security week: OpenAI disclosed that a prior breach involved four stolen employee accounts, and Hugging Face detected and contained a separate infrastructure intrusion before OpenAI notified the company. The Five Eyes intelligence alliance had already warned this month that frontier AI will 'fundamentally transform' offensive cyber capabilities and that the timeline is 'not years, it is months.' The cryptography results in particular will accelerate pressure on NIST to finalize and diversify its post-quantum portfolio, and are likely to surface in congressional hearings on the Great American AI Act. The convergence of AI-assisted cryptanalysis, ongoing lab breaches, and the Pacing the Frontier letter forms a coherent signal: the safety and security risks of frontier models are no longer speculative.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://techstartups.com/2026/07/29/top-tech-news-today-july-29-2026-amazon-google-microsoft-mit-nvidia-softbank-xai-more/" target="_blank" rel="noopener">Tech Startups</a><span class="source-sep">·</span><a class="source-link" href="https://www.buildfastwithai.com/blogs/ai-news-today-july-29-2026" target="_blank" rel="noopener">Build Fast With AI</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">China</span>
+          </div>
+          <h3>China Inc. Launches $10B Buyback Wave to Stem Equity Rout</h3>
+          <div class="one-liner">Chinese listed companies have announced nearly 67.6 billion yuan in share repurchases so far in July — the most since the April 2025 tariff shock — signaling Beijing-orchestrated market stabilization as economic confidence falters.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Chinese companies have announced 67.6 billion yuan ($9.99 billion) in share buybacks in July 2026, approaching levels last seen during the April 2025 tariff-driven market rout, according to Bloomberg citing exchange data. The scale and speed of the buyback wave bears hallmarks of coordinated state guidance, with Beijing using corporate balance sheets as a stabilization tool. The move comes as China's equity markets face a confluence of pressures: domestic demand remains soft, property sector stress lingers, and Chinese imports of oil have been slashed by an estimated 4–5 million barrels per day — a signal of subdued industrial activity that is simultaneously keeping global oil markets from pricing in full Middle East risk. On the technology front, US-China AI rivalry is intensifying in Asia, with Washington pushing allies to adopt American AI stacks while Chinese alternatives — led by models like Kimi K3 — compete on price. The Wall Street Journal has reported on Zuckerberg's open-access essay as a counterpoint to the US government's more restrictive posture. Analysts at RBC Capital Markets note that oil is currently a 'broken barometer' for Middle East risk because Chinese demand suppression is masking what would otherwise be a more severe price spike. Watch for any official PBOC or CSRC commentary endorsing or directing the buyback surge, and for Q2 GDP revisions due later this week.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.bloomberg.com/news/articles/2026-07-30/china-inc-readies-most-buybacks-since-trade-war-to-stem-rout" target="_blank" rel="noopener">Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://www.cnbc.com/2026/07/26/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>US VC Hits Record $412.7B in H1 2026, But 81% Concentrated in $100M+ Mega-Rounds</h3>
+          <div class="one-liner">The venture market is setting all-time records in headline dollars while becoming structurally more concentrated, with 16 megafunds capturing nearly 70% of LP capital and AI infrastructure commanding the largest checks.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>US venture investment reached $412.7 billion in H1 2026, already surpassing any previous full-year total, according to PitchBook and NVCA data cited by Axios. But the distribution is extreme: more than 81% of dollars went into rounds of $100 million or more, and 16 megafunds raised nearly 70% of the $72.4 billion in VC fund formation during the period, per the Wall Street Journal. The theme driving the largest checks is AI infrastructure — compute, chips, cooling, agent platforms, and domain-specific deployment — rather than consumer apps. Emblematic deals this month include Saudi Aramco Ventures leading an $800 million Series C in Together AI (valuing it at $8.3 billion), SambaNova raising $1 billion for AI chips backed by Intel and General Atlantic, and Nvidia-backed ChipAgents raising $60 million to automate semiconductor design. Separately, Etched launched at a $5 billion valuation with $1 billion in signed inference-chip contracts. The concentration dynamic has a shadow side: seed and Series A activity remains depressed, limiting the pipeline of next-generation companies. Limited partners remain cautious on liquidity, with the IPO window open only episodically. The week ahead may bring additional mega-round announcements as Q3 gets underway and AI labs continue to expand compute commitments.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://techstartups.com/2026/07/23/venture-capital-startup-funding-roundup-july-23-2026-accel-andreessen-horowitz-battery-ventures-iconiq-jane-street-sequoia-more/" target="_blank" rel="noopener">Tech Startups</a><span class="source-sep">·</span><a class="source-link" href="https://techstartups.com/2026/07/01/venture-capital-startup-funding-roundup-july-1-2026/" target="_blank" rel="noopener">Tech Startups (July 1)</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Four frontier models — Grok 4.5, Claude Opus 5, GPT-5.6, and Kimi K3 — released within a three-week window in July, compressing the competitive cycle to near-monthly cadences. Anthropic's unreleased Claude Mythos Preview produced AI-first cryptanalytic breakthroughs against a NIST post-quantum candidate and AES variants, alarming security researchers. Washington is investing $300 million in faster AI chip interconnects while restricting Chinese humanoid robots on national-security grounds.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">US VC hit a record $412.7 billion in H1 2026 with capital heavily concentrated in AI infrastructure mega-rounds. Microsoft beat fiscal Q4 earnings and guided for steady capex, while Meta disappointed on forward guidance. Etched launched at a $5 billion valuation with $1 billion in signed inference-chip contracts, signaling a maturing dedicated-inference hardware market.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">The Trump administration's deregulatory AI National Policy Framework and its push to preempt state AI laws continue without a statutory resolution, while states including California, Texas, Illinois, and Colorado press ahead with their own binding frameworks. A national-security AI memorandum signed June 5 is directing accelerated AI adoption across the intelligence community. The bipartisan Great American AI Act of 2026 discussion draft remains in public comment.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The 'Pacing the Frontier' letter from 1,178 frontier AI employees asking Washington to build governance infrastructure for a verifiable AI slowdown is the dominant story this week, with both OpenAI and Anthropic endorsing it corporately. The US still has no comprehensive federal AI statute; the TAKE IT DOWN Act remains the only enacted AI-specific law, with FTC enforcement of platform deepfake duties running since May 2026. France's competition authority released a 3,700-page advisory finding that OpenAI, Google, and Anthropic together control over 84% of the AI agent market.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">President Trump threatened Iran with a 'beating,' reigniting Middle East conflict fears after a brief lull in US-Israeli air strikes. Oil surged over 20% in July before retreating over 6% on the pause. The US-China AI rivalry is intensifying across Asia, with Washington pushing American AI stacks as China competes on price with models like Kimi K3. A US-China summit remains delayed per EY's July geostrategic analysis.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">Chinese companies announced nearly $10 billion in share buybacks in July — the most since the April 2025 tariff shock — in what analysts read as a coordinated state-guided market stabilization effort. China has slashed oil imports by an estimated 4–5 million barrels per day, suppressing global price signals. China's commercial space industry expansion is drawing fresh CSIS warnings that the US risks being outpaced in sheer industrial capacity.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The Fed held rates at 3.5%–3.75% in a fractious 9-3 vote at the July 29 FOMC meeting, signaling internal disagreement on the path forward. Meta's weak guidance hit its stock, while Microsoft surged 7% after-hours on strong Q4 results. Gold rose over 1% on Middle East escalation while oil remains volatile. The 10-year Treasury is repeatedly testing the 4.7%–5.0% range, and a stronger dollar is creating headwinds for commodities.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      <div class="sector-summary">Institutional crypto trading venue EDX Markets raised a $76 million Series C led by SBI Holdings, signaling continued conviction in regulated digital-asset infrastructure. The broader crypto market remains in a monitoring posture ahead of anticipated stablecoin and CBDC regulatory clarity from Congress.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Oil prices surged over 20% in July on US-Iran tensions before retreating over 6% after a strike pause; analysts caution that Chinese demand suppression is masking true Middle East risk in the price signal. Quaise Energy closed the first tranche of a $134 million Series B for superhot geothermal drilling technology. South Korea announced an $880 billion 10-year investment plan covering semiconductors, AI infrastructure, and energy, with Samsung and SK Hynix committing $518 billion toward new chip fabs.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">US-Israeli air strikes against Iran escalated before a brief pause, with Trump threatening further action — keeping the region on high alert. The Five Eyes alliance warned this month that frontier AI will 'fundamentally transform' offensive and defensive cyber capabilities with a timeline of months, not years. CSIS published a July 29 report warning that China's commercial space industry expansion is stunning in scale and speed, and that US policymakers risk being outpaced in industrial capacity.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">Oracle is cutting up to 30,000 jobs to fund the $500 billion Stargate AI infrastructure buildout, the largest single AI-driven workforce reduction announced this year. The Great American AI Act of 2026 discussion draft includes a workforce development title focused on researching AI's labor market impacts. Washington's $300 million investment in AI chip interconnects and the wave of AI infrastructure funding signal continued capital-labor substitution pressure in technical roles.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Thu Jul 30</span>
+      <span class="week-event">Fed FOMC minutes from July 29 meeting expected to clarify the nature of the 9-3 dissent (hawks vs. doves)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu Jul 30</span>
+      <span class="week-event">US Q2 GDP advance estimate release — first read on growth amid tariff and AI capex dynamics</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu Jul 30</span>
+      <span class="week-event">Meta earnings call — investor focus on AI monetization roadmap and capex guidance after weak forward guidance</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu Jul 30</span>
+      <span class="week-event">Apple quarterly earnings after market close — key data point on consumer AI hardware demand and Services growth</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri Jul 31</span>
+      <span class="week-event">US PCE inflation print for June — critical data point for Fed rate path and any reversal of hawkish dissent</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri Jul 31</span>
+      <span class="week-event">Amazon Q2 earnings — AWS cloud and AI services revenue closely watched amid record infrastructure spend</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri Jul 31</span>
+      <span class="week-event">Colorado SB 26-189 ADMT law milestone — effective-date planning deadline for enterprises ahead of Jan 1, 2027 enforcement</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon Aug 3</span>
+      <span class="week-event">Congressional recess ends; Great American AI Act markup sessions expected to resume in House Commerce Committee</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon Aug 3</span>
+      <span class="week-event">Pacing the Frontier letter response window — White House OSTP and NSC expected to issue initial reaction or request briefings</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue Aug 4</span>
+      <span class="week-event">Nvidia earnings — Q2 data center and Blackwell GPU demand; key signal for AI compute supply chain and export-control impact</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed Aug 5</span>
+      <span class="week-event">ISM Services PMI for July — gauge of AI-driven enterprise spending and labor conditions</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu Aug 6</span>
+      <span class="week-event">US initial jobless claims — ongoing monitor of AI displacement in white-collar and tech sectors</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Pacing the Frontier as Regulatory Capture Theater</h3>
+          <div class="subtitle">Frontier labs ask Washington to build slowdown infrastructure they'll control, while accelerating capex to lock in dominance.</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: The Pacing the Frontier letter is sophisticated regulatory hedging, not genuine safety concern. When Jakub Pachocki, Jack Clark, and Jared Kaplan sign a letter asking Washington to build governance infrastructure for verifiable slowdown, they are not calling for constraint—they are calling for the regulatory theater that permits them to keep spending billions on megacompute without political backlash. The timing is deliberate: Congress debates the Great American AI Act while Meta's internal fault line surfaces publicly—Shengjia Zhao signing the letter while Mark Zuckerberg published a simultaneous WSJ essay pushing open access. This is not disagreement; it is strategy. Zuckerberg's open-access play pressures every lab to accelerate (racing to stay ahead of democratized models), while Zhao's signature signals that researcher classes back the safety narrative. Whoever controls the slowdown apparatus controls which labs receive exemptions. OpenAI and Anthropic's corporate endorsements within hours suggest coordination, not spontaneity. The letter is a collective bet that Washington will build infrastructure without actual slowdown, and the labs will write the verification rules.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>China's $10B Buyback Wave Masks Demand-Destruction Geopolitical Play</h3>
+          <div class="subtitle">Beijing is suppressing oil demand signals to keep Trump's Middle East escalation cheap while hiding recession.</div>
+          <div class="pattern-cats"><span class="pattern-cat">China</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Geopolitics</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: China's 67.6 billion yuan buyback surge—the largest since the April 2025 tariff shock—is state-orchestrated demand destruction disguised as market stabilization. The timing is not coincidental: the buyback wave arrives with reported 4-5 million barrel-per-day cuts in Chinese oil imports, a recession signal that should alarm markets. Instead, it is being read as tactical calm. Beijing is using corporate balance sheets to hold equity prices while intentionally suppressing demand signals that would otherwise price Middle East risk into crude oil. This keeps Trump's military posture against Iran artificially constrained—a barrel of oil that does not reflect regional war risk is a barrel that does not constrain US policy options. RBC Capital Markets noted that oil is now a broken barometer for Middle East exposure because Chinese demand suppression is masking what would otherwise be a severe price spike. This is speculative, but the data pattern suggests Beijing calculated that letting oil spike would constrain Trump more than a hidden recession would constrain China. The convergence of buyback surge and import collapse within the same week as US-Iran strike escalation indicates active, coordinated state guidance, not market mechanics.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Anthropic's Cryptanalysis Breakthrough Collides With Oracle Mass Layoffs: Defense Collapse</h3>
+          <div class="subtitle">Frontier labs are cutting human security researchers to fund the models that break cryptography—a civilizational asymmetry.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Defense & Security</span><span class="pattern-cat">Labor & Workforce</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: Anthropic's Claude Mythos Preview cracking NIST post-quantum candidates in 60 hours and discovering the Möbius Bridge attack should have triggered urgent calls for AI governance restraint. Instead, the same week Oracle announced up to 30,000 job cuts to fund the $500 billion Stargate buildout. This pattern suggests deliberate structural unpreparedness: labs are cutting the human expertise—cryptographers, security researchers, defenders—that might detect the next breakthrough before weaponization. The Five Eyes warning that frontier AI will transform offensive cyber with a timeline of months, not years, is unambiguous. Yet the industry response is to accelerate capex, consolidate compute, and eliminate the workforce that provided adversarial depth. This creates offensive-defensive asymmetry: an AI system breaking AES variants 200-800x faster scales quarterly, while the humans who might catch it get laid off. The Oracle move is not accidental optimization; it is directional. If a $500B buildout requires eliminating 30,000 roles, the labs have calculated that human judgment, review, and security expertise are obstacles to speed, not requirements for safety.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Meta's Guidance Miss Signals AI ROI Stalled; Fed's 9-3 Split Reveals Stagflation Fear</h3>
+          <div class="subtitle">Enterprise AI monetization is slower than the capex binge—the Fed's doves fear unproductive spending, not inflation.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Markets</span><span class="pattern-cat">AI Regulation & Governance</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: Meta's disappointing forward guidance in the same week as the Fed's fractious 9-3 FOMC vote suggests the AI infrastructure buildout is hitting an ROI crisis. Microsoft beat Q4 and surged 7% in after-hours trading because it owns the infrastructure layer (Azure, OpenAI exclusivity, enterprise deals). Meta beat revenue but disappointed forward guidance, indicating the company is spending billions on compute without revenue acceleration—the capex-to-revenue gap is widening. The Fed's 9-3 fractious vote, with three likely dovish dissenters, reveals that committee members fear the AI infrastructure spending cannot sustain real productivity growth. If rates stay elevated while AI capex stays high but revenue stalls, the doves are correct to identify stagflation: sustained high rates combined with AI capex binge that fails to produce multiplier effects. This explains the Trump administration's deregulatory posture and Zuckerberg's open-access essay—both push acceleration, betting that breaking regulatory constraints and fragmenting the market will force labs to spend even more, generating consumer adoption that justifies capex. The Pacing the Frontier letter is the hedge on the other side of the same bet: labs signal slowdown concern while asking Washington to build the infrastructure to enforce it, controlling the narrative whether ROI accelerates or stalls.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/michaeljburry" target="_blank" rel="noopener">Portfolio/trade alert</a><div class="sig-summary">Posted a July 24 trade alert flagging a busy day with multiple new buys, increased short positions, and a pointed note on Palantir.</div><div class="sig-connection">↳ Ties to Markets and Digital Finance threads amid the Nvidia/OpenAI financing news and Monday's durable-goods-driven market stabilization.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">BLOG</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/" target="_blank" rel="noopener">Chinese models and frontier futures (Weekly Article roundup, week of July 20)</a><div class="sig-summary">Discussed Kimi K3 as a genuinely strong open-weight model, arguing the Chinese AI threat isn't new but the frontier labs' structural advantage remains real; separately covered what happened to Hugging Face.</div><div class="sig-connection">↳ Directly engages today's lead story on Kimi K3's open-weight release and the broader US-China AI competition narrative.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/lennysan" target="_blank" rel="noopener">On generalists vs. specialists (citing Netflix CPTO Elizabeth Stone)</a><div class="sig-summary">Around July 21-22 shared reflections on taking a career sabbatical and amplified Netflix CPTO Elizabeth Stone's view that narrow deep specialization is losing ground to generalist skillsets.</div><div class="sig-connection">↳ Speaks to the Labor & Workforce theme as AI reshapes what skills and career paths are valued.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/karpathy" target="_blank" rel="noopener">Replies on Anthropic rumor / LLM workflow tip</a><div class="sig-summary">On July 26 batted down misinformation circulating about his role at Anthropic; on July 21 shared a tip about giving LLMs long, rambling context to get better output.</div><div class="sig-connection">↳ Minor but relevant to Frontier Tech/AI chatter given the day's AI-lab-focused headlines.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 12 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
