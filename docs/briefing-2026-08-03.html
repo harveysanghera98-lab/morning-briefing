@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Monday, August 03, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Monday, August 03, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">11 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Trump Calls Off Iran Strikes as Talks Set to Begin Today</h3>
+          <div class="one-liner">A planned US-Israel bombing campaign against Iran's power plants and refineries was scrapped hours before launch, with negotiations now set for Monday.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Trump met his cabinet at Camp David on Friday to weigh a bombing campaign against Iranian energy infrastructure, according to Axios, CBS News and Haaretz, with officials describing a potential two-week operation aimed at cutting power to Tehran and other cities to pressure Iran into a deal. Targets reportedly included power plants and refineries, and Iran had warned it would retaliate against Israeli and US regional energy facilities if struck. Late Saturday, Trump announced on social media that Iran and other Middle Eastern governments had asked the US to hold off because the outline of a deal had been reached, and he canceled the pending attack. CBS News and NPR report that US-Iran negotiations are now scheduled to begin today, with venues including Kuwait and a Jordan air base mentioned in live coverage. Al Jazeera's framing has emphasized Iran's defiant posture and warnings against a renewed 'fire of war,' while US outlets have focused on Trump's framing of a last-minute reprieve. What to watch: whether Monday's talks produce a durable arrangement over Iran's nuclear and energy sites, whether Trump reauthorizes strikes if talks stall, and the reaction in oil markets, where Brent has already pushed above $100 a barrel on the risk.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.npr.org/2026/08/02/nx-s1-5917113/trump-says-hes-cancelling-iran-strikes-deal-pending" target="_blank" rel="noopener">NPR</a><span class="source-sep">·</span><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-war-us-trump-strait-of-hormuz-kuwait-jordan-air-base/" target="_blank" rel="noopener">CBS News</a><span class="source-sep">·</span><a class="source-link" href="https://www.axios.com/2026/07/31/trump-iran-strikes-energy-infrastructure-war" target="_blank" rel="noopener">Axios</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/news/2026/8/1/iran-warns-against-fire-of-war-amid-us-strike-threats-on-energy-sites" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Gaza Disarmament Plan Deadlocked Over Who Moves First</h3>
+          <div class="one-liner">Trump's touted Hamas-disarmament framework is stuck as Israel and Hamas each demand the other act first, while Gaza's death toll hits a 2026 high.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Trump announced what he called a 'historic agreement' for Hamas and other armed groups to disarm in stages over up to 350 days, with Israeli forces withdrawing and an international stabilization force taking over as disarmament is verified. But NPR and PBS report Hamas insists Israel must withdraw from parts of Gaza before it will hand over heavy weapons, while Israeli officials, per the Times of Israel, say there will be no pullout until Hamas is fully demilitarized. The plan calls for tunnel destruction and delivery of heavy weaponry within roughly three months, but analysts quoted by NPR say expectations are low that either side moves first. Meanwhile Gaza's health ministry puts this month's death toll at 152, the highest since the start of the year, underscoring that violence continues despite the diplomatic framework. Watch for whether US-backed mediators can break the sequencing impasse this week, and whether the Iran de-escalation gives Washington more leverage to push both sides.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.npr.org/2026/07/31/g-s1-136500/trump-hamas-gaza" target="_blank" rel="noopener">NPR</a><span class="source-sep">·</span><a class="source-link" href="https://www.pbs.org/newshour/amp/world/hamas-says-it-will-disarm-if-israel-halts-strikes-and-withdraws-from-gaza-but-obstacles-remain" target="_blank" rel="noopener">PBS NewsHour</a><span class="source-sep">·</span><a class="source-link" href="https://www.timesofisrael.com/liveblog_entry/israel-rejects-emerging-hamas-disarmament-plan-vows-no-gaza-pullout-until-its-fully-demilitarized-official/" target="_blank" rel="noopener">Times of Israel</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>EU Starts Enforcing AI Act, Can Now Fine Frontier Labs</h3>
+          <div class="one-liner">Brussels' grace period on its AI rulebook ended this weekend, giving regulators power to investigate and fine the makers of the most powerful AI models.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>As of August 2, the European Commission's AI Office and national authorities began enforcing the AI Act's rules on general-purpose AI models, with new transparency requirements also taking effect: chatbots must disclose they are AI, deepfakes must be labeled, and AI-generated content must carry machine-readable marks. The AI Office can now request technical documentation, evaluate models directly, order corrective action, and levy fines against developers over how systems were trained and what they do once deployed. However, enforcement capacity remains thin: the AI Office has just over 125 staff against a recommended 160 by 2030, has struggled to recruit for its safety unit under rigid EU pay scales, and only 8 of 27 member states have named the national authorities required to apply the law domestically. A Digital Omnibus deal reached in May already pushed back compliance deadlines for high-risk standalone systems to December 2027 and AI embedded in regulated products to 2028. Watch for the first enforcement actions or information requests against major US labs, and whether this becomes a flashpoint as OpenAI and Anthropic both push toward US IPOs.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission</a><span class="source-sep">·</span><a class="source-link" href="https://europeantimes.news/2026/08/eu-ai-act-enters-its-main-phase/" target="_blank" rel="noopener">European Times</a><span class="source-sep">·</span><a class="source-link" href="https://www.technology.org/2026/07/17/eu-ai-act-what-actually-applies-on-2-august-2026/" target="_blank" rel="noopener">Technology.org</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>OpenAI and Anthropic Race Toward Rival IPOs</h3>
+          <div class="one-liner">Both frontier labs are lining up bankers for public listings that could value them near $1.8 trillion combined, with Nvidia's financing at the center of the story.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Anthropic has retained law firm Wilson Sonsini and held early talks with investment banks on a potential listing, according to the Financial Times, following a $65 billion Series H round that valued the company at $960 billion. OpenAI is separately holding informal talks with banks about a fourth-quarter IPO, setting up a direct Wall Street showdown between the two labs; a joint debut near current private valuations could put their combined market cap around $1.8 trillion. Nvidia is deepening its role as financier as much as chipmaker: the Wall Street Journal reported roughly $250 billion in financial support tied to a 10-gigawatt OpenAI data center in Ohio, and CEO Jensen Huang told the Morgan Stanley TMT conference that Nvidia's stakes in OpenAI and Anthropic are likely its last private investments in either company ahead of their expected public listings. Nvidia also says Anthropic, OpenAI and SpaceX are among the first users of its new Vera chip. Anthropic remains the industry's most vocal skeptic of open-weight frontier models, resisting Huang's push (backed by Microsoft, Meta, Google and OpenAI) for an 'Open Secure AI Alliance.' Watch for regulatory and investor scrutiny of Nvidia's circular financing arrangements with its own customers as IPO filings advance.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://finance.yahoo.com/news/anthropic-ipo-talks-set-wall-131125504.html" target="_blank" rel="noopener">Yahoo Finance (FT)</a><span class="source-sep">·</span><a class="source-link" href="https://www.axios.com/2026/07/27/nvidia-anthropic-openai-open-weight-debate" target="_blank" rel="noopener">Axios</a><span class="source-sep">·</span><a class="source-link" href="https://www.bloomberg.com/news/articles/2026-06-01/nvidia-says-anthropic-openai-among-big-users-of-new-vera-chip" target="_blank" rel="noopener">Bloomberg</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>New Tariff Wall Kicks In as Fed Weighs Soft Labor Data</h3>
+          <div class="one-liner">A fresh round of Section 301 tariffs takes effect Friday just as weak payroll data complicates the Fed's path to a rate cut.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>After the Court of International Trade struck down the administration's Section 122 emergency tariff authority (a ruling now on appeal), the White House pivoted to Section 301 and 232 statutes to rebuild its tariff wall, with new duties ranging from roughly 10% to over 40% on dozens of trading partners set to take effect August 7 — including 25% on India, 20% on Taiwan, 19% on Thailand and 15% on South Korea already in force since August 1. Recent labor-market data has come in soft, with large downward revisions to prior months' payrolls, and futures markets are pricing only about a 39% chance of a September Fed rate cut despite strong Q2 GDP growth. Brent crude has pushed above $100 a barrel on Iran-strike risk, though that eased somewhat with Saturday's stand-down. This week's July jobs report (due Friday) and the Fed's Wednesday Beige Book release will be the key tests of whether the labor slowdown is deepening. A packed earnings slate — AMD, Palantir, Disney, Uber, McDonald's, Pfizer, Shopify — will add read-through on consumer and AI-capex health.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.whitehouse.gov/fact-sheets/2026/07/fact-sheet-president-donald-j-trump-imposes-additional-tariffs-on-canada/" target="_blank" rel="noopener">The White House</a><span class="source-sep">·</span><a class="source-link" href="https://www.atlanticcouncil.org/programs/geoeconomics-center/trump-tariff-tracker/" target="_blank" rel="noopener">Atlantic Council</a><span class="source-sep">·</span><a class="source-link" href="https://www.congress.gov/crs-product/R48549" target="_blank" rel="noopener">Congress.gov (CRS)</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Nvidia says Anthropic, OpenAI and SpaceX are among the first users of its new Vera chip, deepening ties with the same labs it is financing. Anthropic remains the loudest skeptic of open-weight frontier models even as Jensen Huang courts Microsoft, Meta, Google and OpenAI toward an 'Open Secure AI Alliance.' Elsewhere, IBM committed $50 million toward the DOE's Genesis Mission on quantum computing and researchers reported a room-temperature spin-qubit candidate in zinc oxide.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">OpenAI and Anthropic are both moving toward IPOs that could value them near $1.8 trillion combined, with Nvidia providing roughly $250 billion in financing tied to OpenAI's Ohio data center buildout. AI-linked layoffs have hit an estimated 50,000 workers in 2026, about 17% of all US job cuts this year. A heavy earnings week ahead includes AMD, Palantir, Disney, Uber and McDonald's.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">After courts struck down the administration's Section 122 emergency tariff authority, the White House is rebuilding tariff coverage via Section 301 and 232 statutes, with new duties of roughly 10-40%+ on dozens of countries taking effect August 7.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The EU's grace period on the AI Act ended August 2, empowering the AI Office to investigate and fine frontier-model makers and activating new transparency and deepfake-labeling rules. Enforcement capacity is thin, with only 8 of 27 member states having named national authorities so far.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Trump canceled planned US-Israel strikes on Iranian energy infrastructure late Saturday, with talks now set to begin today. Separately, Trump's Gaza disarmament framework is stalled as Israel and Hamas each insist the other act first, and Gaza's death toll this month is the highest since January.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">Taiwan's live-fire Han Kuang 42 exercises run August 5-14, rehearsing invasion-defense scenarios amid reports of roughly 2.6 million daily Chinese cyber intrusions and PRC social-media interference ahead of Taiwan's November local elections. New 20% US tariffs on Taiwanese goods add economic pressure alongside the security squeeze.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">Equities have wobbled on weak recent payroll data and large downward revisions, pushing September rate-cut odds down to about 39%. Brent crude climbed past $100 a barrel on Iran-strike risk before Saturday's stand-down eased some pressure; new tariffs land Friday alongside the July jobs report.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      <div class="sector-summary">Stablecoin market cap has topped $250 billion and over 30% of on-chain transaction volume, but US regulators have missed the GENIUS Act's one-year deadline for implementing rules, leaving issuers on interim guidance. The EU's MiCA framework is now fully active, capping non-euro stablecoin payment volume at €200 million per day.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Oil spiked past $100 a barrel on reports the US and Israel were preparing strikes on Iran's power plants and refineries before Trump called them off Saturday. Separately, Washington signed a nuclear-power cooperation agreement with Saudi Arabia as part of a push to grow US nuclear capacity from about 100GW today toward a 400GW target by 2050.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">A planned two-week US-Israel bombing campaign against Iran's energy grid was shelved hours before Monday's scheduled negotiations. Taiwan begins its largest annual war games, Han Kuang 42, on August 5, rehearsing homeland-defense scenarios against a Chinese invasion.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">Challenger, Gray & Christmas data show AI cited as the likely leading driver of US job cuts in July, with roughly 50,000 AI-linked layoffs so far this year. Risk is concentrated in entry-level, routine digital roles, while machine-learning infrastructure, AI safety and skilled-trades hiring remain strong.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item critical">
+      <span class="week-day">Mon 3</span>
+      <span class="week-event">US-Iran negotiations set to begin after Trump cancels planned strikes on Iranian energy infrastructure</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 3</span>
+      <span class="week-event">Palantir (PLTR) reports Q2 earnings after market close</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue 4</span>
+      <span class="week-event">AMD and McDonald's report earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 5</span>
+      <span class="week-event">ISM Services PMI and Fed Beige Book released</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 5</span>
+      <span class="week-event">Disney, Shopify and Pfizer report earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 5</span>
+      <span class="week-event">Taiwan's Han Kuang 42 live-fire military exercises begin, running through August 14</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 6</span>
+      <span class="week-event">Uber reports earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 6</span>
+      <span class="week-event">Weekly initial jobless claims released</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 7</span>
+      <span class="week-event">New Section 301/232 tariffs (roughly 10-40%+) take effect on dozens of trading partners</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 7</span>
+      <span class="week-event">July US jobs report released</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Nvidia's Shadow Sovereignty Over US Tech Hegemony</h3>
+          <div class="subtitle">The chip giant is financing the frontier labs it supplies while those labs race to IPO—a circular arrangement that could blow up when EU regulators start asking questions.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Nvidia is no longer just a chipmaker—it's become a quasi-sovereign wealth vehicle underwriting the entire US frontier-AI stack. The $250 billion financing for OpenAI's Ohio data center, combined with CEO Jensen Huang's stakes in both OpenAI and Anthropic and his announcement that those are the company's 'last private investments' before IPOs, shows Nvidia betting its balance sheet on controlling the plumbing of American AI dominance. But here's the problem: the EU's AI Act enforcement just kicked in on August 2, with the AI Office now empowered to request technical documentation from frontier labs, directly evaluate models, and levy fines. When Anthropic and OpenAI begin IPO roadshows in Q4, European regulators could hit them with information requests or corrective orders at the exact moment Wall Street is pricing their value. Worse, if Brussels demands transparency about training data, model architecture, or safety practices, it exposes Nvidia's financing arrangement as not just commercial but de facto US industrial policy—precisely the kind of unfair advantage Brussels is now chartered to scrutinize. Nvidia's $250 billion bet on OpenAI could start looking like a liability the moment the first EU fine lands.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Trump's Dealmaking Theater Masks a Geopolitical Freeze</h3>
+          <div class="subtitle">Iran talks, Gaza disarmament, tariff escalation—none are actually resolved, just deferred into extended stalemate while markets price catastrophe.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Trump called off the Iran strikes and announced talks for Monday, spinning it as a last-minute reprieve unlocking a deal. But the actual framework is wafer-thin: Iran mentioned an outline of a deal as reason to pause, with zero specifics released. In Gaza, Trump's 'historic disarmament agreement' is already deadlocked on sequencing—Israel refuses to withdraw until Hamas disarms; Hamas refuses to disarm until Israel withdraws. Gaza's death toll hit a 2026 high of 152 this month. Trump has theater (talks start Monday, framework on paper) but no actual movement on either crisis. Meanwhile, new tariffs on 23+ trading partners hit Friday: 25% on India, 20% on Taiwan, 15% on South Korea. He's destabilizing the global trading system while the geopolitical risks he claims to be negotiating remain unresolved. Markets are hedging accordingly—September Fed rate-cut odds are down to 39% despite the 'reprieve,' suggesting investors believe the Iran pause is temporary and Gaza stalemate unsustainable. Trump is buying time, not solving crises, while tariffs force real pain on allies.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>AI Automation Plus Tariff Inflation Equals a Wage Spiral Squeeze</h3>
+          <div class="subtitle">50,000 workers hit by AI layoffs face spiraling prices from August tariffs while the Fed is paralyzed between labor weakness and inflation.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Labor & Workforce</span><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The brutal math is unfolding in real time. AI-driven job cuts have hit 50,000 workers this year—17% of all US job cuts—concentrated in entry-level and routine digital roles. Simultaneously, new Section 301 and 232 tariffs taking effect Friday will spike prices across goods from dozens of partners: 25% on Indian imports, 20% on Taiwan, 15% on South Korea. Unemployed workers or those with degraded bargaining power face immediate inflation on consumer goods, electronics, and inputs while their labor leverage evaporates. Meanwhile, the Fed is caught in a trap: labor data is weak with large downward revisions, but new tariffs are explicitly inflationary, and the administration shows no sign of backing off. Brent crude is above $100 a barrel, potentially pushing energy prices higher. The Fed cannot cut rates into tariff-driven inflation; it cannot hold steady with labor weakness. Workers automated out of jobs historically had wage-growth leverage during tight-labor periods, but that leverage disappears when prices spike faster than wages adjust. This is a scissors move: AI eliminates labor supply while tariffs eliminate purchasing power. The bottom quintile loses on both margins simultaneously.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>EU's AI Act Enforcement as Regulatory Ambush Timed to US IPO Filings</h3>
+          <div class="subtitle">Anthropic and OpenAI are heading toward Q4 IPOs just as Brussels gained enforcement power to investigate, audit, and fine frontier labs.</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The timing is either masterfully coordinated or a spectacular miscalculation. On August 2, the EU's AI Act enforcement phase went live: the European Commission's AI Office can now request technical documentation from any general-purpose AI model developer, directly evaluate systems, demand corrective action, and levy fines. Days later, Anthropic and OpenAI are both moving toward Q4 IPOs valued at roughly $960 billion and $840 billion respectively. Anthropic has retained Wilson Sonsini and held talks with investment banks; OpenAI is targeting a fourth-quarter listing. When these companies file S-1s with the SEC and begin investor roadshows, they will be under simultaneous scrutiny from EU regulators with brand-new enforcement powers. The EU's AI Office can now ask the hard questions: Where did your training data come from? What safeguards prevent misuse? How are you complying with deepfake transparency rules? Anthropic has been the industry's loudest skeptic of open-weight models, suggesting it's bracing for stricter regulatory headwinds. But OpenAI, backed by Microsoft and betting on rapid scaling, may face harder EU scrutiny precisely because its approach is less privacy-conscious. The first enforcement action—even a $100 million fine or demand for model retraining—becomes not a blip but a valuation crater signal during IPO roadshows. The labs thought they could IPO on US exchanges and deal with Europe later. Brussels is ensuring that's not an option.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      <a class="sig-title" href="https://www.bloomberg.com/news/articles/2026-07-30/who-is-leopold-aschenbrenner-the-ai-investor-wall-street-is-watching" target="_blank" rel="noopener">Situational Awareness fund forced to unwind AI stock positions after margin calls</a><div class="sig-summary">Reporting from July 30-31 describes Aschenbrenner's AI-focused hedge fund (previously valued over $20B) selling off a large chunk of its public AI equities after a sharp selloff triggered margin calls, forcing an unwind of concentrated bets.</div><div class="sig-connection">↳ Directly bears on the OpenAI/Anthropic IPO race and broader AI-market froth narrative — a prominent AI-maximalist investor getting forced out of positions is a notable data point on whether frontier-AI conviction trades are cracking.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/karpathy" target="_blank" rel="noopener">Posts on testing large language models</a><div class="sig-summary">Recent brief posts (one from roughly 13 hours before this search) touching on testing/evaluating LLMs, following an earlier late-July post about working with LLMs through iterative 'ramble' sessions; exact wording wasn't captured in search results.</div><div class="sig-connection">↳ Loosely relevant to the Frontier Tech/AI topic area as commentary on LLM development practice, though not tied to a specific headline today.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 14 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">BLOG</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

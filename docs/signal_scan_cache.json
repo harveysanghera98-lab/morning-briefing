@@ -1,15 +1,15 @@
 {
-  "date": "2026-07-27",
+  "date": "2026-08-03",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
       "handle": "@leopoldasch",
-      "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Situational Awareness fund forced to unwind AI stock positions after margin calls",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-30/who-is-leopold-aschenbrenner-the-ai-investor-wall-street-is-watching",
+      "summary": "Reporting from July 30-31 describes Aschenbrenner's AI-focused hedge fund (previously valued over $20B) selling off a large chunk of its public AI equities after a sharp selloff triggered margin calls, forcing an unwind of concentrated bets.",
+      "connection": "Directly bears on the OpenAI/Anthropic IPO race and broader AI-market froth narrative \u2014 a prominent AI-maximalist investor getting forced out of positions is a notable data point on whether frontier-AI conviction trades are cracking."
     },
     {
       "name": "Dan Wang",
@@ -55,21 +55,21 @@
       "name": "Michael Burry",
       "handle": "@michaeljburry",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Portfolio/trade alert",
-      "url": "https://x.com/michaeljburry",
-      "summary": "Posted a July 24 trade alert flagging a busy day with multiple new buys, increased short positions, and a pointed note on Palantir.",
-      "connection": "Ties to Markets and Digital Finance threads amid the Nvidia/OpenAI financing news and Monday's durable-goods-driven market stabilization."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
       "source": "blog",
-      "signal": "strong",
-      "latest_title": "Chinese models and frontier futures (Weekly Article roundup, week of July 20)",
-      "url": "https://stratechery.com/2026/",
-      "summary": "Discussed Kimi K3 as a genuinely strong open-weight model, arguing the Chinese AI threat isn't new but the frontier labs' structural advantage remains real; separately covered what happened to Hugging Face.",
-      "connection": "Directly engages today's lead story on Kimi K3's open-weight release and the broader US-China AI competition narrative."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Paul Graham",
@@ -115,21 +115,21 @@
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "x",
-      "signal": "light",
-      "latest_title": "On generalists vs. specialists (citing Netflix CPTO Elizabeth Stone)",
-      "url": "https://x.com/lennysan",
-      "summary": "Around July 21-22 shared reflections on taking a career sabbatical and amplified Netflix CPTO Elizabeth Stone's view that narrow deep specialization is losing ground to generalist skillsets.",
-      "connection": "Speaks to the Labor & Workforce theme as AI reshapes what skills and career paths are valued."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Andrej Karpathy",
       "handle": "@karpathy",
       "source": "x",
       "signal": "light",
-      "latest_title": "Replies on Anthropic rumor / LLM workflow tip",
+      "latest_title": "Posts on testing large language models",
       "url": "https://x.com/karpathy",
-      "summary": "On July 26 batted down misinformation circulating about his role at Anthropic; on July 21 shared a tip about giving LLMs long, rambling context to get better output.",
-      "connection": "Minor but relevant to Frontier Tech/AI chatter given the day's AI-lab-focused headlines."
+      "summary": "Recent brief posts (one from roughly 13 hours before this search) touching on testing/evaluating LLMs, following an earlier late-July post about working with LLMs through iterative 'ramble' sessions; exact wording wasn't captured in search results.",
+      "connection": "Loosely relevant to the Frontier Tech/AI topic area as commentary on LLM development practice, though not tied to a specific headline today."
     },
     {
       "name": "Ilya Sutskever",
