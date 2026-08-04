@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Tuesday, August 04, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Tuesday, August 04, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">11 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Gaza strikes intensify as Trump's peace plan wobbles, Iran talks swing between 'imminent' and 'duplicitous'</h3>
+          <div class="one-liner">Two of Trump's signature Middle East peace efforts are fraying simultaneously, with real casualties and real deal risk this week.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Israel has stepped up strikes in Gaza since Hamas conditionally agreed to disarm last week, killing at least 18 Palestinians in the deadliest single day in weeks, according to Gaza's health ministry, with strikes hitting Gaza City, Deir al-Balah and Khan Younis. Trump said Israel was 'very happy' with a plan for Hamas disarmament and an eventual Israeli withdrawal, but Israeli National Security Minister Itamar Ben-Gvir called the plan 'unacceptable' without 'genuine' disarmament first, and Bloomberg reports the fresh strikes are casting doubt on the peace plan's revival entirely.</p>
+<p>Separately, Trump's promised Iran deal is whipsawing by the hour. Over the weekend he told reporters a Strait of Hormuz deal was close, followed by a nuclear-track deal, but by Sunday night he was calling Iranian leadership 'unbelievably duplicitous' on Truth Social after Tehran's foreign ministry denied any talks with Washington were underway, saying it was only negotiating a temporary safe passage through Hormuz with Oman. Trump had held off further strikes on a pledge that a Hormuz deal was imminent.</p>
+<p>Outlets diverge on how seriously to take the whiplash: Jerusalem Post and Al Jazeera are running near-hourly live updates treating this as a live negotiation; a new Times of Israel poll finds 62% of Israelis believe Netanyahu's 'total victory' promise will never be realized, suggesting domestic skepticism is hardening independent of Washington's messaging. Watch whether Monday's supposed restart of US-Iran talks actually convenes, and whether Israel's cabinet formally rejects or accepts the disarmament-for-withdrawal framework this week.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.bloomberg.com/news/articles/2026-08-03/israel-s-fresh-strikes-on-gaza-cast-doubt-on-peace-plan-revival" target="_blank" rel="noopener">Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://www.cnn.com/2026/08/02/world/live-news/iran-war-trump" target="_blank" rel="noopener">CNN</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/amp/news/liveblog/2026/8/3/iran-war-live-trump-says-talks-set-to-begin-tehran-urges-us-to-honour-mou" target="_blank" rel="noopener">Al Jazeera</a><span class="source-sep">·</span><a class="source-link" href="https://www.timesofisrael.com/liveblog-august-3-2026/" target="_blank" rel="noopener">Times of Israel</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Palantir blows past estimates, kicking off a packed AI-earnings week that will test the 'AI spending revolt'</h3>
+          <div class="one-liner">Wall Street just spent late July fretting that AI capex was outrunning returns; this week's earnings slate is the rebuttal or confirmation.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Palantir reported Q2 adjusted EPS of $0.41 versus a $0.35 estimate and revenue of $1.94 billion against $1.8 billion expected, with US commercial revenue up 149% year-over-year and CEO Alex Karp calling the quarter 'otherworldly.' The stock jumped nearly 10% in after-hours trading and the company raised full-year revenue guidance to $8.16 billion from a prior $7.65-7.66 billion range. The beat follows a rally already underway: Microsoft and Amazon's better-than-expected results last week, powered by Azure and AWS strength, pulled the Nasdaq up 1.59% for the week after Fortune had described a market in 'revolt' over AI spending in late July.</p>
+<p>The test continues through Friday. AMD and Shopify report Tuesday, with AMD expected to post $11.2 billion in revenue (up 46%) and $1.67 non-GAAP EPS; Disney reports Wednesday and McDonald's Thursday, alongside Pfizer, Roku and Airbnb this week. SanDisk also reports as part of what TradingKey calls one of the busiest stretches of earnings season, spanning AI, semiconductors and energy names.</p>
+<p>The underlying tension outlets are tracking: capex from Amazon, Google, Meta, Microsoft and Equinix topped $400 billion in 2025 and could rise another 75% in 2026 — now exceeding global oil and gas investment — while investors want proof that spending is converting to revenue, not just infrastructure buildout. Palantir and Microsoft's results argue yes; AMD's Tuesday print, given its exposure to AI chip demand versus Nvidia, is the next real signal.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/08/03/palantir-pltr-earnings-q2-2026.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://fortune.com/2026/07/26/big-tech-earnings-meta-microsoft-apple-amazon-market-revolt-ai-spending/" target="_blank" rel="noopener">Fortune</a><span class="source-sep">·</span><a class="source-link" href="https://www.tradingkey.com/analysis/stocks/us-stocks/262067492-august-3-7-2026-preview-palantir-amd-sandisk-earnings-nfarm-payrolls-tradingkey" target="_blank" rel="noopener">TradingKey</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">US Policy & Power</span>
+          </div>
+          <h3>New Section 301 tariffs on 60 countries take hold as markets await Friday's jobs report under Fed Chair Warsh</h3>
+          <div class="one-liner">Washington replaced the tariffs the Supreme Court struck down with a new legal theory, and Friday's payrolls data will shape the Fed's September call.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>After the Supreme Court's February ruling that IEEPA does not authorize the president's global tariffs, the administration has pivoted to Section 301 of the Trade Act, imposing new 10-12.5% tariffs on 60 trading partners — covering 99.4% of US imports — justified by findings that those countries failed to enforce forced-labor import bans. The new duties took effect just after midnight on July 24 and represent an attempt to make the tariff regime more legally durable than its predecessor, though the average per-household cost is already running near $900 a year, according to Tax Foundation estimates.</p>
+<p>All of this lands the same week the Bureau of Labor Statistics releases the July jobs report Friday morning, the first major labor read for new Fed Chair Kevin Warsh, who was confirmed by the Senate in a historically close 54-45 vote in May and took office May 22. Markets are watching for whether cooling employment data — echoing weak prior prints tied to tariff-driven manufacturing and logistics softness — pushes the Fed toward a September rate cut, with some analysts now floating a 50-basis-point 'catch-up' cut. The 10-year Treasury yield sitting near 4.73% suggests the bond market isn't yet pricing in aggressive easing.</p>
+<p>Where coverage splits: legal and trade outlets (Sidley, WilmerHale, Skadden) are focused on whether the Section 301 approach survives fresh court challenges the way IEEPA didn't, while financial press is more focused on the labor-market and rate-cut angle. Watch Friday's payrolls print and any early legal challenges to the Section 301 tariffs this week.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/07/23/trump-tariffs-trade-deadline.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.scotusblog.com/2026/02/a-breakdown-of-the-courts-tariff-decision/" target="_blank" rel="noopener">SCOTUSblog</a><span class="source-sep">·</span><a class="source-link" href="https://www.npr.org/2026/05/13/nx-s1-5816235/kevin-warsh-federal-reserve-chair-jerome-powell" target="_blank" rel="noopener">NPR</a><span class="source-sep">·</span><a class="source-link" href="https://www.kiplinger.com/investing/economy/this-weeks-economic-calendar" target="_blank" rel="noopener">Kiplinger</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>EU begins enforcing AI Act transparency rules, but heavier high-risk regime slides to 2027</h3>
+          <div class="one-liner">Europe's AI law just went from paper to enforcement for the first time, though a late 'Digital Omnibus' softened what's actually due this year.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>As of August 2, the European Commission's AI Office and national authorities began enforcing Article 50 transparency obligations under the AI Act — requiring providers and deployers of certain AI systems to disclose when users are interacting with AI or viewing AI-generated content. Noncompliance can trigger fines up to €15 million or 3% of global annual turnover. The Commission adopted implementing guidelines on July 20 to clarify scope ahead of the enforcement date.</p>
+<p>But a late amendment package, the 'Digital Omnibus on AI,' has effectively split the AI Act's rollout into two speeds: transparency rules proceed on the original schedule, while the far more consequential high-risk-system regime — covering things like AI in hiring, credit, and law enforcement — has been pushed more than a year out, with AI regulatory sandboxes now not required until August 2027. The grace period for labeling AI-generated content was also shortened from six months to three, with a new deadline of December 2, 2026.</p>
+<p>This is the most concrete AI governance action globally this week, and it matters as a signal for how the EU balances its 'Brussels effect' ambitions against industry-competitiveness pressure — the Omnibus was widely read as a concession to lobbying that the original timeline was unworkable. Watch for how US AI labs providing services in the EU adjust disclosure practices in the coming weeks, and whether other jurisdictions cite the EU's phased retreat as precedent for their own delays.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august" target="_blank" rel="noopener">European Commission</a><span class="source-sep">·</span><a class="source-link" href="https://www.cooley.com/news/insight/2026/2026-08-03-eu-ai-act-transparency-obligations-take-effect-2-august-2026" target="_blank" rel="noopener">Cooley</a><span class="source-sep">·</span><a class="source-link" href="https://axis-intelligence.com/eu-ai-act-news/" target="_blank" rel="noopener">Axis Intelligence</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">China</span>
+          </div>
+          <h3>China's export-led growth model is drawing louder overcapacity warnings from trade partners</h3>
+          <div class="one-liner">Beijing is leaning harder on exports to mask weak domestic demand, and analysts say that's setting up broader tariff retaliation beyond the US.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>China's Q2 GDP grew 4.3% year-on-year, per National Bureau of Statistics data released July 15, but fixed asset investment fell 5.7% in the first half of 2026 — a sign domestic demand remains weak even as headline growth holds up. Analysts cited by The Epoch Times argue Chinese manufacturers are increasingly dumping excess output abroad to compensate, a dynamic most visible in solar: Tongwei, LONGi and TCL Zhonghuan are projected to report combined first-half losses exceeding 10 billion yuan ($1.48 billion) due to oversupply.</p>
+<p>The risk flagged across trade-focused coverage is that this pattern — expanding capacity faster than demand, then exporting the surplus — is what's driving both the US's new Section 301 tariffs and similar defensive measures from other economies, since China's rising manufacturing trade surplus increasingly squeezes developing-world competitors as well as the US and EU.</p>
+<p>This is a slower-moving structural story rather than a single news event, but it's the throughline connecting this week's US tariff action to broader China-linked trade tension. Watch for any retaliatory Chinese measures in response to the new US tariffs, and further earnings from Chinese solar and EV manufacturers this month as a read on how deep the overcapacity problem runs.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.theepochtimes.com/china/chinas-overcapacity-exports-risk-worsening-global-trade-backlash-analysts-6063944" target="_blank" rel="noopener">The Epoch Times</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Anthropic and OpenAI both declined to join Nvidia's Open Secure AI Alliance, with Dario Amodei publishing a blog post arguing for stricter export controls and mandatory pre-release safety testing instead. Both labs are also racing on custom silicon: OpenAI unveiled its Broadcom-built 'Jalapeño' inference chip, while Anthropic is finalizing a roughly one-million-TPU deal with Google worth over a gigawatt of new compute by year-end.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Palantir's blowout Q2 (revenue up 93% y/y, guidance raised to $8.16B) sent shares up nearly 10% after-hours, extending a rally sparked by strong Microsoft and Amazon earnings last week. AMD and Shopify report Tuesday, Disney Wednesday, and McDonald's Thursday in one of the year's busiest earnings stretches.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">New Section 301 tariffs on 60 countries (10-12.5%) took effect to replace the IEEPA tariffs the Supreme Court struck down in February. Friday's July jobs report is the first major labor test for new Fed Chair Kevin Warsh, with markets weighing odds of a September rate cut, potentially 50 basis points.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The EU began enforcing AI Act transparency obligations (Article 50) on August 2, backed by fines up to €15M or 3% of global turnover, while a 'Digital Omnibus' deal pushed the heavier high-risk AI rules out to 2027.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Israeli strikes killed at least 18 Palestinians in Gaza's deadliest day in weeks, casting doubt on Trump's disarmament-for-withdrawal peace plan as Israeli hardliners reject it. US-Iran talks over a Hormuz strait deal collapsed into public recriminations over the weekend despite Trump's claims a deal was imminent.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">China's Q2 GDP grew 4.3% but fixed investment fell 5.7% in H1 2026, with analysts warning Beijing is exporting overcapacity (notably in solar) to compensate for weak domestic demand, fueling the trade friction behind new US tariffs.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">S&P 500 and Nasdaq futures were up roughly 0.6% Tuesday morning, extending Monday's rally as oil slid on renewed Iran talk optimism; the 10-year Treasury yield sits near 4.73% ahead of Friday's jobs report.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      <div class="sector-summary">US GENIUS Act stablecoin rulemaking remains in progress (OCC capital rules, FDIC application procedures, BSA scoping) ahead of a January 2027 compliance deadline, while stablecoin market cap approaches $300 billion with USDT holding 58% share.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Nuclear power is being positioned as the go-to answer for AI data center demand, with the Palisades plant restart marking a milestone; combined AI-infrastructure capex from Amazon, Google, Meta, Microsoft and Equinix is on track to exceed global oil-and-gas investment in 2026.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">Taiwan is testing wartime relocation of weapons production lines during annual August drills and has passed a $25 billion defense spending bill through 2033, as Secretary of State Rubio reiterated that US Taiwan policy remains unchanged.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">15 of the top 25 H-1B sponsors, including Amazon, Microsoft, Google, Meta and Oracle, have announced layoffs in the past 15 months even as they ramp AI infrastructure spending, squeezing affected visa holders against a 60-day grace period to find new sponsors.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Tue 4</span>
+      <span class="week-event">AMD and Shopify report Q2 earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue 4</span>
+      <span class="week-event">Continued Taiwan military drills testing wartime production relocation</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 5</span>
+      <span class="week-event">Walt Disney reports quarterly earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 5</span>
+      <span class="week-event">SanDisk earnings report</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 6</span>
+      <span class="week-event">McDonald's, Pfizer, Roku, Airbnb report earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 6</span>
+      <span class="week-event">SpaceX's first-ever public earnings disclosure expected</span>
+      <span class="week-tag" style="color:#fff;background:#0284C7">space</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 7</span>
+      <span class="week-event">BLS releases July jobs report (nonfarm payrolls, unemployment rate) — key input for Fed Chair Warsh ahead of September FOMC</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Fri 7</span>
+      <span class="week-event">Ongoing US-Iran talks over Strait of Hormuz and nuclear framework, status uncertain after weekend breakdown</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">This week</span>
+      <span class="week-event">Watch for Israeli cabinet response to Hamas disarmament/Gaza withdrawal plan amid intensified strikes</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">This week</span>
+      <span class="week-event">EU AI Office begins enforcement of Article 50 transparency obligations under the AI Act</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>AI Capex Hits the Tariff Crunch</h3>
+          <div class="subtitle">Microsoft, Amazon, Google, and Meta's $400B+ infrastructure race collides with Section 301 tariffs and energy bottlenecks—custom silicon deals just got much more expensive.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Energy</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The Administration slapped 10-12.5% Section 301 tariffs on 60 countries covering 99.4% of US imports just as Big Tech is racing to build custom silicon (OpenAI's Jalapeño inference chip, Anthropic's one-million-TPU deal) to break Nvidia bottlenecks. This is speculative, but tariffs will make those custom deals MORE expensive, not less—semiconductor manufacturing requires rare components and specialized supply chains that tariffs directly tax. Palantir's 93% revenue growth looks immune because it's software-driven, but infrastructure-dependent AI players (Amazon on AWS, Microsoft on Azure) face margin compression. The nuclear restart at Palisades was supposed to solve the energy problem; instead, it arrives too slowly and too regionally concentrated. The real risk: capex ROI keeps deteriorating even as absolute capex stays elevated, vindicating the 'AI spending revolt' narrative from late July. When AMD reports Tuesday with full AI-chip demand visibility, expect guidance cuts tied to cost inflation from tariffs, triggering a broader AI infrastructure selloff.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Warsh Faces His First Moment and Chooses Defiance</h3>
+          <div class="subtitle">New Fed Chair Kevin Warsh (confirmed 54-45) gets Friday's jobs report and might hold rates steady despite market demand for a 50bp cut—triggering Trump's wrath.</div>
+          <div class="pattern-cats"><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Markets</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Kevin Warsh took office May 22 with a historically close Senate vote, signaling he's not a rubber stamp. Friday's July jobs report will likely show cooling tied to tariff-driven manufacturing softness, and markets are now pricing in a 50bp 'catch-up' rate cut for September. Here's the speculative take: Warsh holds steady at the September meeting to signal Fed independence and avoid looking like he's rewarding Trump's chaotic tariff escalation. If he signals 'no cut' in early September commentary, the equity market tanks—Palantir's 10% after-hours pop reverses, and Big Tech infrastructure spending sentiment cools fast. Trump, seeing his pro-growth narrative collapse, attacks Warsh publicly within weeks (precedent: Powell) and hints at pushing him out before his term ends. The result is a Fed chair spending his first year defending independence instead of running monetary policy, and markets stuck in a whipsaw between inflation fears and growth doubts.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The H-1B Visa Apocalypse: Layoffs Meet Tariff Recession</h3>
+          <div class="subtitle">15 of the top 25 H-1B sponsors are cutting staff while tariffs cool hiring—visa holders face deportation in an economy with nowhere to land.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Labor & Workforce</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Amazon, Microsoft, Google, Meta, and Oracle have announced layoffs in the past 15 months even as they ramp AI infrastructure spend. H-1B visa holders affected get a 60-day grace period to find a new sponsor—but here's the crunch: Section 301 tariffs are slowing growth, those same companies are cutting headcount, and foreign-born workers have no fallback. Speculative angle: this creates a political fracture in Trump's coalition. Thousands of high-skilled workers face deportation because tariffs killed the job market that was supposed to employ them. The tech lobby—already nervous about rate cuts and capex constraints—breaks ranks and allies with immigrant-rights groups demanding tariff rollback. Trump loses Silicon Valley faster than he lost Wall Street, and Congress faces pressure to carve out tech worker exemptions or kill tariffs entirely. The visa crisis becomes the political pressure point that forces tariff retreat, not legal challenges.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Trump's Middle East Credibility Collapse Triggers Military Escalation</h3>
+          <div class="subtitle">With both the Hamas and Iran deals falling apart simultaneously, Trump pivots from peace-maker to warmonger to save face—oil spikes, markets tank.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Trump promised a Hamas disarmament-for-withdrawal deal AND an Iran Hormuz strait accord. Both are cratering in real time: Israeli National Security Minister Itamar Ben-Gvir called the disarmament plan 'unacceptable,' and Iran's foreign ministry flatly denied any nuclear talks were underway after Trump had claimed they were 'imminent.' A new Times of Israel poll shows 62% of Israelis no longer believe Netanyahu's 'total victory' promise, signaling Trump's peace-maker credibility is already dead. Speculative: Rather than absorb another diplomatic failure, Trump escalates militarily to salvage his 'strong man' image. He authorizes targeted strikes on Iranian military targets or intensifies Gaza operations as a show of force—framed not as peace but as dominance. Oil spikes 5-10%, the 'renewed Iran talk optimism' rally that's currently boosting equities evaporates, and rate-sensitive names like Palantir crater. The whipsaw into weekend markets is violent.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>Palantir's 93% Revenue Explosion Is the Most Important Data Point in Enterprise AI Right Now</h2>
+    <div class="standfirst">Palantir's blowout Q2 results — $1.94 billion in revenue, US commercial growth of 149% — confirm that the long-awaited enterprise AI adoption wave has arrived, and that 'AI sovereignty' is the product the market actually wants to buy.</div>
+    <div class="deep-dive-why">Palantir reported its Q2 2026 earnings after the bell on Monday August 3rd, sending shares surging in after-hours trading and making it the defining enterprise AI story of the week.</div>
+    <div class="body"><p>For years, skeptics questioned whether the torrent of AI capital investment would ever translate into genuine enterprise revenue. On Monday evening, Palantir provided the most emphatic rebuttal yet. The company reported second-quarter 2026 revenue of $1.94 billion — a 93% year-over-year surge — while US commercial revenue rocketed 149% to $764 million. Net income hit $1.07 billion, and the company raised its full-year 2026 revenue guidance to $8.15 billion, a near-$500 million upward revision. Shares jumped more than 12% in after-hours trading. The results land at a pivotal moment: just as investors have begun asking hard questions about whether AI capex cycles produce real returns, Palantir is delivering numbers that demand serious attention.</p>
+<p>What makes the Palantir story structurally distinct from the broader AI hype cycle is its product concept. The company does not build large language models. Instead, its platforms — Gotham for defense and intelligence, Foundry for enterprise data orchestration, and AIP for deploying AI inside secure, sovereign environments — serve as the connective tissue between frontier models and institutional reality. As one analyst framing put it, if a model is a powerful engine, Palantir is the steering wheel, dashboard, brakes, and road network that let organizations use it safely. The bet is not on any single model winning; it is on enterprises needing a durable, auditable layer to operationalize whichever model they choose.</p>
+<p>The concept CEO Alex Karp is aggressively marketing is 'AI sovereignty' — the idea that governments and large enterprises will not entrust their most sensitive data and workflows to frontier labs whose alignment, reliability, and long-term commercial terms remain uncertain. Karp has been unusually candid about his skepticism of those same labs. On CNBC Monday, he reiterated that frontier labs are too untrustworthy for enterprise deployment, and publicly called for robust competition in open-weight models, joining a letter urging the government not to restrict them. His logic is strategic: more models mean more demand for a neutral orchestration layer, and Palantir wants to own that layer.</p>
+<p>The geopolitical dimension sharpens this further. US government revenue hit $809 million in Q2, up 90% year-over-year, driven by defense, intelligence, and public safety agencies expanding AI investments — including the Maven Smart System, now a formal Pentagon program of record. The combination of soaring commercial and government demand tells a coherent story: American institutions across sectors are concluding that AI deployment at scale requires a trusted intermediary with security clearances, data governance controls, and proven battlefield credibility. Palantir is, for now, the only company with all three.</p>
+<p>But the bull case is not unchallenged. Palantir's valuation remains extraordinary by any conventional measure — forward price-to-earnings above 100x and price-to-sales north of 60x, among the highest in enterprise software. Shares are actually down roughly 30% year-to-date, meaning Monday's after-hours surge represented the market catching up to the operating reality, not initiating a fresh stampede. Hyperscalers including Microsoft and Amazon are pushing aggressively into enterprise AI orchestration, and OpenAI and Anthropic are extending beyond pure model provision into deployment tooling — all territory Palantir considers its own. International government revenue has also lagged, with some European allies exploring domestic alternatives, a meaningful vulnerability for a company that frames itself as the answer to AI sovereignty concerns.</p>
+<p>The deeper question Palantir's results force is whether 'AI sovereignty' is a durable category or a transitional wedge. The optimistic reading is that data sensitivity, regulatory complexity, and national security imperatives will permanently require a specialized intermediary — that frontier labs will never be allowed inside the most valuable institutional workflows. The pessimistic reading is that as models become commoditized and hyperscalers extend their compliance certifications, the value of the orchestration layer compresses, and Palantir's current growth rate reflects a one-time catch-up rather than a sustainable moat.</p>
+<p>What to watch: Palantir's Q3 guidance of $2.16 billion implies growth acceleration continuing through autumn. The critical variable is whether US commercial deal velocity — 220 deals above $1 million closed in Q2, including 70 above $10 million — is sustainable or front-loaded. Watch also for how Microsoft's and Amazon's enterprise AI tooling announcements in Q3 position against AIP, and whether any European sovereign AI initiative begins to credibly challenge Palantir's government footprint outside North America. If growth holds above 80% through year-end, the debate about AI's commercial reality will be effectively closed. If deal sizes start to shrink, the sovereignty narrative will face its first real stress test.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/08/03/palantir-pltr-earnings-q2-2026.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://uk.investing.com/news/company-news/palantir-q2-2026-slides-93-revenue-surge-ai-sovereignty-focus-93CH-4806595" target="_blank" rel="noopener">Investing.com</a><span class="source-sep">·</span><a class="source-link" href="https://www.gurufocus.com/news/9000347/palantir-technologies-inc-pltr-q2-2026-earnings-call-highlights-record-93-revenue-growth-and-raised-guidance-signal-unprecedented-ai-demand" target="_blank" rel="noopener">GuruFocus</a><span class="source-sep">·</span><a class="source-link" href="https://www.tradingkey.com/analysis/stocks/us-stocks/262072328-palantir-q2-earnings-sweep-expectations-stock-surges-15-tradingkey" target="_blank" rel="noopener">TradingKey</a><span class="source-sep">·</span><a class="source-link" href="https://247wallst.com/companies/pltr/earnings/" target="_blank" rel="noopener">247 Wall St.</a><span class="source-sep">·</span><a class="source-link" href="https://www.indmoney.com/blog/us-stocks/palantir-earnings-preview-q2-pltr-stock" target="_blank" rel="noopener">IndMoney</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      <a class="sig-title" href="https://www.bloomberg.com/news/articles/2026-07-30/who-is-leopold-aschenbrenner-the-ai-investor-wall-street-is-watching" target="_blank" rel="noopener">Situational Awareness fund forced to unwind AI stock positions after margin calls</a><div class="sig-summary">Reporting from July 30-31 describes Aschenbrenner's AI-focused hedge fund (previously valued over $20B) selling off a large chunk of its public AI equities after a sharp selloff triggered margin calls, forcing an unwind of concentrated bets.</div><div class="sig-connection">↳ Directly bears on the OpenAI/Anthropic IPO race and broader AI-market froth narrative — a prominent AI-maximalist investor getting forced out of positions is a notable data point on whether frontier-AI conviction trades are cracking.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/karpathy" target="_blank" rel="noopener">Posts on testing large language models</a><div class="sig-summary">Recent brief posts (one from roughly 13 hours before this search) touching on testing/evaluating LLMs, following an earlier late-July post about working with LLMs through iterative 'ramble' sessions; exact wording wasn't captured in search results.</div><div class="sig-connection">↳ Loosely relevant to the Frontier Tech/AI topic area as commentary on LLM development practice, though not tied to a specific headline today.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 14 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">BLOG</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
