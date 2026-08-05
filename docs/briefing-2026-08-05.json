@@ -1,0 +1,419 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Netanyahu balks at Gaza disarmament deal Hamas accepted",
+      "one_liner": "The postwar transition plan is stalling just as Board of Peace envoys push both sides to implement it, keeping the ceasefire fragile.",
+      "detail": "Nikolay Mladenov, the Board of Peace's high representative for Gaza, met Israeli Prime Minister Benjamin Netanyahu on August 3 to press a disarmament deal the board says it already reached with Hamas, one that calls for full decommissioning of weapons in the Strip and a transition from armed rule to civilian governance. Netanyahu says Israel never agreed to it and will not withdraw from its current lines in Gaza until Hamas is completely disarmed, a position that conflicts with a plan that also asks Israel to halt military operations. Israel has offered a partial concession, tightening rules of engagement so the IDF chief of staff must approve any single strike.\n\nThe dispute matters because it is the clearest sign yet that the ceasefire architecture brokered earlier this year is not self-executing: Hamas has nominally signed on to disarm, but there is no enforcement mechanism if Israel keeps striking or refuses to pull back. Qatar, Egypt and Turkey issued a joint statement urging civilian protection and full ceasefire implementation, underscoring how the mediating states are now the ones holding the process together.\n\nCoverage diverges on tone: the Washington Post and Times of Israel frame this as a genuine rift between Netanyahu and the Board of Peace's own envoy, while Israeli domestic commentary (per the Times of Israel liveblog) shows opposition figures like Naftali Bennett accusing Netanyahu of ceding control of Gaza to Qatar. Al Jazeera's regional coverage emphasizes continued Israeli strikes undercutting the diplomatic track.\n\nWatch for whether Mladenov's Board of Peace can extract a firmer commitment from Netanyahu in the coming days, and whether West Bank unrest, including settler arson near Nablus reported this week, spills over and further complicates the disarmament track.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "Washington Post",
+          "url": "https://www.washingtonpost.com/world/2026/08/03/mideast-gaza-disarmament-hamas-netanyahu/28ac67ae-8f6f-11f1-9fdc-0a725c989a7b_story.html"
+        },
+        {
+          "name": "Times of Israel",
+          "url": "https://www.timesofisrael.com/liveblog-august-4-2026/"
+        },
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/2026/8/3/more-than-10-killed-as-russia-and-ukraine-trade-heavy-attacks"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Fed's Warsh holds rates at 3.50-3.75%, but dissent is growing",
+      "one_liner": "Three regional Fed presidents pushed for a hike as inflation stays stuck above target, and futures markets are now pricing tightening risk into year-end.",
+      "detail": "In new Chair Kevin Warsh's first meeting running the FOMC, the Fed held its policy range at 3.50%-3.75% for a fifth straight meeting, but Cleveland's Beth Hammack, Minneapolis's Neel Kashkari and Dallas's Lorie Logan all dissented in favor of a 25bp hike. Warsh used his press conference to draw a hard line on the 2% inflation target, saying \"there is no soft implicit target, not on this committee's watch,\" while acknowledging five-plus years of above-target inflation won't be fixed quickly.\n\nThis matters because it flips the market narrative from cuts to hikes: futures are now pricing a path toward roughly 3.8% by October and near 4% by year-end, with June CPI running at 3.5% year-over-year. That is a meaningful repricing for anyone positioned for easing, and it puts the September FOMC meeting squarely in focus as the next catalyst.\n\nCNBC and Axios both flagged the internal dissent as unusually sharp for an incoming chair's debut meeting, while Fortune's coverage highlighted confusion in the press corps over exactly which inflation gauge (CPI vs. PCE) Warsh is anchoring policy to going forward.\n\nWatch the August 7 jobs report and the August 12 CPI print as the next data points that could firm up or unwind the hike odds before September.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html"
+        },
+        {
+          "name": "Axios",
+          "url": "https://www.axios.com/2026/07/29/fed-warsh-rates-inflation"
+        },
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/07/31/warsh-fed-pce-inflation-press-conference/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "EU begins actively enforcing the AI Act on model makers",
+      "one_liner": "Brussels can now fine frontier AI providers up to \u20ac15M or 3% of global turnover, and regulators are already using the new powers.",
+      "detail": "As of August 2, the European Commission's AI Office is formally empowered to investigate and enforce obligations on general-purpose AI model providers, plus the Act's bans on prohibited practices. New transparency rules landed the same day: chatbots must identify themselves as automated, deepfakes need labels, and AI-generated or altered content must carry machine-readable marks. Penalties can reach the greater of \u20ac15 million or 3% of worldwide annual turnover.\n\nThis is the moment the AI Act stops being a compliance deadline on paper and becomes an active enforcement regime, right as US frontier labs are racing to ship ever-larger models into the EU market. The Commission also published a list of more than 180 companies that have signed its voluntary Code of Practice on labeling AI content, giving industry a way to show good faith ahead of harder enforcement.\n\nEnforcement is already visible: France's CNIL sent formal information requests to 14 financial institutions on August 4, demanding the technical documentation required under Article 11 for high-risk credit-scoring systems. That is a concrete signal regulators are moving beyond frontier labs to touch enterprise AI deployments broadly.\n\nSeparately, the White House has quietly finished its own framework for vetting frontier models domestically but has not disclosed its contents, an asymmetry with the EU's public rulebook that is likely to become a point of transatlantic friction. Watch for the first actual AI Office investigation or fine, which would set the tone for how aggressively Brussels intends to use these new powers.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "European Commission",
+          "url": "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714"
+        },
+        {
+          "name": "European Commission - Digital Strategy",
+          "url": "https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august"
+        },
+        {
+          "name": "Help Net Security",
+          "url": "https://www.helpnetsecurity.com/2026/08/04/eu-ai-act-enforcement-ai-models/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Beijing runs live-fire drills after Lai's \"not subordinate\" remark",
+      "one_liner": "Taiwan is simultaneously war-gaming wartime industrial resilience while China escalates rhetoric and military pressure in the Strait.",
+      "detail": "Taiwanese President William Lai Ching-te said Taiwan is \"not subordinate to the People's Republic of China,\" prompting Beijing to brand the remarks \"reckless and provocative\" and launch a two-day live-fire drill in the Taiwan Strait. In parallel, Taiwan's own annual military exercises this month will test relocating weapons production lines and converting civilian factories to military use in case Chinese strikes hit supply hubs, and will deliberately throttle mobile internet speeds for the first time to simulate wartime bandwidth scarcity.\n\nThe layering of rhetorical escalation, live-fire drills, and Taiwan's own resilience testing signals both sides are treating a Taiwan contingency as a near-term planning assumption rather than a distant hypothetical. It also matters for supply chains given Taiwan's centrality to advanced chip production.\n\nAEI's China & Taiwan Update and SCMP's ongoing coverage both track this as part of a broader pattern of tit-for-tat escalation rather than a one-off event, with Beijing using drills as a recurring pressure tool tied to Taiwanese political statements.\n\nWatch for whether the drills extend beyond the announced two days, and for any US response given Washington's existing commitments to Taiwan's defense.",
+      "sector": "China",
+      "sources": [
+        {
+          "name": "AEI - China & Taiwan Update",
+          "url": "https://www.aei.org/commentary/china-taiwan-update-july-31-2026/"
+        },
+        {
+          "name": "South China Morning Post",
+          "url": "https://www.scmp.com/topics/taiwan"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Earnings season and AI-infrastructure spending keep markets rallying",
+      "one_liner": "S&P 500 and Nasdaq both jumped over 1.7% Tuesday as AMD, Caterpillar and others beat estimates, with Disney, Uber and Eli Lilly reporting today.",
+      "detail": "Roughly 300 S&P 500 companies have reported so far this earnings season, with about 85% beating expectations and aggregate profit growth tracking above 47%. Tuesday's session saw the S&P 500 gain 1.79% to 7,736.52 and the Nasdaq jump 2.59% to 26,584.99 on strong reports from AMD, Caterpillar, Pfizer and others. Disney, Uber and Eli Lilly report Wednesday, seen as bellwethers for consumer and tech demand.\n\nUnderneath the earnings beats, AI infrastructure capex continues to accelerate: SK Group and Nvidia announced a partnership exceeding $500 billion to deploy Vera Rubin systems powered by SK hynix HBM4 memory, and Naver, Brookfield and Nvidia are expanding a Korean AI data center to roughly 100,000 GPUs. Samsung posted an all-time quarterly revenue high, up 28% quarter over quarter, largely on memory demand tied to AI buildouts.\n\nThe read-through is that markets are still rewarding AI capex commitments even as the Fed signals a tightening bias, a combination that has historically been unstable; CNBC's markets desk flagged the disconnect between rate-hike odds rising and equities still melting up on AI enthusiasm.\n\nWatch Disney's earnings for read-through on streaming and its pending A+E Networks stake sale to Hearst, and Friday's jobs report for whether labor data reinforces or undercuts the Fed's hawkish tilt.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/08/03/stock-market-today-live-updates.html"
+        },
+        {
+          "name": "TipRanks",
+          "url": "https://www.tipranks.com/news/earnings-to-watch-this-week-august-3-7-2026"
+        },
+        {
+          "name": "Semafor",
+          "url": "https://www.semafor.com/vertical/tech"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "SK Group and Nvidia struck a partnership exceeding $500 billion to deploy Vera Rubin AI infrastructure powered by SK hynix HBM4 memory, and Naver/Brookfield/Nvidia are scaling a Korean AI data center toward roughly 100,000 GPUs. Google DeepMind unveiled a new model giving humanoid robots finer manipulation control. Chinese startup Moonshot is seeking more advanced Nvidia chips amid a domestic compute shortage."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Earnings season is running hot, with ~85% of reporting S&P 500 firms beating estimates and profit growth above 47%; Disney, Uber and Eli Lilly report Wednesday. Samsung posted record quarterly revenue on AI-driven memory demand, and Chinese tech giants ByteDance, Alibaba and Tencent are pivoting toward enterprise AI revenue."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Congress heads into its August recess with the CLARITY Act on digital-asset jurisdiction stalled, and the White House has quietly finalized (but not disclosed) a framework for vetting frontier AI models domestically. Tariff adjustments on steel, aluminum and copper remain in effect through 2027, with the Tax Policy Center estimating an average $920 per-household burden in 2026."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The EU's AI Act entered active enforcement on August 2, giving Brussels power to fine model providers up to \u20ac15M or 3% of global turnover; France's CNIL already sent Article 11 documentation requests to 14 financial institutions. Separately, OpenAI and Anthropic backed a 1,224-signature petition urging regulation to \"pace the frontier\" of AI development."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "Netanyahu is resisting a Gaza disarmament plan the Board of Peace says Hamas already accepted, keeping the ceasefire fragile amid continued Israeli strikes and West Bank settler violence near Nablus. Trump said a planned strike on Iran was called off while reaffirming Strait of Hormuz freedom-of-navigation commitments."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Beijing ran a two-day live-fire drill in the Taiwan Strait after President Lai said Taiwan is \"not subordinate\" to the PRC; Taiwan is separately running drills testing wartime industrial relocation and deliberately throttling mobile internet to simulate bandwidth scarcity in a conflict scenario."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The Fed held rates at 3.50-3.75% under new Chair Kevin Warsh with three regional presidents dissenting for a hike, as June inflation ran at 3.5% year-over-year; futures now price rising hike odds into year-end. Equities rallied hard Tuesday (S&P +1.79%, Nasdaq +2.59%) on strong earnings."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "US regulators are due to finalize GENIUS Act implementing rules for dollar-backed stablecoin issuers ahead of the January 2027 effective date, while the CLARITY Act on SEC/CFTC jurisdiction remains stuck in Congress before the August recess and November midterms."
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "OPEC+ agreed to raise September output by 188,000 barrels per day, its sixth consecutive increase, while planning to pause hikes in Q4; Brent crude has eased toward the mid-$80s as the US-Iran MOU and Strait of Hormuz traffic reduce supply-risk premiums, though Houthi Red Sea activity remains a wildcard."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Russia and Ukraine traded heavy strikes this week with dozens killed on both sides; Zelenskyy warned Ukraine has run out of interceptor missiles for its Patriot batteries as Russia increases use of jet-powered drones. Taiwan and China both escalated military posturing in the Strait, and Trump said a planned strike on Iran was canceled."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "Over 10% of Hollywood job postings are now AI-related per the LA Times, and OpenAI and Anthropic backed a 1,224-signature petition from AI workers calling for regulation to slow the pace of frontier AI development, a notable break from labs' usual anti-regulation posture."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Wed 5",
+      "event": "Disney, Uber and Eli Lilly report earnings; Disney also expected to close its A+E Networks stake sale to Hearst",
+      "tag": "earnings"
+    },
+    {
+      "day": "Wed 5",
+      "event": "EU AI Office enforcement powers active for a full week; watch for further investigations following CNIL's requests to 14 financial institutions",
+      "tag": "policy"
+    },
+    {
+      "day": "Wed 5",
+      "event": "AI Policy 100 list published at the Ai4 Policy Summit",
+      "tag": "policy"
+    },
+    {
+      "day": "Thu 6",
+      "event": "Continued Q2 earnings from major S&P 500 companies as beat rate tracks near 85%",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 6",
+      "event": "Taiwan continues annual military drills testing wartime industrial relocation and bandwidth throttling",
+      "tag": "defense"
+    },
+    {
+      "day": "Fri 7",
+      "event": "US July jobs report (nonfarm payrolls) released by BLS at 8:30am ET, key input for September Fed decision odds",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 7",
+      "event": "Ongoing Board of Peace efforts to secure Israeli agreement on Gaza disarmament plan",
+      "tag": "other"
+    },
+    {
+      "day": "Sat 8",
+      "event": "Continued Russia-Ukraine strikes expected amid Patriot interceptor shortages reported by Zelenskyy",
+      "tag": "defense"
+    },
+    {
+      "day": "Sun 9",
+      "event": "OPEC+ September output increase of 188,000 bpd takes effect",
+      "tag": "other"
+    },
+    {
+      "day": "Mon 10",
+      "event": "Congress enters August recess, leaving CLARITY Act crypto market-structure bill stalled",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "Warsh Is Tightening Into the SK-Nvidia Capex Cliff",
+      "subtitle": "Fed hikes into the exact inflationary boom it's trying to kill, guaranteeing a 2027 capex collapse that will crater growth and force emergency rate cuts.",
+      "categories": [
+        "Markets",
+        "Frontier Tech / AI",
+        "Applied Tech & Industry"
+      ],
+      "content": "Chair Kevin Warsh is signaling aggressive tightening on inflation stuck at 3.5 percent, but the real culprit is not broad demand \u2014 it is AI capex bidding up memory and chip prices. This week SK Group and Nvidia announced a 500 billion dollar partnership for 100,000 GPUs in Korean datacenters, Samsung posted record revenue on memory demand, and equities ripped 1.79 percent on earnings beats tied entirely to AI infrastructure. Warsh is tightening into the exact capex boom driving inflation, not realizing that boom is self-limiting. Once rate sensitivity hits datacenter ROI calculations in late 2026, companies will slash capex commitments, SK Group will restructure, Nvidia guidance craters, and the Fed faces a growth recession. By Q2 2027, Warsh cuts rates aggressively to prevent a hard landing. The real risk for equities is not 2026 tightening but 2027 whiplash when the capex cycle turns and the Fed realizes it was tightening into the wrong inflation."
+    },
+    {
+      "title": "The EU-China Pincer Is Squeezing US AI Labs Into Irrelevance",
+      "subtitle": "Anthropic and OpenAI are caught between Brussels 3 percent turnover fines and Beijing's sovereign alternatives. The White House's secret model framework suggests the US is also about to restrict them.",
+      "categories": [
+        "AI Regulation & Governance",
+        "Frontier Tech / AI",
+        "China"
+      ],
+      "content": "The EU's AI Act enforcement regime kicks in on August 2 with power to fine frontier model providers up to 15 million euros or 3 percent of global turnover, and France is already sending documentation requests to financial firms. China is investing heavily in domestic alternatives \u2014 Moonshot seeks advanced Nvidia chips, ByteDance and Alibaba pivot to enterprise AI \u2014 and the White House has quietly finalized a vetting framework for frontier models it has not disclosed, suggesting US policy is also moving toward restricting lab freedom but hiding it. Anthropic and OpenAI are trapped between three converging walls: EU compliance costs that erode margins, Chinese competitors building sovereign alternatives that will own the second-largest AI market, and a US government clearly building restrictions but not admitting it. The rational move for one lab by mid-2027 is to pivot to a sovereign European infrastructure play, essentially surrendering global reach for survival. This is not regulatory capture \u2014 it is regulatory strangulation that will reshape the AI frontier along geopolitical lines rather than technical ones."
+    },
+    {
+      "title": "Gaza's Unenforceable Ceasefire Signals the Era of No Deals \u2014 Taiwan Knows It",
+      "subtitle": "Netanyahu refuses disarmament on a Board of Peace deal that has no enforcement mechanism. Taiwan and Ukraine are now planning for wars where nobody enforces their terms.",
+      "categories": [
+        "Geopolitics",
+        "China",
+        "Defense & Security"
+      ],
+      "content": "Netanyahu is rejecting the Board of Peace's disarmament plan for Gaza even though Hamas accepted it, and Nikolay Mladenov has no mechanism to force compliance. This signals that big powers can violate commitments with impunity if they maintain military superiority. Meanwhile Taiwan is running wartime industrial relocation drills and deliberately throttling mobile internet to simulate conflict, and Ukraine's Zelenskyy warns forces have run out of interceptor missiles for Patriot batteries as Russia escalates. Both Taiwan and Ukraine are learning that treaty enforcement is illusory without military dominance, so they plan for wars requiring complete self-sufficiency. This drives a regional rearmament race accelerating autonomous weapons development, especially in China which is investing in AI-guided defense systems. The irony: Taiwan's advanced chip production is the economic hedge letting the world sleep on Taiwan's security, but a Taiwan contingency would immediately choke the supply of chips enabling AI-driven defense systems globally. By 2027, this creates a geopolitical trap where deterrence is undermined by the very supply chains deterrence is supposed to protect."
+    },
+    {
+      "title": "AI Workers Are Signaling Mass Job Displacement \u2014 Warsh Doesn't Know",
+      "subtitle": "The petition from OpenAI and Anthropic staffers to slow AI development is not idealism. It is a cry from the first workers to see the displacement curve.",
+      "categories": [
+        "Labor & Workforce",
+        "AI Regulation & Governance",
+        "Markets"
+      ],
+      "content": "Over 10 percent of Hollywood job postings are now AI-related, and OpenAI and Anthropic workers have backed a 1,224-signature petition urging regulation to pace frontier AI development. This breaks from labs' usual anti-regulation posture and signals that AI workers are the first cohort to see the real job-displacement curve on an 18-to-24-month horizon. Meanwhile Chair Warsh is hiking rates on labor market assumptions that assume stable employment and gradual wage growth. He is tightening into the largest job-displacement shock since factory automation in the 1970s. By Q4 2026, unemployment will spike unexpectedly as companies accelerate AI rollouts and cut hiring, forcing the Fed to pivot to emergency rate cuts in early 2027. That whipsaw will crater equities because markets will have repriced multiple times on contradictory Fed signals. The real danger is not that AI causes mass unemployment but that the Fed's hiking cycle will have amplified the shock by restricting credit availability exactly when displaced workers need it most."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Situational Awareness fund forced to unwind AI stock positions after margin calls",
+      "url": "https://www.bloomberg.com/news/articles/2026-07-30/who-is-leopold-aschenbrenner-the-ai-investor-wall-street-is-watching",
+      "summary": "Reporting from July 30-31 describes Aschenbrenner's AI-focused hedge fund (previously valued over $20B) selling off a large chunk of its public AI equities after a sharp selloff triggered margin calls, forcing an unwind of concentrated bets.",
+      "connection": "Directly bears on the OpenAI/Anthropic IPO race and broader AI-market froth narrative \u2014 a prominent AI-maximalist investor getting forced out of positions is a notable data point on whether frontier-AI conviction trades are cracking."
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "blog",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "mixed",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Posts on testing large language models",
+      "url": "https://x.com/karpathy",
+      "summary": "Recent brief posts (one from roughly 13 hours before this search) touching on testing/evaluating LLMs, following an earlier late-July post about working with LLMs through iterative 'ramble' sessions; exact wording wasn't captured in search results.",
+      "connection": "Loosely relevant to the Frontier Tech/AI topic area as commentary on LLM development practice, though not tied to a specific headline today."
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
