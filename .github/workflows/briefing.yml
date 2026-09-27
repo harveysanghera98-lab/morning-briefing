@@ -6,16 +6,15 @@
 # Setup (one-time):
 #   1. Fork this repo
 #   2. Settings → Secrets → Actions → New repository secret
-#        ANTHROPIC_API_KEY        = sk-ant-...            (fallback + default backend)
 #        CLAUDE_CODE_OAUTH_TOKEN  = <from `claude setup-token`>  (Pro subscription)
+#        ANTHROPIC_API_KEY        = sk-ant-...   (only if BRIEFING_BACKEND=api)
 #   3. Settings → Pages → Source: GitHub Actions
 #   4. Edit config.yaml with your topics and sources
 #   5. Push — your next scheduled run will generate a live briefing
 #
 # Cost controls (env on the "Generate briefing" step):
-#   BRIEFING_BACKEND=pro       → run generation on your Pro subscription via
-#                                Claude Code, falling back to the API automatically.
-#   BRIEFING_BACKEND=api       → API key only (per-token billing).
+#   BRIEFING_BACKEND=pro       → Claude Pro via Claude Code only (no API fallback).
+#   BRIEFING_BACKEND=api       → API key only (per-token console billing).
 #   BRIEFING_PROFILE=economy   → apply web-search caps + alternate-day deep dive.
 #
 # Manual trigger: Actions tab → Morning Briefing → Run workflow
@@ -76,10 +75,9 @@ jobs:
 
       - name: Generate briefing
         env:
-          # Pro subscription credential (Claude Code). Draws on your plan, not the API.
+          # Pro subscription only. Do not pass ANTHROPIC_API_KEY here — the CLI
+          # prefers the API key and will bill (and fail) on console credits.
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          # API key — used as automatic fallback when a Pro call fails.
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BRIEFING_BACKEND: pro
           BRIEFING_PROFILE: economy
           BRIEFING_OUTPUT_DIR: docs

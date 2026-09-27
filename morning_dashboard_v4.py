@@ -151,11 +151,9 @@ def _deep_dive_due(cfg):
 # ── Model backend: API key vs Claude Code (Pro subscription) ──────────────────
 # BRIEFING_BACKEND=api  → call the Anthropic API with ANTHROPIC_API_KEY (per-token).
 # BRIEFING_BACKEND=pro  → run each call through the Claude Code CLI authenticated
-#                         with CLAUDE_CODE_OAUTH_TOKEN (draws on your subscription),
-#                         and fall back to the API automatically on any failure.
+#                         with CLAUDE_CODE_OAUTH_TOKEN (draws on your subscription).
 BRIEFING_BACKEND = os.environ.get("BRIEFING_BACKEND", "api").lower()
 CLAUDE_CODE_OAUTH_TOKEN = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")
-_PRO_WARNED = False
 
 
 def _cc_model(model):
@@ -185,21 +183,47 @@ def _track_pro_usage(label, env_json):
     print(f"    [pro] {label}: {inp:,} in / {out:,} out ~ ${cost:.3f} (subscription)")
 
 
+def _is_billing_error(exc):
+    msg = str(exc).lower()
+    return (
+        "credit balance is too low" in msg
+        or "too low to access the anthropic api" in msg
+        or "plans & billing" in msg
+    )
+
+
+def _cli_failure_detail(proc):
+    """Claude Code often writes the real error to stdout JSON, not stderr."""
+    parts = []
+    if proc.stderr and proc.stderr.strip():
+        parts.append(proc.stderr.strip())
+    if proc.stdout and proc.stdout.strip():
+        parts.append(proc.stdout.strip())
+    return " | ".join(parts)[-800:] if parts else "(no stdout/stderr)"
+
+
 def _run_via_claude_code(label, model, prompt, system, use_search, max_turns):
-    """Run one generation through the Claude Code CLI on the Pro subscription.
-    Raises on any failure so the caller can fall back to the API."""
+    """Run one generation through the Claude Code CLI on the Pro subscription."""
     cmd = ["claude", "-p", prompt,
            "--output-format", "json",
            "--model", _cc_model(model),
-           "--max-turns", str(max_turns)]
+           "--max-turns", str(max_turns),
+           # CI has no TTY to approve tools; without this, `claude -p` exits 1
+           # with an empty stderr.
+           "--dangerously-skip-permissions"]
     if system:
         cmd += ["--append-system-prompt", system]
     if use_search:
-        cmd += ["--allowedTools", "WebSearch"]
+        cmd += ["--allowedTools", "WebSearch,WebFetch"]
+    env = os.environ.copy()
+    # When both are set, the CLI prefers ANTHROPIC_API_KEY (console billing)
+    # over CLAUDE_CODE_OAUTH_TOKEN (Pro). That is why GitHub Actions was
+    # failing the Pro path, then burning retries on a zero-credit API key.
+    env.pop("ANTHROPIC_API_KEY", None)
     proc = subprocess.run(cmd, capture_output=True, text=True,
-                          timeout=900, env=os.environ.copy())
+                          timeout=900, env=env)
     if proc.returncode != 0:
-        raise RuntimeError(f"claude exit {proc.returncode}: {(proc.stderr or '')[-300:]}")
+        raise RuntimeError(f"claude exit {proc.returncode}: {_cli_failure_detail(proc)}")
     try:
         env_json = json.loads(proc.stdout)
     except json.JSONDecodeError:
@@ -233,19 +257,18 @@ def _run_via_api(label, model, prompt, system, max_tokens, use_search, cfg, sear
 
 def run_model(*, label, model, prompt, max_tokens, use_search, cfg,
               system=None, search_kind=None, max_turns=6):
-    """Return assistant text. Prefer the Pro path when configured; always fall
-    back to the API so a run still ships if the subscription path fails."""
-    global _PRO_WARNED
+    """Return assistant text from the configured backend.
+
+    BRIEFING_BACKEND=pro uses only CLAUDE_CODE_OAUTH_TOKEN (Claude Pro).
+    BRIEFING_BACKEND=api uses only ANTHROPIC_API_KEY (console billing).
+    There is no cross-backend fallback — a Pro failure must be fixed as Pro.
+    """
     if BRIEFING_BACKEND == "pro":
         if not CLAUDE_CODE_OAUTH_TOKEN:
-            if not _PRO_WARNED:
-                print("    [pro] BRIEFING_BACKEND=pro but CLAUDE_CODE_OAUTH_TOKEN unset — using API")
-                _PRO_WARNED = True
-        else:
-            try:
-                return _run_via_claude_code(label, model, prompt, system, use_search, max_turns)
-            except Exception as e:
-                print(f"    [pro] {label} failed ({e}); falling back to API")
+            raise RuntimeError(
+                "BRIEFING_BACKEND=pro but CLAUDE_CODE_OAUTH_TOKEN is unset"
+            )
+        return _run_via_claude_code(label, model, prompt, system, use_search, max_turns)
     return _run_via_api(label, model, prompt, system, max_tokens,
                         use_search, cfg, search_kind)
 
@@ -1254,6 +1277,9 @@ def _retry(fn, label, retries=MAX_RETRIES):
             else:
                 raise
         except Exception as e:
+            if _is_billing_error(e):
+                print(f"  {label} billing error — not retrying: {e}")
+                raise
             wait = 30 * (attempt + 1)
             print(f"  {label} error (attempt {attempt + 1}/{retries + 1}): {e}")
             if attempt < retries:
@@ -1736,11 +1762,13 @@ def main():
     )
     args = parser.parse_args()
 
-    if not ANTHROPIC_API_KEY and not (BRIEFING_BACKEND == "pro" and CLAUDE_CODE_OAUTH_TOKEN):
-        print("Error: set ANTHROPIC_API_KEY (or BRIEFING_BACKEND=pro with CLAUDE_CODE_OAUTH_TOKEN)")
+    if BRIEFING_BACKEND == "pro":
+        if not CLAUDE_CODE_OAUTH_TOKEN:
+            print("Error: BRIEFING_BACKEND=pro requires CLAUDE_CODE_OAUTH_TOKEN")
+            sys.exit(1)
+    elif not ANTHROPIC_API_KEY:
+        print("Error: BRIEFING_BACKEND=api requires ANTHROPIC_API_KEY")
         sys.exit(1)
-    if BRIEFING_BACKEND == "pro" and not ANTHROPIC_API_KEY:
-        print("Note: Pro backend set without ANTHROPIC_API_KEY — no API fallback if a call fails.")
 
     cfg = load_config(args.config)
     output_dir = os.path.expanduser(
