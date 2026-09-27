@@ -153,7 +153,18 @@ def _deep_dive_due(cfg):
 # BRIEFING_BACKEND=pro  → run each call through the Claude Code CLI authenticated
 #                         with CLAUDE_CODE_OAUTH_TOKEN (draws on your subscription).
 BRIEFING_BACKEND = os.environ.get("BRIEFING_BACKEND", "api").lower()
-CLAUDE_CODE_OAUTH_TOKEN = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")
+
+
+def _clean_oauth_token(raw):
+    """GitHub secret fields wrap long tokens; Claude rejects a newline in the header."""
+    if not raw:
+        return raw
+    return "".join(raw.split())
+
+
+CLAUDE_CODE_OAUTH_TOKEN = _clean_oauth_token(os.environ.get("CLAUDE_CODE_OAUTH_TOKEN"))
+if CLAUDE_CODE_OAUTH_TOKEN:
+    os.environ["CLAUDE_CODE_OAUTH_TOKEN"] = CLAUDE_CODE_OAUTH_TOKEN
 
 
 def _cc_model(model):
@@ -189,6 +200,15 @@ def _is_billing_error(exc):
         "credit balance is too low" in msg
         or "too low to access the anthropic api" in msg
         or "plans & billing" in msg
+    )
+
+
+def _is_fatal_auth_error(exc):
+    msg = str(exc).lower()
+    return (
+        "invalid auth token" in msg
+        or "invalid authorization header" in msg
+        or "claude_code_oauth_token" in msg and "line break" in msg
     )
 
 
@@ -1277,8 +1297,8 @@ def _retry(fn, label, retries=MAX_RETRIES):
             else:
                 raise
         except Exception as e:
-            if _is_billing_error(e):
-                print(f"  {label} billing error — not retrying: {e}")
+            if _is_billing_error(e) or _is_fatal_auth_error(e):
+                print(f"  {label} auth/billing error — not retrying: {e}")
                 raise
             wait = 30 * (attempt + 1)
             print(f"  {label} error (attempt {attempt + 1}/{retries + 1}): {e}")
