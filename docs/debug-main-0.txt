@@ -2,72 +2,60 @@
   "top_stories": [
     {
       "priority": "urgent",
-      "headline": "US-Iran ceasefire collapse deepens into open Hormuz conflict",
-      "one_liner": "Washington and Tehran are trading strikes again, transit through the Strait of Hormuz has collapsed to a fraction of normal volume, and Trump is talking about the US permanently controlling the strait.",
-      "detail": "The ceasefire brokered earlier this summer has effectively fallen apart. After Iran struck three commercial vessels that had bypassed its preapproved shipping corridor, Trump declared on the sidelines of the NATO summit that the deal was 'over,' and the US resumed strikes on Iranian command centers, air defenses, and coastal surveillance sites. CENTCOM says a reinstated US blockade has now stopped 18 ships from entering or leaving Iranian ports. Traffic through Hormuz, normally around 100 vessels a day, fell to just 29 verified crossings over three days last week.\n\nThis matters well beyond the Gulf: Hormuz carries roughly a fifth of global oil flows, and Brent has been swinging wildly all year, from near $70 in early July back up toward $98 as the fighting resumed. Al Jazeera's live coverage frames this as Trump seeking outright control of the strait rather than just safe passage; CBS News reporting from CENTCOM emphasizes the blockade and interdiction angle over the strike campaign itself, a notable divergence in how outlets are characterizing US objectives.\n\nDiplomatically, talks continue in parallel with the fighting — Trump and Netanyahu met this week amid what Al Jazeera described as 'friendly talks,' but no durable framework has emerged. Iran has rejected an Omani proposal for joint oversight of Hormuz.\n\nWatch for: further US strikes or Iranian retaliation against shipping or US bases in the Gulf; any new mediation attempt from Oman or Qatar; and continued volatility in oil markets, which is now the primary transmission channel from this conflict into US inflation and Fed policy.",
-      "sector": "Defense & Security",
+      "headline": "Anthropic pushes IPO to November, seeks $2 trillion valuation",
+      "one_liner": "A jump from a $965 billion valuation in May to a targeted $2 trillion would make Anthropic one of the fastest-appreciating private companies ever, and reshapes the AI capital landscape heading into year-end.",
+      "detail": "Anthropic has delayed its planned IPO from October to November, giving investors a look at fresh third-quarter numbers before pricing what could be a record offering of up to $100 billion. The valuation target has roughly doubled from the $965 billion set in its May Series H round, fueled by annualized revenue that reportedly jumped from about $9 billion at the end of 2025 to over $65 billion by end of July 2026. Claude now reportedly drives 26% of Anthropic's own AI research pipeline, underscoring the recursive-improvement narrative the company is selling to investors.\n\nThe delay also reflects caution: bankers want a clean Q3 print rather than a rushed October listing. Coverage from Bloomberg and trade press frames this alongside Anthropic's continued push on both frontier capability (a Claude-computed nine-loop physics amplitude) and enterprise/agentic economics, positioning it as competing with OpenAI on two fronts simultaneously — benchmark leadership and deployment scale. OpenAI's GPT-6 Astra release and its own reported IPO deliberations sit as the direct counter-narrative.\n\nWhat to watch: final S-1 terms and lockup structure, whether the $2 trillion figure survives investor diligence, and how public-market volatility (elevated bond yields, a jumpy Fed) affects appetite for a record-sized tech listing just weeks after the Fed's September hike.",
+      "sector": "Frontier Tech / AI",
       "sources": [
-        {"name": "Al Jazeera", "url": "https://www.aljazeera.com/news/liveblog/2026/7/28/iran-war-live-trump-touts-friendly-talks-netanyahu-arrives-in-us"},
-        {"name": "CBS News", "url": "https://www.cbsnews.com/live-updates/us-iran-war-trump-strait-of-hormuz-talks-oman/"},
-        {"name": "CNN", "url": "https://www.cnn.com/2026/07/15/world/live-news/iran-war-trump"},
-        {"name": "IEA", "url": "https://www.iea.org/reports/oil-market-report-july-2026"}
+        {"name": "Motley Fool", "url": "https://www.fool.com/investing/2026/09/26/anthropic-s-ipo-was-just-delayed-to-november-here-s-the-one-number-that-has-me-even-more-excited/"},
+        {"name": "crypto.news", "url": "https://crypto.news/anthropic-targets-november-ipo/"},
+        {"name": "Forbes", "url": "https://www.forbes.com/sites/kristinmckenna/2026/09/22/anthropic-ipo-why-employees-may-have-to-decide-how-to-sell-before-they-can/"}
       ]
     },
     {
       "priority": "high",
-      "headline": "Big Tech earnings put the AI capex bet on trial",
-      "one_liner": "Meta and Microsoft beat estimates Wednesday night; Apple and Amazon report today, with investors demanding proof that $725 billion in combined 2026 AI spending is paying off.",
-      "detail": "Meta posted Q2 revenue of $60.8 billion, beating the Street's $60.22 billion estimate on 27% year-over-year growth, and Microsoft reported alongside it Wednesday evening with Azure growth the key metric investors watched (the bar was holding above 31% constant-currency growth). Apple and Amazon report today; Apple is expected to post EPS of $1.89 (up 20.4%) on revenue near $109 billion, with iPhone sales and Services growth the focus.\n\nThe underlying tension, as Fortune put it, is a market 'in revolt' over AI spending: Amazon, Alphabet, Meta, and Microsoft together are on pace for roughly $725 billion in 2026 capex, a 77% jump from last year, and Wall Street's patience for spending without matching profitability is visibly thinning. Benzinga framed the 48-hour earnings window as one that 'could redefine the AI trade' — a sign that these four reports are being read as a referendum on the entire AI infrastructure buildout, not just single-company performance.\n\nThis lands the same week the Fed held rates and equities sold off, so the earnings reaction is happening against an already jumpy macro backdrop rather than in isolation.\n\nWatch for: Apple and Amazon's after-hours moves today; any commentary on 2027 capex guidance, which markets will parse for signs of AI spending discipline (or the lack of it).",
-      "sector": "Applied Tech & Industry",
+      "headline": "Trump-Xi state visit ends with trade truce extension, little else",
+      "one_liner": "Three days of pageantry in Washington produced a two-month trade truce extension but no movement on AI, export controls, or cyber — the issues that actually define the US-China relationship.",
+      "detail": "Xi Jinping's state visit to Washington, September 23-25, was the first in eleven years and closed with tea at the White House and a National Archives tour. The tangible output was an extension of the existing trade truce into the new year, plus mutual acknowledgment that the two sides might cooperate on containing AI risks — vague language with no enforcement mechanism attached. Bloomberg and CNN both characterized the summit as heavy on symbolism and light on substance, noting it left the hardest issues — AI competition, cyber operations, export controls, and digital sovereignty — untouched.\n\nThe timing is notable: it came right after Xi's BRICS appearance in New Delhi (September 12-13), part of a broader diplomatic tour to shore up China's position ahead of the US meeting. Meanwhile, Taiwan tensions continued in parallel — a Chinese military drone transited Taiwan's southwestern ADIZ on September 18, prompting Taiwanese air, naval and missile-unit responses, and Taiwan ran combined drone/missile live-fire exercises the same week. Beijing's own think tanks reportedly rank Taiwan tensions as China's top geopolitical risk for 2026.\n\nDivergent takes: CNN's analysis argues China is "just fine" with a substance-light outcome because it buys time without concessions; CSIS framing treats the truce extension as the real deliverable, since it forestalls an immediate tariff or export-control escalation. Watch for whether the truce holds past its new expiration, and whether Nvidia's chip-diversion controversy (GB300 compute allegedly reaching Chinese firms via Thailand-based facilities) becomes a flashpoint that unravels the détente.",
+      "sector": "Geopolitics",
       "sources": [
-        {"name": "Fortune", "url": "https://fortune.com/2026/07/26/big-tech-earnings-meta-microsoft-apple-amazon-market-revolt-ai-spending/"},
-        {"name": "Benzinga", "url": "https://www.benzinga.com/Opinion/26/07/60738619/apple-microsoft-meta-amazon-earnings-why-the-next-48-hours-could-redefine-the-ai-trade"},
-        {"name": "TipRanks", "url": "https://www.tipranks.com/news/msft-amzn-meta-aapl-will-report-results-this-week-heres-what-to-expect"}
+        {"name": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-09-25/trump-xi-summit-goes-big-on-pomp-but-small-on-substance"},
+        {"name": "CNN", "url": "https://www.cnn.com/2026/09/25/world/xi-dc-trump-analysis-intl-hnk"},
+        {"name": "CNBC", "url": "https://www.cnbc.com/2026/08/19/china-ai-nvidia-chips-us-export-controls.html"}
       ]
     },
     {
       "priority": "high",
-      "headline": "Fed holds rates on a 9-3 split as internal revolt over inflation grows",
-      "one_liner": "Three regional presidents dissented against holding rates steady, arguing inflation stuck above target for five years demands action — and markets sold off hard on the outcome.",
-      "detail": "The FOMC voted 9-3 to hold its benchmark rate at 3.5%-3.75%, with Cleveland's Beth Hammack, Minneapolis's Neel Kashkari, and Dallas's Lorie Logan all dissenting over inflation that has now run above the Fed's 2% target for more than five years. Chair Kevin Warsh has been pushing to give markets fewer forward signals, and Wednesday's statement was notably shorter than the norm under the prior chair.\n\nMarkets did not take it well: the Dow fell more than 840 points (1.6%), the S&P 500 dropped 0.6%, and the Nasdaq slipped 0.5%. Bond markets showed a bear-steepening move — the 10-year yield rose 5bp to 4.657% and the 30-year jumped over 9bp to 5.193%, while the 2-year actually fell 4bp, suggesting investors are pricing near-term policy uncertainty alongside longer-run inflation risk.\n\nCNBC's coverage frames the three-way dissent as historically unusual and a signal of real internal division at the Fed, not just noise — worth watching heading into the September meeting, especially with oil prices volatile from the Hormuz conflict feeding directly into headline inflation.\n\nWatch for: how Friday's PCE inflation print (released today, covering June data) shapes expectations for September; any further public comments from the dissenting presidents.",
+      "headline": "Fed hikes to 3.75%-4.00%, first increase since 2023, as oil surges and yields stay elevated",
+      "one_liner": "A surprise Fed hike, oil up 20% for the month, and 10-year yields near 4.94% together are squeezing equities just as markets await a record-size Anthropic IPO.",
+      "detail": "The Fed's September meeting concluded with the first rate hike since 2023, moving the target range to 3.75%-4.00%. Equities have wobbled since: the Dow, S&P 500 and Nasdaq have each pulled back roughly 0.3-0.6% in recent sessions, with the S&P sitting about 2% below its record high. West Texas Intermediate crude has surged to roughly $103/barrel, up 20% month-to-date, adding an inflation-adverse input just as the Fed signals it's still fighting price pressures rather than cutting.\n\nThe 10-year Treasury yield near 4.94% reflects markets pricing in a tighter-for-longer path, with some reports flagging the Bank of Japan as a second source of hawkish surprise this cycle. This combination — hawkish Fed, oil spike, elevated long yields — is the classic setup that squeezes equity multiples, and it lands awkwardly ahead of a wave of mega-cap AI capital raises (Anthropic's targeted $100 billion IPO, continued hyperscaler capex).\n\nWhat to watch this week: any Fed speaker commentary hinting at pace of further hikes versus a pause, oil price follow-through, and whether the rally in AI-adjacent names (Nvidia, hyperscalers) can decouple from the broader risk-off tone in rates.",
       "sector": "Markets",
       "sources": [
-        {"name": "CNBC", "url": "https://www.cnbc.com/2026/07/29/fed-rate-decision-july-2026.html"},
-        {"name": "CNBC", "url": "https://www.cnbc.com/2026/07/29/fed-meeting-today-live-updates.html"}
+        {"name": "CNBC", "url": "https://www.cnbc.com/2026/09/14/the-stock-market-could-do-something-strange-this-week-after-the-fed-decision.html"},
+        {"name": "Kiplinger", "url": "https://www.kiplinger.com/investing/live/fed-meeting-updates-and-commentary-september-2026"},
+        {"name": "CNBC", "url": "https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html"}
       ]
     },
     {
       "priority": "high",
-      "headline": "EU orders Google to open Android and search data to AI rivals",
-      "one_liner": "Brussels issued two binding Digital Markets Act orders forcing Google to let rival AI assistants plug into Android and to share anonymized search data with competing engines and chatbots.",
-      "detail": "The European Commission handed down two legally binding DMA orders on July 16. The first forces Google to open 11 Android features — including the kind of deep system integration 'Hey Google' currently has exclusively — to rival AI assistants by July 2027, letting competitors respond to voice commands, act inside apps, and draw on recent user activity. The second requires Google to share anonymized search data with eligible rival search engines and AI chatbots with search functions, starting January 2027.
-
-Google's Kent Walker pushed back hard, arguing the decisions 'risk undermining vital privacy and security guardrails for millions of Europeans' — a framing that previews the legal fight to come. This is Brussels' most aggressive AI-specific intervention yet under the DMA, following Google's unsuccessful appeal earlier this month of a separate €4.1 billion antitrust fine.
-
-The move is part of a broader pattern of the EU using existing competition tools (DMA, not the AI Act) to reshape AI market structure directly, rather than waiting on AI-specific rulemaking — a contrast with the US, where the White House's March National Policy Framework leans toward federal preemption of state AI rules rather than structural remedies.
-
-Watch for: Google's formal appeal; whether rival AI assistants (Microsoft Copilot, Perplexity, etc.) move quickly to exploit the new access once technical specs are published.",
-      "sector": "AI Regulation & Governance",
+      "headline": "Government funded through Dec. 11 stopgap, but underlying fight just deferred past midterms",
+      "one_liner": "Trump signed a CR that averted an October 1 shutdown, but lawmakers on both sides openly admit they're just pushing the fight past November's midterm elections.",
+      "detail": "The House passed a continuing resolution 370-48 in early September, funding the government through December 11, and Trump signed it into law September 2, avoiding a shutdown that would otherwise have started October 1. The bill includes a provision temporarily blocking an OMB rule that would have put federal grant funding under political-appointee review, and language preventing the administration from redirecting other program funds to Border Patrol.\n\nThe deal doesn't resolve the disputes that caused two separate shutdowns earlier in 2026 — it simply moves the fight to mid-December, safely past the midterms. That sets up a potentially higher-stakes funding cliff right before the holidays, with both parties now positioned to use the December deadline as leverage depending on midterm outcomes.\n\nWhat to watch: whether appropriators use the reprieve to actually negotiate FY2027 top-line numbers, or whether this becomes another brinkmanship cycle in December once election results are in.",
+      "sector": "US Policy & Power",
       "sources": [
-        {"name": "Global Competition Review", "url": "https://globalcompetitionreview.com/article/eu-orders-google-open-android-rival-ai-providers"},
-        {"name": "SiliconANGLE", "url": "https://siliconangle.com/2026/07/16/eu-orders-google-share-search-data-rivals-broaden-android-feature-access/"}
+        {"name": "Nextgov/FCW", "url": "https://www.nextgov.com/policy/2026/09/shutdown-threat-lifted-house-passes-stopgap-spending-bill/415755/"},
+        {"name": "Government Executive", "url": "https://www.govexec.com/management/2026/09/shutdown-threat-lifted-house-passes-stopgap-spending-bill/415753/"}
       ]
     },
     {
       "priority": "tracking",
-      "headline": "Frontier lab employees push for an AI 'pacing' mechanism as Oracle guts staff to fund Stargate",
-      "one_liner": "Over 1,100 employees at OpenAI, Anthropic, Google, and Meta signed a letter asking Washington to help build a coordinated AI slowdown mechanism, while Oracle cuts up to 30,000 jobs to bankroll its AI buildout.",
-      "detail": "More than 1,100 employees across the major frontier labs signed an open letter circulated July 28 asking the US government to help build the technical and governance infrastructure for a verifiable, coordinated pacing mechanism — essentially an off-ramp if AI capability advances faster than safe oversight can keep up. It's a notable break from labs' usual posture of racing each other, and comes as commentators describe July as the month AI safety 'went operational' — moving from papers and conferences into security alliances and actual governance proposals.
-
-Separately, Oracle's layoffs (up to 30,000 people, roughly 18% of its global workforce) are entering their final phase, with the company reportedly redirecting $8-10 billion in freed-up annual cash flow toward its $500 billion Stargate commitment alongside OpenAI and SoftBank. Safra Catz has described it internally as a 'generational reallocation of capital from people-intensive consulting... toward GPU-intensive AI infrastructure.' Google's Gemini 3.5 Pro has also reportedly missed its release target for a third time, an uncomfortable data point for a company simultaneously fighting the EU over AI market access.
-
-Taken together, these are early signals of AI-industry strain: labor displacement inside the labs building the technology, safety anxiety among the people closest to it, and product delays even at well-resourced players.
-
-Watch for: any government response to the pacing letter; further Oracle workforce disclosures; a Gemini 3.5 Pro release date.",
-      "sector": "Frontier Tech / AI",
+      "headline": "Russia intensifies drone strikes as Ukraine advances near Slovyansk",
+      "one_liner": "Kyiv faced near-continuous drone barrages over the weekend even as Ukrainian forces reportedly make ground gains, suggesting Putin is leaning harder on long-range strikes to grind out a winter war of attrition.",
+      "detail": "Russia launched roughly 173 drones (50 jet-powered Shaheds) against Ukraine overnight September 25-26, following 162 the night before, killing at least four and triggering five separate air-raid alert periods in Kyiv on September 26 alone. ISW's latest assessment notes Ukrainian forces have advanced east of Slovyansk and in western Zaporizhia Oblast, while Ukraine struck a Russian oil refinery in Krasnodar Krai plus military-industrial and energy targets and an air-defense system inside Russia.\n\nISW's read is that Ukraine's battlefield successes this year may be forcing Putin to abandon hopes of a ground breakthrough and instead rely on the winter strike campaign against energy infrastructure to coerce a surrender — a strategy shift rather than a sign of Russian confidence.\n\nWhat to watch: whether Western air-defense supplies keep pace with the intensified drone tempo, and whether Ukraine's cross-border refinery strikes escalate into a broader energy-infrastructure exchange going into winter.",
+      "sector": "Defense & Security",
       "sources": [
-        {"name": "BuildFastWithAI", "url": "https://www.buildfastwithai.com/blogs/ai-news-today-july-29-2026"},
-        {"name": "TechTimes", "url": "https://www.techtimes.com/articles/317527/20260601/oracles-30000-layoffs-enter-final-phase-sign-release-forfeit-severance.htm"}
+        {"name": "Kyiv Post (ISW)", "url": "https://www.kyivpost.com/post/85489"},
+        {"name": "WSLS/AP", "url": "https://www.wsls.com/news/world/2026/09/26/7-dead-as-russia-ukraine-exchange-strikes-and-aerial-war-intensifies/"}
       ]
     }
   ],
@@ -75,69 +63,68 @@ Watch for: any government response to the pacing letter; further Oracle workforc
     {
       "name": "Frontier Tech / AI",
       "has_news": true,
-      "summary": "1,100+ employees at OpenAI, Anthropic, Google, and Meta signed a letter urging a coordinated AI pacing mechanism; Gemini 3.5 Pro reportedly missed its target again. On the hardware side, quantum computing kept advancing quietly — SaxonQ started taking orders for room-temperature diamond NV-center systems, and Hitachi/Intel/AIST launched a project targeting cloud-available 100-qubit silicon quantum computers by 2027."
+      "summary": "Anthropic pushed its IPO to November targeting a $2 trillion valuation, on the back of annualized revenue jumping from ~$9B to ~$65B in under a year. Anthropic also published research showing Claude solving a nine-loop physics amplitude in N=4 super-Yang-Mills theory, while OpenAI shipped GPT-6 Astra and Musk said the Memphis Colossus 2 supercomputer could double its Nvidia chip count by year-end."
     },
     {
       "name": "Applied Tech & Industry",
       "has_news": true,
-      "summary": "Meta and Microsoft beat Q2 estimates Wednesday; Apple and Amazon report today with investors scrutinizing whether $725 billion in combined 2026 AI capex is justified. Oracle's 30,000-person layoff is entering its final phase to fund Stargate, and Meta faces a lawsuit from H-1B employees alleging AI was used to select them for layoffs."
+      "summary": "AI-attributed layoffs continue to spread beyond tech into finance, logistics, and retail, with 2026 running at roughly 837 job losses/day (519 layoff events, 225,000+ workers); Oracle (30,000) remains the largest single 2026 cut as it reallocates spending toward AI chips and data centers. Companies increasingly frame cuts as \"restructuring\" rather than citing AI directly."
     },
     {
       "name": "US Policy & Power",
       "has_news": true,
-      "summary": "The Fed held rates steady on an unusual 9-3 vote with three regional presidents dissenting over persistent above-target inflation, triggering a sharp equity selloff. Congress continues working through the White House's March National Policy Framework recommendations for federal AI preemption, and the Senate faces decisive votes on the CLARITY Act crypto market-structure bill before the August recess."
+      "summary": "A stopgap CR signed September 2 funds the government through December 11, averting an October 1 shutdown but deferring the underlying fight past the midterms. Congress separately let the CLARITY Act crypto market-structure bill stall on a failed September 15 Senate cloture vote."
     },
     {
       "name": "AI Regulation & Governance",
       "has_news": true,
-      "summary": "The EU issued binding DMA orders forcing Google to open Android to rival AI assistants and share search data with competitors, drawing a sharp objection from Google over privacy. In the US, the AI policy layer remains executive-action-driven rather than statutory, with the White House framework prioritizing preemption of state AI laws."
+      "summary": "Trump and Xi's summit produced only vague language on cooperating to contain AI risks, with no concrete framework. Reports say three major AI labs are moving to build a joint industry standards body, while U.S. export-control enforcement continues targeting suspected chip diversion to Chinese firms via Southeast Asian data centers."
     },
     {
       "name": "Geopolitics",
       "has_news": true,
-      "summary": "The US-Iran conflict over the Strait of Hormuz has reignited after a brief ceasefire collapsed, with strikes, a naval blockade, and shipping traffic down more than 70%. Separately, China's military buildup and permanent coast guard patrols east of Taiwan continue to shift the cross-Strait balance, while Taiwan's own $6.5B drone budget is stalled by opposition lawmakers."
+      "summary": "The Trump-Xi state visit (Sept 23-25) extended the US-China trade truce but left AI, cyber, and export-control disputes unresolved. Taiwan saw a Chinese military drone incursion on September 18 and ran combined drone/missile live-fire drills; Gaza's ceasefire remains fragile with continued Israeli strikes and Israel now controlling roughly 60% of the territory."
     },
     {
       "name": "China",
       "has_news": true,
-      "summary": "China's Q2 GDP growth slowed to 4.3%, missing forecasts and marking the weakest quarterly pace in three years, even as trade data stayed strong (H1 trade up 16.9% y/y, June surplus $125.6B). Taiwanese prosecutors are also investigating an alleged $22 million Nvidia chip-smuggling scheme into China, underscoring continued chip-decoupling enforcement pressure."
+      "summary": "Beijing's diplomatic push (BRICS summit in New Delhi, then the DC state visit) aimed to shore up leverage ahead of talks with Washington; analysts at CNN and Bloomberg say China is comfortable with a substance-light outcome that buys time without concessions. Chinese cyber intrusion attempts against Taiwan's networks reportedly run over 2.6 million per day."
     },
     {
       "name": "Markets",
       "has_news": true,
-      "summary": "Stocks sold off sharply after the Fed's divided rate hold — Dow down 1.6%, S&P 500 down 0.6% — with a bear-steepening move in Treasuries. Big Tech earnings (Meta and Microsoft beat; Apple, Amazon reporting today) are the other major swing factor for markets this week, alongside oil price volatility tied to the Hormuz conflict."
+      "summary": "The Fed raised rates to 3.75%-4.00% in September, its first hike since 2023; equities have since pulled back modestly (S&P ~2% off record highs) while oil surged to ~$103/barrel (+20% month-to-date) and the 10-year yield sits near 4.94%, an uncomfortable combination for risk assets."
     },
     {
       "name": "Digital Finance",
       "has_news": true,
-      "summary": "US regulators (FinCEN, Fed, OCC, FDIC, NCUA) jointly proposed bank-grade KYC rules for stablecoin issuers under the GENIUS Act's July rulemaking deadline, and the CLARITY Act crypto market-structure bill faces decisive Senate votes before the August recess. The UK's Bank of England is separately consulting on a Code of Practice for systemic sterling stablecoins."
+      "summary": "The Federal Reserve opened public comment on new stablecoin issuer rules covering reserves and holder protections; SoFi and Mastercard launched a stablecoin settlement system on September 25; the CFTC now allows payment stablecoins as margin collateral under the GENIUS Act, while the CLARITY Act market-structure bill stalled in the Senate."
     },
     {
       "name": "Energy",
       "has_news": true,
-      "summary": "Oil prices remain highly volatile on the Hormuz conflict, swinging from near $70/barrel in early July back up toward $98 as strikes resumed; global supply is still roughly 9.4 mb/d below pre-war levels despite a partial Gulf production recovery. US gasoline prices are forecast to ease to $3.80/gallon in Q3 as the broader energy mix adds nuclear, wind, and solar capacity."
+      "summary": "U.S. data center electricity demand has surged from 23 GW (2023) to 42 GW (2026), leaving nearly half of planned 2026 AI data centers delayed and a 7 GW gap bottlenecking roughly $650 billion in hyperscaler capex. Microsoft, Amazon and Google are increasingly signing direct 20-year nuclear PPAs and backing SMR startups to bypass grid constraints; Microsoft's Three Mile Island Unit 1 restart with Constellation remains on track for 2027."
     },
     {
       "name": "Defense & Security",
       "has_news": true,
-      "summary": "The US and Iran are back in active conflict over the Strait of Hormuz after their ceasefire collapsed, with CENTCOM confirming a reinstated blockade has stopped 18 ships from Iranian ports and shipping transits down more than 70%. Trump has floated the US taking direct control of the strait rather than merely guaranteeing safe passage."
+      "summary": "Russia intensified drone bombardment of Ukraine (173 drones overnight Sept 25-26) while Ukraine advanced near Slovyansk and struck Russian energy/refinery and military-industrial targets; ISW assesses Putin may be pivoting to a winter strike campaign after battlefield setbacks. Separately, cybersecurity coverage this week focused on AI-assisted attacks, autonomous-agent probing of websites, and continued fallout from the Salt Typhoon telecom breach driving new congressional cyber rules."
     },
     {
       "name": "Labor & Workforce",
       "has_news": true,
-      "summary": "AI-driven layoffs are accelerating in finance and information sectors (roughly 28,000 jobs/month), and Meta faces a lawsuit from 26 H-1B employees alleging AI was used to select them for this year's cuts, with four already winning partial relief from deportation risk. USCIS has already exhausted its 2026 H-1B allocation even as layoffs continue at major tech firms."
+      "summary": "AI-attributed layoffs (see Applied Tech & Industry) continue at a pace of roughly 837 jobs/day in 2026, hitting repetitive/rules-based roles hardest (customer service, data entry, content writing) while demand stays strong for ML infrastructure, AI safety, and applied-judgment roles."
     }
   ],
   "week_ahead": [
-    {"day": "Thu 30", "event": "Apple and Amazon report Q3 FY26 earnings after market close, capping Big Tech earnings week", "tag": "earnings"},
-    {"day": "Thu 30", "event": "Core PCE inflation report released — the Fed's preferred inflation gauge, closely watched after this week's divided rate hold", "tag": "data"},
-    {"day": "Fri 31", "event": "Continued fallout trading from Big Tech earnings and Fed decision; month-end positioning", "tag": "data"},
-    {"day": "This week", "event": "Senate expected to take decisive votes on the CLARITY Act crypto market-structure bill before the August recess", "tag": "policy"},
-    {"day": "This week", "event": "Federal agencies continue GENIUS Act stablecoin rulemaking (KYC, reserve, and licensing rules for issuers) past the July 18 statutory deadline", "tag": "policy"},
-    {"day": "Ongoing", "event": "Watch for further US strikes or Iranian retaliation in the Strait of Hormuz; shipping transit volume remains down over 70%", "tag": "defense"},
-    {"day": "Ongoing", "event": "Taiwan's legislature remains deadlocked over the $6.5B special drone-procurement budget after opposition lawmakers blocked committee review", "tag": "defense"},
-    {"day": "Mon 3", "event": "ISM Manufacturing PMI for July due", "tag": "data"},
-    {"day": "Tue 4", "event": "JOLTS job openings report due, another read on labor market cooling after weak recent payroll prints", "tag": "data"},
-    {"day": "Fri 7", "event": "July nonfarm payrolls (jobs report) due — critical given signs of labor market deterioration and AI-linked layoffs", "tag": "critical"}
+    {"day": "Sun 27", "event": "Continued fallout from Trump-Xi summit; markets digest trade-truce extension terms", "tag": "policy"},
+    {"day": "Mon 28", "event": "Federal Reserve stablecoin-rule comment period activity continues; further reaction to September Fed hike", "tag": "policy"},
+    {"day": "Tue 29", "event": "Ongoing Russia-Ukraine drone exchanges expected to continue nightly as winter strike campaign escalates", "tag": "defense"},
+    {"day": "Wed 30", "event": "Month-end/quarter-end positioning in equities and oil markets ahead of October data releases", "tag": "data"},
+    {"day": "Thu 1", "event": "Congress and White House monitor implementation of stopgap funding measure ahead of December 11 deadline", "tag": "policy"},
+    {"day": "Fri 2", "event": "BLS Employment Situation report (September nonfarm payrolls and unemployment rate)", "tag": "data"},
+    {"day": "Fri 2", "event": "Continued scrutiny of Anthropic's IPO preparations ahead of November listing target", "tag": "tech"},
+    {"day": "Ongoing", "event": "Gaza ceasefire monitoring amid continued Israeli strikes and disputes over territorial control lines", "tag": "other"},
+    {"day": "Ongoing", "event": "Taiwan Strait activity watched following recent Chinese drone incursions and Taiwanese live-fire exercises", "tag": "defense"}
   ]
 }

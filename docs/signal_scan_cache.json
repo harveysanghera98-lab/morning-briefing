@@ -1,15 +1,15 @@
 {
-  "date": "2026-08-03",
+  "date": "2026-09-27",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
       "handle": "@leopoldasch",
-      "source": "mixed",
-      "signal": "strong",
-      "latest_title": "Situational Awareness fund forced to unwind AI stock positions after margin calls",
-      "url": "https://www.bloomberg.com/news/articles/2026-07-30/who-is-leopold-aschenbrenner-the-ai-investor-wall-street-is-watching",
-      "summary": "Reporting from July 30-31 describes Aschenbrenner's AI-focused hedge fund (previously valued over $20B) selling off a large chunk of its public AI equities after a sharp selloff triggered margin calls, forcing an unwind of concentrated bets.",
-      "connection": "Directly bears on the OpenAI/Anthropic IPO race and broader AI-market froth narrative \u2014 a prominent AI-maximalist investor getting forced out of positions is a notable data point on whether frontier-AI conviction trades are cracking."
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Dan Wang",
@@ -35,21 +35,21 @@
       "name": "Stanley Druckenmiller",
       "handle": "",
       "source": "mixed",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "strong",
+      "latest_title": "Billionaire Stanley Druckenmiller Warns of an AI Earnings Bubble as Financing Costs Rise",
+      "url": "https://ceoworld.biz/2026/09/27/billionaire-stanley-druckenmiller-warns-of-an-ai-earnings-bubble-as-financing-costs-rise/",
+      "summary": "Druckenmiller warned that AI infrastructure spending can generate exceptional supplier profits without guaranteeing they endure, and flagged rising financing/borrowing costs underneath the AI capex boom.",
+      "connection": "Directly feeds the rate-hike-odds/shutdown/jobs-week story and the broader Markets and Digital Finance concern about AI-driven credit and earnings fragility."
     },
     {
       "name": "Byrne Hobart",
-      "handle": "@byrnehobart",
-      "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "handle": "@ByrneHobart",
+      "source": "mixed",
+      "signal": "light",
+      "latest_title": "Generative video will make it harder to trust random videos",
+      "url": "https://x.com/ByrneHobart/status/1977750321469194674",
+      "summary": "In a recent free issue of The Diff, Hobart argues generative video's rise is actually beneficial because society over-trusts video as a medium and needs to recalibrate.",
+      "connection": "Touches AI Regulation & Governance and trust/verification themes adjacent to today's OpenAI agent-misuse and EU AI Act inspection stories."
     },
     {
       "name": "Michael Burry",
@@ -64,12 +64,12 @@
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
-      "source": "blog",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "2026.39: Begun, the Aggregator Wars Have",
+      "url": "https://stratechery.com/2026/begun-the-aggregator-wars-have/",
+      "summary": "Thompson's week wraps Meta vs. Amazon competitive dynamics, GM's capitulation to Apple CarPlay, and (in a companion piece) how Meta needs Walmart to help it outlast Amazon while Expedia clings to its middleware position and Google's positioning looks increasingly uncertain.",
+      "connection": "Applied Tech & Industry power struggle among platform aggregators, relevant background to how AI-driven commerce and ad platforms are consolidating power under US Policy & Power scrutiny."
     },
     {
       "name": "Paul Graham",
@@ -84,7 +84,7 @@
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "mixed",
+      "source": "newsletter",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -94,17 +94,17 @@
     {
       "name": "Packy McCormick",
       "handle": "@packym",
-      "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Weekly Dose of Optimism #212",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-212",
+      "summary": "McCormick's weekly roundup covers Vironexis, Solcoa, Terraform, Joby, and Meta VR glasses; a companion piece asks whether he'd send his kids to an AI-driven alternative school (HAA), and on X he cheered a stablecoin infrastructure play (Bastion).",
+      "connection": "Optimist counter-read to today's AI/energy/defense anxieties, and the Bastion stablecoin nod ties into Digital Finance."
     },
     {
       "name": "CJ Gustafson",
       "handle": "@cjgus",
-      "source": "x",
+      "source": "newsletter",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -114,22 +114,22 @@
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
+      "url": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
+      "summary": "Molly Graham revisits her career advice for the AI era and argues delegating work to an AI agent is nothing like delegating to a human, amid a broader burnout wave in tech; a companion post also has Lenny's blind taste-test of Opus 5.5 vs. GPT-6 Sol across coding and agentic tasks.",
+      "connection": "Labor & Workforce angle on AI-driven burnout and management, plus a direct Frontier Tech/AI model-comparison data point relevant to the OpenAI agent-misuse story."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
       "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
       "summary": "",
       "connection": ""
-    },
-    {
-      "name": "Andrej Karpathy",
-      "handle": "@karpathy",
-      "source": "x",
-      "signal": "light",
-      "latest_title": "Posts on testing large language models",
-      "url": "https://x.com/karpathy",
-      "summary": "Recent brief posts (one from roughly 13 hours before this search) touching on testing/evaluating LLMs, following an earlier late-July post about working with LLMs through iterative 'ramble' sessions; exact wording wasn't captured in search results.",
-      "connection": "Loosely relevant to the Frontier Tech/AI topic area as commentary on LLM development practice, though not tied to a specific headline today."
     },
     {
       "name": "Ilya Sutskever",
