@@ -23,11 +23,11 @@ name: Morning Briefing
 
 on:
   schedule:
-    # 5:30 AM GMT (UTC+0, Oct–Mar)
-    - cron: '30 5 * * 1-5'
-    # 5:30 AM BST (UTC+1, Mar–Oct)
-    # The "already exists" check in the script prevents the second run doing any work.
-    - cron: '30 4 * * 1-5'
+    # 5:37 AM UK time, weekdays. GitHub cron is best-effort and often drops
+    # jobs at :00/:30, so this is a few minutes after 5:30. timezone: handles
+    # GMT/BST automatically (the old dual UTC crons did not).
+    - cron: '37 5 * * 1-5'
+      timezone: "Europe/London"
 
   # Manual trigger — tick "Force regenerate" to rebuild today's briefing even if it already exists
   workflow_dispatch:

@@ -100,11 +100,8 @@ signal_scan_frequency: "weekly"
 # 5:30 AM Pacific Daylight Time  = 12:30 UTC  (Mar-Nov)
 
 schedule:
-  # Two entries to cover GMT (winter) and BST (summer) — both target 5:30 AM UK time.
-  # GitHub Actions uses UTC. The script skips if today's briefing already exists,
-  # so only the first run each day does any work.
-  cron_gmt: "30 5 * * 1-5"   # 5:30 AM GMT  (Oct–Mar, UTC+0)
-  cron_bst: "30 4 * * 1-5"   # 5:30 AM BST  (Mar–Oct, UTC+1)
+  # GitHub Actions cron lives in .github/workflows/briefing.yml (timezone-aware).
+  cron: "37 5 * * 1-5"       # 5:37 AM UK time, weekdays (GMT in winter, BST in summer)
   timezone: "Europe/London"
 
 
