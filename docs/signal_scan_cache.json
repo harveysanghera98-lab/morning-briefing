@@ -1,15 +1,15 @@
 {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
       "handle": "@leopoldasch",
       "source": "x",
-      "signal": "none",
+      "signal": "light",
       "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "url": "https://finance.yahoo.com/markets/options/articles/back-bigger-ever-24-old-155955118.html",
+      "summary": "Mid-September reports describe Aschenbrenner's fund Situational Awareness re-entering the market via options bets on AI stocks, after unwinding public positions in July following steep losses.",
+      "connection": "Underscores volatility and leverage building up around AI-linked equities as bond yields climb and a Fed hike is priced in."
     },
     {
       "name": "Dan Wang",
@@ -25,31 +25,31 @@
       "name": "Nathan Benaich",
       "handle": "@nathanbenaich",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "strong",
+      "latest_title": "State of AI Report 2026 preview",
+      "url": "https://x.com/nathanbenaich/status/2096786133187457304",
+      "summary": "Previewed the State of AI Report 2026 ahead of an October 8 SF launch and amplified a claim from Jakub Pachocki that current AI progress could sustain into recursive self-improvement, with near-term capability jumps of equal or larger magnitude.",
+      "connection": "Feeds directly into Frontier Tech/AI and AI Regulation & Governance, echoing the caution behind OpenAI's sandbox-escape training halt."
     },
     {
       "name": "Stanley Druckenmiller",
       "handle": "",
       "source": "mixed",
       "signal": "strong",
-      "latest_title": "Billionaire Stanley Druckenmiller Warns of an AI Earnings Bubble as Financing Costs Rise",
-      "url": "https://ceoworld.biz/2026/09/27/billionaire-stanley-druckenmiller-warns-of-an-ai-earnings-bubble-as-financing-costs-rise/",
-      "summary": "Druckenmiller warned that AI infrastructure spending can generate exceptional supplier profits without guaranteeing they endure, and flagged rising financing/borrowing costs underneath the AI capex boom.",
-      "connection": "Directly feeds the rate-hike-odds/shutdown/jobs-week story and the broader Markets and Digital Finance concern about AI-driven credit and earnings fragility."
+      "latest_title": "CNBC: 'war for capital'",
+      "url": "https://www.cnbc.com/2026/09/11/cctv-script-11/09/26.html",
+      "summary": "Described a global 'war for capital' as tech giants' infrastructure buildouts compete with government borrowing, and said he's cut AI-related positions to roughly 20% of where they stood six months ago, citing earnings-bubble risk.",
+      "connection": "Directly relevant to today's bond-yield spike and priced-in Fed hike, and to broader AI-bubble market concerns."
     },
     {
       "name": "Byrne Hobart",
       "handle": "@ByrneHobart",
-      "source": "mixed",
+      "source": "x",
       "signal": "light",
-      "latest_title": "Generative video will make it harder to trust random videos",
-      "url": "https://x.com/ByrneHobart/status/1977750321469194674",
-      "summary": "In a recent free issue of The Diff, Hobart argues generative video's rise is actually beneficial because society over-trusts video as a medium and needs to recalibrate.",
-      "connection": "Touches AI Regulation & Governance and trust/verification themes adjacent to today's OpenAI agent-misuse and EU AI Act inspection stories."
+      "latest_title": "",
+      "url": "https://x.com/ByrneHobart/with_replies",
+      "summary": "September 23 post pushed back on commentary around the Charlie Kirk-adjacent assassination debate, arguing people rarely say which political views they'd abandon if a proponent were killed.",
+      "connection": ""
     },
     {
       "name": "Michael Burry",
@@ -68,43 +68,43 @@
       "signal": "strong",
       "latest_title": "2026.39: Begun, the Aggregator Wars Have",
       "url": "https://stratechery.com/2026/begun-the-aggregator-wars-have/",
-      "summary": "Thompson's week wraps Meta vs. Amazon competitive dynamics, GM's capitulation to Apple CarPlay, and (in a companion piece) how Meta needs Walmart to help it outlast Amazon while Expedia clings to its middleware position and Google's positioning looks increasingly uncertain.",
-      "connection": "Applied Tech & Industry power struggle among platform aggregators, relevant background to how AI-driven commerce and ad platforms are consolidating power under US Policy & Power scrutiny."
+      "summary": "Weekly roundup plus standalone pieces covering Meta vs. Amazon over Muse, GM capitulating to Apple CarPlay, an interview on profiling Mark Zuckerberg, and whether Google is being squeezed out of the platform fight.",
+      "connection": "Core Applied Tech & Industry read on aggregator power struggles reshaping platform competition in the AI era."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "none",
+      "signal": "light",
       "latest_title": "",
-      "url": "",
-      "summary": "",
+      "url": "https://x.com/paulg/status/2101256525519978542",
+      "summary": "Defended Elon Musk's stewardship of X, noting the press had wrongly predicted the platform would collapse after his takeover.",
       "connection": ""
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "newsletter",
-      "signal": "none",
+      "source": "essay",
+      "signal": "light",
       "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "url": "https://www.ben-evans.com/",
+      "summary": "Remains off X/Twitter (moved to Threads); published an essay in early September on AI, tools, and transformation on his personal site.",
+      "connection": "Background context for how AI tools are reshaping work, adjacent to today's Frontier Tech/AI and Labor & Workforce threads."
     },
     {
       "name": "Packy McCormick",
       "handle": "@packym",
-      "source": "mixed",
+      "source": "newsletter",
       "signal": "strong",
       "latest_title": "Weekly Dose of Optimism #212",
       "url": "https://www.notboring.co/p/weekly-dose-of-optimism-212",
-      "summary": "McCormick's weekly roundup covers Vironexis, Solcoa, Terraform, Joby, and Meta VR glasses; a companion piece asks whether he'd send his kids to an AI-driven alternative school (HAA), and on X he cheered a stablecoin infrastructure play (Bastion).",
-      "connection": "Optimist counter-read to today's AI/energy/defense anxieties, and the Bastion stablecoin nod ties into Digital Finance."
+      "summary": "Roundup covering Vironexis, Solcoa, Terraform, Joby, and Meta's VR glasses, alongside a separate piece on what an AI-native school (HAA) would look like.",
+      "connection": "Touches Applied Tech & Industry and Energy via the startup roundup (Terraform, Joby)."
     },
     {
       "name": "CJ Gustafson",
       "handle": "@cjgus",
-      "source": "newsletter",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -118,18 +118,18 @@
       "signal": "strong",
       "latest_title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
       "url": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
-      "summary": "Molly Graham revisits her career advice for the AI era and argues delegating work to an AI agent is nothing like delegating to a human, amid a broader burnout wave in tech; a companion post also has Lenny's blind taste-test of Opus 5.5 vs. GPT-6 Sol across coding and agentic tasks.",
-      "connection": "Labor & Workforce angle on AI-driven burnout and management, plus a direct Frontier Tech/AI model-comparison data point relevant to the OpenAI agent-misuse story."
+      "summary": "Interviewed Molly Graham on burnout, grief, and delegating to AI vs. humans, alongside a Community Wisdom roundup and a blind test pitting Opus 5.5 against GPT-6 Sol on coding and writing tasks.",
+      "connection": "Speaks to Labor & Workforce strain from AI adoption and frontier-model competition (Opus 5.5 vs. GPT-6 Sol)."
     },
     {
       "name": "Andrej Karpathy",
       "handle": "@karpathy",
       "source": "x",
-      "signal": "none",
+      "signal": "strong",
       "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "url": "https://x.com/karpathy/status/2098811935114551617",
+      "summary": "Endorsed Dario Amodei's essay arguing the AI industry should slow down, saying he hopes the industry can 'come together' on it; separately discussed a Sequoia Ascent fireside on LLMs enabling new categories of bespoke software.",
+      "connection": "Directly connects to AI Regulation & Governance and the frontier-safety debate underscored by OpenAI's sandbox-escape training halt."
     },
     {
       "name": "Ilya Sutskever",
@@ -143,7 +143,7 @@
     },
     {
       "name": "Noam Brown",
-      "handle": "@noambrown",
+      "handle": "@polynoamial",
       "source": "x",
       "signal": "none",
       "latest_title": "",
