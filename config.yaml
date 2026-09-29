@@ -93,15 +93,11 @@ signal_scan_frequency: "weekly"
 
 
 # ── Schedule ──────────────────────────────────────────────────────────────────
-# For reference and GitHub Actions — see .github/workflows/briefing.yml.
-# GitHub Actions uses UTC. Adjust the cron there for your timezone.
-#
-# 5:30 AM Pacific Standard Time  = 13:30 UTC  (Nov-Mar)
-# 5:30 AM Pacific Daylight Time  = 12:30 UTC  (Mar-Nov)
+# The times GitHub actually uses are in .github/workflows/briefing.yml.
+# Each cron there has timezone: Europe/London — your laptop/US travel does not
+# change that. This block is notes only.
 
 schedule:
-  # GitHub Actions cron lives in .github/workflows/briefing.yml (timezone-aware).
-  # Primary 5:07 AM UK weekdays; backups at 5:47, 6:17, 7:07. Avoids :00/:30.
   timezone: "Europe/London"
 
 
