@@ -101,7 +101,7 @@ signal_scan_frequency: "weekly"
 
 schedule:
   # GitHub Actions cron lives in .github/workflows/briefing.yml (timezone-aware).
-  cron: "37 5 * * 1-5"       # 5:37 AM UK time, weekdays (GMT in winter, BST in summer)
+  # Primary 5:07 AM UK weekdays; backups at 5:47, 6:17, 7:07. Avoids :00/:30.
   timezone: "Europe/London"
 
 

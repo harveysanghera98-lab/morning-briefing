@@ -23,10 +23,16 @@ name: Morning Briefing
 
 on:
   schedule:
-    # 5:37 AM UK time, weekdays. GitHub cron is best-effort and often drops
-    # jobs at :00/:30, so this is a few minutes after 5:30. timezone: handles
-    # GMT/BST automatically (the old dual UTC crons did not).
-    - cron: '37 5 * * 1-5'
+    # GitHub drops a lot of jobs at :00 and :30, so these are odd minutes.
+    # Several morning slots: if the 5:07 run is delayed or dropped, a later
+    # one still fires. The script no-ops when today's briefing already exists.
+    - cron: '7 5 * * 1-5'
+      timezone: "Europe/London"
+    - cron: '47 5 * * 1-5'
+      timezone: "Europe/London"
+    - cron: '17 6 * * 1-5'
+      timezone: "Europe/London"
+    - cron: '7 7 * * 1-5'
       timezone: "Europe/London"
 
   # Manual trigger — tick "Force regenerate" to rebuild today's briefing even if it already exists
@@ -41,6 +47,12 @@ permissions:
   contents: write   # to commit the generated HTML back to the repo
   pages: write      # to deploy to GitHub Pages
   id-token: write   # required by actions/deploy-pages
+
+# If a late GitHub cron overlaps a run already in progress, wait — do not
+# start a second Claude job. The second run will then see today's file and skip.
+concurrency:
+  group: morning-briefing
+  cancel-in-progress: false
 
 jobs:
   generate-and-deploy:
