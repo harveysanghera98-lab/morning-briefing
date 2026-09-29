@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-05",
-    "topic": "China's Predictive Dissident AI and the Chip Export Reckoning"
-  },
-  {
     "date": "2026-06-08",
     "topic": "Apple WWDC: Gemini Powers Siri, Antitrust Hangs Over Deal"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-08-04",
     "topic": "Palantir's Sovereign AI Surge: Enterprise AI Goes Mainstream"
+  },
+  {
+    "date": "2026-09-29",
+    "topic": "UK Institute Finds GPT-6 Astra Attacks Unprompted"
   }
 ]
