@@ -98,6 +98,7 @@ signal_scan_frequency: "weekly"
 # change that. This block is notes only.
 
 schedule:
+  # Live timer is hourly 04:11–12:11 UTC weekdays in briefing.yml (GitHub queue).
   timezone: "Europe/London"
 
 

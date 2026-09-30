@@ -23,25 +23,23 @@ name: Morning Briefing
 
 on:
   schedule:
-    # GitHub drops a lot of jobs at :00 and :30, so these are odd minutes.
-    # Several morning slots: if the 5:07 run is delayed or dropped, a later
-    # one still fires. The script no-ops when today's briefing already exists.
-    - cron: '7 5 * * 1-5'
-      timezone: "Europe/London"
-    - cron: '47 5 * * 1-5'
-      timezone: "Europe/London"
-    - cron: '17 6 * * 1-5'
-      timezone: "Europe/London"
-    - cron: '7 7 * * 1-5'
-      timezone: "Europe/London"
+    # GitHub does not run this repo at the requested 5am. Historically every
+    # schedule event here is dequeued around 09:00–11:00 UTC (late morning /
+    # early afternoon UK), or dropped. Ping hourly 04:11–12:11 UTC weekdays
+    # so whichever slot GitHub actually processes still generates today's page.
+    # Cheap skip below avoids extra Claude calls once the file exists.
+    - cron: '11 4-12 * * 1-5'
 
-  # Manual trigger — tick "Force regenerate" to rebuild today's briefing even if it already exists
   workflow_dispatch:
     inputs:
       force:
         description: 'Force regenerate today even if already exists'
         type: boolean
         default: false
+
+  # External alarm clocks (cron-job.org etc.) can POST this instead of GitHub cron.
+  repository_dispatch:
+    types: [morning-briefing]
 
 permissions:
   contents: write   # to commit the generated HTML back to the repo
@@ -62,33 +60,49 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Fetch full history so we can push back to the same branch
           fetch-depth: 0
 
+      - name: Skip if today's briefing already exists
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          today=$(TZ=Europe/London date +%Y-%m-%d)
+          if [ -f "docs/briefing-${today}.html" ]; then
+            echo "Already generated for ${today}; skipping Claude."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
+        if: steps.gate.outputs.run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.gate.outputs.run == 'true'
         run: pip install -r requirements.txt
 
-      # Claude Code CLI — used when BRIEFING_BACKEND=pro to run generation on the
-      # Pro subscription. Harmless to install even if you stay on the API backend.
       - name: Install Claude Code
+        if: steps.gate.outputs.run == 'true'
         run: npm install -g @anthropic-ai/claude-code
 
       - name: Create output directory
+        if: steps.gate.outputs.run == 'true'
         run: mkdir -p docs
 
       - name: Copy static assets
+        if: steps.gate.outputs.run == 'true'
         run: |
           [ -f setup.html ] && cp setup.html docs/setup.html || true
 
       - name: Generate briefing
+        if: steps.gate.outputs.run == 'true'
         env:
-          # Pro subscription only. Do not pass ANTHROPIC_API_KEY here — the CLI
-          # prefers the API key and will bill (and fail) on console credits.
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           BRIEFING_BACKEND: pro
           BRIEFING_PROFILE: economy
@@ -96,23 +110,21 @@ jobs:
         run: python morning_dashboard_v4.py ${{ github.event.inputs.force == 'true' && '--force' || '' }}
 
       - name: Commit generated files
+        if: steps.gate.outputs.run == 'true'
         run: |
           git config user.name  "Morning Briefing Bot"
           git config user.email "briefing-bot@users.noreply.github.com"
           git add docs/
-          # Only commit if there are actual changes (idempotent on re-runs)
           git diff --staged --quiet || git commit -m "Briefing: $(date -u +%Y-%m-%d)"
           git push
 
-      # ── GitHub Pages deployment ────────────────────────────────────────────
-      # Pages serves from docs/ — the index.html redirect always points to
-      # today's file, so https://<user>.github.io/<repo>/ loads today's briefing.
-
       - name: Upload Pages artifact
+        if: steps.gate.outputs.run == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
 
       - name: Deploy to GitHub Pages
+        if: steps.gate.outputs.run == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
