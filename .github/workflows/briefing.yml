@@ -17,18 +17,16 @@
 #   BRIEFING_BACKEND=api       → API key only (per-token console billing).
 #   BRIEFING_PROFILE=economy   → apply web-search caps + alternate-day deep dive.
 #
-# Manual trigger: Actions tab → Morning Briefing → Run workflow
+#   6. For a reliable 5:07 AM UK run: point cron-job.org (or similar) at
+#      workflow_dispatch. GitHub's own cron is only a late backup.
 
 name: Morning Briefing
 
 on:
+  # Late backup only. GitHub's scheduler for this repo is hours late; do not
+  # use it as the 5am alarm. The skip gate avoids a second Claude call.
   schedule:
-    # GitHub does not run this repo at the requested 5am. Historically every
-    # schedule event here is dequeued around 09:00–11:00 UTC (late morning /
-    # early afternoon UK), or dropped. Ping hourly 04:11–12:11 UTC weekdays
-    # so whichever slot GitHub actually processes still generates today's page.
-    # Cheap skip below avoids extra Claude calls once the file exists.
-    - cron: '11 4-12 * * 1-5'
+    - cron: '11 10 * * 1-5'
 
   workflow_dispatch:
     inputs:
@@ -37,7 +35,6 @@ on:
         type: boolean
         default: false
 
-  # External alarm clocks (cron-job.org etc.) can POST this instead of GitHub cron.
   repository_dispatch:
     types: [morning-briefing]
 

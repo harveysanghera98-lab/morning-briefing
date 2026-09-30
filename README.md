@@ -77,11 +77,22 @@ Everything lives in `config.yaml`. Use the [setup page](./setup.html) to edit it
 
 ## Scheduling reliability
 
-The template includes a `keepalive.yml` workflow that runs on the 1st of every month and makes an empty commit. This prevents GitHub from silently disabling the scheduled workflow, which it does when all recent commits come from the briefing bot rather than a human.
+GitHub's own weekday timer for this repo is hours late or skipped. **Do not rely on it for 5am.**
 
-This runs automatically — no configuration needed.
+The reliable path is a free external ping at **5:07 AM Europe/London, Monday–Friday**:
 
-**For extra reliability:** you can also set up [cron-job.org](https://cron-job.org) (free) to trigger your workflow via the GitHub API instead of relying on GitHub's scheduler. Set it to `POST https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/actions/workflows/briefing.yml/dispatches` with a `Authorization: Bearer YOUR_TOKEN` header and body `{"ref":"main"}`. cron-job.org supports the Europe/London timezone and handles BST/GMT switching automatically.
+1. Create a [fine-grained GitHub token](https://github.com/settings/personal-access-tokens/new) limited to this repo, with **Actions: Read and write** and **Contents: Read**. Do not paste the token into chat.
+2. At [cron-job.org](https://cron-job.org), create a job:
+   - URL: `https://api.github.com/repos/harveysanghera98-lab/morning-briefing/actions/workflows/briefing.yml/dispatches`
+   - Method: **POST**
+   - Header `Authorization`: `Bearer YOUR_TOKEN`
+   - Header `Accept`: `application/vnd.github+json`
+   - Body: `{"ref":"main"}`
+   - Timezone: **Europe/London**, **05:07**, weekdays
+
+That fires **one** Claude Pro run. The workflow skips if today's page already exists. GitHub still has a late **10:11 UTC** backup in case the ping fails.
+
+Keepalive.yml still runs monthly so GitHub does not disable Actions after 60 quiet days.
 
 ---
 

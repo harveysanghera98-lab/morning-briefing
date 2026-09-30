@@ -98,7 +98,8 @@ signal_scan_frequency: "weekly"
 # change that. This block is notes only.
 
 schedule:
-  # Live timer is hourly 04:11–12:11 UTC weekdays in briefing.yml (GitHub queue).
+  # 5:07 AM UK comes from an external ping (cron-job.org), not GitHub cron.
+  # GitHub only keeps a 10:11 UTC weekday backup in briefing.yml.
   timezone: "Europe/London"
 
 
