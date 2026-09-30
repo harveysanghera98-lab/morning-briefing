@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-29",
+  "date": "2026-09-30",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -26,15 +26,15 @@
       "handle": "@nathanbenaich",
       "source": "x",
       "signal": "light",
-      "latest_title": "Post on opaque maths solutions and the State of AI Report 2026 (launching Oct 8)",
+      "latest_title": "Post on AI solving long-unsolved math problems / State of AI Report 2026 teaser",
       "url": "https://x.com/nathanbenaich",
-      "summary": "Around Sep 26-27 he argued that jumping to a maths solution in an opaque way could deprive us of knowledge humans might have discovered, and said he will cover this in the State of AI report. He also congratulated Enveda on its $311M Series E and said the report launches Oct 8.",
-      "connection": "The opaque-reasoning point bears on today's AI safety and governance stories, including OpenAI holding back a model and the UK AISI findings on attack behavior. The Enveda round is a sign of continued capital flowing into AI-driven science."
+      "summary": "Commented that a solution to a problem unsolved for 200 years is better today than in 10 more years, and hinted at more to say in the upcoming State of AI Report 2026 (launch meetup Oct 8 in SF).",
+      "connection": "Ties to the frontier AI capability story and the Anthropic IPO and AI-governance news, since the State of AI report will likely frame the state of the field."
     },
     {
       "name": "Stanley Druckenmiller",
       "handle": "",
-      "source": "",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -58,33 +58,33 @@
       "signal": "strong",
       "latest_title": "Trading Post September 28, 2026",
       "url": "https://michaeljburry.substack.com/p/trading-post-september-28-2026",
-      "summary": "Burry said new weekend research has him moving his timelines up, and that the AI bubble may burst sooner than he first thought. He is repositioning into puts and has added shorts in Micron, Nebius, Palantir and the iShares Semiconductor ETF (per reporting on his posts).",
-      "connection": "He is bearish on AI while AMD is paying $8.2B for World Labs. A 10-year yield near 5.2% and oil rising on Hormuz tensions add to the pressure on richly valued AI and semiconductor names."
+      "summary": "Reports big action in his big shorts as his research progresses, plus a few new buys, and is moving up his timelines. Earlier in the week he compared AI capex to past capital-cycle bubbles and flagged roughly $900B of off-balance-sheet AI commitments at Alphabet.",
+      "connection": "A bearish counterpoint to the Anthropic $2T+ IPO valuation leak and to AI-capex enthusiasm, at a time of multi-decade-high Treasury yields after the Fed hike."
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "Apps, Agents, and Aggregation",
-      "url": "https://stratechery.com/2026/apps-agents-and-aggregation/",
-      "summary": "He argues that agents are the ultimate Aggregators, which makes apps a means rather than an end, and that providing them is tech's biggest prize. His weekly roundup (Sep 25) covers the Meta vs. Amazon aggregator fight and GM giving in to CarPlay. He also interviewed Colossus EIC Jeremy Stern about profiling Zuckerberg.",
-      "connection": "This is the strategic frame for the AI platform race, including the AMD/World Labs deal. It also ties to the frontier labs' agent capabilities, which are the same ones behind the cyber-risk concerns at OpenAI and UK AISI."
+      "latest_title": "OpenAI Dev Day, Dot and OpenAI's Product Transition, Sign In With ChatGPT",
+      "url": "https://stratechery.com/2026/openai-dev-day-dot-and-openais-product-transition-sign-in-with-chatgpt/",
+      "summary": "Says OpenAI's Dev Day showed a confusing product with more vision than it first appears. Earlier pieces argued agents are the ultimate Aggregators that reduce apps to a means, and that Meta should chase consumer agents rather than the enterprise.",
+      "connection": "Frames the platform competition among AI labs behind the Anthropic IPO valuation and the frontier-lab safety pledge."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "Posts on college and startups, and on .com vs .ai domains",
+      "url": "https://x.com/paulg",
+      "summary": "Warned founders not to start a startup expecting to go to college, or back, afterward, because the two paths are incompatible. Also said a better .com is always available for about $5k than the .ai name a startup is using.",
+      "connection": "Loosely related to AI-startup culture and the frenzy around AI valuations."
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "essay",
+      "source": "newsletter",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -98,28 +98,28 @@
       "signal": "strong",
       "latest_title": "Airbound: As We May Move",
       "url": "https://www.notboring.co/p/airbound-as-we-may-move",
-      "summary": "A deep dive on Airbound and humanity's flying future. His Weekly Dose of Optimism #212 (Sep 25) covered Vironexis, Solcoa, Terraform, Joby and Meta VR glasses. He also wrote on the future of education in \"Would We Send Our Kids to HAA?\"",
-      "connection": "This is an optimistic counterpoint to today's geopolitical and market stress. It matches the Applied Tech & Industry and Energy themes: hard-tech startups, aviation, and energy resilience."
+      "summary": "A deep dive on Airbound and the future of personal flight. Also published Weekly Dose of Optimism #212 (Vironexis, Solcoa, Terraform, Joby, Meta VR glasses) and a piece on the future of education.",
+      "connection": "Fits the Applied Tech & Industry and Frontier Tech themes."
     },
     {
       "name": "CJ Gustafson",
       "handle": "@cjgus",
       "source": "newsletter",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "Why Aren't Founders and Boards More Pissed About Day 1 IPO Pops?",
+      "url": "https://www.mostlymetrics.com/",
+      "summary": "Argues founders and boards should be angrier about large first-day IPO pops, which leave money on the table.",
+      "connection": "Relevant to the Anthropic IPO prospectus leak and how a mega-IPO might be priced."
     },
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "How I AI: Jev for beginners + I left Claude for months, Opus 5.5 brought me back + Opus 5.5 vs. GPT-6 Sol bench",
-      "url": "https://www.lennysnewsletter.com/p/how-i-ai-jev-for-beginners-i-left",
-      "summary": "His weekly roundup includes a 26-minute walkthrough of Jev, which returns type-safe structured values instead of text. He calls it the fastest, cheapest classification layer he has put in a pipeline, and says he shipped three projects with it. He also has a Molly Graham episode on grief, loneliness and burnout in tech, and how delegating to AI differs from delegating to people.",
-      "connection": "The Opus 5.5 vs. GPT-6 Sol comparison shows the frontier-model race that OpenAI's withheld model belongs to. The Molly Graham episode connects to the Labor & Workforce theme, on AI's toll on tech workers."
+      "latest_title": "All of the Lenny & Friends Summit talks are now online!",
+      "url": "https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit",
+      "summary": "Published all the summit talks with reflections and takeaways. His How I AI episode says Opus 5.5 brought him back to Claude after months away, includes an Opus 5.5 vs GPT-6 Sol benchmark, and covers Jev, a tool that returns type-safe structured values as a cheap classification layer.",
+      "connection": "Shows real-world practitioner momentum for Anthropic's models, in line with the IPO valuation story."
     },
     {
       "name": "Andrej Karpathy",

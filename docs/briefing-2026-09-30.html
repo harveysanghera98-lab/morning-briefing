@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Wednesday, September 30, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Wednesday, September 30, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">9 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Anthropic IPO prospectus leak puts valuation above $2 trillion</h3>
+          <div class="one-liner">A leaked filing shows how much capital the frontier labs need, and how large their losses are, as OpenAI seeks a $1.4T valuation.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>A leaked Anthropic IPO prospectus reportedly targets a valuation above $2 trillion. It lists about $518 billion in cloud, compute and infrastructure commitments over the next decade. It also shows 2025 revenue of about $4.6 billion against roughly $8 billion in operating losses. Separate search-result summaries say the IPO is expected in November, with Nvidia in talks to take up to $10 billion of it. I could not confirm that from a primary source.</p>
+<p>Bloomberg reportedly says OpenAI is seeking $30 billion at a $1.4 trillion pre-money valuation, with annualized revenue above $40 billion and growth of about 70% since July. Other summaries put the revenue figure higher, at roughly $70 billion, so treat the number as unsettled.</p>
+<p>The figures reinforce the debate over whether the AI capex cycle is sustainable. Commitments of this size depend on public markets absorbing very large offerings while long-dated yields are at multi-decade highs. This item comes from an aggregator, not from FT, WSJ or Reuters. Watch for the formal S-1 and for any confirmation from those outlets.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly</a><span class="source-sep">·</span><a class="source-link" href="https://aiweekly.co/ai-news-today/anthropic-news" target="_blank" rel="noopener">AI Weekly (Anthropic)</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>Trump convenes AI CEOs for voluntary frontier safety pledge</h3>
+          <div class="one-liner">The administration is choosing industry self-regulation over binding rules, and courts are separately tightening the rules on training data.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>President Trump reportedly brought six AI lab CEOs together to sign a voluntary 'Joint Commitment on Frontier Responsibilities'. It includes internal controls and independent audits but creates no new legal mandates. Separate reports say Google, OpenAI and Anthropic are forming a 'Frontier AI Standards Agency', an industry-run body.</p>
+<p>Also reported: a Third Circuit ruling that copying training data is not fair use. If accurate, it is the first major appellate decision on the question. It would raise licensing costs and legal exposure for model developers, whatever the voluntary pledge says.</p>
+<p>Critics are likely to argue that audits without enforcement are weak, and that the EU AI Act remains the only binding regime among the major jurisdictions. Watch for the text of the commitment, who conducts the audits, and whether the copyright ruling is appealed to the Supreme Court. These details come from an aggregator and need confirmation from primary outlets.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Treasury yields at multi-decade highs after Fed hike</h3>
+          <div class="one-liner">The 30-year yield is at its highest since 2002 and the Fed has raised rates for the first time in about three years, which squeezes valuations and funding for AI.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>US 30-year Treasury yields hit their highest level since 2002. The Fed raised its benchmark rate by 25 basis points at its September meeting, and many economists expect another hike this year given sticky inflation and higher oil prices. New York Fed President John Williams suggested the Fed could wait until December, which pushed back against market bets on an October move.</p>
+<p>Equities were slightly lower on Tuesday: the Dow fell 0.25%, the S&P 500 0.16% and the Nasdaq 0.09%. WTI settled near $89.38, down about 3.5%, on Strategic Petroleum Reserve releases and hopes of easing between the US and Iran.</p>
+<p>Higher long yields raise the cost of capital for the debt-funded AI buildout and for the large IPOs now in prospect. Watch this week's US data, including Friday's jobs report, and Fed speakers for any signal on December. These figures come from search summaries of CNBC, Schwab and others. I could not open the original articles.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/09/29/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/markets/stocks/articles/stock-market-news-sep-29-083000758.html" target="_blank" rel="noopener">Yahoo Finance</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Iran war talks and US-China tariff cuts advance; Taiwan arms package stalled</h3>
+          <div class="one-liner">There are signs of easing in the Gulf and in US-China trade, but a record Taiwan arms sale is on hold.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>US and Iranian officials held separate talks through mediators to end the seven-month war. Trump denied offering sanctions relief for nuclear concessions, though a limited waiver was granted for pilgrim flights between Iran and Iraq. Iranian officials are privately pessimistic about a deal before the November midterms. Saudi Arabia resumed exports via its East-West pipeline, which weakens Iran's leverage over the Strait of Hormuz.</p>
+<p>Beijing and Washington agreed to pursue tariff cuts on about $60 billion of goods after the Trump-Xi summit. Taiwan's defense minister said existing US arms sales are unchanged, but a record $14 billion package remains stalled. Reports say a Trump-Xi National Archives visit was altered after Chinese objections to one document.</p>
+<p>In Ukraine, Russia is continuing near-daily ballistic missile and drone strikes on Kyiv. Source is the FDD overnight brief and search summaries, not the preferred outlets. Watch whether the Taiwan package is formally shelved.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.fdd.org/overnight-brief/september-29-2026/" target="_blank" rel="noopener">FDD Overnight Brief</a><span class="source-sep">·</span><a class="source-link" href="https://morningstaronline.co.uk/article/world-brief-september-29-2026" target="_blank" rel="noopener">Morning Star</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">US Policy & Power</span>
+          </div>
+          <h3>Congress passes stopgap to avoid a shutdown at fiscal year-end</h3>
+          <div class="one-liner">Funding is extended to December 11, which removes a shutdown risk just before the midterms.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Congress passed a continuing resolution before the September 30 deadline. The House vote was 370-48 and the Senate had passed it earlier. Trump is expected to sign. The measure funds the government through December 11 and blocks an OMB proposed rule that would have let political appointees end grants. Shutdowns earlier in 2026 included a 76-day lapse at DHS that ended in April. The fight resumes in December, in the lame-duck session after the midterms.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.npr.org/2026/09/01/nx-s1-5951536/house-government-funding-vote-midterms" target="_blank" rel="noopener">NPR</a><span class="source-sep">·</span><a class="source-link" href="https://perspectives.acct.org/stories/congress-passes-extension-through-december-11" target="_blank" rel="noopener">ACCT</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">DeepSeek open-sourced tooling for Huawei Ascend accelerators, including TileLang as a CUDA alternative. SemiAnalysis estimates ByteDance holds about a fifth of China's 24GW of data-center capacity. Model releases continue, including reports of Claude Sonnet 5.5 and OpenAI's GPT-6.1. Nvidia announced an open agent-safety platform.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Anthropic's leaked IPO prospectus and OpenAI's reported $30B raise dominate. EliseAI raised $350M at a $4B valuation and Reco raised $55M.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">A continuing resolution through December 11 passed the House 370-48, avoiding a shutdown. Midterm politics are shaping Iran and trade decisions.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">A voluntary frontier commitment was signed with AI CEOs, and an industry standards agency is reportedly forming. A Third Circuit ruling reportedly found that training-data copying is not fair use.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Iran talks are proceeding via mediators with little optimism. Russia continues to strike Kyiv. Saudi Arabia resumed East-West pipeline exports.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">The US and China agreed to pursue tariff cuts on about $60B of goods. The $14B Taiwan arms package is stalled. Huawei and DeepSeek are pushing an alternative to CUDA.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The 30-year Treasury yield is at its highest since 2002. The Fed hiked 25bp in September and Williams hinted at waiting until December. US stocks were slightly lower and WTI settled near $89.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">WTI fell about 3.5% to roughly $89 on SPR releases and hopes of easing with Iran. Saudi East-West pipeline exports resumed, which reduces Hormuz risk.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">Governments warned of Citrix NetScaler zero-days. Polish healthcare software providers were breached. Russian drones hit Kyiv institutions.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Wed 30</span>
+      <span class="week-event">End of US fiscal year; the stopgap funding bill awaits Trump's signature</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 30</span>
+      <span class="week-event">Quarter-end: rebalancing and window-dressing flows across bonds and equities</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 1</span>
+      <span class="week-event">ISM manufacturing PMI and new fiscal year begins</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 1</span>
+      <span class="week-event">Weekly jobless claims</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Fri 2</span>
+      <span class="week-event">US September jobs report, a key input for the Fed's December decision</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 1</span>
+      <span class="week-event">Fed speakers after Williams' comments on the timing of the next hike</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 30</span>
+      <span class="week-event">Possible S-1 or formal filings from Anthropic ahead of the expected November IPO</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Thu 1</span>
+      <span class="week-event">Iran mediation talks continue; watch for sanctions waivers</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 2</span>
+      <span class="week-event">Taiwan arms package decision and US-China tariff-cut details</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The AI Capex Window Is Slamming Shut</h3>
+          <div class="subtitle">US frontier labs need $2T+ in public markets just as yields hit 20-year highs; Chinese competitors are building independent compute stacks with lower capital intensity.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Markets</span><span class="pattern-cat">China</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Anthropic needs $2 trillion in valuation to support $518 billion in capex commitments over a decade, while OpenAI seeks $1.4 trillion with reported 70% growth. But the 30-year Treasury yield just hit its highest level since 2002 and the Fed is hiking rates for the first time in three years. The math breaks if public markets don't absorb these offerings at frothy multiples while long-dated yields are spiking. Speculative: This is a race against the clock. If the IPO window closes—if yields stay high or equities re-rate on macro stress—both labs face financing cliffs that could force down capex or equity dilution. Meanwhile ByteDance holds roughly 20 percent of China's 24GW data-center capacity and DeepSeek is open-sourcing alternatives to CUDA (TileLang) optimized for Huawei Ascend chips. Chinese labs are building for permanence in a closed ecosystem; US labs are gambling that public markets will absorb massive offerings at a yield-curve peak. History suggests that trade ends badly.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Voluntary Commitments Meet Involuntary Copyright Law</h3>
+          <div class="subtitle">Trump's frontier AI pledge has no enforcement, but a Third Circuit ruling that training-data copying isn't fair use may cost AI labs billions in licensing—and is headed to SCOTUS.</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The Trump administration convened six AI CEOs to sign a voluntary Joint Commitment on Frontier Responsibilities with internal controls and audits but zero new legal mandates. Separately, a Third Circuit court ruled that copying training data is not fair use—the first major appellate decision on the question. Speculative: The commitment is theater. A binding copyright ruling will raise licensing costs for model developers far beyond what voluntary audits can absorb or prevent. If the ruling stands and is appealed to the Supreme Court, the precedent could force retroactive licensing for existing models, which would dwarf the cost of independent audits. The regulatory squeeze isn't coming from Trump's voluntary framework; it's coming from courts reinterpreting IP law. Anthropic, OpenAI, and Google signed a pledge they can't enforce against judicial reality. Expect appeals and lobbying for legislative carve-outs.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The December Renegotiation Trap</h3>
+          <div class="subtitle">Congress locked midterm politics into the post-election lame duck by extending funding to December 11, giving Trump leverage to reverse Iran, China, and Taiwan deals based on how the midterms go.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>A continuing resolution extended funding through December 11, removing shutdown risk before the November midterms and converting the post-election lame duck into a renegotiation window. Trump has already granted a limited sanctions waiver for Iran (pilgrim flights), agreed to tariff cuts on $60 billion of US-China goods, and stalled a record $14 billion Taiwan arms package. Speculative: These aren't final positions—they're provisional. If Trump wins big in midterms, expect aggressive reversals in December: a tighter Iran posture, re-escalation of China tariffs, and a formal shelving of the Taiwan package in exchange for Chinese concessions on tech or geopolitics. If midterms weaken him, the concessions stick and yields fall. The market is pricing stability; it should price the reversal scenario. Oil is down 3.5 percent on Iran easing hopes, but that's a December risk-off in the making.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>China's Compute Moat Is Getting Wider</h3>
+          <div class="subtitle">ByteDance controls 20 percent of China's data-center capacity while Huawei and DeepSeek open-source alternatives to US chip architectures. US labs face a rising cost of capital and chip constraints.</div>
+          <div class="pattern-cats"><span class="pattern-cat">China</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>ByteDance reportedly holds about one-fifth of China's 24GW of data-center capacity. DeepSeek has open-sourced TileLang, a CUDA alternative optimized for Huawei Ascend accelerators, along with tooling and compiler infrastructure. Meanwhile, Anthropic is committed to $518 billion in capex with a higher cost of capital (due to rising yields) and limited optionality on chip architecture—bound to Nvidia, constrained by US export controls on advanced chips to China. Speculative: Chinese AI labs are building for structural independence; US labs are competing on an open market with rising financing costs. Anthropic's capex commitments assume a stable cost of capital and continued access to Nvidia's latest. Both assumptions are breaking. China's vertical integration—massive captive compute, indigenous chip alternatives, open-source tooling—creates a permanent advantage in total cost of ownership. By the time Anthropic's IPO priced, that advantage may be priced in. US frontier labs may have missed the window to out-capex their competition.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/nathanbenaich" target="_blank" rel="noopener">Post on AI solving long-unsolved math problems / State of AI Report 2026 teaser</a><div class="sig-summary">Commented that a solution to a problem unsolved for 200 years is better today than in 10 more years, and hinted at more to say in the upcoming State of AI Report 2026 (launch meetup Oct 8 in SF).</div><div class="sig-connection">↳ Ties to the frontier AI capability story and the Anthropic IPO and AI-governance news, since the State of AI report will likely frame the state of the field.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://michaeljburry.substack.com/p/trading-post-september-28-2026" target="_blank" rel="noopener">Trading Post September 28, 2026</a><div class="sig-summary">Reports big action in his big shorts as his research progresses, plus a few new buys, and is moving up his timelines. Earlier in the week he compared AI capex to past capital-cycle bubbles and flagged roughly $900B of off-balance-sheet AI commitments at Alphabet.</div><div class="sig-connection">↳ A bearish counterpoint to the Anthropic $2T+ IPO valuation leak and to AI-capex enthusiasm, at a time of multi-decade-high Treasury yields after the Fed hike.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/openai-dev-day-dot-and-openais-product-transition-sign-in-with-chatgpt/" target="_blank" rel="noopener">OpenAI Dev Day, Dot and OpenAI's Product Transition, Sign In With ChatGPT</a><div class="sig-summary">Says OpenAI's Dev Day showed a confusing product with more vision than it first appears. Earlier pieces argued agents are the ultimate Aggregators that reduce apps to a means, and that Meta should chase consumer agents rather than the enterprise.</div><div class="sig-connection">↳ Frames the platform competition among AI labs behind the Anthropic IPO valuation and the frontier-lab safety pledge.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://x.com/paulg" target="_blank" rel="noopener">Posts on college and startups, and on .com vs .ai domains</a><div class="sig-summary">Warned founders not to start a startup expecting to go to college, or back, afterward, because the two paths are incompatible. Also said a better .com is always available for about $5k than the .ai name a startup is using.</div><div class="sig-connection">↳ Loosely related to AI-startup culture and the frenzy around AI valuations.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/airbound-as-we-may-move" target="_blank" rel="noopener">Airbound: As We May Move</a><div class="sig-summary">A deep dive on Airbound and the future of personal flight. Also published Weekly Dose of Optimism #212 (Vironexis, Solcoa, Terraform, Joby, Meta VR glasses) and a piece on the future of education.</div><div class="sig-connection">↳ Fits the Applied Tech & Industry and Frontier Tech themes.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.mostlymetrics.com/" target="_blank" rel="noopener">Why Aren't Founders and Boards More Pissed About Day 1 IPO Pops?</a><div class="sig-summary">Argues founders and boards should be angrier about large first-day IPO pops, which leave money on the table.</div><div class="sig-connection">↳ Relevant to the Anthropic IPO prospectus leak and how a mega-IPO might be priced.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit" target="_blank" rel="noopener">All of the Lenny & Friends Summit talks are now online!</a><div class="sig-summary">Published all the summit talks with reflections and takeaways. His How I AI episode says Opus 5.5 brought him back to Claude after months away, includes an Opus 5.5 vs GPT-6 Sol benchmark, and covers Jev, a tool that returns type-safe structured values as a cheap classification layer.</div><div class="sig-connection">↳ Shows real-world practitioner momentum for Anthropic's models, in line with the IPO valuation story.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 9 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
