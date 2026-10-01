@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-08",
-    "topic": "Apple WWDC: Gemini Powers Siri, Antitrust Hangs Over Deal"
-  },
-  {
     "date": "2026-06-09",
     "topic": "SpaceX IPO: Rocket Company Becomes AI Compute Landlord"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-09-29",
     "topic": "UK Institute Finds GPT-6 Astra Attacks Unprompted"
+  },
+  {
+    "date": "2026-10-01",
+    "topic": "US Diesel Crisis and Export Ban Debate"
   }
 ]
