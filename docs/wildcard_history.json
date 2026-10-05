@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-09",
-    "topic": "SpaceX IPO: Rocket Company Becomes AI Compute Landlord"
-  },
-  {
     "date": "2026-06-10",
     "topic": "Apple vs. EU: DMA Blocks Siri AI for 450 Million Users"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-10-01",
     "topic": "US Diesel Crisis and Export Ban Debate"
+  },
+  {
+    "date": "2026-10-05",
+    "topic": "Fed Hikes Into a Stalling Labor Market"
   }
 ]

@@ -1,0 +1,409 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "10-year Treasury yield hits 5.34%, a 24-year high, as Fed hike odds shift",
+      "one_liner": "Surging yields and a weak jobs report are pulling the Fed's tightening path in opposite directions ahead of the midterms.",
+      "detail": "The 10-year Treasury yield reached 5.34% on Thursday, its highest in 24 years. CNBC attributes the move to expectations of strong growth, rising energy costs feeding inflation, and heavy corporate debt issuance to fund the AI buildout.\n\nA weaker-than-expected September jobs report on Oct 2 sharply cut traders' odds of an October Fed hike. Markets still price a hike in December. Vice Chair Jefferson said the economy is being hit by a cascade of shocks: energy prices, the AI buildout and trade policy changes. He stopped short of endorsing an imminent hike.\n\nStock futures were flat on Sunday as investors weighed higher yields. The Fed's September minutes arrive Wednesday. Watch for how much the committee discussed further hikes, and whether Q3 earnings, which open with PepsiCo and Delta, hold up under higher borrowing costs. The Nov 3 midterms add political pressure. These details come from CNBC and Reuters via Investing.com; I did not verify them against the WSJ or FT.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://cnbc.com/2026/10/02/fed-rate-hike-odds-decline-after-september-jobs-report.html"
+        },
+        {
+          "name": "CNBC",
+          "url": "https://cnbc.com/2026/10/04/stock-market-today-live-updates.html"
+        },
+        {
+          "name": "Reuters via Investing.com",
+          "url": "https://investing.com/news/economy-news/spiking-bond-yields-midterms-earnings-to-test-us-stocks-typical-fourthquarter-strength-4930935"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "OpenAI's in-house Jalape\u00f1o inference chip claims big gains over Nvidia",
+      "one_liner": "A Broadcom co-designed chip, built in about nine months with AI assistance, challenges Nvidia's inference dominance.",
+      "detail": "Trade reports say OpenAI's Jalape\u00f1o inference-only chip, co-designed with Broadcom, shows 1.5-1.9x efficiency and up to 3.6x lower latency versus Nvidia systems. It was reportedly designed in nine months with OpenAI's own models assisting the engineering. These figures are vendor-linked claims and are not independently verified.\n\nThe news lands alongside OpenAI's earlier commitment to deploy at least 10GW of Nvidia systems, with Nvidia investing up to $100B. OpenAI is hedging: it remains a huge Nvidia customer while building custom silicon. Separately, OpenAI and Synopsys launched a chip-design model, and the frontier model race has moved into a price war between GPT-6 and Claude Opus 5.5.\n\nWatch for independent benchmarks and Nvidia's response. Nvidia CEO Jensen Huang is publicly pushing back on AI doom narratives, per Fortune.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Shattered",
+          "url": "https://shattered.io/openai-jalapeno-chip-3-6x-lower-latency-nvidia-2026/"
+        },
+        {
+          "name": "The Neuron",
+          "url": "https://theneuron.ai/digest/everything-that-happened-in-ai-today-friday-october-2-2026"
+        },
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/10/04/nvidia-jensen-huang-ai-doomerism-foil-risk"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Anthropic says Pentagon ban could cost it billions",
+      "one_liner": "A US defense blacklist of a leading AI lab raises the stakes for AI governance and procurement.",
+      "detail": "Yahoo Finance's live tech coverage reports Anthropic saying a Pentagon ban could cost it billions of dollars. Meta also announced new AI chips the same day. The summary available to me gave few details on the ban's scope or timeline.\n\nThe story sits at the intersection of defense procurement, AI safety policy and the commercial race. It is relevant to your AI regulation and defense sectors. I could not corroborate it with a preferred outlet, so treat the details as preliminary.\n\nWatch for any court action, congressional reaction and whether other labs gain defense work.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/news/live/tech-stocks-today-anthropic-says-pentagon-ban-could-cost-it-billions-meta-announces-new-ai-chips-134456659.html"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Iran and Yemen talks at Camp David; Trump rejects seven-day ceasefire",
+      "one_liner": "US-Iran escalation risk is feeding energy prices and inflation.",
+      "detail": "A weekly geopolitics roundup says US national security officials met for hours at Camp David on next steps in Iran and Yemen. Trump rejected a seven-day ceasefire with Iran and denied offering weapons to China. The same roundup says the US and China agreed to cut tariffs on $30 billion of goods.\n\nElsewhere, the roundup reports North Korea testing an intermediate-range ballistic missile, China-Philippines friction at Second Thomas Shoal, and Russian drone strikes on Kyiv infrastructure and Ukrainian telecoms and data centers.\n\nRising energy costs are a driver of the inflation and yield story above. Watch for oil moves and any Iran escalation. The source is a Substack roundup, so details need confirmation from Reuters or AP.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "Geopolitics Explained",
+          "url": "https://geopoliticsexplained.substack.com/p/this-week-in-geopolitics-4th-october"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "OpenAI's Jalape\u00f1o inference chip claims large efficiency and latency gains over Nvidia. GPT-6 and Claude Opus 5.5 launches are driving a price war, and Meta announced new AI chips."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Big Tech is turning to custom silicon, and OpenAI and Synopsys launched a chip-design model. Debt issuance to fund AI expansion is competing for capital and pushing yields up."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Midterms on Nov 3 will decide control of Congress. Energy prices, AI buildout and trade policy are shaping the Fed's inflation concerns."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "Anthropic says a Pentagon ban could cost it billions. Details are thin and not confirmed by a preferred outlet."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "Trump rejected a seven-day Iran ceasefire, and Camp David talks covered Iran and Yemen. The US and China reportedly agreed to cut tariffs on $30B of goods. North Korea tested an IRBM."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "China-Philippines tensions continue at Second Thomas Shoal, and the US-China limited tariff cut is reported. Little else verified."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The 10-year yield hit 5.34%, a 24-year high. A weak jobs report cut October hike odds, though December is still priced. Futures were flat Sunday ahead of the Fed minutes."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Rising energy prices are cited by the Fed's Jefferson as an inflation shock. AI-driven power demand also contributes."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Russia hit Kyiv infrastructure and Ukrainian telecoms and data centers. North Korea tested an intermediate-range missile."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "The September jobs report was weaker than expected, reducing near-term Fed hike odds."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Mon 5",
+      "event": "ISM Services PMI for September, 10:00 ET",
+      "tag": "data"
+    },
+    {
+      "day": "Wed 7",
+      "event": "Fed September FOMC minutes",
+      "tag": "critical"
+    },
+    {
+      "day": "Thu 8",
+      "event": "ECB monetary policy accounts",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 8",
+      "event": "PepsiCo Q3 earnings, opening earnings season",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 8",
+      "event": "US weekly jobless claims",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 9",
+      "event": "Delta Air Lines Q3 earnings",
+      "tag": "earnings"
+    },
+    {
+      "day": "Fri 9",
+      "event": "University of Michigan preliminary October sentiment",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 9",
+      "event": "Canadian employment report",
+      "tag": "data"
+    },
+    {
+      "day": "Mon-Fri",
+      "event": "Nobel Prize announcements this week",
+      "tag": "other"
+    },
+    {
+      "day": "Mon-Fri",
+      "event": "Treasury yields and Iran developments are the key watch items",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Fed Hikes Into a Stalling Labor Market",
+    "headline": "The Fed Is Tightening Into a Jobs Stall, and the Bond Market Isn't Rewarding It",
+    "standfirst": "September payrolls of just 29,000 should have pulled long yields down. Instead the 30-year hit 5.63%, which suggests the market now treats this as a supply shock the central bank can't fix.",
+    "body": "Friday's September jobs report was the weakest of the year. The US economy added 29,000 jobs against a consensus near 90,000. July was revised to a loss of 10,000, and July and August together were marked down by 60,000. The 12-month average gain is now about 45,000 a month, and unemployment ticked up.\n\nIn a normal cycle that would drag Treasury yields lower. This time the long end rose. The 30-year yield reached roughly 5.63% and the 20-year about 5.67%, while the 2s10s spread sits near +45 basis points. One widely read desk note put it this way: a weakening labor market no longer buys you a lower long end. Equities took the other side of the trade. The Nasdaq touched a record, and traders cut the odds of an October hike from about 64% to about 22%.\n\nThe backdrop is a war-driven energy shock. Disruption around the Strait of Hormuz has kept Gulf OPEC+ producers roughly 5 million barrels a day below pre-war output, with exports running at 60-80% of normal. On 4 October seven OPEC+ producers held November's required output at September's level, a second pause that changes little because most members can't reach their targets anyway. The US Strategic Petroleum Reserve fell to about 283.8 million barrels in late September, the lowest since 1982. The G-7 has authorized a 100-million-barrel IEA release, with diesel prioritized. Diesel has eased from its $6.53 record to about $6.34 a gallon, which is still punishing. August PCE inflation was 3.4% (core 3.0%), and eurozone inflation hit 3.8% in September, with energy running 18.8% higher.\n\nThe Fed raised rates to 3.75-4.00% on 16 September in a unanimous 12-0 vote and signaled more to come. John Williams has said another increase may be appropriate late this year, but he sees no urgency in October. The ECB and Bank of Japan also tightened in September. Three major central banks are therefore raising rates at once, into a shock that is cutting real incomes.\n\nThe hawkish reading goes like this. Inflation has been above target for years, and the energy shock is passing into wages and expectations. A central bank that waits risks losing credibility, which would cost far more later. Hawks also point to supplier delivery times, which have lengthened the most since August 2022, and to tariff-driven input costs. These show price pressure that is broader than oil alone. On this view, weak payrolls partly reflect labor supply and immigration limits rather than collapsing demand, so a low payroll figure matters less than it once did.\n\nThe dovish reading is that rate hikes can't produce a single barrel of oil or reopen a shipping lane. Tightening into a supply shock deepens the downturn without fixing the cause, which is the classic 1970s error. Doves note that three straight months of weak or negative payrolls would normally mark a turning point. They also see the rising long end as a warning sign: the term premium is rising because of deficits, an unreliable inflation anchor, and the heavy Treasury supply needed to fund a government facing a war and an energy crisis.\n\nA third view says the bond market is pricing fiscal and geopolitical risk rather than Fed policy. If so, a more dovish Fed wouldn't bring long yields down. It could push them higher by weakening the credibility the term premium depends on. Mortgage rates, corporate borrowing costs and government interest bills would stay high either way.\n\nTwo things to watch this week. The next CPI release will show whether energy is feeding into core prices. Also watch Fed speakers and the FOMC minutes for how many officials back a December hike. Over the following weeks, track the pace of SPR and IEA releases, any Hormuz shipping developments, and the October payrolls report in early November. If unemployment rises again while the long end keeps climbing, markets will stop calling this a soft landing and start calling it stagflation.",
+    "why_today": "Friday's payrolls miss and this weekend's OPEC+ pause landed together, leaving markets weighing a stalling labor market against a Fed that has just hiked and may hike again.",
+    "sources": [
+      {
+        "name": "Universal Asset Owners Daily Brief, 5 Oct 2026",
+        "url": "https://universalassetowners.com/intelligence/uao-daily-brief-2026-10-05"
+      },
+      {
+        "name": "Market Index",
+        "url": "https://www.marketindex.com.au/news/morning-wrap-asx-200-to-rise-nasdaq-touches-record-as-soft-us-jobs-data"
+      },
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/09/30/stock-market-today-live-updates.html"
+      },
+      {
+        "name": "Newsquawk",
+        "url": "https://newsquawk.com/headlines/newsquawk-weekly-economic-calendar---4th-9th-october-2026"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "AI Labs Are Outrunning Pentagon Procurement",
+      "subtitle": "Anthropic's claimed Pentagon ban may signal a power shift: AI labs no longer need defense contracts because commercial AI wars now outbid government budgets.",
+      "categories": [
+        "AI Regulation & Governance",
+        "Defense & Security",
+        "Frontier Tech / AI"
+      ],
+      "content": "Anthropic claims a Pentagon ban could cost billions, but the timing and framing reveal something sharper: AI labs have moved past the point where government contracts are existential. OpenAI is simultaneously deploying 10GW of Nvidia systems while claiming its Jalapeno chip beats Nvidia on latency. Meta and Anthropic are racing to build custom silicon not to escape vendor lock-in but to cut costs for cloud customers who now demand cheaper inference. The real loss if Anthropic loses Pentagon contracts isn't revenue\u2014it's access to classified datasets and integration into defense workflows. But that's less valuable than it was two years ago because commercial AI competition has gotten so fierce that losing ground to Claude 5.5 or GPT-6 in the commercial market costs more than losing a defense contract. The Pentagon is discovering it can't out-bid OpenAI's commercial customers."
+    },
+    {
+      "title": "Energy Inflation Is the Real Midterm Wildcard",
+      "subtitle": "Trump's Iran escalation risk, combined with AI power demand and a weak labor market, sets up stagflation\u2014high prices and weak growth right before voters head to the polls.",
+      "categories": [
+        "Geopolitics",
+        "Markets",
+        "Energy"
+      ],
+      "content": "The Treasury yield hit 5.34% on the back of strong growth expectations and heavy debt issuance, but the real inflation vector isn't wage growth\u2014it's energy. Fed Vice Chair Jefferson explicitly named energy prices as a shock, alongside the AI buildout. Trump's rejection of a seven-day Iran ceasefire at Camp David talks amplifies the escalation risk that was already baking geopolitical premium into oil prices. Meanwhile, the September jobs report disappointed, cutting October hike odds, yet yields stayed elevated. This is the setup for stagflation: weak employment growth but persistent price pressure from energy and power-hungry data centers. The midterms are Nov 3. Swing-state voters will see both high gas prices and layoff announcements from Big Tech. The Fed is stuck: it can't cut rates with energy inflation and AI-driven power demand still climbing, but hiking into a weak labor market looks reckless. This volatility and mixed signals typically favor incumbents in unified government, but it scrambles the narrative if the messaging isn't tight."
+    },
+    {
+      "title": "Custom Silicon Is Not a Hedge\u2014It's a Negotiating Tactic",
+      "subtitle": "OpenAI's Jalapeno chip, Meta's new silicon, and the Anthropic-Broadcom partnership are not bids to replace Nvidia. They are signals to Nvidia to cut prices for inference.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Applied Tech & Industry"
+      ],
+      "content": "OpenAI's Jalapeno inference chip claims 1.5-1.9x efficiency and 3.6x lower latency versus Nvidia, but it was designed in nine months with AI assistance\u2014fast, but likely narrow in scope and not ready for the full training stack that OpenAI actually needs. The telling detail: OpenAI has committed to deploying at least 10GW of Nvidia systems with Nvidia investing up to 100 billion. This is not a hedge; it's a negotiation. OpenAI is saying to Nvidia: we can build custom inference silicon cheaper than you if you don't cut prices on the workloads we actually care about. Meta announced new chips the same day for the same reason. The real trend is not custom silicon replacing Nvidia but a race to commoditize inference while keeping training under lock-in. Broadcom, Intel, and others are moving margin away from Nvidia on the inference side to create pricing leverage on the training side. The victim is the GPU rental market and smaller labs that can't afford the R&D spend to build custom chips. Anthropic's Pentagon trouble may actually accelerate this race if it needs to cut costs to stay competitive with cash-rich labs."
+    },
+    {
+      "title": "The Yield Spike Is Real Tightening in Disguise",
+      "subtitle": "Even if the Fed pauses hikes, a 5.34% 10-year yield is doing the Fed's job for it\u2014killing demand and raising borrowing costs for the debt-funded AI buildout.",
+      "categories": [
+        "Markets",
+        "Frontier Tech / AI",
+        "Applied Tech & Industry"
+      ],
+      "content": "The Fed may pause or cut in late 2026, but the 10-year Treasury yield at 5.34% is already tightening the financial system faster than any rate hike could. Big Tech is burning billions to fund the AI buildout with debt issuance. Higher yields and a weaker labor market compound the pain: growth expectations stay elevated, driving yields higher, but hiring is slowing, undercutting confidence. Q3 earnings starting with PepsiCo and Delta will show the real impact of higher borrowing costs on non-tech sectors. If utilities and industrial companies cry uncle on their capital plans, growth expectations drop and yields fall\u2014but that's a hard landing, not a soft one. Meanwhile, AI labs are locked into infrastructure bets. They've issued debt to fund buildout assuming lower rates and higher revenue. If yields stay at 5 percent and above, the calculus changes. The Jalapeno chip story and custom silicon arms race may not be about beating Nvidia\u2014they may be a scramble to prove out cheaper scaling economics before debt service consumes margins. The Fed's path matters less than the market's forecast of persistent higher rates."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Post on AI solving long-unsolved math problems / State of AI Report 2026 teaser",
+      "url": "https://x.com/nathanbenaich",
+      "summary": "Commented that a solution to a problem unsolved for 200 years is better today than in 10 more years, and hinted at more to say in the upcoming State of AI Report 2026 (launch meetup Oct 8 in SF).",
+      "connection": "Ties to the frontier AI capability story and the Anthropic IPO and AI-governance news, since the State of AI report will likely frame the state of the field."
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Trading Post September 28, 2026",
+      "url": "https://michaeljburry.substack.com/p/trading-post-september-28-2026",
+      "summary": "Reports big action in his big shorts as his research progresses, plus a few new buys, and is moving up his timelines. Earlier in the week he compared AI capex to past capital-cycle bubbles and flagged roughly $900B of off-balance-sheet AI commitments at Alphabet.",
+      "connection": "A bearish counterpoint to the Anthropic $2T+ IPO valuation leak and to AI-capex enthusiasm, at a time of multi-decade-high Treasury yields after the Fed hike."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "OpenAI Dev Day, Dot and OpenAI's Product Transition, Sign In With ChatGPT",
+      "url": "https://stratechery.com/2026/openai-dev-day-dot-and-openais-product-transition-sign-in-with-chatgpt/",
+      "summary": "Says OpenAI's Dev Day showed a confusing product with more vision than it first appears. Earlier pieces argued agents are the ultimate Aggregators that reduce apps to a means, and that Meta should chase consumer agents rather than the enterprise.",
+      "connection": "Frames the platform competition among AI labs behind the Anthropic IPO valuation and the frontier-lab safety pledge."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Posts on college and startups, and on .com vs .ai domains",
+      "url": "https://x.com/paulg",
+      "summary": "Warned founders not to start a startup expecting to go to college, or back, afterward, because the two paths are incompatible. Also said a better .com is always available for about $5k than the .ai name a startup is using.",
+      "connection": "Loosely related to AI-startup culture and the frenzy around AI valuations."
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Airbound: As We May Move",
+      "url": "https://www.notboring.co/p/airbound-as-we-may-move",
+      "summary": "A deep dive on Airbound and the future of personal flight. Also published Weekly Dose of Optimism #212 (Vironexis, Solcoa, Terraform, Joby, Meta VR glasses) and a piece on the future of education.",
+      "connection": "Fits the Applied Tech & Industry and Frontier Tech themes."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "Why Aren't Founders and Boards More Pissed About Day 1 IPO Pops?",
+      "url": "https://www.mostlymetrics.com/",
+      "summary": "Argues founders and boards should be angrier about large first-day IPO pops, which leave money on the table.",
+      "connection": "Relevant to the Anthropic IPO prospectus leak and how a mega-IPO might be priced."
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "All of the Lenny & Friends Summit talks are now online!",
+      "url": "https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit",
+      "summary": "Published all the summit talks with reflections and takeaways. His How I AI episode says Opus 5.5 brought him back to Claude after months away, includes an Opus 5.5 vs GPT-6 Sol benchmark, and covers Jev, a tool that returns type-safe structured values as a cheap classification layer.",
+      "connection": "Shows real-world practitioner momentum for Anthropic's models, in line with the IPO valuation story."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
