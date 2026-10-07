@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Wednesday, October 07, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Wednesday, October 07, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;0 URGENT</span>
+    <span class="status-count">9 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>$60B Broadcom–Anthropic compute financing goes to banks</h3>
+          <div class="one-liner">AI compute is being financed like aircraft or energy projects, at a record size.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Wall Street banks began syndicating a record $60 billion financing package tied to Broadcom and Anthropic, according to a tech-news roundup dated Oct 6. The structure treats AI compute as an asset class with its own credit risk, in the way aircraft leasing and energy projects are financed.</p>
+<p>The package matters because frontier development now needs very large amounts of chips, power and data. Debt markets are filling the gap beyond what equity and cash flow can fund. The risk is concentration. Lenders are exposed to a few model developers whose revenue has yet to catch up with commitments.</p>
+<p>OpenAI is pursuing a parallel diversification. Earlier reporting described a custom chip built with Broadcom and TSMC, plus AMD capacity, to reduce reliance on Nvidia. AMD's CEO Lisa Su said she plans a substantial increase in 2027 AI chip supply and is meeting TSMC, Samsung and SK Hynix to secure wafers and memory.</p>
+<p>I could not retrieve FT, WSJ or Reuters coverage of the deal, so the details come from a single aggregator. Watch for the pricing, the investor base and any rating-agency commentary.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://techstartups.com/2026/10/06/top-tech-news-today-october-6-2026-amazon-amd-apple-deepseek-google-uber-more/" target="_blank" rel="noopener">Tech Startups</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/news/openai-collaborates-broadcom-tsmc-adds-190018929.html" target="_blank" rel="noopener">Yahoo Finance</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">China</span>
+          </div>
+          <h3>DeepSeek nears $12–15B raise as open-weight race heats up</h3>
+          <div class="one-liner">China's leading open-model lab is raising at a scale that sets up an early-2027 IPO.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>DeepSeek is reported to be close to closing a $12–15 billion round backed by Tencent and CATL, positioning it for an IPO in early 2027. That would be one of the largest private raises by a Chinese AI lab. It also ties the lab to a major battery and EV supply-chain player.</p>
+<p>On the US side, Nvidia-backed Reflection AI released Beam, a 501-billion-parameter open-weight model aimed at coding and reasoning. It is framed as a Western answer to DeepSeek and Qwen. Reports also said US and European labs released several open-weight models this week.</p>
+<p>Google is moving the other way on pricing. From Oct 9, free Gemini users are limited to Flash Lite, and advanced models move behind paid tiers of $4.99 to $99.99 a month. That suggests inference costs remain a real constraint.</p>
+<p>Watch for the round's final terms and any US export-control response.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://techstartups.com/2026/10/06/top-tech-news-today-october-6-2026-amazon-amd-apple-deepseek-google-uber-more/" target="_blank" rel="noopener">Tech Startups</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Energy</span>
+          </div>
+          <h3>Google signs record 3.59 GW Constellation power deal</h3>
+          <div class="one-liner">Electricity contracts are becoming as strategic as GPU supply.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Google signed a 3.59-gigawatt agreement with Constellation Energy. It includes nuclear upgrades across multiple states through 2028 and is described as a record. The deal shows hyperscalers locking in firm, low-carbon baseload power for data centers.</p>
+<p>The constraint on AI growth is shifting from chips to grid capacity and generation. Utilities and nuclear operators gain pricing power. Ratepayer politics and interconnection queues are the main risks.</p>
+<p>Watch for similar deals from Microsoft, Amazon and Meta, and for regulator scrutiny of large-load contracts.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://techstartups.com/2026/10/06/top-tech-news-today-october-6-2026-amazon-amd-apple-deepseek-google-uber-more/" target="_blank" rel="noopener">Tech Startups</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">US Policy & Power</span>
+          </div>
+          <h3>Trump names Jay Clayton AI czar; Fed hike debate persists</h3>
+          <div class="one-liner">AI policy gets a point person while White House and Fed tensions over rates continue.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Headline roundups for Oct 6 say Trump named Jay Clayton as AI czar. I could not retrieve primary reporting, so the role's scope and authority are unconfirmed. It follows the December 2025 executive order seeking to limit state-level AI laws.</p>
+<p>On monetary policy, search results indicate the Fed raised rates 25 bp on Sept 16 to 3.75–4.00%. They also show markets pricing a roughly 63% chance of another hike at the Oct 28 meeting, and White House adviser Kevin Hassett criticizing Fed officials who favor hikes. These figures come from secondary sources and should be verified.</p>
+<p>Watch for September jobs and CPI data, which will shape October pricing.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.yahoo.com/news/world/articles/latest-news-bulletin-october-6th-050033003.html" target="_blank" rel="noopener">Yahoo News</a><span class="source-sep">·</span><a class="source-link" href="https://cryptobriefing.com/white-houses-hassett-criticizes-fed-officials-over-rate-hike-calls/" target="_blank" rel="noopener">Crypto Briefing</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">A $60B Broadcom–Anthropic financing is being syndicated. Reflection AI released the 501B-parameter open-weight Beam model. AMD plans a substantial 2027 AI chip ramp. OpenAI agents reportedly overloaded Wikimedia tools.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Uber is buying ezCater for $2.3B. Google is moving advanced Gemini models behind paid tiers from Oct 9. Insurers are weighing liability claims over AI agents acting outside controls.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">Trump reportedly named Jay Clayton as AI czar. White House and Fed friction over rate hikes continues. Details are from secondary sources.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The Clayton appointment signals a more centralized US AI policy. The December 2025 order targets state AI laws. The EU AI Act is in its phased implementation, with the bulk of requirements due Dec 2027.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The US is reportedly removing all bombers from a UK base. NATO's Steadfast Duel 2026 exercise runs Oct 6–15. The US–Israel conflict with Iran that began Feb 28 continues to weigh on energy markets, per secondary summaries.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">DeepSeek is close to a $12–15B round backed by Tencent and CATL, setting up an early-2027 IPO. Taiwan risk remains a background concern.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">Search results point to a Fed funds range of 3.75–4.00% after a September hike. The October hike odds are about 63%, with the next FOMC decision on Oct 28. I could not verify the latest equity moves.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Google signed a record 3.59 GW deal with Constellation, including nuclear upgrades through 2028. Hormuz risk persists.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">South Korean banks were hit by breaches affecting 67,000 people, with traces of a Chinese-language autonomous pentest tool. The MALFEX npm campaign has 40,000+ downloads. NATO is holding Steadfast Duel.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Wed 7</span>
+      <span class="week-event">Possible follow-up on Jay Clayton AI czar role and White House AI policy</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 8</span>
+      <span class="week-event">Weekly jobless claims</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 9</span>
+      <span class="week-event">Google Gemini free tier limited to Flash Lite</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 9</span>
+      <span class="week-event">September jobs report (confirm date)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 8</span>
+      <span class="week-event">NATO Steadfast Duel 2026 exercise continues (Oct 6–15)</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 9</span>
+      <span class="week-event">DeepSeek funding round close possible</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 12</span>
+      <span class="week-event">Q3 earnings season begins with the big banks (confirm schedule)</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue 13</span>
+      <span class="week-event">September CPI (confirm date)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Energy becomes the AI moat; China controls both sides</h3>
+          <div class="subtitle">Google's 3.59 GW power deal and DeepSeek-CATL's integration reveal the real constraint is electricity, not chips—and China's supply-chain unity beats Western fragmentation.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">China</span><span class="pattern-cat">Geopolitics</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>The $60B Broadcom-Anthropic financing treats compute as an asset class. Google signs a record power deal with Constellation. But the actual bottleneck isn't Nvidia or Broadcom anymore—it's grid capacity and low-carbon generation. Hyperscalers are now competing for contracted megawatts the way airlines compete for landing slots. DeepSeek's reported $12-15B raise backed by Tencent and CATL is speculative, but if real, it ties Chinese AI leadership directly to battery supply-chain control. CATL owns EV and energy storage manufacturing. This is not accidental. China has built a closed loop: battery chemistry, EV production, AI compute demand, and now direct financing relationships that lock in power access. Western labs are buying power retail from utilities. Chinese labs are allied with the manufacturers. The geopolitical implication is blunt: if Taiwan faces disruption, or if semiconductor chokepoints tighten, the US labs have hedged compute risk with AMD and Broadcom but left electricity risk naked. A single summer of grid stress in California or Texas could cascade through the entire Western AI financing stack.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Open-weight commoditization is liability arbitrage disguised as competition</h3>
+          <div class="subtitle">Google locks Gemini behind paywalls while Reflection AI and DeepSeek flood open models—shifting inference cost and agent-control risk to downstream users.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">AI Regulation & Governance</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Google is moving from free-to-paid tiers (Flash Lite only) and introducing $4.99-$99.99 monthly gates starting Oct 9. Parallel reporting describes Reflection AI's Beam model as a 501-billion-parameter open weight and DeepSeek similarly pushing open release. Separately, insurers are weighing liability claims over AI agents acting outside their designed controls. The speculative pattern: frontier labs cannot profitably monetize inference at the scale required. Google's inference economics break. So the Western labs are shifting downstream: dump open-weight models into the ecosystem, let every startup and enterprise deploy them with zero support, zero contractual liability, and zero control over agentic behavior. Insurance carriers now have a pooling problem: Who is liable when a DeepSeek or Beam model agent makes an unauthorized API call, trades equities, or exposes data? The model weights are open. The operator is often a startup with no assets. The developer has released the model under permissive licensing. This is liability transfer, not competition. China appears willing to shoulder the regulatory and reputational cost of open models as a market-share play. US labs have concluded they can't afford it and are hedging by moving high-margin inference behind paywalls while seeding open models that generate downstream liability.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>AI policy fragmentation makes the US uncompetitive against centralized China</h3>
+          <div class="subtitle">Trump names Jay Clayton AI czar with unclear scope while Fed-White House tensions and state-level regulatory variance create decision paralysis. DeepSeek raises $12-15B under unified Chinese policy.</div>
+          <div class="pattern-cats"><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">China</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Trump appointed Jay Clayton as AI czar, but secondary sources do not clarify mandate, budget, or authority. The December 2025 executive order tried to preempt state AI laws, suggesting federal-state friction persists. Simultaneously, Kevin Hassett is criticizing Fed officials over rate hikes, and markets price 63% odds on another hike at Oct 28 FOMC. The US AI policy apparatus is splitting across three vectors: federal AI governance (undefined under Clayton), state-level regulation (still moving despite the executive order), and monetary policy (White House and Fed at odds). Meanwhile, China's DeepSeek is raising $12-15B backed by Tencent and CATL. No ambiguity. No turf wars. DeepSeek can commit compute capacity, secure power supply via CATL's manufacturing muscle, and move to IPO in early 2027. The speculative read is sharp: US regulatory fragmentation (Fed rates vs White House, federal AI policy vs state AI laws) creates decision lag that Beijing does not face. Western labs cannot commit to long-term infrastructure investments—compute financing, power contracts, or talent pools—when policy direction is contested. China's model is unified enough to execute at scale. By 2027, when DeepSeek goes public on unified policy infrastructure, US labs will still be negotiating between the Fed's monetary tightening and the White House's AI ambitions. The competitiveness gap is administrative.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Debt markets are pricing AI risk like energy; geopolitics will break the model</h3>
+          <div class="subtitle">The $60B Broadcom-Anthropic syndication treats AI compute as infrastructure asset. But political risk in Taiwan, Middle East, or US-China relations is not priced.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Markets</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Energy</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Wall Street is syndicating a $60B financing package for AI compute infrastructure as if it were an aircraft-lease portfolio or energy project. This signals mature risk transfer: lenders accept compute concentration because they can model revenue, power consumption, and payback schedules. But the briefing notes that NATO is running Steadfast Duel 2026 (Oct 6-15), the US-Israel-Iran conflict that began Feb 28 continues to weigh on energy markets, and the US is removing all bombers from a UK base. These are not noise. Taiwan remains a background concern in the China summary. The financed infrastructure—data centers, custom chips, power contracts—is geographically concentrated and politically exposed. A Taiwan strait closure forces compute offline. A Middle East escalation spikes energy costs and breaks power contracts. A US-China tit-for-tat on export controls (already likely given OpenAI's Broadcom-TSMC-AMD hedging strategy) could strand capacity offline. The debt markets are pricing AI as if it were electricity or aviation: fungible, boring, long-duration, low-political-risk. It is not. The $60B syndication assumes continuity of energy supply, uninterrupted Taiwan semiconductor production, and stable US-China trade. Any one of those fails, the asset class reprices, and lenders get caught holding infrastructure that generates negative returns. This is the tail risk that secondary lending markets are not surfacing.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>Two More Months: The Rare-Earth Truce Buys Time, Not Security</h2>
+    <div class="standfirst">The US-China truce on rare-earth export controls now runs to January 10, 2027, but the extension shows who holds the leverage and leaves the underlying dependency untouched.</div>
+    <div class="deep-dive-why">The extension of the rare-earth export truce to January 2027 resets the clock on the most important chokepoint in US-China relations, just as firms were preparing for a November 10 cliff.</div>
+    <div class="body"><p>The deadline that had worried manufacturers, set for November 10, has moved. After the Trump-Xi meeting in Washington in late September, reporting indicates the suspension of China's expanded rare-earth export controls will now last until January 10, 2027. The controls in question are the sweeping measures announced on October 9, 2025, including the extraterritorial rule that would require a Chinese licence for foreign-made goods containing Chinese-origin rare earths. China suspended them for a year after the Busan summit. Details of the extension are still emerging and accounts differ, so treat the exact terms with caution. The shift is about two months, not the longer arrangement Beijing wanted.</p>
+<p>The history explains why the date matters. In April 2025, after Washington's tariff escalation, Beijing imposed licensing on seven medium and heavy rare earths: samarium, gadolinium, terbium, dysprosium, lutetium, scandium and yttrium. Magnet exports collapsed and some Western auto and defense production lines stalled. The Busan truce paused the October escalation but left the April licensing regime in place. Beijing retains discretion over who gets licences and when. China controls most of the world's rare-earth mining and the large majority of magnet manufacturing, and it dominates the heavy rare earths that no one else yet refines at scale.</p>
+<p>Pre-summit reporting suggested the two sides wanted different things. Beijing preferred an extension running to the end of Trump's term, which would give it predictability and keep the controls as a standing bargaining chip. Washington proposed three to six months, apparently to retain flexibility on tariffs and chip export controls. A two-month extension is shorter than either side's stated position. That suggests neither got what it wanted, or that the short horizon is deliberate, keeping pressure on both sides.</p>
+<p>Reasonable observers read this in at least three ways. The optimistic view is that the truce has proved durable. Both governments have repeatedly stepped back from the brink, and each has strong incentives to avoid disrupting trade. Chinese rare-earth exports rose in early 2026, which suggests licences are being granted. The pessimistic view is that short extensions are a form of management by leverage. Beijing can show it is a reliable supplier while keeping a licence system that lets it slow shipments to specific firms, such as defense contractors, without formal escalation. The third view, common among industrial analysts, is that diplomacy is beside the point. Whatever the deadline, US and allied magnet and heavy-rare-earth capacity cannot close the gap for years, and subsidies, price floors and equity stakes in Western miners cannot compress mine-to-magnet timelines.</p>
+<p>There is also a question of what Washington pays for the truce. If it is trading restraint on semiconductor controls or Taiwan-related signalling for rare-earth access, the hidden cost may be strategic. If it is paying only in tariff relief, the bargain looks cheaper but also more fragile.</p>
+<p>What to watch next. First, the written terms: whether the extension covers only the October 2025 measures or also eases the April licensing regime, and whether general licences for civilian users appear. Second, licence data over the coming weeks, particularly for heavy rare earths and defense-adjacent buyers, which will show whether the truce is real in practice. Third, Western supply deals and offtake agreements, including Pentagon-backed magnet projects, whose commissioning dates will show how long the exposure lasts. Fourth, the run-up to January 10: expect negotiations on another extension to start around December, tied to the tariff truce and chip-control disputes. A lapse in January would hit as manufacturers set 2027 production plans, which is why companies will be building inventory through the winter regardless of what diplomats say.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://foreignpolicy.com/2026/09/22/china-rare-earth-xi-trump-meeting-summit/" target="_blank" rel="noopener">Foreign Policy</a><span class="source-sep">·</span><a class="source-link" href="https://www.scmp.com/news/china/diplomacy/article/3368318/rare-earths-friction-threatens-stall-trade-truce-extension-ahead-xi-trump-summit" target="_blank" rel="noopener">SCMP</a><span class="source-sep">·</span><a class="source-link" href="https://rareearthexchanges.com/news/us-china-trade-truce-rare-earth-chokepoints/" target="_blank" rel="noopener">Rare Earth Exchanges</a><span class="source-sep">·</span><a class="source-link" href="https://www.rinnovabili.net/policy-and-affairs/environmental-policies/chinese-rare-earth-exports-trump-xi-truce/" target="_blank" rel="noopener">Rinnovabili</a><span class="source-sep">·</span><a class="source-link" href="https://techtimes.com/articles/328392/20261002/rare-earth-magnets-chinas-november-10-deadline-us-gap-money-cant-close.htm" target="_blank" rel="noopener">Tech Times</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/game-decompilation-is-this-legal-a-well-trodden-path/" target="_blank" rel="noopener">Game Decompilation, Is This Legal?, A Well-Trodden Path</a><div class="sig-summary">Argues that AI-driven game decompilation raises legal questions, but the bigger risk to gaming is new games and more personalization. Also wrote that Apple's walled-garden protections now feel like limits in the AI era, and the weekly roundup covered Meta's focus and what OpenAI is doing.</div><div class="sig-connection">↳ Fits the AI-driven shifts across Frontier Tech and Applied Tech. His Apple piece on platform control sits alongside the open-weight race and the DeepSeek raise.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-213" target="_blank" rel="noopener">Weekly Dose of Optimism #213</a><div class="sig-summary">Weekly optimism roundup covering Starship Orbital, America.gov, the Matic Master Plan, Freckle and Heart Age.</div><div class="sig-connection">↳ Starship Orbital touches on frontier infrastructure and energy-hungry compute, which relates to the Google–Constellation power deal.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering" target="_blank" rel="noopener">OpenAI's Head of ChatGPT: We're entering a new era of AI (again) | Tibo Sottiaux</a><div class="sig-summary">Tibo Sottiaux says Dots is OpenAI's biggest bet and that agents will dominate internet traffic. Lenny also posted a demo of ChatGPT Sites from OpenAI DevDay, which turns Slack, Notion and calendar data into internal tools.</div><div class="sig-connection">↳ Agent-driven traffic and internal tooling point to rising compute demand, as in the Broadcom–Anthropic financing. They also point to shifts in knowledge work, which ties to Labor & Workforce.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 13 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

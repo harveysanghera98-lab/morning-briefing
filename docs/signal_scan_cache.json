@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-30",
+  "date": "2026-10-07",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -25,11 +25,11 @@
       "name": "Nathan Benaich",
       "handle": "@nathanbenaich",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Post on AI solving long-unsolved math problems / State of AI Report 2026 teaser",
-      "url": "https://x.com/nathanbenaich",
-      "summary": "Commented that a solution to a problem unsolved for 200 years is better today than in 10 more years, and hinted at more to say in the upcoming State of AI Report 2026 (launch meetup Oct 8 in SF).",
-      "connection": "Ties to the frontier AI capability story and the Anthropic IPO and AI-governance news, since the State of AI report will likely frame the state of the field."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Stanley Druckenmiller",
@@ -54,37 +54,37 @@
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
-      "source": "substack",
-      "signal": "strong",
-      "latest_title": "Trading Post September 28, 2026",
-      "url": "https://michaeljburry.substack.com/p/trading-post-september-28-2026",
-      "summary": "Reports big action in his big shorts as his research progresses, plus a few new buys, and is moving up his timelines. Earlier in the week he compared AI capex to past capital-cycle bubbles and flagged roughly $900B of off-balance-sheet AI commitments at Alphabet.",
-      "connection": "A bearish counterpoint to the Anthropic $2T+ IPO valuation leak and to AI-capex enthusiasm, at a time of multi-decade-high Treasury yields after the Fed hike."
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "OpenAI Dev Day, Dot and OpenAI's Product Transition, Sign In With ChatGPT",
-      "url": "https://stratechery.com/2026/openai-dev-day-dot-and-openais-product-transition-sign-in-with-chatgpt/",
-      "summary": "Says OpenAI's Dev Day showed a confusing product with more vision than it first appears. Earlier pieces argued agents are the ultimate Aggregators that reduce apps to a means, and that Meta should chase consumer agents rather than the enterprise.",
-      "connection": "Frames the platform competition among AI labs behind the Anthropic IPO valuation and the frontier-lab safety pledge."
+      "latest_title": "Game Decompilation, Is This Legal?, A Well-Trodden Path",
+      "url": "https://stratechery.com/2026/game-decompilation-is-this-legal-a-well-trodden-path/",
+      "summary": "Argues that AI-driven game decompilation raises legal questions, but the bigger risk to gaming is new games and more personalization. Also wrote that Apple's walled-garden protections now feel like limits in the AI era, and the weekly roundup covered Meta's focus and what OpenAI is doing.",
+      "connection": "Fits the AI-driven shifts across Frontier Tech and Applied Tech. His Apple piece on platform control sits alongside the open-weight race and the DeepSeek raise."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Posts on college and startups, and on .com vs .ai domains",
-      "url": "https://x.com/paulg",
-      "summary": "Warned founders not to start a startup expecting to go to college, or back, afterward, because the two paths are incompatible. Also said a better .com is always available for about $5k than the .ai name a startup is using.",
-      "connection": "Loosely related to AI-startup culture and the frenzy around AI valuations."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "newsletter",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -95,31 +95,31 @@
       "name": "Packy McCormick",
       "handle": "@packym",
       "source": "substack",
-      "signal": "strong",
-      "latest_title": "Airbound: As We May Move",
-      "url": "https://www.notboring.co/p/airbound-as-we-may-move",
-      "summary": "A deep dive on Airbound and the future of personal flight. Also published Weekly Dose of Optimism #212 (Vironexis, Solcoa, Terraform, Joby, Meta VR glasses) and a piece on the future of education.",
-      "connection": "Fits the Applied Tech & Industry and Frontier Tech themes."
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #213",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-213",
+      "summary": "Weekly optimism roundup covering Starship Orbital, America.gov, the Matic Master Plan, Freckle and Heart Age.",
+      "connection": "Starship Orbital touches on frontier infrastructure and energy-hungry compute, which relates to the Google\u2013Constellation power deal."
     },
     {
       "name": "CJ Gustafson",
       "handle": "@cjgus",
-      "source": "newsletter",
-      "signal": "light",
-      "latest_title": "Why Aren't Founders and Boards More Pissed About Day 1 IPO Pops?",
-      "url": "https://www.mostlymetrics.com/",
-      "summary": "Argues founders and boards should be angrier about large first-day IPO pops, which leave money on the table.",
-      "connection": "Relevant to the Anthropic IPO prospectus leak and how a mega-IPO might be priced."
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
-      "source": "newsletter",
+      "source": "substack",
       "signal": "strong",
-      "latest_title": "All of the Lenny & Friends Summit talks are now online!",
-      "url": "https://www.lennysnewsletter.com/p/all-of-the-lenny-and-friends-summit",
-      "summary": "Published all the summit talks with reflections and takeaways. His How I AI episode says Opus 5.5 brought him back to Claude after months away, includes an Opus 5.5 vs GPT-6 Sol benchmark, and covers Jev, a tool that returns type-safe structured values as a cheap classification layer.",
-      "connection": "Shows real-world practitioner momentum for Anthropic's models, in line with the IPO valuation story."
+      "latest_title": "OpenAI's Head of ChatGPT: We're entering a new era of AI (again) | Tibo Sottiaux",
+      "url": "https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering",
+      "summary": "Tibo Sottiaux says Dots is OpenAI's biggest bet and that agents will dominate internet traffic. Lenny also posted a demo of ChatGPT Sites from OpenAI DevDay, which turns Slack, Notion and calendar data into internal tools.",
+      "connection": "Agent-driven traffic and internal tooling point to rising compute demand, as in the Broadcom\u2013Anthropic financing. They also point to shifts in knowledge work, which ties to Labor & Workforce."
     },
     {
       "name": "Andrej Karpathy",
