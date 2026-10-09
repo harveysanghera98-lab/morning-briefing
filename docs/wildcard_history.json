@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-11",
-    "topic": "AI IPO Wave: SpaceX Prices, OpenAI Files, Markets Tremble"
-  },
-  {
     "date": "2026-06-12",
     "topic": "GitHub Copilot Token Billing: The Agentic AI Cost Reckoning"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-10-07",
     "topic": "Rare Earths Truce Extended to January 2027"
+  },
+  {
+    "date": "2026-10-09",
+    "topic": "OpenAI's Revenue Restatement Rattles the AI Trade"
   }
 ]

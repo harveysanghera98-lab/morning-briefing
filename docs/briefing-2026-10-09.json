@@ -1,0 +1,414 @@
+{
+  "top_stories": [
+    {
+      "priority": "high",
+      "headline": "Fed under Warsh weighs a second hike as the Iran war keeps inflation high",
+      "one_liner": "The Fed's first hike since 2023 and a split FOMC make the October 27-28 meeting a live decision.",
+      "detail": "The Fed raised rates 25 basis points on September 16, to 3.75-4.00%. The vote was unanimous, and it was the first increase since 2023. Kevin Warsh, who replaced Powell as Chair, argued the economy is strong enough to absorb tightening. Inflation is the problem. CPI reached a three-year high of 4.2% in May and eased to 3.4% in August, while PCE inflation was reported at about 3.7% in July. Oil and gasoline prices tied to the US-Iran war and disruption around the Strait of Hormuz are the main driver. CNBC and CNN reported the hawkish turn. CBS framed the hike as a test of Warsh's relationship with Trump.\n\nThe committee is now divided on what comes next. Governor Logan has argued for another 50bp or more. Governor Bowman sees no urgent need for further moves this year. Market pricing shows roughly a 53% chance of no change at the October 27-28 meeting. White House economic adviser Kevin Hassett has publicly criticized Fed officials who favor more hikes, so the political friction is open. These points come from aggregator and secondary reports, not from primary Reuters or WSJ copy I could retrieve. Treat the exact odds as approximate.\n\nThe Congressional Budget Office expects the war to add about 0.5 percentage point to inflation early next year. WTI was reported near $92.87 in one wrap, though that item was undated. Watch September CPI on Wednesday October 14 and Warsh's October 16 IMF conversation in Bangkok for signals on the pace of tightening.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "CNN",
+          "url": "https://www.cnn.com/2026/09/16/economy/fed-rate-decision-september"
+        },
+        {
+          "name": "CBS News",
+          "url": "https://www.cbsnews.com/news/fed-rate-hike-warsh-trump-inflation/"
+        },
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/amp/2026/09/02/us-iran-trump-war-escalation-latest-fed-rate-g20-bessent-yen-.html"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Oil shock from the US-Iran war keeps Hormuz risk at the center of energy and inflation",
+      "one_liner": "Crude near $90 and shipping disruption are feeding inflation, Fed policy and the outlook for tech investment.",
+      "detail": "The US-Iran conflict, which began with US and Israeli strikes on Iran earlier this year, has no end in sight according to recent coverage. Renewed fighting in late summer pushed oil higher. Traders are pricing in further disruption to flows through the Strait of Hormuz, and Red Sea shipping is also affected. Gasoline rose 3.9% in August alone, which accounted for more than a third of that month's CPI increase.\n\nEuronews and Fortune tracked the oil move into the Fed's policy bind. Tech Times argues the oil shock, the Warsh hike and the Trump-Xi trade truce are together reshaping tech investment.\n\nThe White House said at the May Beijing summit that both leaders agreed Hormuz must stay open and Iran must never have a nuclear weapon. That shared position has not ended the fighting. I could not retrieve dated reporting for October 8 or 9, so the current front-line and price picture needs checking against Reuters or the FT before acting on it.\n\nWatch the oil price, any shipping or insurance disruption, and the September CPI release on October 14.",
+      "sector": "Energy",
+      "sources": [
+        {
+          "name": "Euronews",
+          "url": "https://www.euronews.com/business/2026/08/31/oil-prices-higher-as-us-iran-tensions-flare-and-warsh-fans-rate-hikes"
+        },
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/07/13/oil-price-rises-inflation-expectations-warsh-fed-goldman/"
+        },
+        {
+          "name": "Tech Times",
+          "url": "https://www.techtimes.com/articles/328143/20260928/iran-oil-shock-warsh-hike-trump-xi-truce-reshape-tech-investing-after-summit.htm"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Anthropic and OpenAI push into custom silicon to cut reliance on Nvidia",
+      "one_liner": "Frontier labs are moving into chip design as compute constraints shape the AI race.",
+      "detail": "Anthropic confirmed on August 5 that it is building an in-house team to design custom chips for Claude. TechCrunch earlier reported in July that it was in talks with Samsung on a custom chip. Anthropic still says Nvidia and AMD hardware remain important, and it keeps cloud ties with AWS and Google. Reports say it will take years before chips tailored to a future Claude model run in servers.\n\nOpenAI has teamed with Broadcom on a custom inference processor called Jalape\u00f1o, which it says offers better performance per watt than competing chips. Nvidia remains the dominant supplier, so the near-term effect is hedging more than displacement.\n\nThese items are from July and August, not the last 24 hours. My searches found no dated chip-supply news for October 8-9. Watch for foundry and packaging capacity announcements and for any Samsung deal confirmation.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/02/anthropic-is-discussing-a-new-custom-chip-with-samsung/"
+        },
+        {
+          "name": "The Decoder",
+          "url": "https://the-decoder.com/anthropic-reportedly-explores-custom-chip-manufacturing-with-samsung-while-insisting-nvidia-still-matters/"
+        },
+        {
+          "name": "Data Center Dynamics",
+          "url": "https://www.datacenterdynamics.com/en/news/anthropic-exploring-possibility-of-designing-its-own-ai-chips-report/"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "EU delays AI Act high-risk rules; US pursues preemption of state AI laws",
+      "one_liner": "The regulatory timetable on both sides of the Atlantic is loosening for industry.",
+      "detail": "A Council-Parliament deal under the Digital Omnibus on AI moves Annex III high-risk obligations from August 2, 2026 to December 2, 2027. Rules for AI embedded in regulated products slip to August 2028. Parliament adopted the text on June 16. I could not confirm that the Council has formally signed off. A new ban on AI that generates non-consensual sexual imagery and child sexual abuse material, plus watermarking duties, is set to apply from December 2, 2026.\n\nIn the US, a December 2025 executive order set up an AI Litigation Task Force at the Justice Department to challenge state AI laws. It links some federal funding to alignment with a national standard. Law-firm commentary frames both moves as reducing the compliance burden.\n\nThis is background, not a development from the last 24 hours. Watch for final Council adoption and for litigation filed by the task force.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "Sidley Data Matters",
+          "url": "https://datamatters.sidley.com/?p=8999"
+        },
+        {
+          "name": "Hogan Lovells",
+          "url": "https://www.hoganlovells.com/en/publications/eu-legislators-agree-to-delay-for-high-risk-ai-rules"
+        },
+        {
+          "name": "Squire Patton Boggs",
+          "url": "https://www.squirepattonboggs.com/insights/publications/key-insights-on-president-trumps-new-ai-executive-order-and-policy-regulatory-implications/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Anthropic and OpenAI are both developing custom chips (Anthropic in-house with possible Samsung manufacturing; OpenAI with Broadcom). This is background from July and August. I found no dated October 8-9 coverage."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Hassett has criticized Fed officials who favor more hikes, which shows friction between the White House and the Fed. A Newsquawk item, undated in the results, said the Supreme Court ruled against Trump's citizenship curbs."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The EU's Digital Omnibus delays high-risk AI Act duties to December 2027. The US is pursuing federal preemption of state AI laws through a DOJ task force. No new action found for this week."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "The US-Iran war continues with no end in sight, and Hormuz disruption is the main risk. A US-China trade truce is holding after the May Beijing summit. I found no dated October 8-9 updates."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "The Trump-Xi trade truce continues. Xi has called Taiwan the most important issue in the relationship. Both sides agreed to support the 2026 APEC and G20 summits. No new October developments retrieved."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The Fed is at 3.75-4.00% after its September hike, with a roughly 53% chance of a hold on October 28. Inflation is 3.4% on CPI as of August. September CPI is due October 14."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Oil is elevated, with one undated report putting WTI near $93, on Hormuz and Red Sea disruption. The CBO expects the war to add about 0.5 point to inflation early next year."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Fri 9",
+      "event": "Weekly wrap: watch oil, Treasury yields and Fed speakers after the September hike",
+      "tag": "other"
+    },
+    {
+      "day": "Mon 12",
+      "event": "Columbus Day: US bond markets closed",
+      "tag": "data"
+    },
+    {
+      "day": "Mon 12",
+      "event": "Start of the Q3 bank earnings run for the week, per calendar sites. Specific companies unconfirmed",
+      "tag": "earnings"
+    },
+    {
+      "day": "Wed 14",
+      "event": "BLS September CPI release, 8:30am ET. Key input for the October 27-28 FOMC",
+      "tag": "critical"
+    },
+    {
+      "day": "Thu 15",
+      "event": "September PPI release, 8:30am ET",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 16",
+      "event": "Fed Chair Warsh moderated conversation at the IMF fall meetings in Bangkok",
+      "tag": "policy"
+    },
+    {
+      "day": "Tue 27",
+      "event": "FOMC meeting begins, with a decision on Wed 28. Roughly 53% odds of a hold",
+      "tag": "critical"
+    }
+  ],
+  "deep_dive": {
+    "topic": "OpenAI's Revenue Restatement Rattles the AI Trade",
+    "headline": "A $20 Billion Accounting Gap Shows How Much the AI Trade Rests on One Number",
+    "standfirst": "When OpenAI told investors its annualized revenue was about $50 billion, not the roughly $70 billion that had been circulating, the Nasdaq fell 1.25%. The reaction showed how much of the AI buildout is priced off a single, loosely defined metric.",
+    "body": "The news hook is this week's Financial Times report, based on documents shared with investors, that OpenAI's annualized revenue was about $50 billion at the end of September. Figures of $68 billion to $70 billion had been widely cited before that. On Thursday the Nasdaq fell 1.25% to 27,193 and the S&P 500 lost 0.47%. Oracle fell more than 5%, Nvidia about 3% and AMD nearly 4%, and CoreWeave also dropped. The earlier $70 billion figure had lifted Oracle by about 5% when it first circulated, so part of the fall reversed that gain.\n\nThe gap does not mean OpenAI's revenue shrank. Most coverage attributes it to definitions. Anthropic counts sales made through cloud partners such as AWS and Google Cloud in its annualized figure, and OpenAI does not. Outside investors who tried to put the two companies on the same basis produced inconsistent estimates, and at least one adjustment put August at about $40 billion. 'Annualized revenue' is not an audited number. It is usually a recent month or week multiplied up, and it flatters any business that is growing fast or is seasonal. For a private company, it works as a marketing figure, an input to valuations and a headline number that analysts repeat.\n\nThe context explains why a definitional dispute moved markets. Since last year, a large share of AI infrastructure spending has depended on a few lab customers whose revenue is far smaller than their commitments. Oracle's data-center backlog, CoreWeave's contracts and Nvidia's financing support are all tied to OpenAI's ability to pay. Reports this week that Broadcom is preparing to arrange about $50 billion of financing for OpenAI, and that Oracle is also seeking funding, make the point. When commitments are sized against expected revenue, a 30% downward revision in the revenue base is a material event. It tightens the ratio of obligations to income even if the underlying business is healthy. It also follows our earlier coverage of circular financing and the capex reckoning, and it shows the same fragility at the level of a single metric.\n\nThere are three readings. The first is that this is noise. Revenue is still growing quickly, the restatement is about accounting conventions, and the selloff is a brief correction in stocks that were priced for perfection. On this view, Anthropic's cheaper Claude Haiku 5.5, launched this week, and falling inference prices mean volumes are rising even as price per token falls, so demand is not the issue.\n\nThe second reading is that the problem is structural and the number only exposed it. If the leading lab sits near $50 billion while the infrastructure plans around it assume far higher figures, then financing at the edges, including debt, vendor financing and special-purpose structures, becomes the weak link. Skeptics note that the WTO credited AI investment this week for lifting its trade-growth forecast to 3.9%. That makes the real economy more dependent on the buildout continuing, and so more exposed if it stalls.\n\nThe third reading is geopolitical. SemiAnalysis, as reported by the FT, estimates that China's operating AI compute is already about 24GW against roughly 56GW in the US, with another 50GW planned or under construction in China. China is also adding cheap renewable power in its western regions. The comparison is awkward for American investors because China is building on state-directed financing that does not depend on a single customer's revenue disclosures. Yangtze Memory's record IPO and Biren's roughly $515 million placement show that Chinese capital markets are funding the same race.\n\nWhat to watch: first, how OpenAI and Anthropic reconcile their definitions, whether through standardized reporting or restated figures, in the coming weeks. Second, the Broadcom-arranged financing and Oracle's funding round, which will show whether credit markets reprice the risk. Third, late October earnings from the big cloud providers, where capex guidance and backlog commentary will say whether customers are still committing. Fourth, with the Fed hawkish and oil under pressure from Hormuz tensions, how much financing cost is added to an already stretched buildout.",
+    "why_today": "A report published this week that OpenAI's annualized revenue is about $50 billion rather than about $70 billion drove Thursday's AI-led selloff, and markets are still digesting it.",
+    "sources": [
+      {
+        "name": "Quartz",
+        "url": "https://qz.com/openai-annualized-revenue-50-billion-correction-ai-stocks-100826"
+      },
+      {
+        "name": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-100-ends-lower-report-225519360.html"
+      },
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/10/07/stock-market-today-live-updates-.html"
+      },
+      {
+        "name": "Bloomberg",
+        "url": "https://www.bloomberg.com/graphics/2026-china-ai-energy-future/"
+      },
+      {
+        "name": "OfficeChai",
+        "url": "https://officechai.com/ai/oracle-drops-5-nvidia-microsoft-also-fall-after-report-that-openais-revenue-is-lower-than-initially-reported/"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "Warsh's Hike Is Really an Oil Tax on AI Capex",
+      "subtitle": "Speculative: the Hormuz shock is quietly making the compute buildout more expensive than the chip race",
+      "categories": [
+        "Markets",
+        "Energy",
+        "Frontier Tech / AI"
+      ],
+      "content": "Speculative. The obvious story is that the Fed hiked because oil pushed inflation up. The less obvious question is who pays for that hike. Gasoline rose 3.9% in August and accounted for more than a third of that month's CPI increase, and the Fed's answer is to raise the price of money to 3.75-4.00%. Higher cost of capital lands hardest on businesses that borrow heavily to build over multi-year horizons. In this cycle that means data centers and the frontier labs that rent them.\n\nPut that next to the custom-silicon push. Anthropic is building an in-house chip team and reportedly talking to Samsung, and OpenAI is working with Broadcom on the Jalape\u00f1o inference processor. Both moves are sold as Nvidia hedges. My bet is they are also financing hedges. A lab that can point to its own silicon roadmap has a better story to tell lenders when the Fed is tightening and oil is near $90. Expect the next wave of compute deals to lean toward equity, vendor financing and long-dated offtake agreements, and away from straight loans.\n\nThe sharp take: if the Fed hikes again on October 28, the first casualty will not be inflation. It will be the marginal AI buildout, and anyone still framing the chip race as a fight over Nvidia's share is looking at the wrong line on the balance sheet. Watch September CPI on October 14. If core services stay hot, the roughly 53% hold odds are too generous. The odds themselves are approximate and come from secondary reporting."
+    },
+    {
+      "title": "The Fed's Real Test Is Whether Warsh Survives His Own Hike",
+      "subtitle": "Speculative: the October 27-28 meeting is a referendum on Fed independence, not just rates",
+      "categories": [
+        "US Policy & Power",
+        "Markets"
+      ],
+      "content": "Speculative. Warsh replaced Powell and his first big call was a hike, the first since 2023, made while the White House was openly unhappy with the direction of policy. Kevin Hassett has publicly criticized Fed officials who favor more hikes, and CBS framed the September move as a test of Warsh's relationship with Trump. Read those facts together and the October meeting looks less like a data decision and more like a loyalty signal.\n\nMy guess is that Warsh holds in October and the hawks lose in public while winning in the minutes. Governor Logan wants 50 basis points or more. Governor Bowman sees no urgent need for further moves. A hold lets Warsh keep credibility with the inflation hawks by having already moved, while giving the White House a pause to claim the economy is not being strangled. It is the cleanest path, and it is also the path that makes the Fed look like it is responding to politics. The market's roughly 53% for no change looks right, but for the wrong reasons.\n\nThe sharp take: the real risk is not a hike in October. It is a Fed seen as pressured into a hold while oil sits near $90 and CPI runs above target. That combination is how inflation expectations come unanchored, and it is the outcome the Warsh hike was meant to prevent. The Hassett criticism and the 53% figure both come from secondary reporting, so treat them as approximate."
+    },
+    {
+      "title": "Regulatory Retreat on Both Sides Is a Gift to Labs That Can Afford Lawyers",
+      "subtitle": "Speculative: delayed AI Act duties and federal preemption favor scale players, not safety",
+      "categories": [
+        "AI Regulation & Governance",
+        "US Policy & Power",
+        "Frontier Tech / AI"
+      ],
+      "content": "Speculative. The Digital Omnibus deal moves Annex III high-risk obligations from August 2, 2026 to December 2, 2027, and pushes AI in regulated products to August 2028. Meanwhile a DOJ AI Litigation Task Force is set up to challenge state AI laws, and some federal funding is tied to a national standard. Law firms describe both moves as reducing compliance burden. That is accurate and incomplete. Compliance burden falls hardest on companies without a large legal department, and least on frontier labs that already have one.\n\nThe likely winners are the labs with the biggest legal and policy teams, which in this landscape means Anthropic, OpenAI and the hyperscalers they rent from. A two-year runway on EU high-risk rules, plus a federal preemption push that could wipe out state laws, is a moat dressed up as deregulation. Smaller model developers and state-level safety advocates lose leverage. My prediction is that the first major federal fight over this will be the Justice Department against a state like California or Colorado, not against a frontier lab.\n\nThe sharp take: the only hard date in this package that will not move is December 2, 2026, when the ban on AI-generated non-consensual sexual imagery and CSAM and the watermarking duties apply. Expect that to be the one rule everyone complies with, because it is the one nobody lobbies against. I could not confirm final Council adoption of the Omnibus text, so the delay itself should be treated as provisional."
+    },
+    {
+      "title": "Samsung Is the Hedge Nobody Says Out Loud",
+      "subtitle": "Speculative: the Trump-Xi truce buys time, and non-Taiwan foundry capacity is the real insurance",
+      "categories": [
+        "China",
+        "Frontier Tech / AI",
+        "Geopolitics"
+      ],
+      "content": "Speculative. The Trump-Xi trade truce is holding after the May Beijing summit, and both sides have agreed to support the 2026 APEC and G20 summits. Xi has called Taiwan the most important issue in the relationship. Anthropic is reportedly in talks with Samsung on a custom chip, while still saying Nvidia and AMD hardware remain important. Put those together and you get a frontier lab that wants a second foundry option on its books.\n\nI think the Samsung talks matter more than the chip. Any lab building custom silicon eventually needs leading-edge fabrication, and advanced capacity is concentrated in a few places, Taiwan being the most exposed. A Samsung relationship gives Anthropic a second foundry story and gives Washington a Korean-built alternative to point to when it talks about reshoring. For Samsung, a marquee AI customer is worth more than the margin on any single wafer. Expect Samsung to talk up its foundry and packaging capacity in coming quarters, and expect Beijing to read any such deal as part of the US tech containment playbook, even while the trade truce holds.\n\nThe sharp take: the truce is not stabilizing the chip supply chain. It is buying time for everyone to build a Taiwan contingency, and the labs building their own silicon are doing it openly. I found no dated October 8-9 reporting on any of this, and the Samsung deal has not been confirmed, so treat the whole thesis as a hypothesis to test against the next foundry announcement."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Game Decompilation, Is This Legal?, A Well-Trodden Path",
+      "url": "https://stratechery.com/2026/game-decompilation-is-this-legal-a-well-trodden-path/",
+      "summary": "Argues that AI-driven game decompilation raises legal questions, but the bigger risk to gaming is new games and more personalization. Also wrote that Apple's walled-garden protections now feel like limits in the AI era, and the weekly roundup covered Meta's focus and what OpenAI is doing.",
+      "connection": "Fits the AI-driven shifts across Frontier Tech and Applied Tech. His Apple piece on platform control sits alongside the open-weight race and the DeepSeek raise."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #213",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-213",
+      "summary": "Weekly optimism roundup covering Starship Orbital, America.gov, the Matic Master Plan, Freckle and Heart Age.",
+      "connection": "Starship Orbital touches on frontier infrastructure and energy-hungry compute, which relates to the Google\u2013Constellation power deal."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "OpenAI's Head of ChatGPT: We're entering a new era of AI (again) | Tibo Sottiaux",
+      "url": "https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering",
+      "summary": "Tibo Sottiaux says Dots is OpenAI's biggest bet and that agents will dominate internet traffic. Lenny also posted a demo of ChatGPT Sites from OpenAI DevDay, which turns Slack, Notion and calendar data into internal tools.",
+      "connection": "Agent-driven traffic and internal tooling point to rising compute demand, as in the Broadcom\u2013Anthropic financing. They also point to shifts in knowledge work, which ties to Labor & Workforce."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
