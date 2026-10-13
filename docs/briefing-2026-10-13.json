@@ -1,0 +1,368 @@
+{
+  "top_stories": [
+    {
+      "priority": "high",
+      "headline": "10-year Treasury yield sits near 5.24%, highest since 2002",
+      "one_liner": "Long-dated yields are at multi-decade highs on inflation and debt worries, and markets are pricing in rate increases.",
+      "detail": "US stocks closed out a record-setting week on Friday, October 9. The S&P 500 rose 0.6%, the Dow gained 423 points (0.8%) and the Nasdaq rose 0.6%. The 10-year Treasury yield rose to about 5.24% from 5.22%, a level near its highest since 2002. Reporting ties the move to inflation worries and the federal debt load.\n\nThe equity rally is running alongside a historically high long-term borrowing cost. On October 7, stocks fell from record highs as long-dated yields rose, which ended four-day winning streaks for the S&P 500 and the Dow. Late-September coverage said expectations were building that the Federal Reserve would raise rates at its October meeting. I could not confirm the meeting date or any outcome, so treat that as unverified.\n\nWatch this week's US CPI print and bank earnings for the next read on inflation and credit. A hot CPI would reinforce the rate-hike narrative and pressure long bonds. A soft one could ease yields. Note that my searches found no coverage dated October 12, so this reflects data through Friday, October 9.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Coeur d'Alene Press (AP)",
+          "url": "https://cdapress.com/news/2026/oct/09/us-stocks-rise-toward-the-finish-of-a-record-breaking-week/"
+        },
+        {
+          "name": "Newser (AP)",
+          "url": "https://www.newser.com/article/5d0f953dbf96febb0690c1aef23fa8a9/wall-street-finishes-its-record-setting-week-with-gains.html"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Brent holds above $100 as Iran war uncertainty persists",
+      "one_liner": "Oil is swinging on the Iran conflict and feeding the inflation and yield picture.",
+      "detail": "Brent crude settled at $104.72 on Friday, October 9, up 0.4%. It traded between $102.50 and $105 during the session. Reports attribute the swings to uncertainty over the war with Iran.\n\nThe Strait of Hormuz has been central to the price path this year. Brent peaked above $126 earlier in the conflict, fell to about $73 in late June after an interim US-Iran deal, then climbed again when fighting resumed in July. The most recent detailed coverage I found, from mid-August, had Brent near $90 and shipping through the strait at a small fraction of pre-war levels. I could not find reporting on how the situation moved from August to now.\n\nWatch for any renewed talks over Hormuz access, since they move oil, inflation expectations and the rate outlook together.",
+      "sector": "Energy",
+      "sources": [
+        {
+          "name": "Coeur d'Alene Press (AP)",
+          "url": "https://cdapress.com/news/2026/oct/09/us-stocks-rise-toward-the-finish-of-a-record-breaking-week/"
+        },
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/economy/2026/7/14/oil-hits-1-month-high-as-us-iran-fighting-clouds-strait-of-hormuz-outlook"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Q3 earnings season starts: JPMorgan reports today, TSMC this week",
+      "one_liner": "Bank and chip results will test the record-high equity market.",
+      "detail": "JPMorgan reports Q3 results today, October 13. Analysts expect earnings per share up 16.4% to $5.90 and revenue up 8.8% to $51.3bn, with an implied post-earnings move of about 3.3%. Taiwan Semiconductor also reports this week, and its results and guidance are the key read on AI chip demand.\n\nUS and eurozone CPI also land this week, against a backdrop of rising interest rates in both regions. Together these give the first look at whether record equity levels hold up against 5%-plus long yields.\n\nI could not verify the exact CPI release dates or consensus figures from my searches.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "CMC Markets",
+          "url": "https://www.cmcmarkets.com/en-gb/news-and-analysis/the-week-ahead-us-cpi-eurozone-cpi-jpmorgan-earnings"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "The US-Iran war continues to drive oil above $100 Brent. I found no verified overnight developments on the strait or on talks."
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "US stocks hit records last week. The 10-year yield is about 5.24%, near its highest since 2002, and markets are pricing in rate increases. CPI and bank earnings are this week."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Brent settled at $104.72 on October 9 amid Iran war uncertainty."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Tue 13",
+      "event": "JPMorgan Q3 earnings (consensus EPS $5.90, revenue $51.3bn)",
+      "tag": "earnings"
+    },
+    {
+      "day": "This week",
+      "event": "US CPI inflation report (exact date unverified)",
+      "tag": "data"
+    },
+    {
+      "day": "This week",
+      "event": "Eurozone CPI inflation data",
+      "tag": "data"
+    },
+    {
+      "day": "This week",
+      "event": "TSMC Q3 earnings, a read on AI chip demand",
+      "tag": "earnings"
+    },
+    {
+      "day": "This week",
+      "event": "Further big-bank Q3 earnings kick off earnings season",
+      "tag": "earnings"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Trump's Russian Diesel Waiver Splits Senate Republicans",
+    "headline": "Diesel for D\u00e9tente: Trump Trades Sanctions Leverage for Pump Prices, and His Own Senators Balk",
+    "standfirst": "A six-month waiver letting Russian diesel into Western markets is a bet that cheaper fuel before the midterms is worth more than the sanctions leverage it gives up, and Congress says it may be illegal.",
+    "body": "On Friday, October 9, after a call with Vladimir Putin, Donald Trump announced a staggered release of nearly 5 million tonnes of Russian diesel into American and global markets. The Treasury's Office of Foreign Assets Control issued General License 135 the same day. It covers Russian-origin diesel through April 7, 2027, and excludes transactions tied to the Russian central bank, sovereign wealth fund and finance ministry. By Sunday, six senators, four Republicans and two Democrats, had demanded the administration \"immediately reverse course\". Reuters counts a seventh signer, Ron Wyden. The Republicans named were Susan Collins, Lisa Murkowski, Thom Tillis and John Curtis. The Democrats were Jeanne Shaheen and Richard Blumenthal.\n\nThe volumes come from Trump's own post. He said 300,000 tonnes would flow immediately, 500,000 in November, a million after that and 3 million later. The Kremlin has not confirmed those numbers. Deputy Prime Minister Alexander Novak said Russia had begun lifting its diesel export restrictions early. That is awkward given that Putin said barely a week earlier that Russia had diesel to spare but could not sell it abroad.\n\nThe context is the fuel squeeze we have been tracking. US diesel prices have been elevated and an export-ban debate has been running. Diesel sets the cost of freight, farming and construction, and it is politically toxic with early voting for the midterms now under way. Russia, hit by Ukrainian drone strikes on its refineries, has been rationing its own supply with export curbs. Trump is therefore trading something Moscow wants, sanctions relief on a high-value product, for something he wants, lower pump prices. He is also pairing it with a push for an energy cease-fire. On Sunday he said both sides had agreed to stop attacking energy sites. A White House official then told Axios he meant a narrower deal on refineries. Ukraine says it will stop striking Russian energy if Russia does the same, and Ukrainian officials reported a Russian strike on a Kharkiv power plant right after Trump spoke.\n\nThe critics make a legal argument and a strategic one. The legal argument is that a 2022 law bans Russian energy imports and requires consultation with Congress and a written explanation, and neither happened. Tillis said there is a legitimate case that the president is not following the law. The strategic argument is that the waiver finances the war and rewards Putin for nothing concrete. It also splits the West. The EU and UK import bans and the $100 per barrel product price cap remain in force, and no European reaction has surfaced yet.\n\nThe administration's defenders see leverage rather than capitulation. Sen. John Barrasso called it another point of pressure on Putin. The logic is that a license can be revoked, so Moscow has an incentive to behave while volumes ramp up. Supporters also note that Russian diesel already reaches the world market through intermediaries and shadow fleets. A sanctioned flow that is visible and taxable-in-effect may change little in Moscow's revenue but could still lower global prices.\n\nA third view is that the whole thing may not matter much at the pump. Energy analysts say the volumes are modest against US consumption and global trade, and Russia must first rebuild export logistics while its refineries are being hit. If so, the political cost to Trump is paid up front and the fuel relief arrives late, or not at all, before the November vote.\n\nWatch four things. First, whether the Senate forces a vote. A disapproval resolution or a revived Russia sanctions bill would test how many Republicans will defy the White House, and the bipartisan signers suggest a veto-proof coalition is conceivable but not assured. Second, the first cargoes in late October and November, and whether the 500,000-tonne November tranche actually appears. Third, whether the energy cease-fire becomes a documented text or collapses, since the waiver is easiest to defend if Russia visibly stops striking Ukrainian infrastructure. Fourth, Brussels and London. If European governments openly object, or if traders start arbitraging the gap between the US license and the EU ban, the transatlantic sanctions regime frays. The license expires in April 2027, which sets the real test of whether this was leverage or a one-way concession.",
+    "why_today": "The bipartisan Senate revolt against the Russian diesel waiver erupted over the weekend and is now the central test of Trump's sanctions policy as early voting begins.",
+    "sources": [
+      {
+        "name": "PBS NewsHour",
+        "url": "https://www.pbs.org/newshour/politics/bipartisan-group-of-senators-calls-on-trump-to-reverse-course-on-russian-diesel-plan"
+      },
+      {
+        "name": "Scripps News",
+        "url": "https://www.scrippsnews.com/us-news/senators-say-trumps-russian-diesel-deal-violates-us-law-demand-white-house-reverse-course"
+      },
+      {
+        "name": "Ship & Bunker",
+        "url": "https://shipandbunker.com/news/world/445068-us-lifts-sanctions-on-russian-diesel-for-six-months-after-trump-putin-call"
+      },
+      {
+        "name": "Just Security",
+        "url": "https://www.justsecurity.org/160381/early-edition-october-12-2026/"
+      },
+      {
+        "name": "Raw Story",
+        "url": "https://www.rawstory.com/putin-trump/?rand=926"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "The 10-Year Is Now the Hormuz Negotiator",
+      "subtitle": "Speculative: Long-bond pain, not diplomacy, is what eventually reopens the strait.",
+      "categories": [
+        "Energy",
+        "Markets",
+        "Geopolitics"
+      ],
+      "content": "Speculative. Brent at $104.72 and a 10-year near 5.24% are the same problem seen from two ends. Oil above $100 feeds the inflation prints that push long yields toward multi-decade highs, and those yields are what the Treasury has to refinance at. The Iran war is being treated as an oil story, but the bond market is the one with a deadline. Washington can absorb a $100 barrel for a while. It cannot absorb a 5%-plus long bond that keeps repricing higher while it rolls over a large debt stack.\n\nSpeculative. My bold call is that the first serious Hormuz de-escalation will be justified in public as a security or shipping matter, but the real trigger will be a week when long yields spike harder than oil does. Watch for that divergence: if the 10-year keeps climbing on a flat or falling Brent, the market is telling you inflation expectations are shifting from the barrel to the debt. That is the signal that the administration cares about most.\n\nSpeculative. The bank earnings this week, JPMorgan first, are the test. If the big banks talk about a steeper curve as a margin tailwind while signaling tougher credit in commercial real estate and leveraged lending, the rate story is already biting. The strait is then not just a Gulf problem but a balance-sheet problem for the US government and the lenders who hold its paper."
+    },
+    {
+      "title": "AI Capex Is a Bond Trade Wearing a Chip Costume",
+      "subtitle": "Speculative: Long-dated money, not GPU supply, will set the pace of the AI buildout.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Markets",
+        "US Policy & Power"
+      ],
+      "content": "Speculative. The headline is record equities, but the marginal dollar funding AI infrastructure is increasingly priced off the long end. A 10-year near 5.24% makes a 15-year data center or a grid interconnect far more expensive to finance than it was when the hyperscalers started their build-outs. Taiwan Semiconductor's results and guidance this week will get read as a chip-demand signal. I think the more important read is whether its customers talk about financing terms, not just orders.\n\nSpeculative. My contrarian take is that the AI trade will be bottlenecked first by power and cost of capital, and chip makers will look fine right up until the hyperscalers start slowing project timelines. US policy is already quietly favoring the power side, with grid and permitting moves that do not show up as AI policy at all. If long rates stay above 5%, expect more off-balance-sheet structures, more utility-backed financing, and more talk of nuclear and gas as the only things that pencil out.\n\nSpeculative. The name to watch is not a chip designer. It is whichever utility or private power developer signs the next large take-or-pay deal with a hyperscaler at a fixed price. If that contract gets repriced upward because the 10-year moved, the AI capex cycle is no longer a technology story. It becomes a Treasury-curve story that happens to involve GPUs."
+    },
+    {
+      "title": "Record Bank Profits, Shrinking Desks",
+      "subtitle": "Speculative: JPMorgan's 16% EPS jump is partly a labor story that nobody is calling one.",
+      "categories": [
+        "Digital Finance",
+        "Labor & Workforce",
+        "Markets"
+      ],
+      "content": "Speculative. Analysts expect JPMorgan to post EPS up about 16.4% to $5.90 on revenue up about 8.8%. Revenue growth in the high single digits with EPS growing nearly twice as fast usually means costs are being held down. When a bank that size grows earnings faster than its top line in a period of high rates, the easy explanation is net interest income. The less comfortable explanation is that headcount and operating costs are flat while volumes grow, which is what a bank looks like when automation is replacing junior analyst and back-office work.\n\nSpeculative. My bold claim is that the next wave of white-collar job cuts will be disclosed through bank earnings call efficiency language rather than through layoff announcements. Expect phrases like operating leverage, productivity per employee, and technology-enabled servicing to show up in Q3 commentary across the big banks. Those phrases are the labor market report nobody publishes on schedule.\n\nSpeculative. The risk is that this looks great on the bank's margin while the labor displacement lands on the consumer side in the form of weaker card and mortgage demand from the same cohort of professionals. If the earnings beat is built on payroll that is not coming back, the equity market is pricing a productivity dividend that the labor side has not agreed to pay."
+    },
+    {
+      "title": "Hormuz Pain Is a Taiwan Strait Discount for Beijing",
+      "subtitle": "Speculative: China gains from the Iran war twice, once in oil and once in US force posture.",
+      "categories": [
+        "China",
+        "Geopolitics",
+        "Defense & Security"
+      ],
+      "content": "Speculative. Brent above $100 is a tax on every importer, but China is the large buyer most able to absorb it through stockpiles, state-directed purchasing, and discounted barrels from sanctioned suppliers. Each week the strait stays disrupted, Beijing gets a relative advantage over Washington's Asian partners, who have less fiscal room and no equivalent buffer. The oil shock is a bad week for Beijing's competitors, not for Beijing.\n\nSpeculative. My sharper claim is about naval attention. A sustained Gulf campaign pulls carrier groups, munitions, and planning bandwidth away from the Western Pacific. If the Hormuz situation is still unresolved when the US and eurozone CPI prints force another rate debate, Washington's capacity to make a credible Taiwan Strait commitment is strained by a Middle East war it did not choose to expand. Taiwan's chip sector, including TSMC, is the asset that makes this worth watching.\n\nSpeculative. I would not call this a planned sequence. The point is that Beijing does not need to act to benefit. It only needs to wait while the Gulf consumes US attention and the 10-year does the rest of the work on American fiscal capacity. The most dangerous assumption in Washington right now may be that the Iran war and the Taiwan contingency can be planned for separately."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Game Decompilation, Is This Legal?, A Well-Trodden Path",
+      "url": "https://stratechery.com/2026/game-decompilation-is-this-legal-a-well-trodden-path/",
+      "summary": "Argues that AI-driven game decompilation raises legal questions, but the bigger risk to gaming is new games and more personalization. Also wrote that Apple's walled-garden protections now feel like limits in the AI era, and the weekly roundup covered Meta's focus and what OpenAI is doing.",
+      "connection": "Fits the AI-driven shifts across Frontier Tech and Applied Tech. His Apple piece on platform control sits alongside the open-weight race and the DeepSeek raise."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #213",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-213",
+      "summary": "Weekly optimism roundup covering Starship Orbital, America.gov, the Matic Master Plan, Freckle and Heart Age.",
+      "connection": "Starship Orbital touches on frontier infrastructure and energy-hungry compute, which relates to the Google\u2013Constellation power deal."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "OpenAI's Head of ChatGPT: We're entering a new era of AI (again) | Tibo Sottiaux",
+      "url": "https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering",
+      "summary": "Tibo Sottiaux says Dots is OpenAI's biggest bet and that agents will dominate internet traffic. Lenny also posted a demo of ChatGPT Sites from OpenAI DevDay, which turns Slack, Notion and calendar data into internal tools.",
+      "connection": "Agent-driven traffic and internal tooling point to rising compute demand, as in the Broadcom\u2013Anthropic financing. They also point to shifts in knowledge work, which ties to Labor & Workforce."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

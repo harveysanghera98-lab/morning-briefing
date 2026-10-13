@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Tuesday, October 13, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Tuesday, October 13, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;0 URGENT</span>
+    <span class="status-count">3 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>10-year Treasury yield sits near 5.24%, highest since 2002</h3>
+          <div class="one-liner">Long-dated yields are at multi-decade highs on inflation and debt worries, and markets are pricing in rate increases.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>US stocks closed out a record-setting week on Friday, October 9. The S&P 500 rose 0.6%, the Dow gained 423 points (0.8%) and the Nasdaq rose 0.6%. The 10-year Treasury yield rose to about 5.24% from 5.22%, a level near its highest since 2002. Reporting ties the move to inflation worries and the federal debt load.</p>
+<p>The equity rally is running alongside a historically high long-term borrowing cost. On October 7, stocks fell from record highs as long-dated yields rose, which ended four-day winning streaks for the S&P 500 and the Dow. Late-September coverage said expectations were building that the Federal Reserve would raise rates at its October meeting. I could not confirm the meeting date or any outcome, so treat that as unverified.</p>
+<p>Watch this week's US CPI print and bank earnings for the next read on inflation and credit. A hot CPI would reinforce the rate-hike narrative and pressure long bonds. A soft one could ease yields. Note that my searches found no coverage dated October 12, so this reflects data through Friday, October 9.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://cdapress.com/news/2026/oct/09/us-stocks-rise-toward-the-finish-of-a-record-breaking-week/" target="_blank" rel="noopener">Coeur d'Alene Press (AP)</a><span class="source-sep">·</span><a class="source-link" href="https://www.newser.com/article/5d0f953dbf96febb0690c1aef23fa8a9/wall-street-finishes-its-record-setting-week-with-gains.html" target="_blank" rel="noopener">Newser (AP)</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Energy</span>
+          </div>
+          <h3>Brent holds above $100 as Iran war uncertainty persists</h3>
+          <div class="one-liner">Oil is swinging on the Iran conflict and feeding the inflation and yield picture.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Brent crude settled at $104.72 on Friday, October 9, up 0.4%. It traded between $102.50 and $105 during the session. Reports attribute the swings to uncertainty over the war with Iran.</p>
+<p>The Strait of Hormuz has been central to the price path this year. Brent peaked above $126 earlier in the conflict, fell to about $73 in late June after an interim US-Iran deal, then climbed again when fighting resumed in July. The most recent detailed coverage I found, from mid-August, had Brent near $90 and shipping through the strait at a small fraction of pre-war levels. I could not find reporting on how the situation moved from August to now.</p>
+<p>Watch for any renewed talks over Hormuz access, since they move oil, inflation expectations and the rate outlook together.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://cdapress.com/news/2026/oct/09/us-stocks-rise-toward-the-finish-of-a-record-breaking-week/" target="_blank" rel="noopener">Coeur d'Alene Press (AP)</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/economy/2026/7/14/oil-hits-1-month-high-as-us-iran-fighting-clouds-strait-of-hormuz-outlook" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Q3 earnings season starts: JPMorgan reports today, TSMC this week</h3>
+          <div class="one-liner">Bank and chip results will test the record-high equity market.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>JPMorgan reports Q3 results today, October 13. Analysts expect earnings per share up 16.4% to $5.90 and revenue up 8.8% to $51.3bn, with an implied post-earnings move of about 3.3%. Taiwan Semiconductor also reports this week, and its results and guidance are the key read on AI chip demand.</p>
+<p>US and eurozone CPI also land this week, against a backdrop of rising interest rates in both regions. Together these give the first look at whether record equity levels hold up against 5%-plus long yields.</p>
+<p>I could not verify the exact CPI release dates or consensus figures from my searches.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cmcmarkets.com/en-gb/news-and-analysis/the-week-ahead-us-cpi-eurozone-cpi-jpmorgan-earnings" target="_blank" rel="noopener">CMC Markets</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The US-Iran war continues to drive oil above $100 Brent. I found no verified overnight developments on the strait or on talks.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">China</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">US stocks hit records last week. The 10-year yield is about 5.24%, near its highest since 2002, and markets are pricing in rate increases. CPI and bank earnings are this week.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Brent settled at $104.72 on October 9 amid Iran war uncertainty.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Tue 13</span>
+      <span class="week-event">JPMorgan Q3 earnings (consensus EPS $5.90, revenue $51.3bn)</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">This week</span>
+      <span class="week-event">US CPI inflation report (exact date unverified)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">This week</span>
+      <span class="week-event">Eurozone CPI inflation data</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">This week</span>
+      <span class="week-event">TSMC Q3 earnings, a read on AI chip demand</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">This week</span>
+      <span class="week-event">Further big-bank Q3 earnings kick off earnings season</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The 10-Year Is Now the Hormuz Negotiator</h3>
+          <div class="subtitle">Speculative: Long-bond pain, not diplomacy, is what eventually reopens the strait.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Markets</span><span class="pattern-cat">Geopolitics</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. Brent at $104.72 and a 10-year near 5.24% are the same problem seen from two ends. Oil above $100 feeds the inflation prints that push long yields toward multi-decade highs, and those yields are what the Treasury has to refinance at. The Iran war is being treated as an oil story, but the bond market is the one with a deadline. Washington can absorb a $100 barrel for a while. It cannot absorb a 5%-plus long bond that keeps repricing higher while it rolls over a large debt stack.</p>
+<p>Speculative. My bold call is that the first serious Hormuz de-escalation will be justified in public as a security or shipping matter, but the real trigger will be a week when long yields spike harder than oil does. Watch for that divergence: if the 10-year keeps climbing on a flat or falling Brent, the market is telling you inflation expectations are shifting from the barrel to the debt. That is the signal that the administration cares about most.</p>
+<p>Speculative. The bank earnings this week, JPMorgan first, are the test. If the big banks talk about a steeper curve as a margin tailwind while signaling tougher credit in commercial real estate and leveraged lending, the rate story is already biting. The strait is then not just a Gulf problem but a balance-sheet problem for the US government and the lenders who hold its paper.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>AI Capex Is a Bond Trade Wearing a Chip Costume</h3>
+          <div class="subtitle">Speculative: Long-dated money, not GPU supply, will set the pace of the AI buildout.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. The headline is record equities, but the marginal dollar funding AI infrastructure is increasingly priced off the long end. A 10-year near 5.24% makes a 15-year data center or a grid interconnect far more expensive to finance than it was when the hyperscalers started their build-outs. Taiwan Semiconductor's results and guidance this week will get read as a chip-demand signal. I think the more important read is whether its customers talk about financing terms, not just orders.</p>
+<p>Speculative. My contrarian take is that the AI trade will be bottlenecked first by power and cost of capital, and chip makers will look fine right up until the hyperscalers start slowing project timelines. US policy is already quietly favoring the power side, with grid and permitting moves that do not show up as AI policy at all. If long rates stay above 5%, expect more off-balance-sheet structures, more utility-backed financing, and more talk of nuclear and gas as the only things that pencil out.</p>
+<p>Speculative. The name to watch is not a chip designer. It is whichever utility or private power developer signs the next large take-or-pay deal with a hyperscaler at a fixed price. If that contract gets repriced upward because the 10-year moved, the AI capex cycle is no longer a technology story. It becomes a Treasury-curve story that happens to involve GPUs.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Record Bank Profits, Shrinking Desks</h3>
+          <div class="subtitle">Speculative: JPMorgan's 16% EPS jump is partly a labor story that nobody is calling one.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Digital Finance</span><span class="pattern-cat">Labor & Workforce</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. Analysts expect JPMorgan to post EPS up about 16.4% to $5.90 on revenue up about 8.8%. Revenue growth in the high single digits with EPS growing nearly twice as fast usually means costs are being held down. When a bank that size grows earnings faster than its top line in a period of high rates, the easy explanation is net interest income. The less comfortable explanation is that headcount and operating costs are flat while volumes grow, which is what a bank looks like when automation is replacing junior analyst and back-office work.</p>
+<p>Speculative. My bold claim is that the next wave of white-collar job cuts will be disclosed through bank earnings call efficiency language rather than through layoff announcements. Expect phrases like operating leverage, productivity per employee, and technology-enabled servicing to show up in Q3 commentary across the big banks. Those phrases are the labor market report nobody publishes on schedule.</p>
+<p>Speculative. The risk is that this looks great on the bank's margin while the labor displacement lands on the consumer side in the form of weaker card and mortgage demand from the same cohort of professionals. If the earnings beat is built on payroll that is not coming back, the equity market is pricing a productivity dividend that the labor side has not agreed to pay.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Hormuz Pain Is a Taiwan Strait Discount for Beijing</h3>
+          <div class="subtitle">Speculative: China gains from the Iran war twice, once in oil and once in US force posture.</div>
+          <div class="pattern-cats"><span class="pattern-cat">China</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. Brent above $100 is a tax on every importer, but China is the large buyer most able to absorb it through stockpiles, state-directed purchasing, and discounted barrels from sanctioned suppliers. Each week the strait stays disrupted, Beijing gets a relative advantage over Washington's Asian partners, who have less fiscal room and no equivalent buffer. The oil shock is a bad week for Beijing's competitors, not for Beijing.</p>
+<p>Speculative. My sharper claim is about naval attention. A sustained Gulf campaign pulls carrier groups, munitions, and planning bandwidth away from the Western Pacific. If the Hormuz situation is still unresolved when the US and eurozone CPI prints force another rate debate, Washington's capacity to make a credible Taiwan Strait commitment is strained by a Middle East war it did not choose to expand. Taiwan's chip sector, including TSMC, is the asset that makes this worth watching.</p>
+<p>Speculative. I would not call this a planned sequence. The point is that Beijing does not need to act to benefit. It only needs to wait while the Gulf consumes US attention and the 10-year does the rest of the work on American fiscal capacity. The most dangerous assumption in Washington right now may be that the Iran war and the Taiwan contingency can be planned for separately.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>Diesel for Détente: Trump Trades Sanctions Leverage for Pump Prices, and His Own Senators Balk</h2>
+    <div class="standfirst">A six-month waiver letting Russian diesel into Western markets is a bet that cheaper fuel before the midterms is worth more than the sanctions leverage it gives up, and Congress says it may be illegal.</div>
+    <div class="deep-dive-why">The bipartisan Senate revolt against the Russian diesel waiver erupted over the weekend and is now the central test of Trump's sanctions policy as early voting begins.</div>
+    <div class="body"><p>On Friday, October 9, after a call with Vladimir Putin, Donald Trump announced a staggered release of nearly 5 million tonnes of Russian diesel into American and global markets. The Treasury's Office of Foreign Assets Control issued General License 135 the same day. It covers Russian-origin diesel through April 7, 2027, and excludes transactions tied to the Russian central bank, sovereign wealth fund and finance ministry. By Sunday, six senators, four Republicans and two Democrats, had demanded the administration "immediately reverse course". Reuters counts a seventh signer, Ron Wyden. The Republicans named were Susan Collins, Lisa Murkowski, Thom Tillis and John Curtis. The Democrats were Jeanne Shaheen and Richard Blumenthal.</p>
+<p>The volumes come from Trump's own post. He said 300,000 tonnes would flow immediately, 500,000 in November, a million after that and 3 million later. The Kremlin has not confirmed those numbers. Deputy Prime Minister Alexander Novak said Russia had begun lifting its diesel export restrictions early. That is awkward given that Putin said barely a week earlier that Russia had diesel to spare but could not sell it abroad.</p>
+<p>The context is the fuel squeeze we have been tracking. US diesel prices have been elevated and an export-ban debate has been running. Diesel sets the cost of freight, farming and construction, and it is politically toxic with early voting for the midterms now under way. Russia, hit by Ukrainian drone strikes on its refineries, has been rationing its own supply with export curbs. Trump is therefore trading something Moscow wants, sanctions relief on a high-value product, for something he wants, lower pump prices. He is also pairing it with a push for an energy cease-fire. On Sunday he said both sides had agreed to stop attacking energy sites. A White House official then told Axios he meant a narrower deal on refineries. Ukraine says it will stop striking Russian energy if Russia does the same, and Ukrainian officials reported a Russian strike on a Kharkiv power plant right after Trump spoke.</p>
+<p>The critics make a legal argument and a strategic one. The legal argument is that a 2022 law bans Russian energy imports and requires consultation with Congress and a written explanation, and neither happened. Tillis said there is a legitimate case that the president is not following the law. The strategic argument is that the waiver finances the war and rewards Putin for nothing concrete. It also splits the West. The EU and UK import bans and the $100 per barrel product price cap remain in force, and no European reaction has surfaced yet.</p>
+<p>The administration's defenders see leverage rather than capitulation. Sen. John Barrasso called it another point of pressure on Putin. The logic is that a license can be revoked, so Moscow has an incentive to behave while volumes ramp up. Supporters also note that Russian diesel already reaches the world market through intermediaries and shadow fleets. A sanctioned flow that is visible and taxable-in-effect may change little in Moscow's revenue but could still lower global prices.</p>
+<p>A third view is that the whole thing may not matter much at the pump. Energy analysts say the volumes are modest against US consumption and global trade, and Russia must first rebuild export logistics while its refineries are being hit. If so, the political cost to Trump is paid up front and the fuel relief arrives late, or not at all, before the November vote.</p>
+<p>Watch four things. First, whether the Senate forces a vote. A disapproval resolution or a revived Russia sanctions bill would test how many Republicans will defy the White House, and the bipartisan signers suggest a veto-proof coalition is conceivable but not assured. Second, the first cargoes in late October and November, and whether the 500,000-tonne November tranche actually appears. Third, whether the energy cease-fire becomes a documented text or collapses, since the waiver is easiest to defend if Russia visibly stops striking Ukrainian infrastructure. Fourth, Brussels and London. If European governments openly object, or if traders start arbitraging the gap between the US license and the EU ban, the transatlantic sanctions regime frays. The license expires in April 2027, which sets the real test of whether this was leverage or a one-way concession.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.pbs.org/newshour/politics/bipartisan-group-of-senators-calls-on-trump-to-reverse-course-on-russian-diesel-plan" target="_blank" rel="noopener">PBS NewsHour</a><span class="source-sep">·</span><a class="source-link" href="https://www.scrippsnews.com/us-news/senators-say-trumps-russian-diesel-deal-violates-us-law-demand-white-house-reverse-course" target="_blank" rel="noopener">Scripps News</a><span class="source-sep">·</span><a class="source-link" href="https://shipandbunker.com/news/world/445068-us-lifts-sanctions-on-russian-diesel-for-six-months-after-trump-putin-call" target="_blank" rel="noopener">Ship & Bunker</a><span class="source-sep">·</span><a class="source-link" href="https://www.justsecurity.org/160381/early-edition-october-12-2026/" target="_blank" rel="noopener">Just Security</a><span class="source-sep">·</span><a class="source-link" href="https://www.rawstory.com/putin-trump/?rand=926" target="_blank" rel="noopener">Raw Story</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/game-decompilation-is-this-legal-a-well-trodden-path/" target="_blank" rel="noopener">Game Decompilation, Is This Legal?, A Well-Trodden Path</a><div class="sig-summary">Argues that AI-driven game decompilation raises legal questions, but the bigger risk to gaming is new games and more personalization. Also wrote that Apple's walled-garden protections now feel like limits in the AI era, and the weekly roundup covered Meta's focus and what OpenAI is doing.</div><div class="sig-connection">↳ Fits the AI-driven shifts across Frontier Tech and Applied Tech. His Apple piece on platform control sits alongside the open-weight race and the DeepSeek raise.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-213" target="_blank" rel="noopener">Weekly Dose of Optimism #213</a><div class="sig-summary">Weekly optimism roundup covering Starship Orbital, America.gov, the Matic Master Plan, Freckle and Heart Age.</div><div class="sig-connection">↳ Starship Orbital touches on frontier infrastructure and energy-hungry compute, which relates to the Google–Constellation power deal.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering" target="_blank" rel="noopener">OpenAI's Head of ChatGPT: We're entering a new era of AI (again) | Tibo Sottiaux</a><div class="sig-summary">Tibo Sottiaux says Dots is OpenAI's biggest bet and that agents will dominate internet traffic. Lenny also posted a demo of ChatGPT Sites from OpenAI DevDay, which turns Slack, Notion and calendar data into internal tools.</div><div class="sig-connection">↳ Agent-driven traffic and internal tooling point to rising compute demand, as in the Broadcom–Anthropic financing. They also point to shifts in knowledge work, which ties to Labor & Workforce.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 13 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
