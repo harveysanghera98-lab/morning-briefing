@@ -1,0 +1,389 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Houthi strikes on Riyadh airport push Trump toward joining Saudi fight",
+      "one_liner": "The deadliest attack on Saudi Arabia in a decade has Washington weighing direct military involvement, with Brent above $106.",
+      "detail": "Houthi forces struck King Khalid International Airport in Riyadh at the weekend. Reports put the death toll at 12 to 13 with hundreds wounded, and the airport has now been hit several times in recent days. Trump called the attack unacceptable after a call with Crown Prince Mohammed bin Salman. He said he is weighing whether to join Saudi strikes on the Houthis, and he blamed Iran for trying to drive up oil prices. He has not committed the US to the campaign.\n\nThe Houthis have threatened to hit Saudi Aramco facilities and the Riyadh airport again if Saudi Arabia strikes Sanaa. They also warned of a swift and painful response if the US joins. The US Embassy in Riyadh now requires special authorization to use airports in the kingdom. Saudi forces have launched new strikes and a coalition is intercepting missiles.\n\nBrent closed Monday at $106.65 and WTI at $93.74, and prices eased slightly on Tuesday. This comes on top of an ongoing US-Iran conflict, which makes the energy shock a driver of inflation and Fed policy. Trump has predicted oil will drop sharply once the Iran war ends. The sources I retrieved were CNBC, NBC, Fox and CBS, and I did not get FT, WSJ or Reuters coverage, so I can't compare how those outlets frame it.\n\nWatch for a US decision on joining strikes, any hit on Aramco infrastructure, and Gulf airspace restrictions.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/10/12/oil-prics-today-iran-us-saudi-arabia-crude-.html"
+        },
+        {
+          "name": "NBC News",
+          "url": "https://www.nbcnews.com/world/middle-east/saudi-airport-attack-trump-us-join-fight-houthis-rcna602744"
+        },
+        {
+          "name": "CBS News",
+          "url": "https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Today's US CPI is the key test for a bond market near 24-year highs",
+      "one_liner": "A hot September print could revive the bond selloff after the Fed's surprise hike.",
+      "detail": "September CPI is due today. Economists expect a 0.6% monthly rise, up from 0.4% the previous month. Core is expected to ease to 0.2% from 0.3%. Bloomberg reports the 10-year Treasury yield has hovered around a 24-year high. Another source I retrieved put the latest close at 5.209%, which I could not confirm independently.\n\nThe Fed has already raised rates 25bp to 3.75-4.00%. Traders expect a hold at the late-October meeting, a hike in December, and more in 2027, according to the sources I retrieved. A weak recent jobs report has restrained the selloff. Nuveen expects one more hike this year and a long hold through 2027, which is less hawkish than market pricing.\n\nFed Chair Warsh's comments are also being watched. The energy shock from the Iran conflict and Saudi attacks is the main pass-through risk to inflation. Positioning raises the risk that a hot print triggers a sharp move.\n\nI did not find the actual CPI release in my searches, so treat these figures as pre-release expectations.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Bloomberg",
+          "url": "https://www.bloomberg.com/news/articles/2026-10-11/us-bond-traders-await-cpi-warsh-for-insight-on-fed-s-rate-path"
+        },
+        {
+          "name": "Nuveen",
+          "url": "https://www.nuveen.com/en-us/insights/fixed-income/fixed-income-weekly-commentary"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Memory chip stocks slide for a second day on China and AI-financing worries",
+      "one_liner": "CXMT's progress and warnings on AI capital access hit SK Hynix, Samsung and Micron.",
+      "detail": "Memory stocks fell for a second straight session on Tuesday. Micron dropped roughly 4-5% and SK Hynix fell more than 10%. Samsung lost 7.4% amid a rout in South Korea's KOSPI. Reports cite China's CXMT announcing progress on a denser memory-cell design, which could intensify competition.\n\nCommentary also tied the move to warnings from Intel and Broadcom CEOs that access to capital could become a headwind for the AI buildout. Broadcom CEO Hock Tan's 'casino' remark on AI investing added to the nervousness. A possible labor strike in Taiwan was also mentioned.\n\nThe broader market held up. The S&P 500 was flat at 7,805.45 and the Nasdaq fell 0.15% to 27,204.38. The Dow lost 0.35% to 51,670.10. Chip stocks recovered most of their intraday losses by the close.\n\nWatch whether the South Korean selloff continues and how upcoming chip earnings treat AI capex financing.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/10/13/sk-hynix-softbank-samsung-electronics-shares-tech-stocks-fall.html"
+        },
+        {
+          "name": "TheStreet",
+          "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-13-2026"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Bank earnings: Goldman beats, JPMorgan misses",
+      "one_liner": "Trading strength at Goldman contrasts with JPMorgan's bond-rout losses and Dimon's caution.",
+      "detail": "JPMorgan reported Q3 net income of $15.3 billion, up 6%, with EPS of $5.57 against expectations of about $5.90. It took $658 million in securities losses from the bond rout, though it raised its 2026 net interest income guidance. Dimon warned that economic forces 'shift under the surface'. The shares closed 0.9% lower.\n\nGoldman Sachs beat profit forecasts by about 30% as stock-trading revenue jumped 72%. Wells Fargo fell 3% on mixed results. The split shows volatility helping trading desks while rate moves hurt securities portfolios.\n\nWatch the remaining bank reports this week for credit-quality signals.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/10/13/bank-earnings-live-updates.html"
+        },
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/article/jpmorgan-profit-misses-analyst-estimates-as-jamie-dimon-warns-economic-forces-shift-under-the-surface-112446859.html"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Memory chip stocks fell for a second day on CXMT's design progress and warnings from Intel and Broadcom CEOs about AI financing. Anthropic continues building an in-house chip team, and OpenAI's chip lead Clive Chan has reportedly left for Anthropic."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Q3 bank earnings began, with Goldman beating and JPMorgan missing. Apple reportedly launched a $299 HomeView device."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Trump is weighing US military involvement against the Houthis after the Riyadh airport attack. Fed Chair Warsh's remarks are being watched alongside today's CPI."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "The Houthi campaign against Saudi Arabia is escalating within the wider US-Iran conflict. Ukraine says Russia violated an energy ceasefire."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "CXMT's reported progress on denser memory design is pressuring Korean and US memory makers. I found no other major China developments."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "Stocks were flat on Tuesday, with the S&P 500 at 7,805 and the Dow down 0.35%. Brent is around $106 and Treasury yields are near 24-year highs ahead of today's CPI."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Brent closed Monday at $106.65 and WTI at $93.74 on Houthi threats to Saudi infrastructure. Trump says oil will fall once the Iran war ends."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Saudi forces and a coalition are striking Houthi targets and intercepting missiles. The US Embassy in Riyadh restricted airport use."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "Bloomberg-sourced coverage notes a weak recent jobs report is restraining Fed hike expectations. I found no other major labor stories."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Wed 14",
+      "event": "September CPI release (consensus +0.6% m/m headline, core +0.2%)",
+      "tag": "data"
+    },
+    {
+      "day": "Wed 14",
+      "event": "Fed Chair Warsh remarks and market reaction to CPI",
+      "tag": "policy"
+    },
+    {
+      "day": "Wed 14",
+      "event": "Further Q3 bank earnings (confirm schedule)",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 15",
+      "event": "Producer prices and weekly jobless claims (typical schedule, unconfirmed)",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 15",
+      "event": "Possible US decision on joining Saudi strikes on the Houthis",
+      "tag": "defense"
+    },
+    {
+      "day": "Thu 15",
+      "event": "Continued Q3 earnings from large caps and chip names",
+      "tag": "earnings"
+    },
+    {
+      "day": "Fri 16",
+      "event": "Retail sales and consumer data (typical schedule, unconfirmed)",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 16",
+      "event": "Watch South Korea's KOSPI and memory stocks after the rout",
+      "tag": "tech"
+    },
+    {
+      "day": "Fri 16",
+      "event": "Oil and Brent weekly close amid Houthi escalation",
+      "tag": "critical"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "The Riyadh airport strike is the Fed's real rate decision",
+      "subtitle": "Speculative: a Houthi-driven oil shock makes a December hike the base case, and the late-October hold is the thing to fade",
+      "categories": [
+        "Energy",
+        "Markets",
+        "US Policy & Power"
+      ],
+      "content": "SPECULATIVE. Brent above $106 is not a side story for Fed Chair Warsh. It is the inflation print that gets to decide policy. The market is already pricing a hold in late October and a hike in December. My read is that the hold is the soft part of that path. If the Houthi campaign keeps hitting Saudi infrastructure and Washington actually joins the strikes, headline inflation keeps rising into the fourth quarter and the Fed has little room to wait. The 10-year sitting near a 24-year high, reportedly around 5.2% in one source I could not confirm, makes the trade crowded on the other side.\n\nJPMorgan is the early warning, and most people are reading it backwards. Its $658 million in securities losses from the bond rout is what a bank looks like when it holds long duration and the yield curve keeps repricing. Dimon's line that economic forces 'shift under the surface' reads to me as a man who sees the mark-to-market hit coming through the next quarters. Goldman's 72% jump in stock-trading revenue is the hedge that volatility pays for. The split is not a story about two banks. It is a story about who is long rates and who is paid to trade them. If the Riyadh strikes escalate, expect more securities marks at the big banks and more trading income at the desks that run the hedges.\n\nThe bet: today's CPI matters less than the next two weeks of Gulf headlines. A hot print plus an Aramco hit would push the December hike from a possibility to the consensus. The soft jobs report is the only thing holding the selloff back, and a bad Houthi week is enough to erase that cushion.",
+      "content_note": ""
+    },
+    {
+      "title": "CXMT is the memory-chip threat, and AI financing is the second shoe",
+      "subtitle": "Speculative: the memory selloff is about who can afford the next HBM cycle, not just China's cell design",
+      "categories": [
+        "Frontier Tech / AI",
+        "China",
+        "Markets"
+      ],
+      "content": "SPECULATIVE. The market is treating CXMT's denser memory-cell design as a competitive headline. I think it is a pricing headline. Chinese memory makers do not need to beat SK Hynix on leading-edge HBM to hurt it. They only need to flood the commodity tiers and make Samsung and Micron defend capacity they already committed to. SK Hynix falling more than 10% and Samsung down 7.4% suggests Korean investors are pricing in margin compression, not a lost technology race. Micron's 4-5% drop fits the same read.\n\nThe second dot is the financing warning. Intel and Broadcom CEOs both flagged access to capital as a possible headwind for the AI buildout, and Hock Tan's 'casino' remark landed on the same day. Put that next to a 10-year yield near 24-year highs and you have a cost-of-capital problem for anyone who has promised to buy memory on a multi-year schedule. Memory makers are the most exposed link, because they sign capacity deals against demand that depends on hyperscalers borrowing cheaply to build data centers. If financing gets tighter, the first orders to slip are the ones with the longest lead times, and those are memory wafer starts.\n\nThe odd piece is OpenAI's chip lead Clive Chan reportedly leaving for Anthropic, alongside Anthropic's in-house chip team. My speculative take: the labs want their own silicon roadmaps so they stop being price-takers for merchant HBM and accelerators. If that works, the winners are whoever sells the design-to-tape-out services and the losers are the merchant memory vendors whose pricing power rested on everyone needing the same parts. Watch whether the South Korean selloff continues into the next chip earnings, and whether anyone names a financing cost as a reason to cut capex guidance.",
+      "content_note": ""
+    },
+    {
+      "title": "Gulf petrodollars may be the AI buildout's marginal lender, and the Houthis just raised their price",
+      "subtitle": "Speculative: airport closures and Aramco threats make Gulf capital for AI projects riskier at exactly the moment it is needed",
+      "categories": [
+        "Geopolitics",
+        "Energy",
+        "Frontier Tech / AI"
+      ],
+      "content": "SPECULATIVE. Oil at $106 Brent is a windfall for Saudi Arabia, and the Saudi sovereign fund has spent the last few years positioning itself as a financier of the AI and data-center build. Most people treat those two facts as separate. I think they are linked. When the US Embassy in Riyadh requires special authorization to use the kingdom's airports, that is a signal that foreign executives, engineers and lenders now carry a war-risk premium in Riyadh. That premium lands on any project that needs people on the ground to close deals and run hardware.\n\nThe rest of the chain is familiar. Broadcom's and Intel's warnings about access to capital are about who will lend against AI capex. If Western banks are already absorbing securities losses from the bond rout, as JPMorgan's numbers suggest, they have less appetite for long-dated project loans. A Gulf fund that is flush with oil cash but nervous about missiles over Riyadh becomes the swing lender. My bet is that it slows down or re-prices its AI commitments until the airspace question is settled, and that the first sign will be quiet delays rather than announced cancellations.\n\nA bolder version: the Houthi campaign may do more damage to the AI buildout than any chip design, because it raises the cost of the marginal dollar. Watch for any Gulf-linked data center or AI infrastructure announcement that gets a new timeline or moves to a different jurisdiction, and for Aramco-related threats becoming real strikes. If either happens, the CXMT story and the financing story stop being separate headlines.",
+      "content_note": ""
+    },
+    {
+      "title": "Trump needs a Gulf ceasefire before November more than he needs a war",
+      "subtitle": "Speculative: 'oil will drop once the Iran war ends' is a midterm promise, and the deal, when it comes, will be sold on gasoline prices",
+      "categories": [
+        "US Policy & Power",
+        "Energy",
+        "Labor & Workforce"
+      ],
+      "content": "SPECULATIVE. Trump is weighing whether to join Saudi strikes on the Houthis, and in the same breath he blamed Iran for trying to push oil higher and said prices will fall sharply once the Iran war ends. Read those together and the calculation looks domestic. The midterms are in early November. Gasoline prices at this level are a campaign problem, and a weak recent jobs report makes the affordability story worse. My bet is that the administration's real preference is a fast de-escalation that it can announce as a win, and that direct US entry into the Houthi campaign is the threat it uses to bring Riyadh and Tehran to the table, not the outcome it wants.\n\nThe labor data supports the squeeze. A soft jobs report reduces the Fed's appetite to hike, but an energy shock is a tax on the same households whose paychecks are slowing. If the White House can cut oil by $20 a barrel with a deal, it gets a cleaner inflation print, a Fed that holds rather than hikes, and a yield curve that stops hurting bank securities books. That is a bullish chain for Treasuries, and a bearish one for the energy names that have been pricing permanent disruption.\n\nThe tell to watch is not the strikes. It is the rhetoric. If Trump starts talking about oil and the Houthis in the same breath as a deal timeline, or if the US Embassy in Riyadh loosens its airport authorization, the ceasefire trade is live. If he commits US aircraft and the Houthis keep hitting Riyadh, then this stops being a midterm story and becomes a sustained stagflation story, and the bond market will not be patient about it.",
+      "content_note": ""
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "mixed",
+      "signal": "light",
+      "latest_title": "State of AI Report 2026",
+      "url": "https://www.stateof.ai",
+      "summary": "Secondary summaries say the 2026 State of AI Report, which Benaich edits, came out Oct 8. It covers the frontier-lab race, Chinese open-weight models, agents with recursive self-improvement, physical AI, sovereign AI and US export controls. I did not check the report itself, and I found none of Benaich's own posts.",
+      "connection": "The export-control and China open-weight sections tie to the China and AI-governance topics. The AI-financing worries behind the memory chip selloff relate to the report's frontier-scaling theme."
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular",
+      "url": "https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/",
+      "summary": "Thompson says SpaceX's mobile strategy is becoming clearer with its latest spectrum purchase, and that it might work. His weekly roundup (2026.41, Oct 9) covered drifting apart from Apple, Facebook complications and the absurdity of US-China dynamics.",
+      "connection": "Links to Applied Tech & Industry and Frontier Tech. His roundup's US-China theme touches the China topic."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "essay",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Runway: Learning From Watching the World",
+      "url": "https://www.notboring.co/p/runway-learning-from-watching-the",
+      "summary": "Packy co-wrote an essay with Runway co-CEO Anastasis Germanidis on Runway's approach to learning from watching the world. His Weekly Dose of Optimism #214 (Oct 9) covered the Nobel, Matter Compiler, an Anduril shipyard, a mouth cancer patch and the Biohub Virtual Cell.",
+      "connection": "Links to Frontier Tech / AI. The Anduril shipyard item touches Defense & Security and Applied Tech & Industry."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "How to tell if a startup has a moat",
+      "url": "https://www.lennysnewsletter.com/p/how-to-tell-if-a-startup-has-a-moat",
+      "summary": "Lenny gives a framework for judging whether a company you're considering joining is built to last. He also published a How I AI episode with Meta Design Director Alex Cornell on how Meta designed Muse, an AI agent meant to work through one interface for both non-technical people and engineers.",
+      "connection": "The moat framework fits the AI-financing worries and the question of which AI companies last. Meta's Muse relates to Frontier Tech / AI and Labor & Workforce."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

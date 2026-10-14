@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Wednesday, October 14, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Wednesday, October 14, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">9 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Houthi strikes on Riyadh airport push Trump toward joining Saudi fight</h3>
+          <div class="one-liner">The deadliest attack on Saudi Arabia in a decade has Washington weighing direct military involvement, with Brent above $106.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Houthi forces struck King Khalid International Airport in Riyadh at the weekend. Reports put the death toll at 12 to 13 with hundreds wounded, and the airport has now been hit several times in recent days. Trump called the attack unacceptable after a call with Crown Prince Mohammed bin Salman. He said he is weighing whether to join Saudi strikes on the Houthis, and he blamed Iran for trying to drive up oil prices. He has not committed the US to the campaign.</p>
+<p>The Houthis have threatened to hit Saudi Aramco facilities and the Riyadh airport again if Saudi Arabia strikes Sanaa. They also warned of a swift and painful response if the US joins. The US Embassy in Riyadh now requires special authorization to use airports in the kingdom. Saudi forces have launched new strikes and a coalition is intercepting missiles.</p>
+<p>Brent closed Monday at $106.65 and WTI at $93.74, and prices eased slightly on Tuesday. This comes on top of an ongoing US-Iran conflict, which makes the energy shock a driver of inflation and Fed policy. Trump has predicted oil will drop sharply once the Iran war ends. The sources I retrieved were CNBC, NBC, Fox and CBS, and I did not get FT, WSJ or Reuters coverage, so I can't compare how those outlets frame it.</p>
+<p>Watch for a US decision on joining strikes, any hit on Aramco infrastructure, and Gulf airspace restrictions.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/10/12/oil-prics-today-iran-us-saudi-arabia-crude-.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.nbcnews.com/world/middle-east/saudi-airport-attack-trump-us-join-fight-houthis-rcna602744" target="_blank" rel="noopener">NBC News</a><span class="source-sep">·</span><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-war-us-trump-saudi-arabia-houthi/" target="_blank" rel="noopener">CBS News</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Today's US CPI is the key test for a bond market near 24-year highs</h3>
+          <div class="one-liner">A hot September print could revive the bond selloff after the Fed's surprise hike.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>September CPI is due today. Economists expect a 0.6% monthly rise, up from 0.4% the previous month. Core is expected to ease to 0.2% from 0.3%. Bloomberg reports the 10-year Treasury yield has hovered around a 24-year high. Another source I retrieved put the latest close at 5.209%, which I could not confirm independently.</p>
+<p>The Fed has already raised rates 25bp to 3.75-4.00%. Traders expect a hold at the late-October meeting, a hike in December, and more in 2027, according to the sources I retrieved. A weak recent jobs report has restrained the selloff. Nuveen expects one more hike this year and a long hold through 2027, which is less hawkish than market pricing.</p>
+<p>Fed Chair Warsh's comments are also being watched. The energy shock from the Iran conflict and Saudi attacks is the main pass-through risk to inflation. Positioning raises the risk that a hot print triggers a sharp move.</p>
+<p>I did not find the actual CPI release in my searches, so treat these figures as pre-release expectations.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.bloomberg.com/news/articles/2026-10-11/us-bond-traders-await-cpi-warsh-for-insight-on-fed-s-rate-path" target="_blank" rel="noopener">Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://www.nuveen.com/en-us/insights/fixed-income/fixed-income-weekly-commentary" target="_blank" rel="noopener">Nuveen</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Memory chip stocks slide for a second day on China and AI-financing worries</h3>
+          <div class="one-liner">CXMT's progress and warnings on AI capital access hit SK Hynix, Samsung and Micron.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Memory stocks fell for a second straight session on Tuesday. Micron dropped roughly 4-5% and SK Hynix fell more than 10%. Samsung lost 7.4% amid a rout in South Korea's KOSPI. Reports cite China's CXMT announcing progress on a denser memory-cell design, which could intensify competition.</p>
+<p>Commentary also tied the move to warnings from Intel and Broadcom CEOs that access to capital could become a headwind for the AI buildout. Broadcom CEO Hock Tan's 'casino' remark on AI investing added to the nervousness. A possible labor strike in Taiwan was also mentioned.</p>
+<p>The broader market held up. The S&P 500 was flat at 7,805.45 and the Nasdaq fell 0.15% to 27,204.38. The Dow lost 0.35% to 51,670.10. Chip stocks recovered most of their intraday losses by the close.</p>
+<p>Watch whether the South Korean selloff continues and how upcoming chip earnings treat AI capex financing.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/10/13/sk-hynix-softbank-samsung-electronics-shares-tech-stocks-fall.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-13-2026" target="_blank" rel="noopener">TheStreet</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Bank earnings: Goldman beats, JPMorgan misses</h3>
+          <div class="one-liner">Trading strength at Goldman contrasts with JPMorgan's bond-rout losses and Dimon's caution.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>JPMorgan reported Q3 net income of $15.3 billion, up 6%, with EPS of $5.57 against expectations of about $5.90. It took $658 million in securities losses from the bond rout, though it raised its 2026 net interest income guidance. Dimon warned that economic forces 'shift under the surface'. The shares closed 0.9% lower.</p>
+<p>Goldman Sachs beat profit forecasts by about 30% as stock-trading revenue jumped 72%. Wells Fargo fell 3% on mixed results. The split shows volatility helping trading desks while rate moves hurt securities portfolios.</p>
+<p>Watch the remaining bank reports this week for credit-quality signals.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/10/13/bank-earnings-live-updates.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/markets/article/jpmorgan-profit-misses-analyst-estimates-as-jamie-dimon-warns-economic-forces-shift-under-the-surface-112446859.html" target="_blank" rel="noopener">Yahoo Finance</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Memory chip stocks fell for a second day on CXMT's design progress and warnings from Intel and Broadcom CEOs about AI financing. Anthropic continues building an in-house chip team, and OpenAI's chip lead Clive Chan has reportedly left for Anthropic.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Q3 bank earnings began, with Goldman beating and JPMorgan missing. Apple reportedly launched a $299 HomeView device.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">Trump is weighing US military involvement against the Houthis after the Riyadh airport attack. Fed Chair Warsh's remarks are being watched alongside today's CPI.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The Houthi campaign against Saudi Arabia is escalating within the wider US-Iran conflict. Ukraine says Russia violated an energy ceasefire.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">CXMT's reported progress on denser memory design is pressuring Korean and US memory makers. I found no other major China developments.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">Stocks were flat on Tuesday, with the S&P 500 at 7,805 and the Dow down 0.35%. Brent is around $106 and Treasury yields are near 24-year highs ahead of today's CPI.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Brent closed Monday at $106.65 and WTI at $93.74 on Houthi threats to Saudi infrastructure. Trump says oil will fall once the Iran war ends.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">Saudi forces and a coalition are striking Houthi targets and intercepting missiles. The US Embassy in Riyadh restricted airport use.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">Bloomberg-sourced coverage notes a weak recent jobs report is restraining Fed hike expectations. I found no other major labor stories.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Wed 14</span>
+      <span class="week-event">September CPI release (consensus +0.6% m/m headline, core +0.2%)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 14</span>
+      <span class="week-event">Fed Chair Warsh remarks and market reaction to CPI</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 14</span>
+      <span class="week-event">Further Q3 bank earnings (confirm schedule)</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 15</span>
+      <span class="week-event">Producer prices and weekly jobless claims (typical schedule, unconfirmed)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 15</span>
+      <span class="week-event">Possible US decision on joining Saudi strikes on the Houthis</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 15</span>
+      <span class="week-event">Continued Q3 earnings from large caps and chip names</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 16</span>
+      <span class="week-event">Retail sales and consumer data (typical schedule, unconfirmed)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 16</span>
+      <span class="week-event">Watch South Korea's KOSPI and memory stocks after the rout</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Fri 16</span>
+      <span class="week-event">Oil and Brent weekly close amid Houthi escalation</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Riyadh airport strike is the Fed's real rate decision</h3>
+          <div class="subtitle">Speculative: a Houthi-driven oil shock makes a December hike the base case, and the late-October hold is the thing to fade</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE. Brent above $106 is not a side story for Fed Chair Warsh. It is the inflation print that gets to decide policy. The market is already pricing a hold in late October and a hike in December. My read is that the hold is the soft part of that path. If the Houthi campaign keeps hitting Saudi infrastructure and Washington actually joins the strikes, headline inflation keeps rising into the fourth quarter and the Fed has little room to wait. The 10-year sitting near a 24-year high, reportedly around 5.2% in one source I could not confirm, makes the trade crowded on the other side.</p>
+<p>JPMorgan is the early warning, and most people are reading it backwards. Its $658 million in securities losses from the bond rout is what a bank looks like when it holds long duration and the yield curve keeps repricing. Dimon's line that economic forces 'shift under the surface' reads to me as a man who sees the mark-to-market hit coming through the next quarters. Goldman's 72% jump in stock-trading revenue is the hedge that volatility pays for. The split is not a story about two banks. It is a story about who is long rates and who is paid to trade them. If the Riyadh strikes escalate, expect more securities marks at the big banks and more trading income at the desks that run the hedges.</p>
+<p>The bet: today's CPI matters less than the next two weeks of Gulf headlines. A hot print plus an Aramco hit would push the December hike from a possibility to the consensus. The soft jobs report is the only thing holding the selloff back, and a bad Houthi week is enough to erase that cushion.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>CXMT is the memory-chip threat, and AI financing is the second shoe</h3>
+          <div class="subtitle">Speculative: the memory selloff is about who can afford the next HBM cycle, not just China's cell design</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">China</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE. The market is treating CXMT's denser memory-cell design as a competitive headline. I think it is a pricing headline. Chinese memory makers do not need to beat SK Hynix on leading-edge HBM to hurt it. They only need to flood the commodity tiers and make Samsung and Micron defend capacity they already committed to. SK Hynix falling more than 10% and Samsung down 7.4% suggests Korean investors are pricing in margin compression, not a lost technology race. Micron's 4-5% drop fits the same read.</p>
+<p>The second dot is the financing warning. Intel and Broadcom CEOs both flagged access to capital as a possible headwind for the AI buildout, and Hock Tan's 'casino' remark landed on the same day. Put that next to a 10-year yield near 24-year highs and you have a cost-of-capital problem for anyone who has promised to buy memory on a multi-year schedule. Memory makers are the most exposed link, because they sign capacity deals against demand that depends on hyperscalers borrowing cheaply to build data centers. If financing gets tighter, the first orders to slip are the ones with the longest lead times, and those are memory wafer starts.</p>
+<p>The odd piece is OpenAI's chip lead Clive Chan reportedly leaving for Anthropic, alongside Anthropic's in-house chip team. My speculative take: the labs want their own silicon roadmaps so they stop being price-takers for merchant HBM and accelerators. If that works, the winners are whoever sells the design-to-tape-out services and the losers are the merchant memory vendors whose pricing power rested on everyone needing the same parts. Watch whether the South Korean selloff continues into the next chip earnings, and whether anyone names a financing cost as a reason to cut capex guidance.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Gulf petrodollars may be the AI buildout's marginal lender, and the Houthis just raised their price</h3>
+          <div class="subtitle">Speculative: airport closures and Aramco threats make Gulf capital for AI projects riskier at exactly the moment it is needed</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE. Oil at $106 Brent is a windfall for Saudi Arabia, and the Saudi sovereign fund has spent the last few years positioning itself as a financier of the AI and data-center build. Most people treat those two facts as separate. I think they are linked. When the US Embassy in Riyadh requires special authorization to use the kingdom's airports, that is a signal that foreign executives, engineers and lenders now carry a war-risk premium in Riyadh. That premium lands on any project that needs people on the ground to close deals and run hardware.</p>
+<p>The rest of the chain is familiar. Broadcom's and Intel's warnings about access to capital are about who will lend against AI capex. If Western banks are already absorbing securities losses from the bond rout, as JPMorgan's numbers suggest, they have less appetite for long-dated project loans. A Gulf fund that is flush with oil cash but nervous about missiles over Riyadh becomes the swing lender. My bet is that it slows down or re-prices its AI commitments until the airspace question is settled, and that the first sign will be quiet delays rather than announced cancellations.</p>
+<p>A bolder version: the Houthi campaign may do more damage to the AI buildout than any chip design, because it raises the cost of the marginal dollar. Watch for any Gulf-linked data center or AI infrastructure announcement that gets a new timeline or moves to a different jurisdiction, and for Aramco-related threats becoming real strikes. If either happens, the CXMT story and the financing story stop being separate headlines.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Trump needs a Gulf ceasefire before November more than he needs a war</h3>
+          <div class="subtitle">Speculative: 'oil will drop once the Iran war ends' is a midterm promise, and the deal, when it comes, will be sold on gasoline prices</div>
+          <div class="pattern-cats"><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Labor & Workforce</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE. Trump is weighing whether to join Saudi strikes on the Houthis, and in the same breath he blamed Iran for trying to push oil higher and said prices will fall sharply once the Iran war ends. Read those together and the calculation looks domestic. The midterms are in early November. Gasoline prices at this level are a campaign problem, and a weak recent jobs report makes the affordability story worse. My bet is that the administration's real preference is a fast de-escalation that it can announce as a win, and that direct US entry into the Houthi campaign is the threat it uses to bring Riyadh and Tehran to the table, not the outcome it wants.</p>
+<p>The labor data supports the squeeze. A soft jobs report reduces the Fed's appetite to hike, but an energy shock is a tax on the same households whose paychecks are slowing. If the White House can cut oil by $20 a barrel with a deal, it gets a cleaner inflation print, a Fed that holds rather than hikes, and a yield curve that stops hurting bank securities books. That is a bullish chain for Treasuries, and a bearish one for the energy names that have been pricing permanent disruption.</p>
+<p>The tell to watch is not the strikes. It is the rhetoric. If Trump starts talking about oil and the Houthis in the same breath as a deal timeline, or if the US Embassy in Riyadh loosens its airport authorization, the ceasefire trade is live. If he commits US aircraft and the Houthis keep hitting Riyadh, then this stops being a midterm story and becomes a sustained stagflation story, and the bond market will not be patient about it.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      <a class="sig-title" href="https://www.stateof.ai" target="_blank" rel="noopener">State of AI Report 2026</a><div class="sig-summary">Secondary summaries say the 2026 State of AI Report, which Benaich edits, came out Oct 8. It covers the frontier-lab race, Chinese open-weight models, agents with recursive self-improvement, physical AI, sovereign AI and US export controls. I did not check the report itself, and I found none of Benaich's own posts.</div><div class="sig-connection">↳ The export-control and China open-weight sections tie to the China and AI-governance topics. The AI-financing worries behind the memory chip selloff relate to the report's frontier-scaling theme.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/" target="_blank" rel="noopener">SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular</a><div class="sig-summary">Thompson says SpaceX's mobile strategy is becoming clearer with its latest spectrum purchase, and that it might work. His weekly roundup (2026.41, Oct 9) covered drifting apart from Apple, Facebook complications and the absurdity of US-China dynamics.</div><div class="sig-connection">↳ Links to Applied Tech & Industry and Frontier Tech. His roundup's US-China theme touches the China topic.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/runway-learning-from-watching-the" target="_blank" rel="noopener">Runway: Learning From Watching the World</a><div class="sig-summary">Packy co-wrote an essay with Runway co-CEO Anastasis Germanidis on Runway's approach to learning from watching the world. His Weekly Dose of Optimism #214 (Oct 9) covered the Nobel, Matter Compiler, an Anduril shipyard, a mouth cancer patch and the Biohub Virtual Cell.</div><div class="sig-connection">↳ Links to Frontier Tech / AI. The Anduril shipyard item touches Defense & Security and Applied Tech & Industry.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/how-to-tell-if-a-startup-has-a-moat" target="_blank" rel="noopener">How to tell if a startup has a moat</a><div class="sig-summary">Lenny gives a framework for judging whether a company you're considering joining is built to last. He also published a How I AI episode with Meta Design Director Alex Cornell on how Meta designed Muse, an AI agent meant to work through one interface for both non-technical people and engineers.</div><div class="sig-connection">↳ The moat framework fits the AI-financing worries and the question of which AI companies last. Meta's Muse relates to Frontier Tech / AI and Labor & Workforce.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 12 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">ESSAY</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
