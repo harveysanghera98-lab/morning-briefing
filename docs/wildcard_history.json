@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-15",
-    "topic": "US Government Forces Anthropic Fable 5 Global Shutdown"
-  },
-  {
     "date": "2026-06-16",
     "topic": "G7 \u00c9vian: AI Governance Fault Lines Among Allies"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-10-13",
     "topic": "Trump's Russian Diesel Waiver Splits Senate Republicans"
+  },
+  {
+    "date": "2026-10-15",
+    "topic": "Apple Intelligence Reaches China Through Alibaba's Qwen"
   }
 ]
