@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-16",
-    "topic": "G7 \u00c9vian: AI Governance Fault Lines Among Allies"
-  },
-  {
     "date": "2026-06-17",
     "topic": "VivaTech 2026: Europe's Sovereign AI Paradox Comes to Paris"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-10-15",
     "topic": "Apple Intelligence Reaches China Through Alibaba's Qwen"
+  },
+  {
+    "date": "2026-10-19",
+    "topic": "China's Draft AI Export Controls Test the Truce"
   }
 ]
