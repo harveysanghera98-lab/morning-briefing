@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-17",
-    "topic": "VivaTech 2026: Europe's Sovereign AI Paradox Comes to Paris"
-  },
-  {
     "date": "2026-06-18",
     "topic": "OpenAI Leaked Financials: $38.5B Loss Ahead of IPO"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-10-19",
     "topic": "China's Draft AI Export Controls Test the Truce"
+  },
+  {
+    "date": "2026-10-21",
+    "topic": "GENIUS Act Stablecoin Rules Hit Comment Deadline"
   }
 ]

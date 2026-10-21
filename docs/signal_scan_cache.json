@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-21",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -24,12 +24,12 @@
     {
       "name": "Nathan Benaich",
       "handle": "@nathanbenaich",
-      "source": "mixed",
-      "signal": "light",
-      "latest_title": "State of AI Report 2026",
-      "url": "https://www.stateof.ai",
-      "summary": "Secondary summaries say the 2026 State of AI Report, which Benaich edits, came out Oct 8. It covers the frontier-lab race, Chinese open-weight models, agents with recursive self-improvement, physical AI, sovereign AI and US export controls. I did not check the report itself, and I found none of Benaich's own posts.",
-      "connection": "The export-control and China open-weight sections tie to the China and AI-governance topics. The AI-financing worries behind the memory chip selloff relate to the report's frontier-scaling theme."
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Stanley Druckenmiller",
@@ -66,10 +66,10 @@
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "SpaceX Buys More Spectrum, Musk and Market Structure, Distributed Cellular",
-      "url": "https://stratechery.com/2026/spacex-buys-more-spectrum-musk-and-market-structure-distributed-cellular/",
-      "summary": "Thompson says SpaceX's mobile strategy is becoming clearer with its latest spectrum purchase, and that it might work. His weekly roundup (2026.41, Oct 9) covered drifting apart from Apple, Facebook complications and the absurdity of US-China dynamics.",
-      "connection": "Links to Applied Tech & Industry and Frontier Tech. His roundup's US-China theme touches the China topic."
+      "latest_title": "Muse Spark Open, Meta + Apple, Thin and Thick",
+      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
+      "summary": "Meta has released a new open source model, and Apple is partnering with it so the model can run locally. Earlier in the week he asked whether you trust Apple, and argued the real question is whether Siri AI will justify deeper investment in Apple's ecosystem.",
+      "connection": "This fits the pace of lab releases and the push toward on-device AI. It adds an open-model counterweight to reports that Anthropic is readying a new model, and to OpenAI's $30B fundraising and revenue reset."
     },
     {
       "name": "Paul Graham",
@@ -95,16 +95,16 @@
       "name": "Packy McCormick",
       "handle": "@packym",
       "source": "substack",
-      "signal": "strong",
-      "latest_title": "Runway: Learning From Watching the World",
-      "url": "https://www.notboring.co/p/runway-learning-from-watching-the",
-      "summary": "Packy co-wrote an essay with Runway co-CEO Anastasis Germanidis on Runway's approach to learning from watching the world. His Weekly Dose of Optimism #214 (Oct 9) covered the Nobel, Matter Compiler, an Anduril shipyard, a mouth cancer patch and the Biohub Virtual Cell.",
-      "connection": "Links to Frontier Tech / AI. The Anduril shipyard item touches Defense & Security and Applied Tech & Industry."
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #215",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-215",
+      "summary": "A roundup of optimistic tech and science items, including a \"flying\" roadster, robots, and Arrowhead cutting tau.",
+      "connection": "The robots item loosely connects to Nvidia's physical-AI pact with Germany. Otherwise it offers an upbeat counterpoint to the day's market and rate worries."
     },
     {
       "name": "CJ Gustafson",
       "handle": "@cjgus",
-      "source": "x",
+      "source": "newsletter",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -114,12 +114,12 @@
     {
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
-      "source": "newsletter",
+      "source": "substack",
       "signal": "strong",
-      "latest_title": "How to tell if a startup has a moat",
-      "url": "https://www.lennysnewsletter.com/p/how-to-tell-if-a-startup-has-a-moat",
-      "summary": "Lenny gives a framework for judging whether a company you're considering joining is built to last. He also published a How I AI episode with Meta Design Director Alex Cornell on how Meta designed Muse, an AI agent meant to work through one interface for both non-technical people and engineers.",
-      "connection": "The moat framework fits the AI-financing worries and the question of which AI companies last. Meta's Muse relates to Frontier Tech / AI and Labor & Workforce."
+      "latest_title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
+      "url": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
+      "summary": "A 72-minute conversation with Anthropic's Emmanuel Ameisen on what interpretability research shows about model planning, consciousness, and AI safety. He also ran an episode on Brooke Lacey using Claude Code to turn raw phone video into captioned TikToks, and a How I AI episode on Meta Muse Wonder.",
+      "connection": "It ties into the report that Anthropic is readying a new model, and into the safety and governance debate. The Lacey episode is a labor and workforce example of AI-assisted creative work."
     },
     {
       "name": "Andrej Karpathy",

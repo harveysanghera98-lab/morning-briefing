@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Wednesday, October 21, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Wednesday, October 21, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;0 URGENT</span>
+    <span class="status-count">7 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>OpenAI revenue reset hits chip stocks as it reportedly seeks $30B</h3>
+          <div class="one-liner">A report that OpenAI's annualized revenue is about $50B, not the $68-70B investors assumed, drove an AI selloff, and OpenAI is now reportedly raising at a $1.4T+ valuation.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Chipmakers fell 3.4% on Oct 8 after a report put OpenAI's annualized revenue near $50B, well below the $68-70B figure investors had been using. The gap is attributed mainly to how partner sales are accounted for. The Nasdaq fell 1.25% that day, its worst session since mid-August, and chip stocks are still up more than 80% year to date. These figures come from a CFD broker's blog, so treat them with caution.</p>
+<p>OpenAI is now reportedly seeking about $30B at a valuation above $1.4T, per a Motley Fool piece dated Oct 20. The raise and the revenue reset together test whether AI infrastructure spending can keep growing. Nvidia is tied closely to OpenAI. It finalized a $30B equity investment in February and agreed in August to be sole chip supplier at an Ohio data center, with guarantees of up to $105B. Separate reports say OpenAI is designing its own chips with TSMC.</p>
+<p>The sources here are secondary and I could not verify them against FT, WSJ or Reuters. Watch for confirmation of the round, any restated revenue figures, and the hyperscaler capex commentary that Microsoft and Alphabet are expected to give on Oct 28.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://fool.com/investing/2026/10/20/openai-is-reportedly-raising-usd30-billion-which-chip-stock-gains-the-most" target="_blank" rel="noopener">Motley Fool</a><span class="source-sep">·</span><a class="source-link" href="https://admiralmarkets.com/analytics/traders-blog/openai-revenue-ai-selloff-october-2026" target="_blank" rel="noopener">Admiral Markets</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Fed under Warsh leans toward more hikes as yields sit near 24-year highs</h3>
+          <div class="one-liner">With the 10-year near 5.2% and oil above $100, markets are pricing a likely further hike by year-end.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Fed, chaired by Kevin Warsh, raised rates in September, its first hike since 2023. Minutes showed most officials expect another by year-end, and CME FedWatch put the December hike probability near 69% as of early October. The 10-year Treasury yield was about 5.23% and the 30-year about 5.60%, both near 24-year highs. Brent was around $104 on Oct 8, with energy prices elevated since the US-Israeli war against Iran.</p>
+<p>Higher yields weigh on long-duration growth stocks, which compounds the AI valuation questions above. Most of this data is from Oct 8-9 and I could not find an Oct 20 market close.</p>
+<p>The FOMC meets Oct 27-28. Watch the September CPI and PCE prints, oil, and Warsh's tone on inflation. Reuters coverage of the September meeting said he warned inflation was still too high.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://admiralmarkets.com/analytics/traders-blog/openai-revenue-ai-selloff-october-2026" target="_blank" rel="noopener">Admiral Markets</a><span class="source-sep">·</span><a class="source-link" href="https://www.detroitnews.com/story/business/2026/09/17/wall-st-climbs-as-easing-oil-prices-offer-reprieve-after-fed-rate-hike/91807027007/" target="_blank" rel="noopener">Detroit News (AP)</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Anthropic reportedly readying new model as labs ship at record pace</h3>
+          <div class="one-liner">The Information says Anthropic is preparing a model that infers user intent better, while OpenAI touts big legacy-code gains.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Information reported Monday that Anthropic is preparing a model with stronger reasoning and intuition. No name or date was reported. OpenAI, Anthropic and Google have shipped more than a dozen models in the past month. Anthropic released Opus 5.5 on Sept 22, shortly after Dario Amodei's essay urging a slowdown.</p>
+<p>OpenAI published results for low-resource languages. GPT-6.1 Sol scored 86.6% at low reasoning effort on a COBOL migration test, against 5.4% for GPT-5.6 Sol, and 97.9% at higher effort. OpenAI wrote the benchmarks itself, which matters for enterprise modernization of banking and government systems.</p>
+<p>Separately, reports say Anthropic's Q3 revenue rose 45% to $16.8B (attributed to the FT, which I did not verify) and that it is preparing an IPO. Politico reportedly found OpenAI has softened its push for strict China chip export controls, while Anthropic backs several of the bills. This summary draws on newsletter aggregators, not primary reporting.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://artificiallyintimidating.com/p/ai-brief-october-20-2026" target="_blank" rel="noopener">AI Brief, Oct 20</a><span class="source-sep">·</span><a class="source-link" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">AI Weekly</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Nvidia signs physical-AI pact with Germany</h3>
+          <div class="one-liner">Merz and Jensen Huang signed a declaration on AI for industry as Europe worries about dependence on US tech.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>At the Invest in Germany Summit in Berlin on Monday, Chancellor Friedrich Merz and two federal ministries signed a joint declaration of intent with Nvidia on AI models for physical AI. Huang urged German carmakers and machine builders to adopt AI quickly. The AP notes the German economy has barely grown since the pandemic because of high energy prices, Chinese car competition and slow permitting.</p>
+<p>European leaders also worry about reliance on US technology, and Europe trails the US in data center capacity. Watch for follow-on investment announcements and any sovereign-compute commitments.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://artificiallyintimidating.com/p/ai-brief-october-20-2026" target="_blank" rel="noopener">AI Brief, Oct 20 (citing AP)</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">OpenAI's reported $50B annualized revenue and a possible $30B raise at $1.4T+ are driving AI sentiment. Anthropic is reportedly readying a new model and OpenAI published strong COBOL results. Chip stocks remain up over 80% year to date despite a 3.4% drop on Oct 8.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Nvidia and Germany signed a physical-AI declaration. Anthropic is reportedly preparing an IPO, and Broadcom reportedly agreed to lend it up to $42B for a chip lease (unverified). Hyperscaler earnings on Oct 28 are the next test of AI capex.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">No confirmed new action in the last 24 hours. Background: a June White House order created a voluntary frontier-AI framework, and the EU Parliament voted to delay high-risk AI Act obligations to December 2027. The China chip export-control bills remain contested between labs.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">Nvidia reportedly landed about $35B in orders from Chinese firms (unverified). Huawei plans two Ascend 960 chips in 2027.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The 10-year yield was about 5.2% and Brent about $104 in early October. The Fed is expected to hike again, with FOMC on Oct 27-28. I could not find an Oct 20 close.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Oil remains elevated, with Brent above $100, tied to the US-Israeli war against Iran. This is a key driver of inflation and rate-hike expectations.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">A CNBC analysis argues women are likely to be hit first by AI job disruption. It cites an ILO finding that nearly one in 10 women in high-income countries works in an occupation at the highest AI risk.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Wed 21</span>
+      <span class="week-event">Possible OpenAI funding round news (reported ~$30B at $1.4T+); unconfirmed timing</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 22</span>
+      <span class="week-event">Weekly jobless claims and ongoing earnings season; check the calendar for confirmed reports (unverified)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 23</span>
+      <span class="week-event">Possible September inflation and consumer data releases; confirm dates on the BLS and BEA schedules (unverified)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Tue 27</span>
+      <span class="week-event">FOMC meeting begins (Oct 27-28); another Warsh-led hike is possible</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 28</span>
+      <span class="week-event">FOMC decision; Microsoft and Alphabet earnings expected, with focus on capex and cloud growth</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Late Oct</span>
+      <span class="week-event">Meta and Amazon earnings (dates to be confirmed)</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 3 Nov</span>
+      <span class="week-event">AMD earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The $1.4T Round Is a Duration Trade in Disguise</h3>
+          <div class="subtitle">Bond traders at 5.2%, not growth investors, will set what OpenAI is worth</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the revenue reset matters more than the headline raise. If annualized revenue is near $50B rather than $68-70B, a $1.4T valuation is roughly 28 times revenue instead of about 20 times. That multiple only holds if the discount rate stays low, and it isn't staying low. The 10-year is near 5.2%, the 30-year near 5.6%, and futures were pricing a December hike at about 69% in early October. A company that burns cash for years is a long-duration asset, so every basis point of hawkishness from Warsh comes straight out of its price.</p>
+<p>Speculative: the $30B will mostly be strategic money. Nvidia already put in $30B in February, agreed in August to be sole chip supplier for an Ohio data center, and reportedly guaranteed up to $105B. That makes the chip vendor the underwriter of its largest customer's demand. That is circular financing with a nicer name, and when rates bite, circular deals unwind together. The $50B figure comes from a CFD broker's blog, so the whole thesis rests on a number I have not verified.</p>
+<p>My call, and I may be wrong: the round closes, but the terms carry structure, such as preferred stock or ratchets, that the headline valuation hides. Secondary-market marks on OpenAI drop before Q1 2027, and the story shifts from model quality to Nvidia's guarantees. The tells to watch are the FOMC on Oct 27-28 and whether Microsoft and Alphabet on Oct 28 talk about capex in dollars or in vague language.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Germany Bought Nvidia's Physical AI Pitch With Energy It Doesn't Have</h3>
+          <div class="subtitle">With Brent above $100, Europe's industrial AI is really a bet on power prices</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Energy</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: Merz signing a declaration of intent with Nvidia on physical AI is a photo opportunity with a long tail. The German economy has barely grown since the pandemic, and the AP ties that to high energy prices, Chinese car competition and slow permitting. Brent is around $104 because of the US-Israeli war against Iran. Factories running robots, digital twins and on-premise inference need cheap, steady electricity more than they need a memorandum. Germany's industrial power price is the binding constraint, and no Nvidia partnership changes it.</p>
+<p>Speculative: the first real sovereign-compute commitments will not land in Germany's industrial heartland. They will go to the Nordics or France, where hydro and nuclear make power cheap, and the German carmakers and machine builders Huang is courting will run their AI on US hyperscaler capacity hosted abroad. Europe already trails the US badly in data center capacity. Adding a dependency on Nvidia's physical AI stack deepens the reliance that European leaders say they are worried about, while the sovereignty rhetoric stays in the speeches.</p>
+<p>My wrong-on-purpose take: by the end of 2027, the most successful European 'physical AI' deployment will be a Chinese or American robotics firm building in a country with cheap power, and Berlin will still be arguing about permitting timelines. Watch for announced data center sites in Germany with actual grid connection dates. If none appear, the declaration was the whole deal.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Anthropic's China Stance Reads Like an IPO Prospectus</h3>
+          <div class="subtitle">Backing export-control bills while OpenAI softens is positioning for a listing, not a principle</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">China</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: Politico reportedly found OpenAI has softened its push for strict China chip export controls, while Anthropic backs several of the bills. Read that alongside the reports that Anthropic is preparing an IPO, with Q3 revenue reportedly up 45% to $16.8B. Both figures are unverified, and the FT attribution is secondhand. Even so, a company heading to public markets needs a policy posture that looks responsible to Washington and to institutional investors. Hawkishness on chips costs Anthropic almost nothing, since it does not sell silicon into China. It costs Nvidia a lot, and Nvidia reportedly has about $35B in orders from Chinese firms, also unverified.</p>
+<p>Speculative: the Broadcom report of a chip lease worth up to $42B, also unverified, shows how much of the frontier lab economics now depends on someone else's balance sheet. If Anthropic is building a public-company story, the export-control position works as a risk-factor narrative: it signals alignment with the government and quietly makes competitors' China revenue look like the vulnerability. Meanwhile Huawei plans two Ascend 960 chips in 2027, which gives Beijing a reason to treat any US restriction as a reason to accelerate domestic substitution.</p>
+<p>My call: the export-control bills stall through the next session, and the lab that backed them ends up using the stall as evidence that its safety credentials are real. Nvidia's China number becomes the swing factor in the next earnings calls, not model benchmarks. The tell is whether Anthropic's public policy language shifts once the IPO filing is public.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>COBOL Benchmarks Are the Layoff Notice for Government Back Offices</h3>
+          <div class="subtitle">Legacy migration gets cheap just as AI job disruption lands first on women</div>
+          <div class="pattern-cats"><span class="pattern-cat">Labor & Workforce</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">AI Regulation & Governance</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: OpenAI published COBOL migration results in which GPT-6.1 Sol scored 86.6% at low reasoning effort, against 5.4% for GPT-5.6 Sol, and 97.9% at higher effort. OpenAI wrote the benchmark itself, so treat the numbers as a marketing ceiling, not a field result. Still, the direction is the signal. COBOL runs tax systems, benefits payments, and core banking ledgers. Migrating and maintaining those systems is the back-office work that has long employed large numbers of clerks, analysts and contractors, and a disproportionate share of those jobs are held by women.</p>
+<p>Speculative: a CNBC analysis argues women will be hit first by AI job disruption, citing an ILO finding that nearly one in ten women in high-income countries works in an occupation at the highest AI risk. The mechanism here is not mass layoffs. It is attrition freezes, contractor non-renewals and the quiet end of maintenance budgets in banks and government agencies. Nobody announces the cut, so nobody has to report it. The EU Parliament voted to delay high-risk AI Act obligations to December 2027, and public-sector and credit systems are exactly the category those obligations were written to cover. The migration wave will land before the audit rules do.</p>
+<p>My wrong-on-purpose take: the first measurable AI displacement shows up in government and bank payroll data in 2027 as flat headcount in processing centers, and the political fight is about whether the agencies had a choice. Watch for state tax agencies and large banks announcing COBOL retirement programs with no new hiring. Those announcements will tell you more than any lab benchmark.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>The Stablecoin Rulebook Is Nearly Written, and the Fight Is Over Who Gets Locked Out</h2>
+    <div class="standfirst">With Treasury's comment window on GENIUS Act implementation closed on October 19, the argument has shifted from whether stablecoins get regulated to whether foreign issuers and yield-bearing products can reach the US market.</div>
+    <div class="deep-dive-why">Treasury's GENIUS Act comment window closed October 19, and the Blockchain Association's filing was reported October 20, so the rule's contested points are now public.</div>
+    <div class="body"><p>The news hook is procedural but consequential. On October 19, the comment period closed on Treasury's proposed rule, published August 18, that implements the issuance, offer and sale provisions of the GENIUS Act. Reporting put the count at about 123 submissions. On October 20 The Block reported the Blockchain Association's letter, which broadly backs the proposal but asks for clearer definitions. A separate proposal from the Office of the Comptroller of the Currency, covering stablecoins issued by OCC-supervised entities, is moving in parallel. The statute's framework is set to take full effect on January 18, 2027, so the window to settle details is short.</p>
+<p>The context is that the GENIUS Act was the first major federal crypto statute. It created a licensing regime for payment stablecoins, with reserve requirements and redemption rights. It also left agencies to decide the hard questions: how offshore issuers are treated, what counts as a prohibited yield, and how far liability reaches into the intermediaries that handle these tokens. Those questions decide whether the dollar stablecoin market, which is dominated by a few large offshore-linked issuers, is brought inside the US system or kept at a distance.</p>
+<p>The foreign-issuer fight is the sharpest. Treasury's draft uses a reasonable-belief approach to decide when offshore issuance falls outside US rules. Mastercard, per PYMNTS, supports that approach. The Blockchain Association objects to open-ended due diligence on foreign issuers. Its argument is that exchanges, wallets and payment firms often have no direct relationship with the issuer, so it asks regulators to publish prohibition lists they can rely on. Banks want the opposite. They want stronger protection against unlicensed or foreign issuers reaching American customers through intermediaries. One secondary report says no foreign jurisdiction had yet received a comparability determination from Treasury. I could not verify that, but if it is right, the offshore route is effectively closed until Treasury acts.</p>
+<p>The second dispute is yield. The Act bars issuers from paying interest solely for holding a stablecoin. Banks fear that rewards routed through exchanges and affiliates would reproduce interest-bearing deposits outside the banking perimeter and drain deposits. The OCC proposal takes a firm line by presuming that yield tied to affiliates or related parties is paid in connection with holding the token. Crypto firms say that presumption sweeps in ordinary loyalty and commercial arrangements. I found no yield-specific comments on Treasury's own proposal, so this fight sits mainly with the OCC.</p>
+<p>A third issue is the proposal's knowing participation standard. The Blockchain Association warns it could carry criminal exposure for firms that handle a non-compliant token without knowing it. Defenders say any enforceable regime needs some liability for intermediaries, or the licensing line is easy to evade.</p>
+<p>Reasonable people disagree for structural reasons. One camp sees dollar stablecoins as a strategic asset that extends dollar reach and creates demand for Treasury bills, and so wants a permissive door for large global issuers. The other camp sees a threat to bank funding and to financial stability, and wants a strict door. The two camps are using the same statute for opposite aims. The wider macro backdrop sharpens the first view. Long Treasury yields have reportedly hit multi-decade highs, with the 10-year near 5.35%, and stablecoin reserves are a growing buyer of short-dated government debt.</p>
+<p>What to watch: Treasury and the OCC must now read and respond to the comments, and final rules would have to land well before January 18, 2027 to give industry time to comply. Watch first for any comparability determinations for other jurisdictions, then for whether the final text softens the knowing participation standard. Also watch whether the OCC keeps its yield presumption, because that choice will signal how far regulators will go to protect bank deposits. Expect final rules in the late-autumn to December window, and expect litigation or lobbying for delay if they are not clear.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.theblock.co/news/regulation/2026-10-20-blockchain-association-clearer-rules-genius-act-421092" target="_blank" rel="noopener">The Block</a><span class="source-sep">·</span><a class="source-link" href="https://www.pymnts.com/legal/2026/treasury-stablecoin-proposal-draws-questions-over-foreign-access/" target="_blank" rel="noopener">PYMNTS</a><span class="source-sep">·</span><a class="source-link" href="https://blockonomi.com/blockchain-association-urges-treasury-to-narrow-genius-act-stablecoin-rules" target="_blank" rel="noopener">Blockonomi</a><span class="source-sep">·</span><a class="source-link" href="https://www.stinson.com/newsroom-publications-occ-and-treasury-department-issue-requests-for-comments-on-genius-act-proposed-implementation-rulemakings" target="_blank" rel="noopener">Stinson LLP</a><span class="source-sep">·</span><a class="source-link" href="https://www.federalregister.gov/documents/2026/08/18/2026-16796/genius-act-regulations-on-payment-stablecoin-issuance-offer-and-sale" target="_blank" rel="noopener">Federal Register</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/" target="_blank" rel="noopener">Muse Spark Open, Meta + Apple, Thin and Thick</a><div class="sig-summary">Meta has released a new open source model, and Apple is partnering with it so the model can run locally. Earlier in the week he asked whether you trust Apple, and argued the real question is whether Siri AI will justify deeper investment in Apple's ecosystem.</div><div class="sig-connection">↳ This fits the pace of lab releases and the push toward on-device AI. It adds an open-model counterweight to reports that Anthropic is readying a new model, and to OpenAI's $30B fundraising and revenue reset.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-215" target="_blank" rel="noopener">Weekly Dose of Optimism #215</a><div class="sig-summary">A roundup of optimistic tech and science items, including a "flying" roadster, robots, and Arrowhead cutting tau.</div><div class="sig-connection">↳ The robots item loosely connects to Nvidia's physical-AI pact with Germany. Otherwise it offers an upbeat counterpoint to the day's market and rate worries.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on" target="_blank" rel="noopener">Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)</a><div class="sig-summary">A 72-minute conversation with Anthropic's Emmanuel Ameisen on what interpretability research shows about model planning, consciousness, and AI safety. He also ran an episode on Brooke Lacey using Claude Code to turn raw phone video into captioned TikToks, and a How I AI episode on Meta Muse Wonder.</div><div class="sig-connection">↳ It ties into the report that Anthropic is readying a new model, and into the safety and governance debate. The Lacey episode is a labor and workforce example of AI-assisted creative work.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 13 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">ESSAY</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

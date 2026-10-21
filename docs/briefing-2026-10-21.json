@@ -1,0 +1,393 @@
+{
+  "top_stories": [
+    {
+      "priority": "high",
+      "headline": "OpenAI revenue reset hits chip stocks as it reportedly seeks $30B",
+      "one_liner": "A report that OpenAI's annualized revenue is about $50B, not the $68-70B investors assumed, drove an AI selloff, and OpenAI is now reportedly raising at a $1.4T+ valuation.",
+      "detail": "Chipmakers fell 3.4% on Oct 8 after a report put OpenAI's annualized revenue near $50B, well below the $68-70B figure investors had been using. The gap is attributed mainly to how partner sales are accounted for. The Nasdaq fell 1.25% that day, its worst session since mid-August, and chip stocks are still up more than 80% year to date. These figures come from a CFD broker's blog, so treat them with caution.\n\nOpenAI is now reportedly seeking about $30B at a valuation above $1.4T, per a Motley Fool piece dated Oct 20. The raise and the revenue reset together test whether AI infrastructure spending can keep growing. Nvidia is tied closely to OpenAI. It finalized a $30B equity investment in February and agreed in August to be sole chip supplier at an Ohio data center, with guarantees of up to $105B. Separate reports say OpenAI is designing its own chips with TSMC.\n\nThe sources here are secondary and I could not verify them against FT, WSJ or Reuters. Watch for confirmation of the round, any restated revenue figures, and the hyperscaler capex commentary that Microsoft and Alphabet are expected to give on Oct 28.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Motley Fool",
+          "url": "https://fool.com/investing/2026/10/20/openai-is-reportedly-raising-usd30-billion-which-chip-stock-gains-the-most"
+        },
+        {
+          "name": "Admiral Markets",
+          "url": "https://admiralmarkets.com/analytics/traders-blog/openai-revenue-ai-selloff-october-2026"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Fed under Warsh leans toward more hikes as yields sit near 24-year highs",
+      "one_liner": "With the 10-year near 5.2% and oil above $100, markets are pricing a likely further hike by year-end.",
+      "detail": "The Fed, chaired by Kevin Warsh, raised rates in September, its first hike since 2023. Minutes showed most officials expect another by year-end, and CME FedWatch put the December hike probability near 69% as of early October. The 10-year Treasury yield was about 5.23% and the 30-year about 5.60%, both near 24-year highs. Brent was around $104 on Oct 8, with energy prices elevated since the US-Israeli war against Iran.\n\nHigher yields weigh on long-duration growth stocks, which compounds the AI valuation questions above. Most of this data is from Oct 8-9 and I could not find an Oct 20 market close.\n\nThe FOMC meets Oct 27-28. Watch the September CPI and PCE prints, oil, and Warsh's tone on inflation. Reuters coverage of the September meeting said he warned inflation was still too high.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Admiral Markets",
+          "url": "https://admiralmarkets.com/analytics/traders-blog/openai-revenue-ai-selloff-october-2026"
+        },
+        {
+          "name": "Detroit News (AP)",
+          "url": "https://www.detroitnews.com/story/business/2026/09/17/wall-st-climbs-as-easing-oil-prices-offer-reprieve-after-fed-rate-hike/91807027007/"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Anthropic reportedly readying new model as labs ship at record pace",
+      "one_liner": "The Information says Anthropic is preparing a model that infers user intent better, while OpenAI touts big legacy-code gains.",
+      "detail": "The Information reported Monday that Anthropic is preparing a model with stronger reasoning and intuition. No name or date was reported. OpenAI, Anthropic and Google have shipped more than a dozen models in the past month. Anthropic released Opus 5.5 on Sept 22, shortly after Dario Amodei's essay urging a slowdown.\n\nOpenAI published results for low-resource languages. GPT-6.1 Sol scored 86.6% at low reasoning effort on a COBOL migration test, against 5.4% for GPT-5.6 Sol, and 97.9% at higher effort. OpenAI wrote the benchmarks itself, which matters for enterprise modernization of banking and government systems.\n\nSeparately, reports say Anthropic's Q3 revenue rose 45% to $16.8B (attributed to the FT, which I did not verify) and that it is preparing an IPO. Politico reportedly found OpenAI has softened its push for strict China chip export controls, while Anthropic backs several of the bills. This summary draws on newsletter aggregators, not primary reporting.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "AI Brief, Oct 20",
+          "url": "https://artificiallyintimidating.com/p/ai-brief-october-20-2026"
+        },
+        {
+          "name": "AI Weekly",
+          "url": "https://aiweekly.co/ai-news-today"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Nvidia signs physical-AI pact with Germany",
+      "one_liner": "Merz and Jensen Huang signed a declaration on AI for industry as Europe worries about dependence on US tech.",
+      "detail": "At the Invest in Germany Summit in Berlin on Monday, Chancellor Friedrich Merz and two federal ministries signed a joint declaration of intent with Nvidia on AI models for physical AI. Huang urged German carmakers and machine builders to adopt AI quickly. The AP notes the German economy has barely grown since the pandemic because of high energy prices, Chinese car competition and slow permitting.\n\nEuropean leaders also worry about reliance on US technology, and Europe trails the US in data center capacity. Watch for follow-on investment announcements and any sovereign-compute commitments.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "AI Brief, Oct 20 (citing AP)",
+          "url": "https://artificiallyintimidating.com/p/ai-brief-october-20-2026"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "OpenAI's reported $50B annualized revenue and a possible $30B raise at $1.4T+ are driving AI sentiment. Anthropic is reportedly readying a new model and OpenAI published strong COBOL results. Chip stocks remain up over 80% year to date despite a 3.4% drop on Oct 8."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Nvidia and Germany signed a physical-AI declaration. Anthropic is reportedly preparing an IPO, and Broadcom reportedly agreed to lend it up to $42B for a chip lease (unverified). Hyperscaler earnings on Oct 28 are the next test of AI capex."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "No confirmed new action in the last 24 hours. Background: a June White House order created a voluntary frontier-AI framework, and the EU Parliament voted to delay high-risk AI Act obligations to December 2027. The China chip export-control bills remain contested between labs."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Nvidia reportedly landed about $35B in orders from Chinese firms (unverified). Huawei plans two Ascend 960 chips in 2027."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The 10-year yield was about 5.2% and Brent about $104 in early October. The Fed is expected to hike again, with FOMC on Oct 27-28. I could not find an Oct 20 close."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Oil remains elevated, with Brent above $100, tied to the US-Israeli war against Iran. This is a key driver of inflation and rate-hike expectations."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "A CNBC analysis argues women are likely to be hit first by AI job disruption. It cites an ILO finding that nearly one in 10 women in high-income countries works in an occupation at the highest AI risk."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Wed 21",
+      "event": "Possible OpenAI funding round news (reported ~$30B at $1.4T+); unconfirmed timing",
+      "tag": "tech"
+    },
+    {
+      "day": "Thu 22",
+      "event": "Weekly jobless claims and ongoing earnings season; check the calendar for confirmed reports (unverified)",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 23",
+      "event": "Possible September inflation and consumer data releases; confirm dates on the BLS and BEA schedules (unverified)",
+      "tag": "data"
+    },
+    {
+      "day": "Tue 27",
+      "event": "FOMC meeting begins (Oct 27-28); another Warsh-led hike is possible",
+      "tag": "critical"
+    },
+    {
+      "day": "Wed 28",
+      "event": "FOMC decision; Microsoft and Alphabet earnings expected, with focus on capex and cloud growth",
+      "tag": "earnings"
+    },
+    {
+      "day": "Late Oct",
+      "event": "Meta and Amazon earnings (dates to be confirmed)",
+      "tag": "earnings"
+    },
+    {
+      "day": "Mon 3 Nov",
+      "event": "AMD earnings",
+      "tag": "earnings"
+    }
+  ],
+  "deep_dive": {
+    "topic": "GENIUS Act Stablecoin Rules Hit Comment Deadline",
+    "headline": "The Stablecoin Rulebook Is Nearly Written, and the Fight Is Over Who Gets Locked Out",
+    "standfirst": "With Treasury's comment window on GENIUS Act implementation closed on October 19, the argument has shifted from whether stablecoins get regulated to whether foreign issuers and yield-bearing products can reach the US market.",
+    "body": "The news hook is procedural but consequential. On October 19, the comment period closed on Treasury's proposed rule, published August 18, that implements the issuance, offer and sale provisions of the GENIUS Act. Reporting put the count at about 123 submissions. On October 20 The Block reported the Blockchain Association's letter, which broadly backs the proposal but asks for clearer definitions. A separate proposal from the Office of the Comptroller of the Currency, covering stablecoins issued by OCC-supervised entities, is moving in parallel. The statute's framework is set to take full effect on January 18, 2027, so the window to settle details is short.\n\nThe context is that the GENIUS Act was the first major federal crypto statute. It created a licensing regime for payment stablecoins, with reserve requirements and redemption rights. It also left agencies to decide the hard questions: how offshore issuers are treated, what counts as a prohibited yield, and how far liability reaches into the intermediaries that handle these tokens. Those questions decide whether the dollar stablecoin market, which is dominated by a few large offshore-linked issuers, is brought inside the US system or kept at a distance.\n\nThe foreign-issuer fight is the sharpest. Treasury's draft uses a reasonable-belief approach to decide when offshore issuance falls outside US rules. Mastercard, per PYMNTS, supports that approach. The Blockchain Association objects to open-ended due diligence on foreign issuers. Its argument is that exchanges, wallets and payment firms often have no direct relationship with the issuer, so it asks regulators to publish prohibition lists they can rely on. Banks want the opposite. They want stronger protection against unlicensed or foreign issuers reaching American customers through intermediaries. One secondary report says no foreign jurisdiction had yet received a comparability determination from Treasury. I could not verify that, but if it is right, the offshore route is effectively closed until Treasury acts.\n\nThe second dispute is yield. The Act bars issuers from paying interest solely for holding a stablecoin. Banks fear that rewards routed through exchanges and affiliates would reproduce interest-bearing deposits outside the banking perimeter and drain deposits. The OCC proposal takes a firm line by presuming that yield tied to affiliates or related parties is paid in connection with holding the token. Crypto firms say that presumption sweeps in ordinary loyalty and commercial arrangements. I found no yield-specific comments on Treasury's own proposal, so this fight sits mainly with the OCC.\n\nA third issue is the proposal's knowing participation standard. The Blockchain Association warns it could carry criminal exposure for firms that handle a non-compliant token without knowing it. Defenders say any enforceable regime needs some liability for intermediaries, or the licensing line is easy to evade.\n\nReasonable people disagree for structural reasons. One camp sees dollar stablecoins as a strategic asset that extends dollar reach and creates demand for Treasury bills, and so wants a permissive door for large global issuers. The other camp sees a threat to bank funding and to financial stability, and wants a strict door. The two camps are using the same statute for opposite aims. The wider macro backdrop sharpens the first view. Long Treasury yields have reportedly hit multi-decade highs, with the 10-year near 5.35%, and stablecoin reserves are a growing buyer of short-dated government debt.\n\nWhat to watch: Treasury and the OCC must now read and respond to the comments, and final rules would have to land well before January 18, 2027 to give industry time to comply. Watch first for any comparability determinations for other jurisdictions, then for whether the final text softens the knowing participation standard. Also watch whether the OCC keeps its yield presumption, because that choice will signal how far regulators will go to protect bank deposits. Expect final rules in the late-autumn to December window, and expect litigation or lobbying for delay if they are not clear.",
+    "why_today": "Treasury's GENIUS Act comment window closed October 19, and the Blockchain Association's filing was reported October 20, so the rule's contested points are now public.",
+    "sources": [
+      {
+        "name": "The Block",
+        "url": "https://www.theblock.co/news/regulation/2026-10-20-blockchain-association-clearer-rules-genius-act-421092"
+      },
+      {
+        "name": "PYMNTS",
+        "url": "https://www.pymnts.com/legal/2026/treasury-stablecoin-proposal-draws-questions-over-foreign-access/"
+      },
+      {
+        "name": "Blockonomi",
+        "url": "https://blockonomi.com/blockchain-association-urges-treasury-to-narrow-genius-act-stablecoin-rules"
+      },
+      {
+        "name": "Stinson LLP",
+        "url": "https://www.stinson.com/newsroom-publications-occ-and-treasury-department-issue-requests-for-comments-on-genius-act-proposed-implementation-rulemakings"
+      },
+      {
+        "name": "Federal Register",
+        "url": "https://www.federalregister.gov/documents/2026/08/18/2026-16796/genius-act-regulations-on-payment-stablecoin-issuance-offer-and-sale"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "The $1.4T Round Is a Duration Trade in Disguise",
+      "subtitle": "Bond traders at 5.2%, not growth investors, will set what OpenAI is worth",
+      "categories": [
+        "Frontier Tech / AI",
+        "Markets"
+      ],
+      "content": "Speculative: the revenue reset matters more than the headline raise. If annualized revenue is near $50B rather than $68-70B, a $1.4T valuation is roughly 28 times revenue instead of about 20 times. That multiple only holds if the discount rate stays low, and it isn't staying low. The 10-year is near 5.2%, the 30-year near 5.6%, and futures were pricing a December hike at about 69% in early October. A company that burns cash for years is a long-duration asset, so every basis point of hawkishness from Warsh comes straight out of its price.\n\nSpeculative: the $30B will mostly be strategic money. Nvidia already put in $30B in February, agreed in August to be sole chip supplier for an Ohio data center, and reportedly guaranteed up to $105B. That makes the chip vendor the underwriter of its largest customer's demand. That is circular financing with a nicer name, and when rates bite, circular deals unwind together. The $50B figure comes from a CFD broker's blog, so the whole thesis rests on a number I have not verified.\n\nMy call, and I may be wrong: the round closes, but the terms carry structure, such as preferred stock or ratchets, that the headline valuation hides. Secondary-market marks on OpenAI drop before Q1 2027, and the story shifts from model quality to Nvidia's guarantees. The tells to watch are the FOMC on Oct 27-28 and whether Microsoft and Alphabet on Oct 28 talk about capex in dollars or in vague language."
+    },
+    {
+      "title": "Germany Bought Nvidia's Physical AI Pitch With Energy It Doesn't Have",
+      "subtitle": "With Brent above $100, Europe's industrial AI is really a bet on power prices",
+      "categories": [
+        "Applied Tech & Industry",
+        "Energy"
+      ],
+      "content": "Speculative: Merz signing a declaration of intent with Nvidia on physical AI is a photo opportunity with a long tail. The German economy has barely grown since the pandemic, and the AP ties that to high energy prices, Chinese car competition and slow permitting. Brent is around $104 because of the US-Israeli war against Iran. Factories running robots, digital twins and on-premise inference need cheap, steady electricity more than they need a memorandum. Germany's industrial power price is the binding constraint, and no Nvidia partnership changes it.\n\nSpeculative: the first real sovereign-compute commitments will not land in Germany's industrial heartland. They will go to the Nordics or France, where hydro and nuclear make power cheap, and the German carmakers and machine builders Huang is courting will run their AI on US hyperscaler capacity hosted abroad. Europe already trails the US badly in data center capacity. Adding a dependency on Nvidia's physical AI stack deepens the reliance that European leaders say they are worried about, while the sovereignty rhetoric stays in the speeches.\n\nMy wrong-on-purpose take: by the end of 2027, the most successful European 'physical AI' deployment will be a Chinese or American robotics firm building in a country with cheap power, and Berlin will still be arguing about permitting timelines. Watch for announced data center sites in Germany with actual grid connection dates. If none appear, the declaration was the whole deal."
+    },
+    {
+      "title": "Anthropic's China Stance Reads Like an IPO Prospectus",
+      "subtitle": "Backing export-control bills while OpenAI softens is positioning for a listing, not a principle",
+      "categories": [
+        "Frontier Tech / AI",
+        "China",
+        "Markets"
+      ],
+      "content": "Speculative: Politico reportedly found OpenAI has softened its push for strict China chip export controls, while Anthropic backs several of the bills. Read that alongside the reports that Anthropic is preparing an IPO, with Q3 revenue reportedly up 45% to $16.8B. Both figures are unverified, and the FT attribution is secondhand. Even so, a company heading to public markets needs a policy posture that looks responsible to Washington and to institutional investors. Hawkishness on chips costs Anthropic almost nothing, since it does not sell silicon into China. It costs Nvidia a lot, and Nvidia reportedly has about $35B in orders from Chinese firms, also unverified.\n\nSpeculative: the Broadcom report of a chip lease worth up to $42B, also unverified, shows how much of the frontier lab economics now depends on someone else's balance sheet. If Anthropic is building a public-company story, the export-control position works as a risk-factor narrative: it signals alignment with the government and quietly makes competitors' China revenue look like the vulnerability. Meanwhile Huawei plans two Ascend 960 chips in 2027, which gives Beijing a reason to treat any US restriction as a reason to accelerate domestic substitution.\n\nMy call: the export-control bills stall through the next session, and the lab that backed them ends up using the stall as evidence that its safety credentials are real. Nvidia's China number becomes the swing factor in the next earnings calls, not model benchmarks. The tell is whether Anthropic's public policy language shifts once the IPO filing is public."
+    },
+    {
+      "title": "COBOL Benchmarks Are the Layoff Notice for Government Back Offices",
+      "subtitle": "Legacy migration gets cheap just as AI job disruption lands first on women",
+      "categories": [
+        "Labor & Workforce",
+        "Frontier Tech / AI",
+        "AI Regulation & Governance"
+      ],
+      "content": "Speculative: OpenAI published COBOL migration results in which GPT-6.1 Sol scored 86.6% at low reasoning effort, against 5.4% for GPT-5.6 Sol, and 97.9% at higher effort. OpenAI wrote the benchmark itself, so treat the numbers as a marketing ceiling, not a field result. Still, the direction is the signal. COBOL runs tax systems, benefits payments, and core banking ledgers. Migrating and maintaining those systems is the back-office work that has long employed large numbers of clerks, analysts and contractors, and a disproportionate share of those jobs are held by women.\n\nSpeculative: a CNBC analysis argues women will be hit first by AI job disruption, citing an ILO finding that nearly one in ten women in high-income countries works in an occupation at the highest AI risk. The mechanism here is not mass layoffs. It is attrition freezes, contractor non-renewals and the quiet end of maintenance budgets in banks and government agencies. Nobody announces the cut, so nobody has to report it. The EU Parliament voted to delay high-risk AI Act obligations to December 2027, and public-sector and credit systems are exactly the category those obligations were written to cover. The migration wave will land before the audit rules do.\n\nMy wrong-on-purpose take: the first measurable AI displacement shows up in government and bank payroll data in 2027 as flat headcount in processing centers, and the political fight is about whether the agencies had a choice. Watch for state tax agencies and large banks announcing COBOL retirement programs with no new hiring. Those announcements will tell you more than any lab benchmark."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Muse Spark Open, Meta + Apple, Thin and Thick",
+      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
+      "summary": "Meta has released a new open source model, and Apple is partnering with it so the model can run locally. Earlier in the week he asked whether you trust Apple, and argued the real question is whether Siri AI will justify deeper investment in Apple's ecosystem.",
+      "connection": "This fits the pace of lab releases and the push toward on-device AI. It adds an open-model counterweight to reports that Anthropic is readying a new model, and to OpenAI's $30B fundraising and revenue reset."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "essay",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #215",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-215",
+      "summary": "A roundup of optimistic tech and science items, including a \"flying\" roadster, robots, and Arrowhead cutting tau.",
+      "connection": "The robots item loosely connects to Nvidia's physical-AI pact with Germany. Otherwise it offers an upbeat counterpoint to the day's market and rate worries."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
+      "url": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
+      "summary": "A 72-minute conversation with Anthropic's Emmanuel Ameisen on what interpretability research shows about model planning, consciousness, and AI safety. He also ran an episode on Brooke Lacey using Claude Code to turn raw phone video into captioned TikToks, and a How I AI episode on Meta Muse Wonder.",
+      "connection": "It ties into the report that Anthropic is readying a new model, and into the safety and governance debate. The Lacey episode is a labor and workforce example of AI-assisted creative work."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
