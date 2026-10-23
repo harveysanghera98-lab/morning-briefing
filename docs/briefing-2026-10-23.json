@@ -1,0 +1,406 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Nasdaq plunges 2.6% as AI spending fears hit tech",
+      "one_liner": "The steepest Nasdaq drop since early June puts the AI capex trade in question just before the Fed meets.",
+      "detail": "US stocks fell sharply on Thursday Oct 22. The Nasdaq closed down 2.6%, its worst day since early June, as doubts about AI spending returned. The selloff followed a run of earnings that raised those doubts.\n\nMeta beat earnings expectations, but its shares fell after it raised its capital expenditure forecast. Investors questioned how quickly the AI spending will pay off. Tesla slipped on profit concerns after its Q3 results. Lam Research dropped more than 5% after its results. Nvidia and memory names such as Micron also declined.\n\nThe damage was widest in AI infrastructure and power. GE Vernova and Bloom Energy each fell more than 11%. That suggests the market is repricing the data-center buildout beyond the chip makers.\n\nSources differ on intraday index levels because they were published at different times, so Reuters' closing figures are the ones to trust. Several of the articles I retrieved were aggregator or Yahoo Finance pages, not primary Reuters text. The Reuters attribution comes second-hand through those summaries.\n\nWatch whether hyperscaler capex guidance holds up in the remaining earnings this week and next. Also watch the Fed's Oct 28 meeting.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Star-Advertiser (Nasdaq plunges 2.6%)",
+          "url": "https://www.staradvertiser.com/2026/10/22/breaking-news/nasdaq-plunges-2-6-as-ai-spending-fears-spark-tech-selloff/"
+        },
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-22-dow-sp-500-nasdaq-tesla-meta-112217857.html"
+        },
+        {
+          "name": "Tech Startups",
+          "url": "https://techstartups.com/2026/10/22/tech-news-today-october-22-2026-barclays-deepseek-ibm-meta-nokia-palantir-tesla-more/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Fed leans toward a hold on Oct 28 after Warsh's September hike",
+      "one_liner": "Warsh won't signal the next move, and futures price roughly 81% odds of a hold.",
+      "detail": "The Fed raised rates 25 basis points to 3.75%-4.00% on Sept 16. It was the first hike since 2023 and was led by Chair Kevin Warsh. Stocks fell that day, with the Dow down 631 points, as investors reacted to the gap between the Fed's forecasts and Warsh's remarks.\n\nAt the IMF meetings in Bangkok, Warsh said he doesn't prejudge meetings. Markets took that as a sign of a hold. Hike odds fell from 28% to below 15% after his speech. A hot CPI report earlier in the week had pushed them up briefly.\n\nFutures now price about an 81% chance of a hold on Oct 28, with December seen as the likelier month for any further hike. CBS News framed the September move as revealing about the Warsh-Trump dynamic on inflation. Some crypto-focused outlets reported the president was unhappy with the hike. I could not verify that against a major outlet.\n\nWatch the Oct 28 statement and the press conference, plus the next inflation prints. A tech selloff may add to the case for waiting.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Yahoo Finance (Fed meeting live updates)",
+          "url": "https://finance.yahoo.com/economy/policy/live/federal-reserve-meeting-live-updates-25-basis-point-interest-rate-hike-chairman-kevin-warsh-143452661.html"
+        },
+        {
+          "name": "CBS News",
+          "url": "https://www.cbsnews.com/news/fed-rate-hike-warsh-trump-inflation/"
+        },
+        {
+          "name": "Real Investment Advice",
+          "url": "https://realinvestmentadvice.com/resources/blog/warsh-says-little-market-hears-hold/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Meta hit with $25B New Mexico penalty order",
+      "one_liner": "A court ordered a large consumer-protection penalty on top of Meta's capex-driven share drop.",
+      "detail": "A New Mexico judge ordered Meta to pay $25 billion in consumer protection penalties. Meta said it plans to appeal. I found this only in a market-news roundup, not in primary reporting, so details such as the underlying claims are unconfirmed.\n\nThe order landed the same day Meta reported earnings that beat expectations but raised its capital spending outlook. Shares fell. Together these put pressure on Big Tech's AI strategy and its legal exposure.\n\nWatch for the appeal filing and for any stay of the penalty. Also watch whether other states pursue similar cases.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-22-dow-sp-500-nasdaq-tesla-meta-112217857.html"
+        },
+        {
+          "name": "Tech Startups",
+          "url": "https://techstartups.com/2026/10/22/tech-news-today-october-22-2026-barclays-deepseek-ibm-meta-nokia-palantir-tesla-more/"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "EU AI Act: omnibus delays high-risk rules, new prohibitions due Dec 2",
+      "one_liner": "Compliance dates are shifting, but the core GPAI duties remain in place.",
+      "detail": "The Parliament approved the digital omnibus amendments on June 16, 2026, and the Council on June 29. High-risk obligations for stand-alone systems now apply from Dec 2, 2027. Product-embedded systems follow on Aug 2, 2028.\n\nA vendor compliance guide dated Oct 6 says the core prohibitions, general-purpose AI duties and fines were unchanged. It says new prohibitions on non-consensual intimate imagery and CSAM generation take effect Dec 2, 2026. Watermarking requirements are also due Dec 2, 2026. This comes from a vendor blog and law-firm summaries, so check it against EUR-Lex.\n\nWatch for national implementation, such as Italy's AI law, and for preparation ahead of Dec 2.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "McCann FitzGerald",
+          "url": "https://www.mccannfitzgerald.com/knowledge/technology-and-innovation/keeping-pace-with-the-ai-act-a-snapshot-of-recent-developments"
+        },
+        {
+          "name": "Council of the EU timeline",
+          "url": "https://www.consilium.europa.eu/en/policies/artificial-intelligence-act/timeline-artificial-intelligence/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "AI spending doubts drove a broad tech selloff. Nvidia, Micron and Lam Research fell after earnings. Legora raised $550M at an $8.8B valuation."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Meta raised its capex forecast and faces a $25B New Mexico penalty order. Tesla slipped on profit concerns. Spotify rose 11% on a strong Q4 outlook. Barclays is cutting about 5,000 jobs."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "The White House announced a committee to look into allegations about Fed governor Lisa Cook, per a Newsquawk feed from mid-October. Trump is reported to be unhappy with the Fed's hike. The latter is unverified."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The EU AI Act omnibus pushed high-risk deadlines to Dec 2027 and Aug 2028. New prohibitions and watermarking rules are due Dec 2, 2026."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The Nasdaq fell 2.6% on AI spending fears. The Fed is priced at roughly 81% odds of a hold on Oct 28 after September's hike to 3.75%-4.00%."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "AI power names sold off hard. GE Vernova and Bloom Energy each fell more than 11%."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "Barclays is cutting about 5,000 jobs as it pursues efficiency through technology."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Fri 23",
+      "event": "Continued fallout from Thursday's tech selloff. Watch for Nasdaq follow-through and remaining earnings.",
+      "tag": "earnings"
+    },
+    {
+      "day": "Mon 26",
+      "event": "Start of a heavy earnings week. Hyperscaler capex commentary in focus.",
+      "tag": "earnings"
+    },
+    {
+      "day": "Tue 27",
+      "event": "Pre-Fed positioning. Watch for consumer confidence and other data.",
+      "tag": "data"
+    },
+    {
+      "day": "Wed 28",
+      "event": "FOMC decision and Warsh press conference. Futures price about an 81% chance of a hold.",
+      "tag": "critical"
+    },
+    {
+      "day": "Thu 29",
+      "event": "Further big-tech earnings and a possible GDP release. Dates not confirmed.",
+      "tag": "earnings"
+    },
+    {
+      "day": "Fri 30",
+      "event": "Possible PCE inflation data. Date not confirmed.",
+      "tag": "data"
+    },
+    {
+      "day": "Dec 2",
+      "event": "EU AI Act new prohibitions and watermarking rules take effect, as a longer-range marker.",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Iran Strike Plans, $113 Oil, and the Midterms",
+    "headline": "Washington Reportedly Plans to Hit Iran After November 3. Oil at $113 Is Already Pricing In the Politics.",
+    "standfirst": "Reported US-Israeli plans for a short, intense campaign after the midterms have pushed Brent to its highest since May, and they put an energy shock and an election on a collision course.",
+    "body": "The hook is a New York Times report, widely picked up on Thursday, that US and Israeli militaries have drawn up plans to resume strikes on Iran after the November 3 midterm elections. Officials described a short but intensive operation. Possible targets include Iranian energy infrastructure, nuclear sites, and missile and drone stockpiles. The premise, according to the reporting, is that another round could cripple Iran's economy and force diplomatic concessions. The same account says there is a small chance of action before the vote, and that Trump may decline to authorize anything. Brent settled around $113, its highest since May, according to market reports. The Nasdaq fell more than 2% in its worst day since June, as oil and doubts about AI spending hit together.\n\nThe backdrop is a conflict that has run for most of 2026. Brent peaked near $115 in May. It has since swung on every headline: a drop of more than 10% in March when Trump paused planned strikes, a rise in July when he declared a ceasefire over, and a fall to roughly $83 in August when he announced a Hormuz deal. That deal did not hold. The US now escorts ships through Hormuz and maintains a naval blockade of Iranian ports, and talks are deadlocked. Trump said this week, 'We are not negotiating with' Iran, and that something would happen 'fairly soon.' The Revolutionary Guard Navy says it struck four oil-carrying vessels in the northern Gulf and that three more hit mines west of Hormuz. It also warned that the conflict could extend to US bases in the region. An attack on Dammam's airport in Saudi Arabia killed one person, and Washington has ordered non-emergency government staff to leave Saudi Arabia.\n\nThe interpretations diverge sharply. One reading treats the leak as deliberate signaling. Publicizing a credible post-election strike plan could pressure Tehran to bargain while the White House avoids the political cost of a spike in pump prices before voters go to the polls. On that view, the leak is coercive diplomacy, and the waiting period is the offer. A second reading is that the leak is self-defeating. It has already lifted crude by several dollars, and Iran may use the interval to harden its position, lay more mines, and pre-position against US bases. Trump's own framing points the same way. He accused Iran of 'making up fake hits' and manipulating prices to influence the midterms. That recasts a security crisis as an election-interference story and makes it harder to de-escalate without looking weak.\n\nA third view is skeptical about the military logic. Previous rounds of strikes did not end Iran's ability to disrupt shipping, and mines and drones are cheap compared with the interceptors and escorts that counter them. Israeli officials add a wrinkle: Netanyahu denied a Financial Times report that he planned an earlier strike that Trump halted, but the dispute shows how contested the timing is between the allies. Energy analysts note that the damage may not require any strike. Insurers and shippers are already reducing Hormuz traffic, so risk premia are doing part of Iran's work for it.\n\nThe macro stakes are large. The Fed has recently listed oil, tariffs and AI-related chip costs among the inflation shocks it is watching, and it meets October 27-28 with markets pricing only a small chance of another hike. Oil above $110 complicates that. It raises inflation while a labor market that is already soft cannot absorb tighter policy. Equities are exposed twice, since the chip index has just had its worst week since early 2025 and a long losing streak. Higher energy costs worsen the AI-capex worries that were already there.\n\nWhat to watch: the Fed decision and Chair Warsh's press conference on October 28; any US or Israeli military movement or a Trump statement before November 3; further mine incidents and Hormuz transit counts; Saudi security and any Iranian action against US bases; the midterm result itself, which will shape how free the White House feels to act; and whether a backchannel opens during the pre-election window. The central uncertainty is whether the 'after the election' timeline is a plan or a bargaining chip. Markets are currently treating it as a plan.",
+    "why_today": "The New York Times report of post-midterm strike planning landed Thursday, sending Brent to a five-month high and hitting equities one week before the Fed meets and twelve days before the election.",
+    "sources": [
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/amp/2026/10/22/oil-prices-today-wti-brent-saudi-arabia.html"
+      },
+      {
+        "name": "Times of Israel liveblog",
+        "url": "https://timesofisrael.com/liveblog-october-22-2026"
+      },
+      {
+        "name": "Vantage Markets",
+        "url": "https://www.vantagemarkets.com/market-analysis/crude-oil-prices-brent-wti-iran-strike-reports-october-22-2026/"
+      },
+      {
+        "name": "Newsquawk",
+        "url": "https://www.newsquawk.com/headlines/market-analysis-oil-prices-hold-onto-gains-after-rallying-amid-geopolitical-concerns-with-reports-noting-us-and-israeli-military-are-drawing-up-plans-to-resume-strikes-on-iran"
+      },
+      {
+        "name": "Al-Monitor",
+        "url": "https://al-monitor.com/originals/2026/08/oil-falls-5-after-trump-calls-iran-strikes-says-hormuz-deal-agreed"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "The Power Trade Breaks First",
+      "subtitle": "GE Vernova and Bloom falling 11% is the market pricing the data-center buildout, not the chips, as the weak link.",
+      "categories": [
+        "Markets",
+        "Energy",
+        "Frontier Tech / AI"
+      ],
+      "content": "SPECULATIVE. The consensus reads Thursday's selloff as a chip story, but the tell is that GE Vernova and Bloom Energy fell more than 11% while the index moved 2.6%. Turbines and fuel cells are the most capital-intensive, least reversible part of the AI stack. If investors are marking those names down this hard, they are saying the hyperscalers' multi-year power contracts are the first thing they doubt. My bet is that power, not GPUs, cracks first, and that the next guidance cut comes from a utility or equipment backlog and not from Nvidia.\n\nThe Meta setup makes this sharper. Meta beat earnings and still sold off after raising capex, which means the market no longer rewards spending without a visible revenue line. Every dollar of that raised outlook has to be physically delivered as gigawatts, transformers and gas turbines. If Meta and its peers keep raising capex while the market refuses to pay for it, the first forced adjustment is to delay sites, and the people who get hurt first are the suppliers who booked capacity against those sites.\n\nWatch for backlog language in the remaining earnings this week and next. If an industrial power company cuts its order outlook or stretches delivery timing, that is the signal this thesis is right. If the selloff stays confined to the sub-$50 billion AI power names while hyperscaler guidance holds, I am wrong and this was a positioning flush."
+    },
+    {
+      "title": "September Was the Last Hike",
+      "subtitle": "Warsh's Oct 28 hold is not a pause. It is the Fed deciding the AI trade is too fragile to tighten into.",
+      "categories": [
+        "US Policy & Power",
+        "Markets"
+      ],
+      "content": "SPECULATIVE. Futures price about 81% odds of a hold on Oct 28, and Warsh's line that he does not prejudge meetings is being read as neutral. I think that reading is too gentle. A Fed that hiked in September into an equity market already sensitive to the gap between its forecasts and its chair's remarks has learned what a surprise costs. With the Nasdaq's worst day since June landing the week before the meeting, another hike would be a hike into a capex scare. My view is that the September move was the last of this cycle, and that December stays on the calendar mainly as a way to keep the bond market from pricing cuts too early.\n\nThe political layer matters here. The briefing carries unverified reporting that the president was unhappy with the hike, and I cannot confirm it against a major outlet. I am not building the thesis on it. But even without that claim, a chair who came in pitching restraint and then tightened once has every incentive to make the next move look like a non-event. Holding quietly on Oct 28 costs him nothing and buys room if the tech selloff deepens.\n\nThe test is the Oct 28 statement and the press conference. Watch whether the statement keeps the tightening bias language or drops it. A dropped bias with an 81% hold priced in means the market is right and the Fed is done. If the bias stays and the hold is hawkish, I am wrong and Warsh is willing to let tech absorb the pain."
+    },
+    {
+      "title": "Barclays' 5,000 Jobs Are the Only AI ROI That Shows Up",
+      "subtitle": "Capex is being sold on productivity, and the productivity is arriving as headcount cuts, not new revenue.",
+      "categories": [
+        "Labor & Workforce",
+        "Applied Tech & Industry",
+        "Frontier Tech / AI"
+      ],
+      "content": "SPECULATIVE. Barclays cutting about 5,000 jobs while pursuing efficiency through technology sits right next to Meta raising its capex outlook and getting punished for it. Put those two facts together and the uncomfortable conclusion is that the AI return on investment being booked is cost removal. Revenue from AI products is still hard to point to in these earnings. Payroll is easy to point to. Meta has to justify spending it cannot yet monetize, and banks like Barclays can justify it by shrinking the cost base. The bet is that the first large, verifiable AI payoff in the economy will show up as a headcount line in a restructuring announcement.\n\nThis matters for the policy debate more than for the stock market. If the payoff is layoffs, then the political story about AI and work moves from a future worry to a present one, and the companies buying the most compute become the most exposed to it. Expect the cuts to be framed as efficiency, not replacement, because that framing is cheaper with regulators, unions and the press. Expect the same language to show up in Q4 calls across financials and back-office services.\n\nTo test this, check whether Barclays ties its 5,000-job figure to a specific AI deployment and whether peers announce comparable cuts within a quarter. If restructuring announcements cluster in banks and back offices while AI revenue disclosures stay vague, the thesis holds. If the cuts turn out to be ordinary cyclical trimming with AI as a footnote, I have overread a press release."
+    },
+    {
+      "title": "The Omnibus Delay Is a Gift to Platforms, and States Will Collect",
+      "subtitle": "Pushing EU high-risk rules to 2027 and 2028 moves the enforcement fight to US courts and state attorneys general.",
+      "categories": [
+        "AI Regulation & Governance",
+        "Applied Tech & Industry",
+        "US Policy & Power"
+      ],
+      "content": "SPECULATIVE. The EU omnibus moved high-risk obligations to Dec 2027 and Aug 2028, while the Dec 2, 2026 prohibitions and watermarking duties remain. I read that as a deliberate trade: Brussels bought competitiveness credibility by delaying the expensive parts and kept the cheap, headline-friendly parts on schedule. The result is that the next 12 months of AI regulation will be decided less by Brussels than by who sues whom in the US. The briefing's unverified New Mexico report, a reported $25 billion consumer-protection penalty against Meta, is the template. If that holds up, state attorneys general have discovered that consumer-protection law is a faster lever on large platforms than any AI-specific statute.\n\nI should be clear about the limits. The Meta figure comes only from a market-news roundup, and I have not confirmed the underlying claims or the penalty's status. But the pattern does not depend on that one case. Platforms are being pushed toward AI risk controls by litigation, the EU is deferring its own deadlines, and the Dec 2 date is now the only firm EU milestone that touches generative systems directly. A company that wants to be ready for the EU by Dec 2 has to build the nonconsensual-imagery and CSAM controls now, and those controls are the same ones a state AG would cite.\n\nWhat to watch: whether the Meta appeal produces a stay, whether another state files a comparable suit before year-end, and whether Italy or another member state publishes implementing rules before Dec 2. If the EU's December prohibitions slip, or no US state files a similar case, the enforcement-gap thesis is overstated and the omnibus was just delay."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Muse Spark Open, Meta + Apple, Thin and Thick",
+      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
+      "summary": "Meta has released a new open source model, and Apple is partnering with it so the model can run locally. Earlier in the week he asked whether you trust Apple, and argued the real question is whether Siri AI will justify deeper investment in Apple's ecosystem.",
+      "connection": "This fits the pace of lab releases and the push toward on-device AI. It adds an open-model counterweight to reports that Anthropic is readying a new model, and to OpenAI's $30B fundraising and revenue reset."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "essay",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #215",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-215",
+      "summary": "A roundup of optimistic tech and science items, including a \"flying\" roadster, robots, and Arrowhead cutting tau.",
+      "connection": "The robots item loosely connects to Nvidia's physical-AI pact with Germany. Otherwise it offers an upbeat counterpoint to the day's market and rate worries."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
+      "url": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
+      "summary": "A 72-minute conversation with Anthropic's Emmanuel Ameisen on what interpretability research shows about model planning, consciousness, and AI safety. He also ran an episode on Brooke Lacey using Claude Code to turn raw phone video into captioned TikToks, and a How I AI episode on Meta Muse Wonder.",
+      "connection": "It ties into the report that Anthropic is readying a new model, and into the safety and governance debate. The Lacey episode is a labor and workforce example of AI-assisted creative work."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
