@@ -1,0 +1,383 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Fed meets with a December hike priced at about 85%",
+      "one_liner": "Chair Warsh's post-decision press conference on Wednesday will show whether the Fed is signaling a second hike after September's.",
+      "detail": "The FOMC began its two-day meeting today. The decision comes Wednesday at 2 pm ET. Fed funds futures put the odds of a hold at roughly 90-92%. The market is focused on December, where futures imply about 85% odds of a hike.\n\nThe Fed raised rates in September to 3.75%-4.00%. That was its first hike since July 2023. Coverage of that meeting described Warsh saying inflation was still too high. Recent reports describe hotter-than-expected inflation data. One report put the 10-year Treasury yield around 5.25%. Another said crude rose about 4% to a one-month high last week. I could not confirm the exact dates of those data points.\n\nSome commentary argues Warsh must make a hold sound tough on inflation. The risk is that a hold with soft language leads to a bond selloff, and that hawkish language hits equities. I did not find Financial Times, WSJ or Reuters coverage of the meeting itself, so differences between outlets are not assessed here.\n\nWatch Warsh's press conference for guidance on December. Also watch Thursday's September PCE inflation report and the Beige Book.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "InvestingLive",
+          "url": "https://investinglive.com/stocks/earnings-macro-week-ahead-the-fed-and-big-tech-report-on-the-same-day/"
+        },
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/09/15/stock-market-today-live-updates.html"
+        },
+        {
+          "name": "PBS NewsHour",
+          "url": "https://www.pbs.org/newshour/economy/u-s-stocks-slip-after-the-fed-raises-interest-rate-hints-more-hikes-may-be-on-the-way"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Microsoft, Alphabet, Amazon and Intel report as the Fed decides",
+      "one_liner": "Wednesday and Thursday earnings will show whether AI capex spending is holding up as rates and yields rise.",
+      "detail": "Microsoft and Alphabet report after the close Wednesday. Amazon, Intel, Sandisk, Coinbase and Strategy report after the close Thursday. Caterpillar and Mastercard report Thursday morning.\n\nThe Fed decision lands the same day as the Microsoft and Alphabet reports. That could amplify the market reaction to capex guidance and cloud growth numbers. Intel and Sandisk give a read on semiconductor and memory demand. Coinbase and Strategy are the crypto-sector reads.\n\nThe Nasdaq 100 was reported to have gained more than 1% on Monday, near the 29,300 area. I could not verify that figure against a primary outlet. Watch capex guidance, cloud growth and AI monetization commentary.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "InvestingLive",
+          "url": "https://investinglive.com/stocks/earnings-macro-week-ahead-the-fed-and-big-tech-report-on-the-same-day/"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Anthropic and OpenAI push into custom AI silicon",
+      "one_liner": "Both labs are building their own chips, which could reduce their dependence on Nvidia over time.",
+      "detail": "This is background from earlier reporting, not a development of the last 24 hours. In August, Anthropic publicly confirmed it is building an in-house team to design custom chips for Claude. TechCrunch reported it had contacted Samsung about a collaboration. Anthropic has not disclosed a timeline or a manufacturing plan. It also said that chips from Google, Amazon and Nvidia remain central to its strategy.\n\nOpenAI unveiled its first in-house inference chip, Jalape\u00f1o, built with Broadcom. Broadcom's CEO said shipments should ramp from next year. One report also said Nvidia agreed to pay $1.5 billion to rent back its own chips from Lambda.\n\nWatch Intel, Alphabet and Microsoft commentary this week for signs of how custom silicon is affecting the GPU supply chain.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "DatacenterDynamics",
+          "url": "https://www.datacenterdynamics.com/en/news/anthropic-exploring-possibility-of-designing-its-own-ai-chips-report/"
+        },
+        {
+          "name": "The Decoder",
+          "url": "https://the-decoder.com/anthropic-reportedly-explores-custom-chip-manufacturing-with-samsung-while-insisting-nvidia-still-matters/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "No major same-day items surfaced. Background: Anthropic and OpenAI are both developing custom chips. Intel and Sandisk report Thursday, which gives a read on semiconductor demand."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Microsoft and Alphabet report Wednesday after the close. Amazon, Intel, Sandisk, Coinbase and Strategy report Thursday after the close. Capex and AI monetization are the themes to watch."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The FOMC meeting is underway, with the decision Wednesday. A hold is about 90% priced, and a December hike is about 85% priced. Reports describe hotter inflation data, a 10-year yield near 5.25% and crude at a one-month high. September PCE is due Thursday."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Crude was reported up about 4% to a one-month high last week, which is feeding inflation concerns. Chevron and BP report Friday, and Phillips 66 and GE Vernova report Wednesday."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Tue 27",
+      "event": "FOMC meeting day one. Earnings from UPS, Coca-Cola, Hilton and Royal Caribbean before the open, and Visa after the close.",
+      "tag": "critical"
+    },
+    {
+      "day": "Wed 28",
+      "event": "ADP employment report. Earnings from GE Vernova and Phillips 66 before the open.",
+      "tag": "data"
+    },
+    {
+      "day": "Wed 28",
+      "event": "FOMC rate decision at 2 pm ET, followed by Chair Warsh's press conference. A hold is about 90% priced.",
+      "tag": "critical"
+    },
+    {
+      "day": "Wed 28",
+      "event": "Microsoft and Alphabet earnings after the close, plus Chipotle.",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 29",
+      "event": "September PCE inflation report.",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 29",
+      "event": "Caterpillar and Mastercard report before the open.",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 29",
+      "event": "Amazon, Intel, Sandisk, Starbucks, Coinbase and Strategy report after the close.",
+      "tag": "earnings"
+    },
+    {
+      "day": "Fri 30",
+      "event": "Chevron, BP and CN report before the open.",
+      "tag": "earnings"
+    }
+  ],
+  "deep_dive": {
+    "topic": "China's AI Stock Bubble Bursts at Home",
+    "headline": "China's AI Bubble Has Already Burst, While America's Is Still Inflating",
+    "standfirst": "The STAR50 has lost about 40% in under four months, erasing roughly $480 billion, and the damage raises a question Wall Street would rather not ask: is this a preview or a contrast?",
+    "body": "Reuters reported on October 26 that China's AI boom has already ended in the stock market. The STAR50 index is dominated by AI and semiconductor leaders. It has fallen about 40% in under four months, erasing roughly $480 billion in value. The broader blue-chip index sits about 20% below its June highs. The STAR50 now trades near 100 times trailing earnings, down from almost 250 at the peak. The Nasdaq 100 is around 30 times. The Nasdaq itself is only about 6% off a record set three weeks ago.\n\nThe retail frenzy shows how far prices ran. Humanoid-robot maker Unitree was 8,000 times oversubscribed by retail buyers at its August listing, and its shares have since halved. Chip designers MetaX and Moore Threads jumped 700% and 400% on their debuts last year, and both have also halved since July. Memory maker CXMT has lost more than a quarter of its value in a month. Optical-component makers Zhongji Innolight and Eoptolink are down roughly 60% from their summer highs. Washington is reportedly moving to bar them from supplying US data centres.\n\nThe backdrop matters. Goldman Sachs estimates that AI stocks make up 42% of China's market capitalisation and 57% of turnover across mainland A-shares and Hong Kong H-shares. That concentration is what makes this more than a sector correction. Beijing has spent two years steering household savings out of property and into equities, with tech as the flagship. A fall of this size cuts directly against that goal. Regulators have not been passive. Beijing issued guidelines on October 9 aimed at preventing investment bubbles in so-called new productive forces. Reuters says regulators are pushing to cut leverage and high-frequency trading, and that state-backed investors have sold into rallies. The China Securities Regulatory Commission did not answer Reuters' questions, though its chairman, Wu Qing, met market participants earlier this month.\n\nThe first interpretation is that this is a deliberate, policy-engineered deflation. On this reading Beijing wanted to cool speculation before it threatened financial stability, and it is accepting pain to get a healthier market. Some investors quoted by Reuters call the selloff healthy for market reform. The risk is that the state lit the fuse and cannot control the blast. A fund manager told Reuters, \"And now we see the bubble bursting.\" Another said all bubbles inevitably burst.\n\nThe second interpretation is that external pressure is the real driver. Reuters found no single trigger, but traders cite the threat of US or other bans on Chinese equipment in data centres. Export controls and the fragile US-China truce keep the sector exposed to decisions made in Washington, which means domestic valuations can collapse on policy headlines regardless of fundamentals.\n\nThe third view is the contrarian one. Goldman has put Innolight and CXMT on its revamped recommendation list. BNP Paribas sees buying opportunities for careful investors. HSBC notes that Asia funds, though net sellers for three months, remain overweight China. Many local investors say they are waiting for lower valuations before buying.\n\nThe American angle is the uncomfortable part. The same week, US markets were mostly rising on AI optimism. Anthropic has filed for a US IPO, and Meta has announced a $95 billion equity raise. Optimists will say China shows a bubble in speculative small caps with little earnings, while the US build-out is financed by companies with real cash flows. Sceptics will point out that equity raises of this size, and IPOs from the leading labs, are what late-cycle supply looks like. A stretched multiple and heavy retail participation are what China's top looked like too. Reuters also notes that Middle East war is keeping oil and energy prices elevated, which feeds inflation worries and limits central banks' room to cushion a fall.\n\nThere are several things to watch. First, whether the selloff slows fundraising. Analysts expect tech firms to raise less equity, and Hong Hao says it will stop many planned listings. A stalled IPO pipeline would starve capital-hungry chip and robotics firms just as Beijing needs them to replace US supply. Second, any support measures from state funds or the CSRC, which would signal that Beijing's tolerance for pain has a limit. Third, the US decision on Chinese optical components in data centres, which could extend the damage. Fourth, upcoming Big Tech earnings in the US over the coming days. They will test whether American AI valuations rest on revenue or only on hope. If the Nasdaq follows the STAR50 down, October 2026 may be remembered as the month the warning arrived from Shanghai.",
+    "why_today": "Reuters published its analysis on October 26, just as US Big Tech earnings, Anthropic's IPO filing and Meta's $95 billion equity raise put American AI valuations under scrutiny.",
+    "sources": [
+      {
+        "name": "Reuters via Investing.com",
+        "url": "https://www.investing.com/news/economy-news/analysisin-china-the-ai-bubble-has-already-burst-4972445"
+      },
+      {
+        "name": "Reuters via US News",
+        "url": "https://money.usnews.com/investing/news/articles/2026-10-26/analysis-in-china-the-ai-bubble-has-already-burst"
+      },
+      {
+        "name": "Reuters Trading Day via MarketScreener",
+        "url": "https://www.marketscreener.com/news/trading-day-ai-light-brazil-flight-ce785cdcde8ff02c"
+      },
+      {
+        "name": "CryptoBriefing",
+        "url": "https://cryptobriefing.com/china-ai-stock-bubble-bursts-reuters"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "Warsh Holds the Rate, Microsoft and Alphabet Pay the Bill",
+      "subtitle": "Speculative: a Wednesday hold with hawkish teeth turns AI capex into a financing story",
+      "categories": [
+        "Markets",
+        "Applied Tech & Industry",
+        "Energy"
+      ],
+      "content": "Speculative. The market has already priced a hold on Wednesday, so the real event is the language. My bet is that Warsh keeps the hold but leaves December open, and that the bond market reads that as a hike with a delay. A 10-year near 5.25 is not a backdrop that hyperscalers can ignore. Microsoft and Alphabet are reporting the same afternoon, and their capex guidance is no longer funded only by cash flow. Both have been leaning on long-dated debt to fund data centers, and every 25 basis points on the long end raises the hurdle for the next gigawatt.\n\nThe tell will not be Microsoft's cloud growth number. It will be whether either company frames capex as a multi-year commitment or quietly shortens the guidance window. If they shorten it, the market will read that as the first sign that the AI buildout has a cost of capital problem, not a demand problem. GE Vernova, which reports the same day, is the physical version of the same question. Turbine backlogs for data centers are the one part of the AI trade that does not care about software margins, and it is the part most sensitive to a higher-for-longer bond market.\n\nThe contrarian take: Warsh's best outcome is a hold that sounds hawkish enough to cool the long end without naming December. The worst outcome for the AI trade is a soft hold, because it validates the hike pricing without giving equities a clean reason to sell. Crude at a one-month high makes that second scenario more likely, since energy-driven inflation gives the Fed no reason to sound dovish before the September PCE print on Thursday."
+    },
+    {
+      "title": "Intel Becomes the Samsung Anthropic Did Not Want",
+      "subtitle": "Speculative: custom AI silicon makes the foundry question the real Intel story on Thursday",
+      "categories": [
+        "Frontier Tech / AI",
+        "Applied Tech & Industry",
+        "Geopolitics"
+      ],
+      "content": "Speculative and deliberately provocative. Anthropic has said it is building an in-house chip team and has been in talks with Samsung, while insisting Nvidia, Google and Amazon remain central. OpenAI's Jalapeno chip with Broadcom ramps next year. Both labs are solving the same problem: they need leading-edge capacity that is not controlled by a single GPU vendor. Samsung is the obvious foundry candidate today, but Samsung is also a memory company with its own customer-concentration problem. My prediction is that the second foundry shoe to drop for at least one frontier lab is Intel, not Samsung, because Intel has spent two years trying to convince the market it is a US-based foundry for US-based AI customers, and the policy environment rewards exactly that story.\n\nThe Thursday Intel report is the place to watch. If management talks about external foundry customers in anything more specific than pipeline language, that is the first credible sign. Sandisk reports the same day, and its results are the memory-side read on the same demand. A foundry win and a memory tightness signal together would make the custom-silicon story look less like a hedge against Nvidia and more like a reallocation of the whole supply chain, with Intel and Samsung competing for the same capital.\n\nThe wrong-but-useful take is that Nvidia's own pushback, including reported arrangements like paying to rent back its own chips from Lambda, is a sign of demand softness rather than strength. I think it is the opposite. It is a sign that Nvidia needs to keep its installed base utilized while labs build alternatives, and that the custom chip story will be real enough to matter to Nvidia's pricing before it is real enough to replace a single GPU."
+    },
+    {
+      "title": "Strategy Is the Canary for AI Capex Debt",
+      "subtitle": "Speculative: Coinbase and Strategy's Thursday reports test whether the rate-hike regime reaches the AI balance sheets",
+      "categories": [
+        "Digital Finance",
+        "Markets",
+        "Applied Tech & Industry"
+      ],
+      "content": "Speculative. Most people will read Coinbase and Strategy on Thursday as crypto-sector reads. I think they are better read as credit-stress reads. Strategy has funded its bitcoin position with convertible debt and preferred equity, which means its economics depend on the cost of capital and on the market's willingness to keep buying its paper. A Fed that is pricing a December hike and a 10-year near 5.25 is the opposite of the environment that made that structure work. If Strategy's report or call emphasizes refinancing, dividend obligations on preferreds, or a change in how it funds purchases, that is the first crack in a financing model that many AI-adjacent names quietly share.\n\nThe connection to AI is not about bitcoin. It is about who else is levered to long-duration assets and who is borrowing against the same equity multiples that the Nasdaq 100 rally has inflated. Microsoft and Alphabet report Wednesday, Amazon and Intel report Thursday, and the entire capex narrative depends on the same investor base that is funding Strategy's convertible paper. If that base gets selective, the first names to feel it will not be the hyperscalers. They will be the levered second-tier data center developers and the crypto treasury plays that were priced as if rates would keep falling.\n\nThe bold call: Coinbase's trading volume and Strategy's financing commentary will be read in isolation on Thursday, and the market will miss the signal. The signal is whether anyone with a long-duration balance sheet says the word refinance without being asked. Whoever says it first, in either crypto or AI infrastructure, tells you where the Fed's hike pricing is actually biting."
+    },
+    {
+      "title": "Crude Is the Real Data Center Tax",
+      "subtitle": "Speculative: oil and gas pricing, not chip supply, decides which AI buildouts get finished in 2027",
+      "categories": [
+        "Energy",
+        "Applied Tech & Industry",
+        "US Policy & Power"
+      ],
+      "content": "Speculative. Crude rose about 4% to a one-month high, and the market is treating that as an inflation story. I think it is a power story in disguise. Data center economics increasingly depend on the marginal cost of electricity, and in much of the US that marginal cost is set by natural gas, which tracks the same global energy complex that moves crude. Chevron and BP report Friday, and the first thing to listen for is whether either company talks about gas supply commitments to power-hungry customers, or about pricing that assumes sustained high demand from AI. Phillips 66 and GE Vernova, reporting Wednesday, are the refining and turbine reads on the same question. GE Vernova's backlog is effectively a forecast of which grid projects get built before the rate cycle bites.\n\nThe policy angle is where this gets sharp. If energy-driven inflation keeps the Fed in hike-pricing mode, the cost of financing new generation rises at the same time the cost of gas rises. That squeezes the developers who promised hyperscalers power on a timeline. Expect the Trump administration and state regulators to lean harder on permitting shortcuts and on requiring large loads to bring their own generation. That is a policy shift I think will be announced as an acceleration and will function as a cost transfer to the AI companies themselves.\n\nThe wrong-but-useful take: the next real bottleneck for the AI buildout is not Nvidia allocation, it is who can secure firm power at a price that still pencils when the Fed is hiking. Companies that control gas or own turbine slots will look like the AI winners of 2027, even though their revenue has nothing to do with a model."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Muse Spark Open, Meta + Apple, Thin and Thick",
+      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
+      "summary": "Meta has released a new open source model, and Apple is partnering with it so the model can run locally. Earlier in the week he asked whether you trust Apple, and argued the real question is whether Siri AI will justify deeper investment in Apple's ecosystem.",
+      "connection": "This fits the pace of lab releases and the push toward on-device AI. It adds an open-model counterweight to reports that Anthropic is readying a new model, and to OpenAI's $30B fundraising and revenue reset."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "essay",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #215",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-215",
+      "summary": "A roundup of optimistic tech and science items, including a \"flying\" roadster, robots, and Arrowhead cutting tau.",
+      "connection": "The robots item loosely connects to Nvidia's physical-AI pact with Germany. Otherwise it offers an upbeat counterpoint to the day's market and rate worries."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
+      "url": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
+      "summary": "A 72-minute conversation with Anthropic's Emmanuel Ameisen on what interpretability research shows about model planning, consciousness, and AI safety. He also ran an episode on Brooke Lacey using Claude Code to turn raw phone video into captioned TikToks, and a How I AI episode on Meta Muse Wonder.",
+      "connection": "It ties into the report that Anthropic is readying a new model, and into the safety and governance debate. The Lacey episode is a labor and workforce example of AI-assisted creative work."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
