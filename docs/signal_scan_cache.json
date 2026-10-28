@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-28",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -66,15 +66,15 @@
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "Muse Spark Open, Meta + Apple, Thin and Thick",
-      "url": "https://stratechery.com/2026/muse-spark-open-meta-apple-thin-and-thick/",
-      "summary": "Meta has released a new open source model, and Apple is partnering with it so the model can run locally. Earlier in the week he asked whether you trust Apple, and argued the real question is whether Siri AI will justify deeper investment in Apple's ecosystem.",
-      "connection": "This fits the pace of lab releases and the push toward on-device AI. It adds an open-model counterweight to reports that Anthropic is readying a new model, and to OpenAI's $30B fundraising and revenue reset."
+      "latest_title": "Anthropic S-1, The Cost of Compute, Who Is Paying?",
+      "url": "https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/",
+      "summary": "Thompson reads Anthropic's S-1 and finds the core business very profitable. He warns that competition could erode those profits and that investors face endless dilution. He also wrote 'The End of the Internet' (Oct 26), arguing the old Internet where anyone could host a server is over.",
+      "connection": "This is a direct read of today's top story, Anthropic's public Nasdaq IPO filing. It bears on AI compute economics and on how Big Tech earnings tonight will be read."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
-      "source": "essay",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -96,10 +96,10 @@
       "handle": "@packym",
       "source": "substack",
       "signal": "light",
-      "latest_title": "Weekly Dose of Optimism #215",
-      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-215",
-      "summary": "A roundup of optimistic tech and science items, including a \"flying\" roadster, robots, and Arrowhead cutting tau.",
-      "connection": "The robots item loosely connects to Nvidia's physical-AI pact with Germany. Otherwise it offers an upbeat counterpoint to the day's market and rate worries."
+      "latest_title": "Weekly Dose of Optimism #216",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-216",
+      "summary": "A weekly roundup of optimistic news. This edition covers cancer drugs, The Nuclear Company, Warhound, consciousness and Marathon Alchemy, plus extra doses.",
+      "connection": "The nuclear item loosely touches the Energy and Applied Tech themes. It has no direct link to today's headlines."
     },
     {
       "name": "CJ Gustafson",
@@ -115,11 +115,11 @@
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "substack",
-      "signal": "strong",
-      "latest_title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
-      "url": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
-      "summary": "A 72-minute conversation with Anthropic's Emmanuel Ameisen on what interpretability research shows about model planning, consciousness, and AI safety. He also ran an episode on Brooke Lacey using Claude Code to turn raw phone video into captioned TikToks, and a How I AI episode on Meta Muse Wonder.",
-      "connection": "It ties into the report that Anthropic is readying a new model, and into the safety and governance debate. The Lacey episode is a labor and workforce example of AI-assisted creative work."
+      "signal": "light",
+      "latest_title": "Why Reddit built its own AI prototyping tool | Blair Metcalf",
+      "url": "https://www.lennysnewsletter.com/p/why-reddit-built-its-own-ai-prototyping",
+      "summary": "A 30-minute episode in which Reddit's principal UX engineer shows a custom Figma MCP and Cursor pipeline that takes designers from a blank slate to a shareable prototype in minutes. Lenny also posted a podcast roundup on Claude Duet and an 86-minute guide to finding PMF with Rob Snyder.",
+      "connection": "This is applied AI tooling changing product and design work, which ties to the Labor & Workforce and Frontier Tech themes."
     },
     {
       "name": "Andrej Karpathy",
@@ -145,21 +145,21 @@
       "name": "Noam Brown",
       "handle": "@noambrown",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "Concluding remarks on AI alignment at COLM 2026",
+      "url": "https://digg.com/ai/nhyzw328",
+      "summary": "An aggregator page says Eric Horvitz praised Brown's concluding remarks on AI alignment at COLM 2026 as insightful. The page does not say what Brown actually said.",
+      "connection": "This touches AI governance and safety, but the source is a secondhand aggregator and I couldn't verify the content."
     },
     {
       "name": "Fran\u00e7ois Chollet",
       "handle": "@fchollet",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "ARC Prize 2026: Tufa Labs reaches 88.06% on ARC-AGI-2",
+      "url": "https://toolnavs.com/fr/article/2447-arc-agi-2-high-score-refresh-tufa-labs-tops-the-board-at-8806-past-the-85-bonus",
+      "summary": "A secondary French-language source says ARC Prize announced on Oct 9 that Tufa Labs reached 88.06% on ARC-AGI-2, and that Chollet noted the same score on Kaggle. I couldn't confirm this against an official ARC Prize source.",
+      "connection": "This is a frontier-AI capability benchmark data point that bears on how much of the compute spend Anthropic's S-1 discloses is turning into real capability."
     }
   ]
 }

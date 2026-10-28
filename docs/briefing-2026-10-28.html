@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Wednesday, October 28, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Wednesday, October 28, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;2 URGENT</span>
+    <span class="status-count">8 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Anthropic files publicly for Nasdaq IPO</h3>
+          <div class="one-liner">A frontier AI lab has opened its books ahead of what could be one of the largest tech listings ever, with the filing disclosing a Pentagon dispute as a material risk.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Anthropic publicly filed its Form S-1 on October 26 and plans to list Class A shares on Nasdaq under the ticker ANT. The share count and price range are not yet set, and the registration is not effective, so nothing can be sold until the SEC finishes its review. The company first filed confidentially in June.</p>
+<p>The filing shows heavy growth and heavy spending. One report puts the net loss through June at about $80.7 billion, mostly from accounting charges. CNBC reports that Anthropic warned investors that ongoing issues with the Trump administration and the Department of Defense could cause material revenue losses or business disruption.</p>
+<p>Market recaps tied Tuesday's chip-stock rally to the filing. The Nasdaq rose 1.18% and semiconductors led. I could not verify valuation or revenue figures against a primary outlet, so treat the numbers above as preliminary.</p>
+<p>Watch for the price range, the roadshow timing, and whether OpenAI responds with its own filing. Also watch how the Pentagon dispute is characterized as the SEC review proceeds.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/10/26/anthropic-ipo-live-updates-ai-s-1-filing.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">Anthropic</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/technology/article/anthropic-publicly-files-ipo-prospectus-noting-strong-revenue-growth-and-massive-spending-131807138.html" target="_blank" rel="noopener">Yahoo Finance</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Warsh's Fed decides today with 10-year yield near 5%</h3>
+          <div class="one-liner">The second Warsh-era October FOMC decision lands with inflation hot, oil near $100 and midterms a week away.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The FOMC concludes its October 27-28 meeting today. Pre-meeting coverage pointed to a hold, with some residual hike risk. One mid-October report put the October hike probability at about 15% on CME FedWatch, and that figure fell further after Chair Kevin Warsh said hotter inflation had not changed his assessment of the economy. Warsh has called October and December the decision points for judging output, jobs and inflation.</p>
+<p>Bond markets are already tight. On Tuesday the 10-year Treasury yield was about 4.995%, the 2-year about 4.735% and the 30-year about 5.3%. The S&P 500 closed at 7,722.60 and the Nasdaq at 26,477.81. Brent settled near $113.88 and WTI near $99.90.</p>
+<p>The outcome was not available when I searched, so check the statement and press conference. Sources disagree on whether the Fed hiked in September, and I could not verify that against a primary source.</p>
+<p>Watch for any signal about December, the treatment of energy-driven inflation, and the reaction in long-dated yields. The decision comes less than a week before the November 3 midterms.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.kiplinger.com/investing/live/fed-meeting-updates-and-commentary-october-2026" target="_blank" rel="noopener">Kiplinger</a><span class="source-sep">·</span><a class="source-link" href="https://cappnotes.substack.com/p/closing-look-tuesday-october-27-2026" target="_blank" rel="noopener">Closing Look (Substack)</a><span class="source-sep">·</span><a class="source-link" href="https://tradingeconomics.com/united-states/interest-rate/news/592678" target="_blank" rel="noopener">Trading Economics</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Hormuz stays contested as Iran diplomacy drags on</h3>
+          <div class="one-liner">Mines and unresolved ceasefire terms are keeping oil near $100-plus in the eighth month of the Iran war.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Iran's army said an oil tanker hit mines and caught fire while crossing Hormuz on a route Tehran had not authorized. The International Maritime Organization has warned that it cannot guarantee ships will avoid mines. Iran's strait authority has also threatened legal action against Sinokor vessels over alleged crossing violations, per Reuters.</p>
+<p>On the diplomatic side, Foreign Minister Araghchi said Iran's reopening conditions, tied to a seven-day ceasefire proposal, still stand. A Moscow meeting of Qatari and Iranian leaders ended with a pledge to continue talks but no agreement on the war, Hormuz or Iran's nuclear program. Iran has also praised its ties with Russia, which contradicts Trump's claim that Moscow gives Tehran little support.</p>
+<p>Oil fell Tuesday as traders focused on peace talks, but Brent remains near multi-month highs. Sources are a mix of dates, so check live wires for the latest.</p>
+<p>Watch for any announced ceasefire, further mine incidents, and the effect on inflation and the Fed.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cbsnews.com/live-updates/iran-war-trump-us-diplomacy-oil-prices-strait-of-hormuz/" target="_blank" rel="noopener">CBS News live updates</a><span class="source-sep">·</span><a class="source-link" href="https://gulfnews.com/world/mena/middle-east-war-saudi-arabia-intercepts-houthi-missiles-drones-as-iran-talks-continue-1.500724842" target="_blank" rel="noopener">Gulf News</a><span class="source-sep">·</span><a class="source-link" href="https://www.foxnews.com/world/sea-mine-crisis-re-emerges-strait-hormuz-tehran-urges-washington-accept-deal" target="_blank" rel="noopener">Fox News</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Big Tech earnings: Alphabet and Microsoft report tonight</h3>
+          <div class="one-liner">Investors want proof that AI capex is paying off with the 10-year yield near 5%.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>A preview dated October 25 has Alphabet and Microsoft reporting after the close on Wednesday, with Amazon and Intel on Thursday. KLA and Amphenol also report. Meta reported last week, and I could not confirm Apple's date.</p>
+<p>The focus is AI capital spending, cloud growth and compute supply. Chip stocks rallied Tuesday, and the custom-silicon push continues. Reports say Anthropic is working with Samsung on its own chip, and OpenAI is working with Broadcom on its Jalapeño inference chip.</p>
+<p>Watch for capex guidance, cloud backlog and comments on power and chip constraints.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://stock3.com/news/alphabet-microsoft-und-amazon-praegen-earnings-woche-17350766" target="_blank" rel="noopener">Stock3</a><span class="source-sep">·</span><a class="source-link" href="https://techcrunch.com/2026/07/02/anthropic-is-discussing-a-new-custom-chip-with-samsung/" target="_blank" rel="noopener">TechCrunch</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Anthropic's public S-1 and a chip-led market rally dominate. Custom silicon efforts at Anthropic (with Samsung) and OpenAI (with Broadcom) continue, and Nvidia reportedly agreed to rent back its own chips from Lambda.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Anthropic's IPO filing is the headline. Alphabet and Microsoft report tonight, followed by Amazon and Intel on Thursday.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">The Fed decides today under Chair Warsh, a week before the November 3 midterms. Anthropic's filing flags friction with the administration and the Pentagon as a revenue risk.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The EU Digital Omnibus on AI has been in force since July 27. It delays high-risk obligations to December 2027 and August 2028, and a new ban on non-consensual intimate imagery AI starts December 2. I found no new US executive order, and the fight over federal preemption of state AI laws continues.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Hormuz mines and stalled ceasefire talks continue in the eighth month of the Iran war. Qatar and Iran met in Moscow without a breakthrough. Peace talks are keeping oil in check for now.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">China</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">Stocks rose Tuesday (S&P 500 7,722.60, Nasdaq +1.18%), with chips leading. Oil fell but Brent is still near $114. The 10-year yield is about 5%, ahead of today's Fed decision.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Brent is near $113.88 and WTI near $99.90, driven by Hormuz mine risk and ceasefire hopes.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">Maritime mine threats in Hormuz are the main item. Anthropic also disclosed an ongoing dispute with the Department of Defense as a material risk.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item critical">
+      <span class="week-day">Wed 28</span>
+      <span class="week-event">FOMC decision and Warsh press conference</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 28</span>
+      <span class="week-event">Alphabet and Microsoft earnings after the close; KLA and Amphenol also report</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 29</span>
+      <span class="week-event">Amazon and Intel earnings</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 29</span>
+      <span class="week-event">Apple earnings (date not confirmed)</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 30</span>
+      <span class="week-event">Likely PCE inflation and jobs-related data (dates not verified)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Ongoing</span>
+      <span class="week-event">Iran ceasefire and Hormuz talks</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Ongoing</span>
+      <span class="week-event">Anthropic S-1 under SEC review; price range pending</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue 3</span>
+      <span class="week-event">US midterm elections (next week)</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Nov</span>
+      <span class="week-event">APEC in Shenzhen with a possible Trump-Xi meeting</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Pentagon Risk Factor Is a Pitch, Not a Warning</h3>
+          <div class="subtitle">Anthropic's S-1 is written for the next administration, and the Pentagon dispute is the sales deck (speculative)</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Defense & Security</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative take: the most important sentence in Anthropic's S-1 is not the net loss figure. It is the warning that ongoing friction with the Trump administration and the Department of Defense could cause material revenue losses. Read cynically, that is a signal to the Pentagon and to any future administration that Anthropic's commercial value is conditional on not being pushed around. Public companies must disclose real risks, so the language is probably sincere, but the framing also tells a Pentagon procurement office that this company has a public shareholder base and an audit trail. That changes the bargaining position. A lab with public investors is harder to commandeer quietly and easier to pressure loudly, which may be exactly what its counsel intended.</p>
+<p>The bet here is that the dispute gets resolved through a classified-use or sovereign-cloud arrangement within two quarters of listing, because an IPO raises the cost of a public fight for both sides. The Pentagon does not want its AI vendors to be seen as hostile to national security, and Anthropic does not want to be the first frontier lab to lose a federal contract on the day its stock trades. Watch for language about government usage in the roadshow and any new defense task orders announced near the price range.</p>
+<p>The wrong-footed reading is that this is a risk. Speculatively, it is a moat-building move: the company is telling the market that its revenue depends on being treated as strategic infrastructure, which is the one status that makes a frontier lab very hard to regulate into irrelevance or to nationalize in practice.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Hormuz Is Taxing the AI Capex Cycle Through the Bond Market</h3>
+          <div class="subtitle">Brent near $114 and a 10-year near 5% make the hyperscaler spending story a rates trade, not a tech trade (speculative)</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Markets</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative take: the market is pricing AI as if it were immune to the Iran war. It is not. Brent near $114 and a 10-year yield near 5% mean the cost of financing the data center build-out is rising at the same time that power and cooling costs are rising through energy prices. Alphabet and Microsoft report tonight, and the investor question is not whether AI revenue is growing. It is whether capex guidance keeps climbing while the discount rate on that capex is at a level last seen in a cycle the current AI buyers were not around for. The companies with the largest cash piles will absorb this. The leveraged neoclouds and the debt-funded data center developers will not, and their spreads are the canary to watch.</p>
+<p>The Hormuz mine risk matters for this chain because the Gulf is where a lot of the cheap-energy and sovereign-capital narrative for AI compute has been built. If the strait stays contested through the winter, Gulf sovereign funds have less spare capital to deploy into US data centers and more reason to hold cash at home. I would bet that the next big hyperscaler financing is priced wider than the one before it, and that at least one major announced campus is delayed or downsized in the next two quarters and blamed on power.</p>
+<p>The contrarian point is that rising rates may be good for the chip sellers in the short run. Shortages make the largest suppliers more profitable even as their customers complain. Speculatively, Nvidia and the custom-silicon partners, Samsung and Broadcom among them, benefit from scarcity while the customers' financing costs climb.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>EU Delays Make Europe a Non-Factor for the ANT Listing</h3>
+          <div class="subtitle">The Digital Omnibus pushes high-risk AI obligations out to 2027 and 2028, which lets US labs go public before European rules bite (speculative)</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Markets</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative take: the EU Digital Omnibus, in force since July 27, looks like a bureaucratic delay, but for capital markets it is a timing gift. By pushing high-risk obligations to December 2027 and August 2028, the EU has removed the most dangerous compliance cost from the near-term risk factors that a frontier lab must disclose. An underwriter reading the S-1 for the next eighteen months of European exposure will find a manageable list. The December 2 ban on non-consensual intimate imagery AI is real but narrow, and it does not touch the frontier model business that ANT investors are actually buying. The lab can list, raise, and build its European compliance stack after the money is in.</p>
+<p>The second-order effect is that the fight over federal preemption of state AI laws becomes the risk that matters for the IPO, not Brussels. Since no new US executive order has appeared, the S-1 risk language about state patchworks may be the most valuable sentence in the document for a company that wants a single national rule. Expect Anthropic to lobby quietly for preemption in exactly the window between now and the listing, and expect the EU delay to be cited as evidence that heavy regulation is slow and survivable.</p>
+<p>The wrong-footed call: the eventual winner of European AI rules will be whichever lab lists first and lobbies hardest on the Digital Omnibus implementation details, not the one with the most careful compliance team. Speculatively, Europe's rules are being written by companies that have already raised their money.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Gulf Money Is the Swing Buyer for ANT, and the Hormuz War Makes That a Security Question</h3>
+          <div class="subtitle">If Gulf sovereign capital anchors the IPO, the Iran war turns a stock deal into a national-security review (speculative)</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative take: the people most likely to want a large allocation of an Anthropic IPO are Gulf sovereign funds, and the Iran war is the reason that is now a political problem. Gulf funds have been among the most aggressive buyers of AI infrastructure, and a frontier lab listing on Nasdaq is an obvious place to park capital at scale. Yet Hormuz is contested, Qatar and Iran met in Moscow without a deal, and Washington is fighting a war whose supply routes run through the same waters. A large foreign anchor order in a company that the Pentagon has already flagged as a risk would draw congressional scrutiny within days. I expect a CFIUS-style question to surface in the press before any allocation is confirmed, and I expect the underwriters to quietly cap foreign anchor demand to avoid it.</p>
+<p>This matters for the Hormuz story too. If the strait stays contested, Gulf capital has a reason to hedge into US tech and a reason to avoid appearing to fund American AI defense programs while the Iran war continues. Iran's praise for its ties with Russia, against Trump's claim that Moscow gives Tehran little support, suggests that Washington may treat any Gulf-to-AI capital flow as part of a wider adversary-financing question.</p>
+<p>The bold prediction is that the first major public fight over an AI IPO's shareholder base will be about who bought it, not what the company does. Speculatively, the Iran war reaches the Nasdaq through the order book.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/" target="_blank" rel="noopener">Anthropic S-1, The Cost of Compute, Who Is Paying?</a><div class="sig-summary">Thompson reads Anthropic's S-1 and finds the core business very profitable. He warns that competition could erode those profits and that investors face endless dilution. He also wrote 'The End of the Internet' (Oct 26), arguing the old Internet where anyone could host a server is over.</div><div class="sig-connection">↳ This is a direct read of today's top story, Anthropic's public Nasdaq IPO filing. It bears on AI compute economics and on how Big Tech earnings tonight will be read.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-216" target="_blank" rel="noopener">Weekly Dose of Optimism #216</a><div class="sig-summary">A weekly roundup of optimistic news. This edition covers cancer drugs, The Nuclear Company, Warhound, consciousness and Marathon Alchemy, plus extra doses.</div><div class="sig-connection">↳ The nuclear item loosely touches the Energy and Applied Tech themes. It has no direct link to today's headlines.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/why-reddit-built-its-own-ai-prototyping" target="_blank" rel="noopener">Why Reddit built its own AI prototyping tool | Blair Metcalf</a><div class="sig-summary">A 30-minute episode in which Reddit's principal UX engineer shows a custom Figma MCP and Cursor pipeline that takes designers from a blank slate to a shareable prototype in minutes. Lenny also posted a podcast roundup on Claude Duet and an 86-minute guide to finding PMF with Rob Snyder.</div><div class="sig-connection">↳ This is applied AI tooling changing product and design work, which ties to the Labor & Workforce and Frontier Tech themes.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://digg.com/ai/nhyzw328" target="_blank" rel="noopener">Concluding remarks on AI alignment at COLM 2026</a><div class="sig-summary">An aggregator page says Eric Horvitz praised Brown's concluding remarks on AI alignment at COLM 2026 as insightful. The page does not say what Brown actually said.</div><div class="sig-connection">↳ This touches AI governance and safety, but the source is a secondhand aggregator and I couldn't verify the content.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://toolnavs.com/fr/article/2447-arc-agi-2-high-score-refresh-tufa-labs-tops-the-board-at-8806-past-the-85-bonus" target="_blank" rel="noopener">ARC Prize 2026: Tufa Labs reaches 88.06% on ARC-AGI-2</a><div class="sig-summary">A secondary French-language source says ARC Prize announced on Oct 9 that Tufa Labs reached 88.06% on ARC-AGI-2, and that Chollet noted the same score on Kaggle. I couldn't confirm this against an official ARC Prize source.</div><div class="sig-connection">↳ This is a frontier-AI capability benchmark data point that bears on how much of the compute spend Anthropic's S-1 discloses is turning into real capability.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 11 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
