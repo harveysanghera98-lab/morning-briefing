@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Thursday, October 29, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Thursday, October 29, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">6 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Fed holds at 3.75-4.00% in a 10-2 split, with two dissents for a hike</h3>
+          <div class="one-liner">Warsh's Fed paused after September's first hike since 2023, but two officials wanted to tighten again and December is still open.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The Federal Reserve held its target range at 3.75% to 4.00% on October 28. Governor Lisa Cook and Cleveland Fed President Beth Hammack dissented in favor of a quarter-point hike. The September 16 hike was the first increase since 2023.</p>
+<p>Chair Kevin Warsh said that earlier move is starting to work and that inflation expectations are moving the right way. He rejected suggestions that the November midterms influenced the decision, saying politics played no role. He also said he does not favor forward guidance outside a crisis, so December was left open without a commitment.</p>
+<p>Warsh also announced that the Fed will hold fewer rate-setting meetings starting in 2027. Investors reacted to the change. One analyst quoted by CNBC expects a hike in December and another in early 2027. Prediction markets earlier priced a December hike at roughly 72%, though that figure predates the decision.</p>
+<p>Watch the next inflation and jobs data, the December 8-9 meeting, and how the fewer-meetings change is structured. I could not retrieve the market reaction in detail.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/10/28/fed-rate-decision-warsh-takeaways.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.cnn.com/2026/10/28/business/live-news/federal-reserve-interest-rate-october" target="_blank" rel="noopener">CNN</a><span class="source-sep">·</span><a class="source-link" href="https://www.foxbusiness.com/economy/federal-reserve-interest-rate-decision-october-28-2026" target="_blank" rel="noopener">Fox Business</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>Big Tech earnings test whether $800B of AI capex is paying off</h3>
+          <div class="one-liner">Microsoft, Alphabet and Amazon report around the Fed decision, and investors want proof of returns on AI spending.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Microsoft, Alphabet and Amazon were scheduled to report between October 28 and 29. Bloomberg framed the week as a test of whether hyperscaler capex of more than $800 billion is generating acceptable returns.</p>
+<p>For Microsoft, consensus expected revenue of about $90.6 billion and EPS of about $4.71 to $4.73. Azure growth guidance of about 45% was the key figure to watch.</p>
+<p>I could not retrieve the actual results, so treat this as a preview. Check the capex guidance, cloud growth and any commentary on chip supply when the figures are confirmed.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://aiweekly.co/alerts/bloomberg-alphabet-microsoft-meta-earnings-this-week-will-judge-whether-800b-ai" target="_blank" rel="noopener">Bloomberg (via AI Weekly)</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/markets/stocks/articles/tech-giants-set-report-earnings-213719256.html" target="_blank" rel="noopener">Yahoo Finance</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">China</span>
+          </div>
+          <h3>US-China truce extended to January 10, chips left off the table</h3>
+          <div class="one-liner">The September Xi visit produced pageantry and a truce extension, but export controls remain unsettled.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>After Xi Jinping's three-day Washington visit in September, the US and China extended the trade truce first agreed in Busan from November 10 to January 10, 2027. A new Board of Trade is to recommend better tariff treatment for about $30 billion of goods in each direction.</p>
+<p>USTR Jamieson Greer said export controls on advanced AI chips and chipmaking tools were excluded from the talks. CNBC described the visit as long on spectacle and short on substance. It said there was no agreement on AI risks or on the war in Iran.</p>
+<p>Sources conflict on whether China committed to buy US coal. Watch the January 10 expiry, any chip-control moves from either side, and congressional China hawks.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/09/25/trump-xi-summit-takeaways.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/news/2026/9/23/trump-meets-chinas-xi-jinping-at-us-airport-on-arrival-for-three-day-trip" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Anthropic builds in-house chips as AI compute stays scarce</h3>
+          <div class="one-liner">Frontier labs are hedging against Nvidia supply constraints with custom silicon and multi-vendor deals.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Anthropic has confirmed it is building an in-house chip design team. Reports say it has talked with Samsung about manufacturing a custom chip, and it hired a Google chip veteran. It also says Nvidia, Google and Amazon hardware stay central to its strategy.</p>
+<p>The search found no dated October 28 AI-chip news. This item is background drawn from earlier-dated coverage, and demand for Nvidia chips still far exceeds supply.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.datacenterdynamics.com/en/news/anthropic-exploring-possibility-of-designing-its-own-ai-chips-report/" target="_blank" rel="noopener">Data Center Dynamics</a><span class="source-sep">·</span><a class="source-link" href="https://the-decoder.com/anthropic-reportedly-explores-custom-chip-manufacturing-with-samsung-while-insisting-nvidia-still-matters/" target="_blank" rel="noopener">The Decoder</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Frontier labs keep pursuing custom silicon. Anthropic is designing chips and has reportedly talked with Samsung about manufacturing. No dated October 28 breakthroughs surfaced in today's searches.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Microsoft, Alphabet and Amazon earnings land around October 28-29, with AI capex returns the focus. Results were not retrieved.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">Warsh's Fed said politics played no role in its hold ahead of the midterms. Congress's China hawks have been pressing the White House on China policy.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The September Trump-Xi summit produced no agreement on the war in Iran or on AI risks, per CNBC.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">The US-China trade truce now runs to January 10, 2027. Chip export controls were excluded from the talks.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The Fed held at 3.75-4.00% on a 10-2 vote, with two dissents for a hike. It will hold fewer meetings from 2027, and December remains live.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Thu 29</span>
+      <span class="week-event">Alphabet and Amazon earnings (reported timing around Oct 28-29; confirm). AI capex in focus.</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 29</span>
+      <span class="week-event">Market digestion of the Fed hold and the announced cut in rate-setting meetings from 2027</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 30</span>
+      <span class="week-event">Likely US inflation data (PCE) and further earnings. Dates unverified.</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue Nov 3</span>
+      <span class="week-event">US midterm elections</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Dec 8-9</span>
+      <span class="week-event">Next FOMC meeting, with a hike priced as likely before the decision. Just beyond this week.</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Fed Just Priced Its Own Capex Problem</h3>
+          <div class="subtitle">Speculative: a December hike turns the $800B AI buildout from a growth story into a refinancing story.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Markets</span><span class="pattern-cat">Applied Tech & Industry</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative read: the market is treating this week's Fed hold as a pause, but the 10-2 vote says the committee is already fighting over the next move. Lisa Cook and Beth Hammack wanted a hike now, and Kevin Warsh refused to promise anything for December. That is a chair who would rather keep the option open than give hyperscalers a clear rate path. Meanwhile Microsoft, Alphabet and Amazon are being asked to justify more than $800 billion in capex, much of it financed with debt and long-dated leases. Every quarter of higher-for-longer rates raises the hurdle those projects have to clear.</p>
+<p>My bold call: if Microsoft or Amazon raise capex guidance this week and December comes in hot, the first crack will show up in data center financing, not in chip orders. Watch for hyperscalers shifting toward off-balance-sheet structures, private credit deals and lease commitments, because those are the instruments that get expensive first when the discount rate moves. Nvidia's order book would look fine right up until a financing partner gets repriced. The Azure growth figure of about 45% that analysts are focused on matters less than whether anyone is willing to fund the next 45%.</p>
+<p>The wrong-footed part of this take is the politics. Warsh said the midterms played no role. Given that Warsh's Fed is shortening its meeting calendar starting in 2027, it is fair to ask whether fewer, more telegraphed meetings reduce the central bank's flexibility to respond to a capex-driven credit event. This is speculation, and the Q3 results were not retrieved in this briefing, so treat every number here as a preview to be checked.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Chips Were Left Off the Table, So Samsung Becomes the Hedge</h3>
+          <div class="subtitle">Speculative: the export-control gap in the US-China truce is pushing frontier labs toward non-US fabs and Beijing toward its own silicon.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">China</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative read: Jamieson Greer confirmed that export controls on advanced AI chips and chipmaking tools were excluded from the US-China talks, and the truce now runs to January 10, 2027. The tariff track is being handled by a Board of Trade covering about $30 billion of goods in each direction. The semiconductor track has been carved out entirely. That leaves the most important variable in AI, which is who can get leading-edge compute and from where, unresolved while both governments celebrate the trade deal.</p>
+<p>My bold call: Anthropic's reported talks with Samsung about a custom chip are not a hedge against Nvidia alone. They are a bet that the next export-control shock will hit Taiwan-made capacity, and that a Korean foundry relationship gives a US lab a second supply line that Washington is unlikely to block. Expect Congressional China hawks to pressure Samsung's US fab footprint and any licensing arrangement before they touch the broader truce. If that happens, the January 10 expiry becomes a chip deadline in disguise, and the Board of Trade becomes the place where tariff relief is traded against chip concessions.</p>
+<p>The wrong take I would stake a reputation on: Beijing's response will not be to buy more American coal or soybeans to keep the truce alive. It will be to accelerate domestic accelerator programs and treat any new US chip restriction as confirmation that the truce was never meant to last. The Trump-Xi summit produced spectacle, and the chips were the part nobody wanted to discuss. That silence is the signal.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Iran War Is the Inflation Story Nobody Put in the Summit Readout</h3>
+          <div class="subtitle">Speculative: unresolved Middle East conflict is the hidden driver behind the Fed's hawkish split, and energy is the sector no one is watching.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative read: CNBC's verdict on the Trump-Xi summit was that it reached no agreement on the war in Iran or on AI risks. The briefing has no Energy news at all, which in a week when the Fed is debating whether to hike again is a notable gap. Inflation expectations are the variable Warsh says are moving the right way, and oil is the most direct channel through which a Middle East war reaches expectations. If the market is treating the Iran conflict as a background fact rather than a live price input, then the two dissents for a hike may be reacting to energy costs more than to services inflation.</p>
+<p>My bold call: the December hike, which prediction markets had at roughly 72% before the decision, is more likely to be driven by a supply shock in oil than by any domestic data point. That puts the Fed in an awkward position, because hiking into an energy shock that originates abroad does nothing for the supply side and hurts households and mid-size borrowers at home. Watch whether Chinese buyers of Gulf crude shift their purchasing around the truce, because China is the largest marginal buyer that Washington could use as leverage and the summit did not touch it.</p>
+<p>The wrong take: the Iran war will end up mattering more for the midterms than for the Fed. Gasoline prices are the one number every voter sees daily, and a hawkish central bank that says politics played no role will be judged by whether its rate path looked like it was reacting to the pump rather than to the models. This is speculative, and the briefing contains no fresh data on oil prices, so the thesis rests on the absence of Energy coverage as much as on any hard figure.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Hyperscaler Earnings Become a China Referendum</h3>
+          <div class="subtitle">Speculative: a weak Azure or Google Cloud guide would be read in Beijing as proof the US AI lead depends on chips it cannot sell to China.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">China</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative read: the earnings preview frames this week as a test of whether more than $800 billion in AI capex is paying off. Missing from that framing is the revenue exposure to China and the question of which compute those results depend on. Export controls were excluded from the truce talks, which means the restriction regime that shaped US chip demand is still in force, and any hyperscaler commentary on chip supply will implicitly be a commentary on that regime.</p>
+<p>My bold call: if Microsoft's Azure guidance lands near the 45% figure investors expect, it will be read in Washington as a sign that US labs have enough domestic compute and do not need looser controls. If it misses, the same data will be used by hawks to argue for tighter restrictions on tooling, because a slowdown would be spun as proof that controls are working. Either way, the earnings call becomes ammunition in a chip debate the trade negotiators decided to defer until after January 10.</p>
+<p>The wrong take I am most comfortable defending: Anthropic's in-house chip effort, with its Google veteran hire and Samsung talks, will be cited on hyperscaler calls as evidence that the big clouds are diversifying away from Nvidia. The Nvidia demand gap is still wide, so that diversification will be presented as optionality rather than as a supply fix. This is speculation, and the actual results were not retrieved, so every claim here is conditional on what the reports say.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>Same Night, Opposite Verdicts: Wall Street Starts Pricing the Funding Cost of the AI Build-Out</h2>
+    <div class="standfirst">Microsoft was rewarded and Alphabet punished for the same AI spending boom, which suggests investors now care less about cloud growth and more about who can pay for it.</div>
+    <div class="deep-dive-why">The split reaction to Microsoft and Alphabet earnings came hours after a hawkish Fed hold, and Amazon reports today.</div>
+    <div class="body"><p>On Wednesday evening, Microsoft and Alphabet reported quarterly results within minutes of each other. Their shares then moved in opposite directions. Microsoft rose roughly 4 to 5 percent after hours. Alphabet fell about 10 percent.</p>
+<p>The headline numbers do not explain the gap. Google Cloud revenue roughly doubled, up 103 percent to about $30.7 billion, helped by sales of TPU systems. Azure grew 48 percent, beating Microsoft's own 45 percent forecast, and Microsoft guided to 49 to 50 percent next quarter. Demand is not the worry. Both companies report huge contracted backlogs: $677 billion at Microsoft and $561 billion in Google Cloud commitments.</p>
+<p>The difference is in the cash. Alphabet spent $51.4 billion on capex in the quarter against operating cash flow of $42.3 billion. Free cash flow was negative $9.1 billion, the second negative quarter in a row. It filled the gap with $28.7 billion of bonds and $12.4 billion of new shares, and it bought back no stock. It kept its 2026 capex range at $195 to $205 billion and said 2027 spending will increase significantly, with no figure given. Microsoft produced $18.6 billion of free cash flow, issued no bonds, returned $10.2 billion to shareholders and trimmed its 2026 capex plan slightly because some GPU deliveries slipped into 2027. Alphabet's core business also disappointed. Search grew 12 percent and YouTube ads about 9 percent, both below estimates, and about $8.7 billion of equity-investment losses cut earnings per share by roughly $0.55.</p>
+<p>This matters because of how the trade has been framed. Through the summer, the debate was whether hyperscalers would show revenue to justify the spending. That question is partly answered: cloud revenue is accelerating sharply. A second question is taking its place. If the biggest platforms must borrow and issue equity to keep building, AI infrastructure starts to look less like a self-funding monopoly rent and more like a capital-intensive utility business. In that business, returns depend on the cost of capital.</p>
+<p>That cost is rising. On Wednesday the Federal Reserve held its target range at 3.75 to 4.00 percent in a 10-2 vote. Governor Cook and Cleveland Fed President Harmer dissented in favor of a quarter-point hike. The statement upgraded the economy from a solid to a strong expansion, and Waller did not rule out further tightening. After a September hike, markets now treat December as live. Higher rates raise the price of the bond financing Alphabet is relying on, and they raise the discount rate applied to cash flows that are mostly expected years from now.</p>
+<p>There are three reasonable readings. The bullish one says the market is overreacting. Alphabet is supply constrained, is renting third-party capacity and has more orders than it can serve. Negative free cash flow in a land grab is a sign of strength, and the backlog will turn into revenue. The cautious reading says backlog is not cash. Only about 30 percent of Microsoft's commitment falls due within twelve months, and customers who are themselves unprofitable AI labs may not honor long-dated contracts. This echoes earlier worries about circular financing and OpenAI's restated revenue. The third reading is about competition. Microsoft's discipline, in part forced by delivery delays, may be an accident, and its larger spending is still to come, with capex above $50 billion expected next quarter. Alphabet may simply be first to hit the funding wall that others reach later.</p>
+<p>There are also caveats. After-hours moves often shrink or reverse by the open, reported moves vary by outlet, and Alphabet's earnings figures differ depending on whether adjusted or GAAP numbers are used.</p>
+<p>To watch: Amazon reports today, and its free cash flow and financing mix will show whether the market is sorting hyperscalers by balance sheet. Alphabet's 2027 capex figure is the key missing number, likely at the next quarterly report or a mid-quarter update. Corporate bond issuance volumes in November will show how much debt-funded AI the credit market will absorb. The Fed's December meeting is the macro hinge: a hike would tighten the financing conditions that Wednesday's results just made central.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://1023jack.com/market/same-night-opposite-verdicts-why-investors-rewarded-microsoft-and-punished-alpha/" target="_blank" rel="noopener">1023 Jack</a><span class="source-sep">·</span><a class="source-link" href="https://www.techflowpost.com/en-US/article/34946" target="_blank" rel="noopener">TechFlow</a><span class="source-sep">·</span><a class="source-link" href="https://www.fool.com/investing/2026/10/28/microsoft-and-alphabet-just-reported-earnings-putting-the-ai-boom-to-the-test/" target="_blank" rel="noopener">The Motley Fool</a><span class="source-sep">·</span><a class="source-link" href="https://finance.biggo.com/news/32a3f9be-3427-4979-89ee-eaac8d6d7784" target="_blank" rel="noopener">BigGo Finance</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/anthropic-s-1-the-cost-of-compute-who-is-paying/" target="_blank" rel="noopener">Anthropic S-1, The Cost of Compute, Who Is Paying?</a><div class="sig-summary">Thompson reads Anthropic's S-1 and finds the core business very profitable. He warns that competition could erode those profits and that investors face endless dilution. He also wrote 'The End of the Internet' (Oct 26), arguing the old Internet where anyone could host a server is over.</div><div class="sig-connection">↳ This is a direct read of today's top story, Anthropic's public Nasdaq IPO filing. It bears on AI compute economics and on how Big Tech earnings tonight will be read.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-216" target="_blank" rel="noopener">Weekly Dose of Optimism #216</a><div class="sig-summary">A weekly roundup of optimistic news. This edition covers cancer drugs, The Nuclear Company, Warhound, consciousness and Marathon Alchemy, plus extra doses.</div><div class="sig-connection">↳ The nuclear item loosely touches the Energy and Applied Tech themes. It has no direct link to today's headlines.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/why-reddit-built-its-own-ai-prototyping" target="_blank" rel="noopener">Why Reddit built its own AI prototyping tool | Blair Metcalf</a><div class="sig-summary">A 30-minute episode in which Reddit's principal UX engineer shows a custom Figma MCP and Cursor pipeline that takes designers from a blank slate to a shareable prototype in minutes. Lenny also posted a podcast roundup on Claude Duet and an 86-minute guide to finding PMF with Rob Snyder.</div><div class="sig-connection">↳ This is applied AI tooling changing product and design work, which ties to the Labor & Workforce and Frontier Tech themes.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://digg.com/ai/nhyzw328" target="_blank" rel="noopener">Concluding remarks on AI alignment at COLM 2026</a><div class="sig-summary">An aggregator page says Eric Horvitz praised Brown's concluding remarks on AI alignment at COLM 2026 as insightful. The page does not say what Brown actually said.</div><div class="sig-connection">↳ This touches AI governance and safety, but the source is a secondhand aggregator and I couldn't verify the content.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://toolnavs.com/fr/article/2447-arc-agi-2-high-score-refresh-tufa-labs-tops-the-board-at-8806-past-the-85-bonus" target="_blank" rel="noopener">ARC Prize 2026: Tufa Labs reaches 88.06% on ARC-AGI-2</a><div class="sig-summary">A secondary French-language source says ARC Prize announced on Oct 9 that Tufa Labs reached 88.06% on ARC-AGI-2, and that Chollet noted the same score on Kaggle. I couldn't confirm this against an official ARC Prize source.</div><div class="sig-connection">↳ This is a frontier-AI capability benchmark data point that bears on how much of the compute spend Anthropic's S-1 discloses is turning into real capability.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 11 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

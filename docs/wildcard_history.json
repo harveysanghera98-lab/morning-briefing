@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-22",
-    "topic": "Shazeer's Defection: OpenAI Wins the AI Talent War"
-  },
-  {
     "date": "2026-06-23",
     "topic": "FERC Orders Grid Operators: AI's Electricity Reckoning Arrives"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-10-27",
     "topic": "China's AI Stock Bubble Bursts at Home"
+  },
+  {
+    "date": "2026-10-29",
+    "topic": "Alphabet's Negative Cash Flow Splits the AI Trade"
   }
 ]
