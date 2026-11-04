@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-24",
-    "topic": "Anthropic's IPO: Safety Company Goes to War and Wall Street"
-  },
-  {
     "date": "2026-06-25",
     "topic": "Alibaba's Industrial-Scale Theft of Anthropic's Claude"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-11-02",
     "topic": "Intel's Collapse Exposes AI's Memory Squeeze"
+  },
+  {
+    "date": "2026-11-04",
+    "topic": "Nvidia Pushes Cloud Partners to Cut China Exposure"
   }
 ]
