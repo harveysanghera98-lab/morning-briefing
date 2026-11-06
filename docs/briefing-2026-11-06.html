@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Friday, November 06, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Friday, November 06, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">9 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Trump threatens to 'destroy' rest of Iran as nuclear proposal arrives via Qatar</h3>
+          <div class="one-liner">The Iran war is both escalating and heading toward a possible negotiation, just after the midterms.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Al Jazeera's live blog on 6 November reports Trump saying the US may have to 'destroy' the rest of Iran. He also said rebuilding would take 25 years, and that people would 'know soon enough' what he intends. At the same time, Iran has reportedly sent a nuclear proposal to Washington through Qatari mediators. The US is reviewing it, and Tehran says it is waiting for its seven demands to be met.</p>
+<p>The threats and the diplomacy are running at once. Trump has also acknowledged that the war hurt Republicans in the midterms (Al Jazeera, 4 November). Markets read a Democratic Congress as a brake on the war. Brent fell nearly 9% after the election, per market reports.</p>
+<p>Outlets differ in emphasis. Al Jazeera foregrounds the escalatory rhetoric and Iran's stated demands. Market coverage focuses on the oil price. I could not retrieve FT, WSJ or Reuters coverage directly, so details on casualties, Hormuz shipping and the content of the proposal are unconfirmed.</p>
+<p>Watch for the US response to the Qatari channel, any resumption of strikes, tanker incidents in the Strait of Hormuz, and whether the new Congress moves on war powers.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.aljazeera.com/news/liveblog/2026/11/6/iran-war-live-trump-warns-us-may-have-to-destroy-rest-of-iran" target="_blank" rel="noopener">Al Jazeera</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/video/newsfeed/2026/11/4/trump-admits-iran-war-hurt-republican-vote-vows-to-veto-insane-bills" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">US Policy & Power</span>
+          </div>
+          <h3>Democrats take Congress; Trump vows vetoes</h3>
+          <div class="one-liner">Divided government changes the outlook for war powers, tech regulation and the budget.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Democrats won control of Congress in the midterms, per CNN and Al Jazeera. Trump conceded that the Iran war hurt Republican candidates and vowed to veto bills he called 'insane'. Some Senate races, including Mississippi and Alaska, were still unresolved in Al Jazeera's coverage.</p>
+<p>Markets responded strongly. The Dow had its best post-midterm day in 44 years, up about 3%, according to CNN and CFRA. The rally came as oil fell on the expectation that Congress will constrain the war.</p>
+<p>Expect oversight fights, war-powers votes and appropriations brinkmanship. Democratic control also raises the odds of scrutiny of data-center build-out and AI.</p>
+<p>Watch for committee chair assignments, the final Senate calls, and any veto showdown.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnn.com/2026/11/04/investing/us-markets-midterm-elections" target="_blank" rel="noopener">CNN</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/video/newsfeed/2026/11/4/trump-admits-iran-war-hurt-republican-vote-vows-to-veto-insane-bills" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>AI stocks sell off as markets price in a December Fed hike</h3>
+          <div class="one-liner">Rotation out of AI names and a hawkish rate outlook diverge from the broad post-election rally.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>BNN Bloomberg reported an AI-stock wipeout on 5 November, with the S&P 500 reportedly falling more than 3% at one point. Investors rotated away from AI-linked names, reportedly on worries about tighter data-center rules under a Democratic Congress. The figures from different outlets are not fully consistent, so treat the magnitude with caution.</p>
+<p>Separately, reports cite CME FedWatch odds near 82% for a December rate hike, helped by strong ADP payroll data. That would mark a hawkish reversal from earlier cut expectations. Oil near $94 to $97 Brent keeps inflation risk alive.</p>
+<p>Watch for the US jobs report and further AI-sector earnings.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.bnnbloomberg.ca/markets/2026/11/05/world-shares-mostly-gain-after-us-midterm-elections-as-ai-related-stocks-sink/" target="_blank" rel="noopener">BNN Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://commbank.com.au/articles/newsroom/2026/11/wall-street-surges-after-us-midterms-as-oil-prices-tumble.html" target="_blank" rel="noopener">CommBank</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Israel's Eisenkot positioned to form government with Arab-party backing</h3>
+          <div class="one-liner">Netanyahu's bloc looks short of a majority after the election.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Arab-led parties won a record 19 of 120 Knesset seats. The Joint List (11 seats) and Ra'am (8) will recommend opposition leader Gadi Eisenkot, which would give him about 67 backers. Netanyahu's bloc holds 53 seats, and Degel HaTorah has declined to back either candidate over the Haredi draft-exemption dispute.</p>
+<p>The Central Elections Committee certified the results and found no fraud, despite Netanyahu's unsupported claims. President Herzog is holding consultations. The nominee then has 28 days to form a government, with a possible 14-day extension. Otherwise a new election would follow early next year.</p>
+<p>Watch Herzog's choice of nominee.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.aljazeera.com/news/2026/11/5/joint-list-says-it-will-back-eisenkot-to-form-israels-next-government" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">AI-linked equities sold off sharply on 5 November amid worries about stricter data-center rules under a Democratic Congress. I found no major model or chip announcements in the sources I could access.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Qualcomm shares slipped and AI-related stocks sank. Investors are rotating out of tech. I could not retrieve deal or funding details.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">Democrats took control of Congress. Trump vowed to veto 'insane' bills and admitted the Iran war hurt Republicans. Some Senate races remain unresolved.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">No formal action found. Markets are pricing in the risk of tighter data-center and AI oversight under a Democratic Congress.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Trump threatened to destroy the rest of Iran while Iran sent a nuclear proposal via Qatar. Israel's election leaves Eisenkot with a likely majority. Syria and Saudi Arabia signed a defence cooperation deal.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">China</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The Dow rose about 3% on post-midterm day, while AI stocks sold off. Brent fell to about $94.62 and then steadied near $97. Markets price roughly 82% odds of a December Fed hike. Gold rose.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Brent fell almost 9% after the midterms on expectations that Congress will limit the Iran war. Tanker incidents in Hormuz are still being reported.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">Defense contractors sold off after the election, with Lockheed Martin down about 7%. Hoax bomb threats forced European flights into emergency landings in France, Italy and Bulgaria.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      <div class="sector-summary">Strong ADP payroll data fed rate-hike expectations. Traders are watching the US jobs report.</div>
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Fri 6</span>
+      <span class="week-event">US monthly jobs report, which is key for Fed hike pricing</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Fri 6</span>
+      <span class="week-event">US response to Iran's nuclear proposal via Qatari mediators</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 6</span>
+      <span class="week-event">Counting continues in unresolved Senate races (Mississippi, Alaska)</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Sat 7</span>
+      <span class="week-event">Israeli President Herzog's consultations on who forms the government</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Sun 8</span>
+      <span class="week-event">Possible Herzog nomination of Eisenkot or Netanyahu, starting a 28-day clock</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 9</span>
+      <span class="week-event">Markets watch AI-sector follow-through after the sell-off</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Fed Will Hike Into Cheaper Oil, and Oil Will Not Save the Trade</h3>
+          <div class="subtitle">Speculative: the post-midterm oil drop is a head fake that leaves the December hike intact and punishes AI-linked equities first</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Markets</span><span class="pattern-cat">Labor & Workforce</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. Brent fell almost 9% after the midterms on the expectation that a Democratic Congress will constrain the Iran war. Markets read that as disinflation. I think it is the reverse. The oil drop removes the one argument that might have stopped a December hike, but the hike case was never really about oil. Strong ADP payroll data is what pushed CME FedWatch odds near 82%, and a labor market running hot does not care whether Brent is at $94 or $97. Oil only needs to stay above the high-$80s for headline inflation to keep the Fed hawkish.</p>
+<p>The second-order effect is what matters. Investors are treating the war premium as a tailwind for equities, but the same rate-hike pricing that hits AI names hits everything with long-duration cash flows. The AI sell-off on 5 November, with the S&P reportedly down more than 3% at one point, looks to me like rates repricing dressed up as a regulation story. The regulation story gives people a reason to sell. The rate story is why they keep selling.</p>
+<p>The contrarian take: the Dow's best post-midterm day in 44 years is a sign of crowded relief, not durable risk appetite. If the jobs report confirms the ADP signal, expect the rally to reverse in the sectors that rallied hardest, not in the ones that got hit. Watch the front end of the Treasury curve before you watch Congress.</p>
+<p>This is a speculative read built on unconfirmed market figures, and the briefing's reported numbers differ across outlets.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Democrats Just Made Data Centers the Real Defence Trade</h3>
+          <div class="subtitle">Speculative: oversight of AI build-out is a bigger threat to power demand than to chipmakers, and the market has it backwards</div>
+          <div class="pattern-cats"><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. The briefing links the 5 November AI sell-off to worries about tighter data-center rules under a Democratic Congress. Most coverage treats that as a chip story, with Nvidia-style names as the exposure. I think the sharper exposure is power. Data centers are a load problem before they are a compute problem. Any Democratic push on data-center permitting, grid cost allocation or water use lands on utilities, gas-fired generation and transmission developers first. If you want to short the build-out, short the megawatts.</p>
+<p>The defence angle is the part nobody is pricing. Lockheed Martin fell about 7% after the election, which reads as a peace-dividend trade on the Iran war winding down. But a Congress that is hostile to the war and to tech-sector power is a Congress that may fund domestic grid security and AI-related defence procurement on its own terms. The money does not disappear. It gets redirected toward whichever contractors can frame their product as infrastructure, which is not Lockheed's usual pitch.</p>
+<p>My wrong take, stated plainly: the Lockheed drop is an overreaction, and the bigger loser from divided government is the AI infrastructure trade, not the munitions trade. Watch the first committee hearings on data-center rules and the war-powers votes, in that order. If both happen in the same month, the sector rotation is real. If only the war-powers vote happens, the AI sell-off was a one-day panic.</p>
+<p>This is speculative and rests on the briefing's reports, with the policy agenda of the new Congress not yet set.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Trump's 'Destroy' Threat Is a Price Signal for the Qatar Channel</h3>
+          <div class="subtitle">Speculative: maximalist rhetoric is pre-negotiation positioning, and Gulf states are already hedging against a quieter Washington</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. Trump said the US may have to 'destroy' the rest of Iran and that rebuilding would take 25 years, in the same news cycle that Iran sent a nuclear proposal through Qatari mediators. The conventional read is that these are two competing tracks. I think they are one track. Threats of total destruction are what a US administration says when it wants a counterpart to take a proposal seriously and wants the price of rejection to be visible before the talks start. The 25-year line is about sunk cost and reconstruction, which is a message to Tehran about what it stands to lose, not a plan.</p>
+<p>The Gulf is hedging on the assumption that Washington's attention is about to move. Syria and Saudi Arabia signing a defence cooperation deal in the same week is not a coincidence in my view. Riyadh does not sign with Damascus without a read on what Washington will and will not do after a midterm that the war helped lose. Pair that with Trump's admission that the war hurt Republicans, and the Gulf is pricing a US that is less willing to fight a long war and more willing to cut a deal that leaves Iran's regional role intact.</p>
+<p>The bold call: a Qatari-brokered framework deal is more likely than resumed large-scale strikes in the next two months, and the Hormuz tanker incidents are the lever both sides will use to bargain, not a prelude to a shooting war. I could be wrong, and the briefing's casualty and shipping details are unconfirmed. Watch for a formal US response to the Qatari channel and whether the Gulf states start talking to Tehran directly.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Eisenkot's Arab-Party Coalition Would Be a Constraint on Israeli Strikes</h3>
+          <div class="subtitle">Speculative: a government that depends on Arab-party votes changes the calculus on Iran as much as on the West Bank</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. The Joint List (11 seats) and Ra'am (8) say they will recommend Gadi Eisenkot, which would give him roughly 67 backers against Netanyahu's bloc of 53. Most coverage frames this as a domestic story about who gets to be prime minister. I think the external consequence is bigger. A government that needs Arab-party support to survive has a hard time justifying a unilateral war on Iran that Washington is trying to keep out of, and it would have a harder time asking Washington for an open-ended military blank cheque.</p>
+<p>The catch is that Eisenkot does not need the Arab parties to be in the cabinet to be constrained by them. Their votes alone are enough to make a strike on Iran a political liability, and Degel HaTorah's refusal to back either candidate means the coalition arithmetic is not settled. If Herzog gives Eisenkot the mandate, the 28-day clock starts, and a Haredi-driven deadlock is the most likely reason the next government fails.</p>
+<p>My wrong take: Eisenkot is more hawkish on Iran than Netanyahu, and the Arab-party backing will make him more eager to show he is not soft on the nuclear file, not less. That would put him in direct conflict with the Qatari channel. Watch Herzog's nominee choice and whether any incoming government sets out a position on the Iranian proposal before it sets out a position on the Knesset.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>The Midterms Hit the AI Trade: Chips Suffer Their Worst Day Since 2020</h2>
+    <div class="standfirst">A Democratic win in Congress turned a quiet election reaction into a roughly $2 trillion rout, because the AI buildout now depends on political permission as well as capital.</div>
+    <div class="deep-dive-why">It follows the sharpest one-day chip rout since 2020, which came a day after the midterm results and a day before the October jobs report.</div>
+    <div class="body"><p>On Thursday, November 5, US stocks fell hard, and chips took the worst of it. The Nasdaq Composite dropped about 5.5% and the S&P 500 about 4.4%, its worst day since April 2025. The Philadelphia semiconductor index fell roughly 12%, among its worst days on record. Micron and AMD each lost about 17%, Marvell 16%, Broadcom 10% and Nvidia 9%. Reuters put the value wiped out at around $2 trillion. The Nasdaq is now in a correction, with drawdowns of up to 14% from last month's record. The VIX briefly touched 28.</p>
+<p>The trigger was not a bad earnings report. Qualcomm's 26% drop in phone chip sales and a second straight day of chip selling contributed, but strategists mostly blamed the midterm results. Markets first took the Democratic win calmly, then reconsidered. The reassessment centres on data centers. UBS strategists estimated that about 30% of expected 2028 US data-center additions are now at risk. MRB Partners wrote that the result adds to headwinds for big tech and the buildout.</p>
+<p>The context is a slow-building backlash. Local opposition to data centers has been growing in key states, driven by electricity prices, water use, grid strain and the small number of permanent jobs these facilities create. Several of the states where Democrats did well are ones where that opposition is strongest. A Democratic Congress cannot pass much over a presidential veto. It can still hold hearings, subpoena, shape appropriations and push regulators on interconnection, ratepayer protection and siting. The AI trade priced capex as if the main constraints were chips and money. The election suggested that power and public consent may bind first.</p>
+<p>There are competing readings. The bearish view is that the market has been valuing a buildout that needs about a trillion dollars of cumulative spending, and the political shock exposed how little margin for error that left. The recent run of trouble supports this: a restatement of OpenAI's revenue, Alphabet's negative cash flow, and Intel's collapse over the memory squeeze. On this reading, the election is a catalyst rather than a cause.</p>
+<p>The bullish view, put by Keith Lerner at Truist, is that this is something of a buyers' strike in an oversold sector that will rebound once a floor forms. Skeptics of the political story point out that divided government rarely changes industrial policy quickly. Demand for compute is also driven by corporate and government customers, who do not vote. A third reading is that the selloff is partly mechanical. Crowded positions in a handful of chip names unwound together, and a 12% one-day drop in a sector index owes as much to leverage and momentum as to Washington.</p>
+<p>Macro conditions complicate things. The Fed hiked in September into a stalling labor market and has been fighting inflation. After the selloff, traders cut the odds of a December hike from about 83% to about 70%, and the next move is now priced for March 2027. The Bank of England raised rates to 4% on the same day. Oil rose 3% to 4%, Bitcoin fell 6% to around $75,000, and short-term yields fell by about 12 basis points. A selloff that cools financial conditions does some of the Fed's work. It also raises the question of whether equity wealth effects, which have supported spending, are now reversing.</p>
+<p>The next test comes quickly. Friday's October payrolls report is expected to show about 65,000 jobs and unemployment at 4.2%. Recent data has been firmer than expected, which would support the hawks. A strong print alongside falling stocks would force a hard choice at the Fed's December 9 meeting. Over the following weeks, watch whether Monday brings a rebound or a second leg down, how the hyperscalers respond to the new political risk on their earnings calls, and whether Democratic committee leaders name data-center energy costs as an early oversight priority. Nvidia's results later this month will be the main read on whether customers are cutting orders. The key question is whether this was a one-day repricing of political risk or the start of a lower valuation for the whole AI buildout.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.globalbankingandfinance.com/trading-day-november-5-market-bonfire/" target="_blank" rel="noopener">Reuters (via Global Banking & Finance)</a><span class="source-sep">·</span><a class="source-link" href="https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026" target="_blank" rel="noopener">StockTitan Market Summary</a><span class="source-sep">·</span><a class="source-link" href="https://www.investing.com/news/economy-news/trading-day-a-november-5-market-bonfire-5005919" target="_blank" rel="noopener">Reuters (via Investing.com)</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/apple-earnings-memory-problems-the-hardware-company-regression/" target="_blank" rel="noopener">Apple Earnings, Memory Problems, The Hardware Company Regression</a><div class="sig-summary">Thompson argues Apple's earnings show its hardware business doing better than ever despite memory supply challenges, and asks whether the software story helps or hurts. He also wrote that Google's earnings miss resembles Facebook's, and that Google is being more aggressive on agents than it gets credit for.</div><div class="sig-connection">↳ Memory constraints tie into the AI hardware and custom-chip supply story behind Nvidia's pullback from lab investments. Google's agent push connects to the Frontier Tech / AI theme.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-217" target="_blank" rel="noopener">Weekly Dose of Optimism #217</a><div class="sig-summary">A roundup of positive tech and science news: Anduril BlueChip, OpenAI Science, Anthropic Drugs, robot brain surgery, Readwise Books, Reta, Neuralink VOICE and extra doses.</div><div class="sig-connection">↳ The AI-for-science items (OpenAI, Anthropic) and Anduril's defense-tech work connect to the Frontier Tech and Defense & Security themes.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/how-figmas-pms-actually-use-ai-every" target="_blank" rel="noopener">How Figma's PMs actually use AI every day | Ezra Mechaber (PM, Figma)</a><div class="sig-summary">Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint.</div><div class="sig-connection">↳ A concrete example of AI agents changing knowledge work, relevant to the Labor & Workforce and Applied Tech themes.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 13 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

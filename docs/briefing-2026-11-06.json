@@ -1,0 +1,383 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Trump threatens to 'destroy' rest of Iran as nuclear proposal arrives via Qatar",
+      "one_liner": "The Iran war is both escalating and heading toward a possible negotiation, just after the midterms.",
+      "detail": "Al Jazeera's live blog on 6 November reports Trump saying the US may have to 'destroy' the rest of Iran. He also said rebuilding would take 25 years, and that people would 'know soon enough' what he intends. At the same time, Iran has reportedly sent a nuclear proposal to Washington through Qatari mediators. The US is reviewing it, and Tehran says it is waiting for its seven demands to be met.\n\nThe threats and the diplomacy are running at once. Trump has also acknowledged that the war hurt Republicans in the midterms (Al Jazeera, 4 November). Markets read a Democratic Congress as a brake on the war. Brent fell nearly 9% after the election, per market reports.\n\nOutlets differ in emphasis. Al Jazeera foregrounds the escalatory rhetoric and Iran's stated demands. Market coverage focuses on the oil price. I could not retrieve FT, WSJ or Reuters coverage directly, so details on casualties, Hormuz shipping and the content of the proposal are unconfirmed.\n\nWatch for the US response to the Qatari channel, any resumption of strikes, tanker incidents in the Strait of Hormuz, and whether the new Congress moves on war powers.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/liveblog/2026/11/6/iran-war-live-trump-warns-us-may-have-to-destroy-rest-of-iran"
+        },
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/4/trump-admits-iran-war-hurt-republican-vote-vows-to-veto-insane-bills"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Democrats take Congress; Trump vows vetoes",
+      "one_liner": "Divided government changes the outlook for war powers, tech regulation and the budget.",
+      "detail": "Democrats won control of Congress in the midterms, per CNN and Al Jazeera. Trump conceded that the Iran war hurt Republican candidates and vowed to veto bills he called 'insane'. Some Senate races, including Mississippi and Alaska, were still unresolved in Al Jazeera's coverage.\n\nMarkets responded strongly. The Dow had its best post-midterm day in 44 years, up about 3%, according to CNN and CFRA. The rally came as oil fell on the expectation that Congress will constrain the war.\n\nExpect oversight fights, war-powers votes and appropriations brinkmanship. Democratic control also raises the odds of scrutiny of data-center build-out and AI.\n\nWatch for committee chair assignments, the final Senate calls, and any veto showdown.",
+      "sector": "US Policy & Power",
+      "sources": [
+        {
+          "name": "CNN",
+          "url": "https://www.cnn.com/2026/11/04/investing/us-markets-midterm-elections"
+        },
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/4/trump-admits-iran-war-hurt-republican-vote-vows-to-veto-insane-bills"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "AI stocks sell off as markets price in a December Fed hike",
+      "one_liner": "Rotation out of AI names and a hawkish rate outlook diverge from the broad post-election rally.",
+      "detail": "BNN Bloomberg reported an AI-stock wipeout on 5 November, with the S&P 500 reportedly falling more than 3% at one point. Investors rotated away from AI-linked names, reportedly on worries about tighter data-center rules under a Democratic Congress. The figures from different outlets are not fully consistent, so treat the magnitude with caution.\n\nSeparately, reports cite CME FedWatch odds near 82% for a December rate hike, helped by strong ADP payroll data. That would mark a hawkish reversal from earlier cut expectations. Oil near $94 to $97 Brent keeps inflation risk alive.\n\nWatch for the US jobs report and further AI-sector earnings.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "BNN Bloomberg",
+          "url": "https://www.bnnbloomberg.ca/markets/2026/11/05/world-shares-mostly-gain-after-us-midterm-elections-as-ai-related-stocks-sink/"
+        },
+        {
+          "name": "CommBank",
+          "url": "https://commbank.com.au/articles/newsroom/2026/11/wall-street-surges-after-us-midterms-as-oil-prices-tumble.html"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Israel's Eisenkot positioned to form government with Arab-party backing",
+      "one_liner": "Netanyahu's bloc looks short of a majority after the election.",
+      "detail": "Arab-led parties won a record 19 of 120 Knesset seats. The Joint List (11 seats) and Ra'am (8) will recommend opposition leader Gadi Eisenkot, which would give him about 67 backers. Netanyahu's bloc holds 53 seats, and Degel HaTorah has declined to back either candidate over the Haredi draft-exemption dispute.\n\nThe Central Elections Committee certified the results and found no fraud, despite Netanyahu's unsupported claims. President Herzog is holding consultations. The nominee then has 28 days to form a government, with a possible 14-day extension. Otherwise a new election would follow early next year.\n\nWatch Herzog's choice of nominee.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/news/2026/11/5/joint-list-says-it-will-back-eisenkot-to-form-israels-next-government"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "AI-linked equities sold off sharply on 5 November amid worries about stricter data-center rules under a Democratic Congress. I found no major model or chip announcements in the sources I could access."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Qualcomm shares slipped and AI-related stocks sank. Investors are rotating out of tech. I could not retrieve deal or funding details."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Democrats took control of Congress. Trump vowed to veto 'insane' bills and admitted the Iran war hurt Republicans. Some Senate races remain unresolved."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "No formal action found. Markets are pricing in the risk of tighter data-center and AI oversight under a Democratic Congress."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "Trump threatened to destroy the rest of Iran while Iran sent a nuclear proposal via Qatar. Israel's election leaves Eisenkot with a likely majority. Syria and Saudi Arabia signed a defence cooperation deal."
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The Dow rose about 3% on post-midterm day, while AI stocks sold off. Brent fell to about $94.62 and then steadied near $97. Markets price roughly 82% odds of a December Fed hike. Gold rose."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Brent fell almost 9% after the midterms on expectations that Congress will limit the Iran war. Tanker incidents in Hormuz are still being reported."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Defense contractors sold off after the election, with Lockheed Martin down about 7%. Hoax bomb threats forced European flights into emergency landings in France, Italy and Bulgaria."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": true,
+      "summary": "Strong ADP payroll data fed rate-hike expectations. Traders are watching the US jobs report."
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Fri 6",
+      "event": "US monthly jobs report, which is key for Fed hike pricing",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 6",
+      "event": "US response to Iran's nuclear proposal via Qatari mediators",
+      "tag": "critical"
+    },
+    {
+      "day": "Fri 6",
+      "event": "Counting continues in unresolved Senate races (Mississippi, Alaska)",
+      "tag": "policy"
+    },
+    {
+      "day": "Sat 7",
+      "event": "Israeli President Herzog's consultations on who forms the government",
+      "tag": "critical"
+    },
+    {
+      "day": "Sun 8",
+      "event": "Possible Herzog nomination of Eisenkot or Netanyahu, starting a 28-day clock",
+      "tag": "policy"
+    },
+    {
+      "day": "Mon 9",
+      "event": "Markets watch AI-sector follow-through after the sell-off",
+      "tag": "tech"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Midterms Trigger AI Chip Crash on Data-Center Fears",
+    "headline": "The Midterms Hit the AI Trade: Chips Suffer Their Worst Day Since 2020",
+    "standfirst": "A Democratic win in Congress turned a quiet election reaction into a roughly $2 trillion rout, because the AI buildout now depends on political permission as well as capital.",
+    "body": "On Thursday, November 5, US stocks fell hard, and chips took the worst of it. The Nasdaq Composite dropped about 5.5% and the S&P 500 about 4.4%, its worst day since April 2025. The Philadelphia semiconductor index fell roughly 12%, among its worst days on record. Micron and AMD each lost about 17%, Marvell 16%, Broadcom 10% and Nvidia 9%. Reuters put the value wiped out at around $2 trillion. The Nasdaq is now in a correction, with drawdowns of up to 14% from last month's record. The VIX briefly touched 28.\n\nThe trigger was not a bad earnings report. Qualcomm's 26% drop in phone chip sales and a second straight day of chip selling contributed, but strategists mostly blamed the midterm results. Markets first took the Democratic win calmly, then reconsidered. The reassessment centres on data centers. UBS strategists estimated that about 30% of expected 2028 US data-center additions are now at risk. MRB Partners wrote that the result adds to headwinds for big tech and the buildout.\n\nThe context is a slow-building backlash. Local opposition to data centers has been growing in key states, driven by electricity prices, water use, grid strain and the small number of permanent jobs these facilities create. Several of the states where Democrats did well are ones where that opposition is strongest. A Democratic Congress cannot pass much over a presidential veto. It can still hold hearings, subpoena, shape appropriations and push regulators on interconnection, ratepayer protection and siting. The AI trade priced capex as if the main constraints were chips and money. The election suggested that power and public consent may bind first.\n\nThere are competing readings. The bearish view is that the market has been valuing a buildout that needs about a trillion dollars of cumulative spending, and the political shock exposed how little margin for error that left. The recent run of trouble supports this: a restatement of OpenAI's revenue, Alphabet's negative cash flow, and Intel's collapse over the memory squeeze. On this reading, the election is a catalyst rather than a cause.\n\nThe bullish view, put by Keith Lerner at Truist, is that this is something of a buyers' strike in an oversold sector that will rebound once a floor forms. Skeptics of the political story point out that divided government rarely changes industrial policy quickly. Demand for compute is also driven by corporate and government customers, who do not vote. A third reading is that the selloff is partly mechanical. Crowded positions in a handful of chip names unwound together, and a 12% one-day drop in a sector index owes as much to leverage and momentum as to Washington.\n\nMacro conditions complicate things. The Fed hiked in September into a stalling labor market and has been fighting inflation. After the selloff, traders cut the odds of a December hike from about 83% to about 70%, and the next move is now priced for March 2027. The Bank of England raised rates to 4% on the same day. Oil rose 3% to 4%, Bitcoin fell 6% to around $75,000, and short-term yields fell by about 12 basis points. A selloff that cools financial conditions does some of the Fed's work. It also raises the question of whether equity wealth effects, which have supported spending, are now reversing.\n\nThe next test comes quickly. Friday's October payrolls report is expected to show about 65,000 jobs and unemployment at 4.2%. Recent data has been firmer than expected, which would support the hawks. A strong print alongside falling stocks would force a hard choice at the Fed's December 9 meeting. Over the following weeks, watch whether Monday brings a rebound or a second leg down, how the hyperscalers respond to the new political risk on their earnings calls, and whether Democratic committee leaders name data-center energy costs as an early oversight priority. Nvidia's results later this month will be the main read on whether customers are cutting orders. The key question is whether this was a one-day repricing of political risk or the start of a lower valuation for the whole AI buildout.",
+    "why_today": "It follows the sharpest one-day chip rout since 2020, which came a day after the midterm results and a day before the October jobs report.",
+    "sources": [
+      {
+        "name": "Reuters (via Global Banking & Finance)",
+        "url": "https://www.globalbankingandfinance.com/trading-day-november-5-market-bonfire/"
+      },
+      {
+        "name": "StockTitan Market Summary",
+        "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026"
+      },
+      {
+        "name": "Reuters (via Investing.com)",
+        "url": "https://www.investing.com/news/economy-news/trading-day-a-november-5-market-bonfire-5005919"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "The Fed Will Hike Into Cheaper Oil, and Oil Will Not Save the Trade",
+      "subtitle": "Speculative: the post-midterm oil drop is a head fake that leaves the December hike intact and punishes AI-linked equities first",
+      "categories": [
+        "Energy",
+        "Markets",
+        "Labor & Workforce"
+      ],
+      "content": "Speculative. Brent fell almost 9% after the midterms on the expectation that a Democratic Congress will constrain the Iran war. Markets read that as disinflation. I think it is the reverse. The oil drop removes the one argument that might have stopped a December hike, but the hike case was never really about oil. Strong ADP payroll data is what pushed CME FedWatch odds near 82%, and a labor market running hot does not care whether Brent is at $94 or $97. Oil only needs to stay above the high-$80s for headline inflation to keep the Fed hawkish.\n\nThe second-order effect is what matters. Investors are treating the war premium as a tailwind for equities, but the same rate-hike pricing that hits AI names hits everything with long-duration cash flows. The AI sell-off on 5 November, with the S&P reportedly down more than 3% at one point, looks to me like rates repricing dressed up as a regulation story. The regulation story gives people a reason to sell. The rate story is why they keep selling.\n\nThe contrarian take: the Dow's best post-midterm day in 44 years is a sign of crowded relief, not durable risk appetite. If the jobs report confirms the ADP signal, expect the rally to reverse in the sectors that rallied hardest, not in the ones that got hit. Watch the front end of the Treasury curve before you watch Congress.\n\nThis is a speculative read built on unconfirmed market figures, and the briefing's reported numbers differ across outlets."
+    },
+    {
+      "title": "Democrats Just Made Data Centers the Real Defence Trade",
+      "subtitle": "Speculative: oversight of AI build-out is a bigger threat to power demand than to chipmakers, and the market has it backwards",
+      "categories": [
+        "US Policy & Power",
+        "Frontier Tech / AI",
+        "Energy",
+        "Defense & Security"
+      ],
+      "content": "Speculative. The briefing links the 5 November AI sell-off to worries about tighter data-center rules under a Democratic Congress. Most coverage treats that as a chip story, with Nvidia-style names as the exposure. I think the sharper exposure is power. Data centers are a load problem before they are a compute problem. Any Democratic push on data-center permitting, grid cost allocation or water use lands on utilities, gas-fired generation and transmission developers first. If you want to short the build-out, short the megawatts.\n\nThe defence angle is the part nobody is pricing. Lockheed Martin fell about 7% after the election, which reads as a peace-dividend trade on the Iran war winding down. But a Congress that is hostile to the war and to tech-sector power is a Congress that may fund domestic grid security and AI-related defence procurement on its own terms. The money does not disappear. It gets redirected toward whichever contractors can frame their product as infrastructure, which is not Lockheed's usual pitch.\n\nMy wrong take, stated plainly: the Lockheed drop is an overreaction, and the bigger loser from divided government is the AI infrastructure trade, not the munitions trade. Watch the first committee hearings on data-center rules and the war-powers votes, in that order. If both happen in the same month, the sector rotation is real. If only the war-powers vote happens, the AI sell-off was a one-day panic.\n\nThis is speculative and rests on the briefing's reports, with the policy agenda of the new Congress not yet set."
+    },
+    {
+      "title": "Trump's 'Destroy' Threat Is a Price Signal for the Qatar Channel",
+      "subtitle": "Speculative: maximalist rhetoric is pre-negotiation positioning, and Gulf states are already hedging against a quieter Washington",
+      "categories": [
+        "Geopolitics",
+        "Energy",
+        "Defense & Security"
+      ],
+      "content": "Speculative. Trump said the US may have to 'destroy' the rest of Iran and that rebuilding would take 25 years, in the same news cycle that Iran sent a nuclear proposal through Qatari mediators. The conventional read is that these are two competing tracks. I think they are one track. Threats of total destruction are what a US administration says when it wants a counterpart to take a proposal seriously and wants the price of rejection to be visible before the talks start. The 25-year line is about sunk cost and reconstruction, which is a message to Tehran about what it stands to lose, not a plan.\n\nThe Gulf is hedging on the assumption that Washington's attention is about to move. Syria and Saudi Arabia signing a defence cooperation deal in the same week is not a coincidence in my view. Riyadh does not sign with Damascus without a read on what Washington will and will not do after a midterm that the war helped lose. Pair that with Trump's admission that the war hurt Republicans, and the Gulf is pricing a US that is less willing to fight a long war and more willing to cut a deal that leaves Iran's regional role intact.\n\nThe bold call: a Qatari-brokered framework deal is more likely than resumed large-scale strikes in the next two months, and the Hormuz tanker incidents are the lever both sides will use to bargain, not a prelude to a shooting war. I could be wrong, and the briefing's casualty and shipping details are unconfirmed. Watch for a formal US response to the Qatari channel and whether the Gulf states start talking to Tehran directly."
+    },
+    {
+      "title": "Eisenkot's Arab-Party Coalition Would Be a Constraint on Israeli Strikes",
+      "subtitle": "Speculative: a government that depends on Arab-party votes changes the calculus on Iran as much as on the West Bank",
+      "categories": [
+        "Geopolitics",
+        "US Policy & Power",
+        "Defense & Security"
+      ],
+      "content": "Speculative. The Joint List (11 seats) and Ra'am (8) say they will recommend Gadi Eisenkot, which would give him roughly 67 backers against Netanyahu's bloc of 53. Most coverage frames this as a domestic story about who gets to be prime minister. I think the external consequence is bigger. A government that needs Arab-party support to survive has a hard time justifying a unilateral war on Iran that Washington is trying to keep out of, and it would have a harder time asking Washington for an open-ended military blank cheque.\n\nThe catch is that Eisenkot does not need the Arab parties to be in the cabinet to be constrained by them. Their votes alone are enough to make a strike on Iran a political liability, and Degel HaTorah's refusal to back either candidate means the coalition arithmetic is not settled. If Herzog gives Eisenkot the mandate, the 28-day clock starts, and a Haredi-driven deadlock is the most likely reason the next government fails.\n\nMy wrong take: Eisenkot is more hawkish on Iran than Netanyahu, and the Arab-party backing will make him more eager to show he is not soft on the nuclear file, not less. That would put him in direct conflict with the Qatari channel. Watch Herzog's nominee choice and whether any incoming government sets out a position on the Iranian proposal before it sets out a position on the Knesset."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Apple Earnings, Memory Problems, The Hardware Company Regression",
+      "url": "https://stratechery.com/2026/apple-earnings-memory-problems-the-hardware-company-regression/",
+      "summary": "Thompson argues Apple's earnings show its hardware business doing better than ever despite memory supply challenges, and asks whether the software story helps or hurts. He also wrote that Google's earnings miss resembles Facebook's, and that Google is being more aggressive on agents than it gets credit for.",
+      "connection": "Memory constraints tie into the AI hardware and custom-chip supply story behind Nvidia's pullback from lab investments. Google's agent push connects to the Frontier Tech / AI theme."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Weekly Dose of Optimism #217",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-217",
+      "summary": "A roundup of positive tech and science news: Anduril BlueChip, OpenAI Science, Anthropic Drugs, robot brain surgery, Readwise Books, Reta, Neuralink VOICE and extra doses.",
+      "connection": "The AI-for-science items (OpenAI, Anthropic) and Anduril's defense-tech work connect to the Frontier Tech and Defense & Security themes."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "How Figma's PMs actually use AI every day | Ezra Mechaber (PM, Figma)",
+      "url": "https://www.lennysnewsletter.com/p/how-figmas-pms-actually-use-ai-every",
+      "summary": "Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint.",
+      "connection": "A concrete example of AI agents changing knowledge work, relevant to the Labor & Workforce and Applied Tech themes."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
