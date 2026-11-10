@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Tuesday, November 10, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Tuesday, November 10, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;0 URGENT</span>
+    <span class="status-count">2 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Search coverage thin: US CPI due today</h3>
+          <div class="one-liner">October CPI is reportedly scheduled for 8:30 am ET today, but I could not confirm it against BLS or a wire source.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Today's searches returned almost no reporting dated November 9 or 10, 2026. This briefing is therefore much thinner than usual, and I have left out anything I could not tie to a source.</p>
+<p>One calendar lists the October US CPI report for Tuesday, November 10 at 8:30 am ET. Its page was last updated in August, so the date may be stale. A separate weekly preview says October CPI and PPI headline the week of November 9-13, without giving a day. Check the BLS schedule before relying on the date.</p>
+<p>Rate context comes from secondary summaries only. One says the Fed held rates in June and signalled a possible hike later this year. Another cites an October 2026 piece saying a soft jobs report cooled hike bets while yields stayed near multi-decade highs. The next FOMC meeting is reportedly December 8-9. I could not verify any of this against the Financial Times, WSJ or Reuters.</p>
+<p>Watch the CPI print and the Fed's reaction to it.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.calendarx.com/events/cpi-november-2026" target="_blank" rel="noopener">Consumer Price Index - November 2026 (CalendarX)</a><span class="source-sep">·</span><a class="source-link" href="https://thriveinmarkets.com/calendar/2026-11-09/" target="_blank" rel="noopener">Thrive in Markets weekly calendar</a><span class="source-sep">·</span><a class="source-link" href="https://fedratecalc.com/us-economic-calendar/november-2026/" target="_blank" rel="noopener">Monthly release schedule (FedRateCalc)</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Nvidia reportedly pulling back from OpenAI and Anthropic stakes</h3>
+          <div class="one-liner">Secondary reports say Nvidia's CEO signalled an end to investing in the two labs as they head toward IPOs.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Secondary outlets report that Nvidia CEO Jensen Huang hinted Nvidia will stop investing in OpenAI and Anthropic. The reported reasoning is that once the labs go public, the chance to invest closes. The reports are undated and I could not confirm them from a primary source.</p>
+<p>Other reports say the $100 billion Nvidia-OpenAI pact targets a first gigawatt on the Vera Rubin platform by late 2026. They also say Nvidia agreed to pay $1.5 billion to rent back its own chips from Lambda, which suggests demand still outstrips supply.</p>
+<p>A secondary blog says Anthropic confirmed in August that it is building an in-house chip design team. That is also unverified.</p>
+<p>Watch for any Nvidia clarification and for IPO filings from either lab.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://arynews.tv/nvidia-ceo-hints-at-end-of-investments-in-openai-anthropic" target="_blank" rel="noopener">ARY News</a><span class="source-sep">·</span><a class="source-link" href="https://idtechwire.com/ai-update-when-you-have-to-rent-your-own-chips-back/" target="_blank" rel="noopener">ID TechWire</a><span class="source-sep">·</span><a class="source-link" href="https://www.datacenterdynamics.com/en/news/anthropic-exploring-possibility-of-designing-its-own-ai-chips-report/" target="_blank" rel="noopener">Data Center Dynamics</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Unverified secondary reports say Nvidia is stepping back from investing in OpenAI and Anthropic. Compute demand still appears to exceed supply, and labs are pursuing custom chips.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">China</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">October CPI is reportedly due today at 8:30 am ET, but the date is unconfirmed. Rate expectations are murky, with secondary sources pointing to hike risk rather than cuts. The next FOMC meeting is reportedly December 8-9.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Tue 10</span>
+      <span class="week-event">US October CPI, 8:30 am ET (date unconfirmed, verify with BLS)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 11</span>
+      <span class="week-event">Veterans Day: US federal holiday, with bond markets reportedly closed</span>
+      <span class="week-tag" style="color:#fff;background:#6B7280">other</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">UK Q3 GDP, 7:00 am GMT</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">US PPI (day unconfirmed, expected this week)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Nvidia is selling the top, not stepping back</h3>
+          <div class="subtitle">Speculative: the reported pullback from OpenAI and Anthropic looks like a valuation exit dressed up as discipline.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. The reported Jensen Huang hint that Nvidia will stop investing in OpenAI and Anthropic is being read as a sign of confidence in the labs. I think it is the opposite. A company that has to rent back its own chips from Lambda for $1.5 billion is not short of demand. It is short of cash it would rather not tie up in private paper. If the labs are heading to IPOs, Nvidia gets to sell its stakes at public-market marks and leave the next buyer holding the compute bill. The $100 billion pact targeting a first gigawatt on Vera Rubin by late 2026 would then be a commitment the labs carry and Nvidia has already monetized.</p>
+<p>The Markets angle makes this sharper. The briefing's secondary sources point to hike risk rather than cuts, and yields near multi-decade highs are the wrong backdrop for a mega-IPO. If either lab tries to list into a hawkish Fed, the valuation gap between private rounds and public comps becomes the story. Watch whether Nvidia's exit timing lines up with any S-1 filing or secondary-sale chatter. If it does, the 'end of investing' is a liquidity event, not a vote of confidence.</p>
+<p>The caveat is that every claim here rests on undated secondary reports I could not confirm from a primary source. If Nvidia issues a clean clarification that it remains a long-term investor, this take is dead on arrival and I would say so.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The AI bottleneck is the grid, and the chip rent-back proves it</h3>
+          <div class="subtitle">Speculative: power, not silicon, is what is making Nvidia rent its own chips back and what will decide the gigawatt deadline.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Energy</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. If Nvidia is renting back its own chips from Lambda, the obvious read is that demand exceeds supply. The less obvious read is that the chips exist but the places to run them do not. A gigawatt-scale Vera Rubin deployment by late 2026 is a power problem before it is a semiconductor problem. Gigawatt sites need interconnection approvals, transformers, and firm baseload, and none of those move on a quarterly chip-roadmap timeline. My bet is that the 'first gigawatt' target slips, and that the slip gets blamed on supply chains when the real cause is grid queues.</p>
+<p>This is where US Policy & Power comes in. Any federal or state move to fast-track large-load interconnection, or to let data centers self-supply with gas or nuclear, becomes a de facto subsidy for the labs' compute plans. Whoever controls permitting decides which AI buildout happens on schedule. Energy utilities and gas-turbine makers are the quiet winners here, and they are not in the AI conversation at all.</p>
+<p>The briefing has no Energy news today, so this is an inference from the Frontier Tech item, not a reported fact. Watch for utility large-load tariff filings and for any update on the Nvidia-OpenAI gigawatt milestone. A missed milestone with no chip shortage cited would confirm the thesis.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Anthropic's chip team is a hedge against Washington</h3>
+          <div class="subtitle">Speculative: in-house silicon is less about performance than about insulating a frontier lab from export controls and a Nvidia that may be heading for the exit.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">AI Regulation & Governance</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. A secondary blog says Anthropic confirmed in August that it is building an in-house chip design team. I could not verify that, but take it as a premise. The usual explanation is cost per token. I think the better explanation is leverage. A lab that depends on one supplier for its compute is exposed in three ways: pricing, allocation, and export policy. Nvidia's reported step back from investing removes one form of entanglement, and it leaves Anthropic needing either a new strategic partner or its own silicon. Custom chips also give a lab a bargaining chip with any government that wants to tie compute access to licensing or reporting rules.</p>
+<p>The Geopolitics and AI Regulation angle is that export controls and any future compute-reporting regime are easier to live with if you own design IP and can point to domestic fabrication partners. That is not a policy the briefing reports, so I am making a claim about incentives, not about any announced decision. The risk is that custom silicon takes three to five years to matter, and the labs need compute now, so the hedge only pays off if the policy environment tightens after the chips arrive.</p>
+<p>Watch for any Anthropic hiring announcements tied to a fab partner, and for export-control rule changes that single out accelerator design rather than just finished chips. A rule of that kind would make this thesis look prescient.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>A hawkish Fed closes the IPO window the labs are counting on</h3>
+          <div class="subtitle">Speculative: the hike-risk backdrop and the labs' IPO plans are on a collision course, and Digital Finance is where the squeeze shows up first.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Markets</span><span class="pattern-cat">Digital Finance</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative. The briefing's rate picture is murky, and I could not confirm it against Reuters or the Financial Times. Still, the secondary read is consistent: a soft jobs report cooled hike bets, yields stayed near multi-decade highs, and the next FOMC is reportedly December 8-9. If the October CPI print, due around now but not confirmed, comes in hot, the market will price a hike and the long end will move with it. That is the worst possible setup for two frontier labs that need a public-market window to fund compute at the scale the Nvidia gigawatt plan implies.</p>
+<p>Digital Finance is where the squeeze shows up first. Private credit and data-center lenders have been underwriting AI capex on the assumption that the equity exit exists. If the IPO window narrows, those lenders reprice before the labs do, and you see it in spreads on AI-linked debt, not in headlines about model launches. I expect that repricing to show up in the next two weeks, before any lab files publicly.</p>
+<p>The bold claim: the labs' IPO plans will be delayed by rates before the end of the year, and Nvidia's reported pullback will look like the first move in a sequence rather than an isolated decision. If the CPI print is soft and yields fall, this take is wrong, and I would say so.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>A Hike Priced at 80%: Today's CPI Decides Whether the Fed Tightens Into an AI Wobble</h2>
+    <div class="standfirst">After a payrolls beat of 165,000 against 65,000 expected, markets treat a December quarter-point hike as nearly settled, so today's October CPI is a test of conviction as much as of inflation.</div>
+    <div class="deep-dive-why">October CPI is released today, and with a December hike priced near 80% after last week's strong payrolls, it is the key data point before the Fed's December meeting.</div>
+    <div class="body"><p>The hook is today's release of October consumer prices. The consensus I could find expects headline CPI up 0.3% on the month and core up 0.2%. I could not retrieve the actual print before writing, so everything below is framed around the setup, not the result.</p>
+<p>The setup is unusual. Last Friday's jobs report showed 165,000 new jobs against expectations of roughly 65,000. Fed funds futures moved sharply. Depending on the source and the day, the probability of a December quarter-point hike is now about 77% to 84%, up from roughly 73% to 74% a week earlier. A hike would lift the target range from 3.75%-4.00% to 4.00%-4.25%. The sources differ on the exact figure, and the numbers come mostly from secondary trading and news sites, so treat them as a range.</p>
+<p>The backdrop explains why this matters. The Fed began raising rates in early October into a labor market many read as stalling, and that move was contentious. One strong payrolls number does not settle the dispute, but it hands the hawks a talking point. Hawks argue that labor demand is firmer than the earlier softness suggested. They add that an energy shock tied to the Iran conflict has kept price pressures live even though Brent has retreated to around $91 a barrel from the $113 peak. Cheaper oil should help October-to-November headline readings, but core prices are what officials say they watch.</p>
+<p>There are three broad readings of the situation.</p>
+<p>The first is the hawkish one. Inflation expectations are fragile after a year of fuel-price shocks. A Fed that stops after one move risks looking as though it blinked, and the bond market would then do the tightening for it. On this view a firm payrolls figure removes the last excuse for patience, and a core print of 0.3% or more would make December close to a lock.</p>
+<p>The second is the cautious one. One month of payrolls is noisy, and previous prints in this cycle have been revised. A hike also lands as equities are fragile. Chip and AI stocks sold off hard after the midterms on fears about data-center regulation, energy use and building costs, then bounced on Monday, though Nvidia lagged the rally. Higher rates raise the discount rate on long-duration growth stocks and the cost of financing the data-center build-out. If core CPI comes in at 0.2% or lower, doves can argue that the case for a second hike is thin, and that the market is overpricing a Fed that has already done its tightening.</p>
+<p>The third reading is that this is partly a supply story. Energy and tariffs add to prices without reflecting overheated demand, and hiking against them risks damaging employment for little gain. Others reply that the distinction matters less when expectations are drifting, and that the central bank cannot wait to see.</p>
+<p>There is also a second-order effect: the dollar and gold. Hot data supports the dollar and pressures non-yielding assets. A soft print could produce the reverse, with equities rallying on the hope that the cycle is nearly over. Because pricing is already near 80%, the asymmetry favors a larger reaction to a soft number than to a hot one. Markets have little room left to price additional hawkishness.</p>
+<p>What to watch next: the November jobs report in early December, the November CPI, and the December FOMC meeting, where the new rate projections will reveal whether officials see one hike or a sequence. Between now and then, watch Fed speakers for hints of a split, the path of crude prices, and whether AI-linked equities and credit remain steady enough that financial conditions do not tighten by themselves. If they do, the Fed may find the market has done part of its work, and the committee's calculus on December would change.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://finance.yahoo.com/economy/policy/articles/odds-december-rate-hike-jump-173301658.html" target="_blank" rel="noopener">Yahoo Finance</a><span class="source-sep">·</span><a class="source-link" href="https://www.nbcnews.com/business/economy/october-cpi-inflation-report-gas-prices-rcna608386" target="_blank" rel="noopener">NBC News</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/markets/live/stock-market-today-monday-november-9-dow-sp-500-nasdaq-nvidia-090535419.html" target="_blank" rel="noopener">Yahoo Finance</a><span class="source-sep">·</span><a class="source-link" href="https://www.cnbc.com/2026/11/08/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://avaloncapitalresearch.substack.com/p/weekly-playbook-fed-funds-futures-0c5" target="_blank" rel="noopener">Avalon Capital Research</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/apple-earnings-memory-problems-the-hardware-company-regression/" target="_blank" rel="noopener">Apple Earnings, Memory Problems, The Hardware Company Regression</a><div class="sig-summary">Thompson argues Apple's earnings show its hardware business doing better than ever despite memory supply challenges, and asks whether the software story helps or hurts. He also wrote that Google's earnings miss resembles Facebook's, and that Google is being more aggressive on agents than it gets credit for.</div><div class="sig-connection">↳ Memory constraints tie into the AI hardware and custom-chip supply story behind Nvidia's pullback from lab investments. Google's agent push connects to the Frontier Tech / AI theme.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-217" target="_blank" rel="noopener">Weekly Dose of Optimism #217</a><div class="sig-summary">A roundup of positive tech and science news: Anduril BlueChip, OpenAI Science, Anthropic Drugs, robot brain surgery, Readwise Books, Reta, Neuralink VOICE and extra doses.</div><div class="sig-connection">↳ The AI-for-science items (OpenAI, Anthropic) and Anduril's defense-tech work connect to the Frontier Tech and Defense & Security themes.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/how-figmas-pms-actually-use-ai-every" target="_blank" rel="noopener">How Figma's PMs actually use AI every day | Ezra Mechaber (PM, Figma)</a><div class="sig-summary">Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint.</div><div class="sig-connection">↳ A concrete example of AI agents changing knowledge work, relevant to the Labor & Workforce and Applied Tech themes.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 13 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

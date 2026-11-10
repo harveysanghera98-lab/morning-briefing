@@ -1,0 +1,357 @@
+{
+  "top_stories": [
+    {
+      "priority": "high",
+      "headline": "Search coverage thin: US CPI due today",
+      "one_liner": "October CPI is reportedly scheduled for 8:30 am ET today, but I could not confirm it against BLS or a wire source.",
+      "detail": "Today's searches returned almost no reporting dated November 9 or 10, 2026. This briefing is therefore much thinner than usual, and I have left out anything I could not tie to a source.\n\nOne calendar lists the October US CPI report for Tuesday, November 10 at 8:30 am ET. Its page was last updated in August, so the date may be stale. A separate weekly preview says October CPI and PPI headline the week of November 9-13, without giving a day. Check the BLS schedule before relying on the date.\n\nRate context comes from secondary summaries only. One says the Fed held rates in June and signalled a possible hike later this year. Another cites an October 2026 piece saying a soft jobs report cooled hike bets while yields stayed near multi-decade highs. The next FOMC meeting is reportedly December 8-9. I could not verify any of this against the Financial Times, WSJ or Reuters.\n\nWatch the CPI print and the Fed's reaction to it.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Consumer Price Index - November 2026 (CalendarX)",
+          "url": "https://www.calendarx.com/events/cpi-november-2026"
+        },
+        {
+          "name": "Thrive in Markets weekly calendar",
+          "url": "https://thriveinmarkets.com/calendar/2026-11-09/"
+        },
+        {
+          "name": "Monthly release schedule (FedRateCalc)",
+          "url": "https://fedratecalc.com/us-economic-calendar/november-2026/"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Nvidia reportedly pulling back from OpenAI and Anthropic stakes",
+      "one_liner": "Secondary reports say Nvidia's CEO signalled an end to investing in the two labs as they head toward IPOs.",
+      "detail": "Secondary outlets report that Nvidia CEO Jensen Huang hinted Nvidia will stop investing in OpenAI and Anthropic. The reported reasoning is that once the labs go public, the chance to invest closes. The reports are undated and I could not confirm them from a primary source.\n\nOther reports say the $100 billion Nvidia-OpenAI pact targets a first gigawatt on the Vera Rubin platform by late 2026. They also say Nvidia agreed to pay $1.5 billion to rent back its own chips from Lambda, which suggests demand still outstrips supply.\n\nA secondary blog says Anthropic confirmed in August that it is building an in-house chip design team. That is also unverified.\n\nWatch for any Nvidia clarification and for IPO filings from either lab.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "ARY News",
+          "url": "https://arynews.tv/nvidia-ceo-hints-at-end-of-investments-in-openai-anthropic"
+        },
+        {
+          "name": "ID TechWire",
+          "url": "https://idtechwire.com/ai-update-when-you-have-to-rent-your-own-chips-back/"
+        },
+        {
+          "name": "Data Center Dynamics",
+          "url": "https://www.datacenterdynamics.com/en/news/anthropic-exploring-possibility-of-designing-its-own-ai-chips-report/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Unverified secondary reports say Nvidia is stepping back from investing in OpenAI and Anthropic. Compute demand still appears to exceed supply, and labs are pursuing custom chips."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "October CPI is reportedly due today at 8:30 am ET, but the date is unconfirmed. Rate expectations are murky, with secondary sources pointing to hike risk rather than cuts. The next FOMC meeting is reportedly December 8-9."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Tue 10",
+      "event": "US October CPI, 8:30 am ET (date unconfirmed, verify with BLS)",
+      "tag": "data"
+    },
+    {
+      "day": "Wed 11",
+      "event": "Veterans Day: US federal holiday, with bond markets reportedly closed",
+      "tag": "other"
+    },
+    {
+      "day": "Thu 12",
+      "event": "UK Q3 GDP, 7:00 am GMT",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 12",
+      "event": "US PPI (day unconfirmed, expected this week)",
+      "tag": "data"
+    }
+  ],
+  "deep_dive": {
+    "topic": "October CPI Tests a December Fed Hike",
+    "headline": "A Hike Priced at 80%: Today's CPI Decides Whether the Fed Tightens Into an AI Wobble",
+    "standfirst": "After a payrolls beat of 165,000 against 65,000 expected, markets treat a December quarter-point hike as nearly settled, so today's October CPI is a test of conviction as much as of inflation.",
+    "body": "The hook is today's release of October consumer prices. The consensus I could find expects headline CPI up 0.3% on the month and core up 0.2%. I could not retrieve the actual print before writing, so everything below is framed around the setup, not the result.\n\nThe setup is unusual. Last Friday's jobs report showed 165,000 new jobs against expectations of roughly 65,000. Fed funds futures moved sharply. Depending on the source and the day, the probability of a December quarter-point hike is now about 77% to 84%, up from roughly 73% to 74% a week earlier. A hike would lift the target range from 3.75%-4.00% to 4.00%-4.25%. The sources differ on the exact figure, and the numbers come mostly from secondary trading and news sites, so treat them as a range.\n\nThe backdrop explains why this matters. The Fed began raising rates in early October into a labor market many read as stalling, and that move was contentious. One strong payrolls number does not settle the dispute, but it hands the hawks a talking point. Hawks argue that labor demand is firmer than the earlier softness suggested. They add that an energy shock tied to the Iran conflict has kept price pressures live even though Brent has retreated to around $91 a barrel from the $113 peak. Cheaper oil should help October-to-November headline readings, but core prices are what officials say they watch.\n\nThere are three broad readings of the situation.\n\nThe first is the hawkish one. Inflation expectations are fragile after a year of fuel-price shocks. A Fed that stops after one move risks looking as though it blinked, and the bond market would then do the tightening for it. On this view a firm payrolls figure removes the last excuse for patience, and a core print of 0.3% or more would make December close to a lock.\n\nThe second is the cautious one. One month of payrolls is noisy, and previous prints in this cycle have been revised. A hike also lands as equities are fragile. Chip and AI stocks sold off hard after the midterms on fears about data-center regulation, energy use and building costs, then bounced on Monday, though Nvidia lagged the rally. Higher rates raise the discount rate on long-duration growth stocks and the cost of financing the data-center build-out. If core CPI comes in at 0.2% or lower, doves can argue that the case for a second hike is thin, and that the market is overpricing a Fed that has already done its tightening.\n\nThe third reading is that this is partly a supply story. Energy and tariffs add to prices without reflecting overheated demand, and hiking against them risks damaging employment for little gain. Others reply that the distinction matters less when expectations are drifting, and that the central bank cannot wait to see.\n\nThere is also a second-order effect: the dollar and gold. Hot data supports the dollar and pressures non-yielding assets. A soft print could produce the reverse, with equities rallying on the hope that the cycle is nearly over. Because pricing is already near 80%, the asymmetry favors a larger reaction to a soft number than to a hot one. Markets have little room left to price additional hawkishness.\n\nWhat to watch next: the November jobs report in early December, the November CPI, and the December FOMC meeting, where the new rate projections will reveal whether officials see one hike or a sequence. Between now and then, watch Fed speakers for hints of a split, the path of crude prices, and whether AI-linked equities and credit remain steady enough that financial conditions do not tighten by themselves. If they do, the Fed may find the market has done part of its work, and the committee's calculus on December would change.",
+    "why_today": "October CPI is released today, and with a December hike priced near 80% after last week's strong payrolls, it is the key data point before the Fed's December meeting.",
+    "sources": [
+      {
+        "name": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/economy/policy/articles/odds-december-rate-hike-jump-173301658.html"
+      },
+      {
+        "name": "NBC News",
+        "url": "https://www.nbcnews.com/business/economy/october-cpi-inflation-report-gas-prices-rcna608386"
+      },
+      {
+        "name": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-9-dow-sp-500-nasdaq-nvidia-090535419.html"
+      },
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/11/08/stock-market-today-live-updates.html"
+      },
+      {
+        "name": "Avalon Capital Research",
+        "url": "https://avaloncapitalresearch.substack.com/p/weekly-playbook-fed-funds-futures-0c5"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "Nvidia is selling the top, not stepping back",
+      "subtitle": "Speculative: the reported pullback from OpenAI and Anthropic looks like a valuation exit dressed up as discipline.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Markets"
+      ],
+      "content": "Speculative. The reported Jensen Huang hint that Nvidia will stop investing in OpenAI and Anthropic is being read as a sign of confidence in the labs. I think it is the opposite. A company that has to rent back its own chips from Lambda for $1.5 billion is not short of demand. It is short of cash it would rather not tie up in private paper. If the labs are heading to IPOs, Nvidia gets to sell its stakes at public-market marks and leave the next buyer holding the compute bill. The $100 billion pact targeting a first gigawatt on Vera Rubin by late 2026 would then be a commitment the labs carry and Nvidia has already monetized.\n\nThe Markets angle makes this sharper. The briefing's secondary sources point to hike risk rather than cuts, and yields near multi-decade highs are the wrong backdrop for a mega-IPO. If either lab tries to list into a hawkish Fed, the valuation gap between private rounds and public comps becomes the story. Watch whether Nvidia's exit timing lines up with any S-1 filing or secondary-sale chatter. If it does, the 'end of investing' is a liquidity event, not a vote of confidence.\n\nThe caveat is that every claim here rests on undated secondary reports I could not confirm from a primary source. If Nvidia issues a clean clarification that it remains a long-term investor, this take is dead on arrival and I would say so."
+    },
+    {
+      "title": "The AI bottleneck is the grid, and the chip rent-back proves it",
+      "subtitle": "Speculative: power, not silicon, is what is making Nvidia rent its own chips back and what will decide the gigawatt deadline.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Energy",
+        "US Policy & Power"
+      ],
+      "content": "Speculative. If Nvidia is renting back its own chips from Lambda, the obvious read is that demand exceeds supply. The less obvious read is that the chips exist but the places to run them do not. A gigawatt-scale Vera Rubin deployment by late 2026 is a power problem before it is a semiconductor problem. Gigawatt sites need interconnection approvals, transformers, and firm baseload, and none of those move on a quarterly chip-roadmap timeline. My bet is that the 'first gigawatt' target slips, and that the slip gets blamed on supply chains when the real cause is grid queues.\n\nThis is where US Policy & Power comes in. Any federal or state move to fast-track large-load interconnection, or to let data centers self-supply with gas or nuclear, becomes a de facto subsidy for the labs' compute plans. Whoever controls permitting decides which AI buildout happens on schedule. Energy utilities and gas-turbine makers are the quiet winners here, and they are not in the AI conversation at all.\n\nThe briefing has no Energy news today, so this is an inference from the Frontier Tech item, not a reported fact. Watch for utility large-load tariff filings and for any update on the Nvidia-OpenAI gigawatt milestone. A missed milestone with no chip shortage cited would confirm the thesis."
+    },
+    {
+      "title": "Anthropic's chip team is a hedge against Washington",
+      "subtitle": "Speculative: in-house silicon is less about performance than about insulating a frontier lab from export controls and a Nvidia that may be heading for the exit.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Geopolitics",
+        "AI Regulation & Governance"
+      ],
+      "content": "Speculative. A secondary blog says Anthropic confirmed in August that it is building an in-house chip design team. I could not verify that, but take it as a premise. The usual explanation is cost per token. I think the better explanation is leverage. A lab that depends on one supplier for its compute is exposed in three ways: pricing, allocation, and export policy. Nvidia's reported step back from investing removes one form of entanglement, and it leaves Anthropic needing either a new strategic partner or its own silicon. Custom chips also give a lab a bargaining chip with any government that wants to tie compute access to licensing or reporting rules.\n\nThe Geopolitics and AI Regulation angle is that export controls and any future compute-reporting regime are easier to live with if you own design IP and can point to domestic fabrication partners. That is not a policy the briefing reports, so I am making a claim about incentives, not about any announced decision. The risk is that custom silicon takes three to five years to matter, and the labs need compute now, so the hedge only pays off if the policy environment tightens after the chips arrive.\n\nWatch for any Anthropic hiring announcements tied to a fab partner, and for export-control rule changes that single out accelerator design rather than just finished chips. A rule of that kind would make this thesis look prescient."
+    },
+    {
+      "title": "A hawkish Fed closes the IPO window the labs are counting on",
+      "subtitle": "Speculative: the hike-risk backdrop and the labs' IPO plans are on a collision course, and Digital Finance is where the squeeze shows up first.",
+      "categories": [
+        "Markets",
+        "Digital Finance",
+        "Frontier Tech / AI"
+      ],
+      "content": "Speculative. The briefing's rate picture is murky, and I could not confirm it against Reuters or the Financial Times. Still, the secondary read is consistent: a soft jobs report cooled hike bets, yields stayed near multi-decade highs, and the next FOMC is reportedly December 8-9. If the October CPI print, due around now but not confirmed, comes in hot, the market will price a hike and the long end will move with it. That is the worst possible setup for two frontier labs that need a public-market window to fund compute at the scale the Nvidia gigawatt plan implies.\n\nDigital Finance is where the squeeze shows up first. Private credit and data-center lenders have been underwriting AI capex on the assumption that the equity exit exists. If the IPO window narrows, those lenders reprice before the labs do, and you see it in spreads on AI-linked debt, not in headlines about model launches. I expect that repricing to show up in the next two weeks, before any lab files publicly.\n\nThe bold claim: the labs' IPO plans will be delayed by rates before the end of the year, and Nvidia's reported pullback will look like the first move in a sequence rather than an isolated decision. If the CPI print is soft and yields fall, this take is wrong, and I would say so."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Apple Earnings, Memory Problems, The Hardware Company Regression",
+      "url": "https://stratechery.com/2026/apple-earnings-memory-problems-the-hardware-company-regression/",
+      "summary": "Thompson argues Apple's earnings show its hardware business doing better than ever despite memory supply challenges, and asks whether the software story helps or hurts. He also wrote that Google's earnings miss resembles Facebook's, and that Google is being more aggressive on agents than it gets credit for.",
+      "connection": "Memory constraints tie into the AI hardware and custom-chip supply story behind Nvidia's pullback from lab investments. Google's agent push connects to the Frontier Tech / AI theme."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Weekly Dose of Optimism #217",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-217",
+      "summary": "A roundup of positive tech and science news: Anduril BlueChip, OpenAI Science, Anthropic Drugs, robot brain surgery, Readwise Books, Reta, Neuralink VOICE and extra doses.",
+      "connection": "The AI-for-science items (OpenAI, Anthropic) and Anduril's defense-tech work connect to the Frontier Tech and Defense & Security themes."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "How Figma's PMs actually use AI every day | Ezra Mechaber (PM, Figma)",
+      "url": "https://www.lennysnewsletter.com/p/how-figmas-pms-actually-use-ai-every",
+      "summary": "Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint.",
+      "connection": "A concrete example of AI agents changing knowledge work, relevant to the Labor & Workforce and Applied Tech themes."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

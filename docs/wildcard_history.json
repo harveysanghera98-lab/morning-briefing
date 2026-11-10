@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-06-26",
-    "topic": "Federal vs. State AI Governance: Congress's Preemption Gambit"
-  },
-  {
     "date": "2026-06-29",
     "topic": "China's Open-Source AI Blitz for the Global South"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-11-06",
     "topic": "Midterms Trigger AI Chip Crash on Data-Center Fears"
+  },
+  {
+    "date": "2026-11-10",
+    "topic": "October CPI Tests a December Fed Hike"
   }
 ]
