@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-11",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -45,46 +45,46 @@
       "name": "Byrne Hobart",
       "handle": "@byrnehobart",
       "source": "newsletter",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "Longreads + Open Thread",
+      "url": "https://www.antoinebuteau.com/daily-digest-2026-11-07/",
+      "summary": "A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.",
+      "connection": "Loosely related to the AI compute and valuations theme and to market structure. The link is indirect."
     },
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
-      "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Sold 25% of chip puts, still very bearish",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.",
+      "connection": "Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom."
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "Apple Earnings, Memory Problems, The Hardware Company Regression",
-      "url": "https://stratechery.com/2026/apple-earnings-memory-problems-the-hardware-company-regression/",
-      "summary": "Thompson argues Apple's earnings show its hardware business doing better than ever despite memory supply challenges, and asks whether the software story helps or hurts. He also wrote that Google's earnings miss resembles Facebook's, and that Google is being more aggressive on agents than it gets credit for.",
-      "connection": "Memory constraints tie into the AI hardware and custom-chip supply story behind Nvidia's pullback from lab investments. Google's agent push connects to the Frontier Tech / AI theme."
+      "latest_title": "The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley",
+      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
+      "summary": "Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.",
+      "connection": "Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "signal": "light",
+      "latest_title": "Lightcone: How To Build The Future (with Amjad Masad)",
+      "url": "https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad",
+      "summary": "Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.",
+      "connection": "Loosely tied to the AI-built software and startup theme. The link is weak."
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "newsletter",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -95,16 +95,16 @@
       "name": "Packy McCormick",
       "handle": "@packym",
       "source": "substack",
-      "signal": "strong",
-      "latest_title": "Weekly Dose of Optimism #217",
-      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-217",
-      "summary": "A roundup of positive tech and science news: Anduril BlueChip, OpenAI Science, Anthropic Drugs, robot brain surgery, Readwise Books, Reta, Neuralink VOICE and extra doses.",
-      "connection": "The AI-for-science items (OpenAI, Anthropic) and Anduril's defense-tech work connect to the Frontier Tech and Defense & Security themes."
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #218",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-218",
+      "summary": "The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.",
+      "connection": "Applied tech and industry. It is a counterweight to the market-selloff and political news."
     },
     {
       "name": "CJ Gustafson",
       "handle": "@cjgus",
-      "source": "newsletter",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -115,11 +115,11 @@
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "newsletter",
-      "signal": "light",
-      "latest_title": "How Figma's PMs actually use AI every day | Ezra Mechaber (PM, Figma)",
-      "url": "https://www.lennysnewsletter.com/p/how-figmas-pms-actually-use-ai-every",
-      "summary": "Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint.",
-      "connection": "A concrete example of AI agents changing knowledge work, relevant to the Labor & Workforce and Applied Tech themes."
+      "signal": "strong",
+      "latest_title": "State of the tech job market: late 2026",
+      "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
+      "summary": "Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.",
+      "connection": "Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI."
     },
     {
       "name": "Andrej Karpathy",

@@ -1,0 +1,348 @@
+{
+  "top_stories": [
+    {
+      "priority": "high",
+      "headline": "Oil slides as Trump keeps Iran status quo; Fed hike bets build",
+      "one_liner": "Energy and rates are the main market drivers, and the Iran war links them.",
+      "detail": "Aggregated market coverage says crude fell on November 10 after Trump confirmed he would keep the status quo on Iran. A day earlier the dollar had slipped as inflation worries eased when he softened his stance on Iran attacks. Gold reportedly fell on November 10 as the dollar rose on expectations of a Fed rate hike after CPI data.\n\nOn November 4 Brent was near $102.55 and WTI near $95.55. The 10-year Treasury yield was about 4.93%, and sources disagree on exact yield levels. Another report says central banks are raising rates and warning of more tightening as energy prices surge. Separately, a Bloomberg wrap carried by Swissinfo said bond-yield spikes over inflation and government borrowing prompted Treasury intervention on long-dated borrowing costs.\n\nCaveat: this briefing could not reach Reuters, FT, WSJ or AP through the search tool today. These figures come from secondary aggregators and should be checked against primary sources. Watch for oil's reaction to any Iran policy change, and for Fed pricing after the CPI data.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "RTTNews",
+          "url": "https://www.rttnews.com/3709503/markets-react-to-democrats-midterm-performance.aspx"
+        },
+        {
+          "name": "Swissinfo (Bloomberg markets wrap)",
+          "url": "https://www.swissinfo.ch/eng/stocks-and-bonds-rise-as-oil-ends-run-of-gains%3a-markets-wrap/91930924"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Democrats win House and Senate, reshaping Washington",
+      "one_liner": "Divided government changes the outlook for spending, oversight and tech and AI policy.",
+      "detail": "RTTNews reported on November 4 that Democrats swept both the Senate and the House in the midterms, and markets were still assessing the impact. U.S. equity futures rose that morning and the dollar slipped.\n\nA separate item referenced optimism about resolving a possible U.S. government shutdown, but that source was unreliable and I could not confirm it. Also unconfirmed today: the Supreme Court ruled 5-4 in June that Trump could not remove Fed governor Lisa Cook, and Kevin Warsh has reportedly been advancing toward a Fed chair nomination.\n\nWatch for the incoming Congress's priorities on oversight, appropriations and AI legislation, and for the Fed leadership transition.",
+      "sector": "US Policy & Power",
+      "sources": [
+        {
+          "name": "RTTNews",
+          "url": "https://www.rttnews.com/3709503/markets-react-to-democrats-midterm-performance.aspx"
+        },
+        {
+          "name": "Real Estate News",
+          "url": "https://www.realestatenews.com/2026/06/29/fed-gov-fired-by-trump-can-stay-for-now-scotus-says"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "AI compute race: custom chips and mega-valuations",
+      "one_liner": "Custom silicon from OpenAI and others is a growing challenge to Nvidia's dominance.",
+      "detail": "Earlier reporting, including the FT, says OpenAI is deploying Jalape\u00f1o, its first custom inference chip co-designed with Broadcom. Broadcom's CEO reportedly said it matches Nvidia Blackwell and Google TPU parts. OpenAI's performance claims are its own.\n\nOther reports say Anthropic secured large compute commitments ahead of an IPO, with talk of a roughly $1.2-1.3 trillion valuation, and that Nvidia is reportedly nearing a Hugging Face acquisition. These come from weaker aggregator sources and need confirmation.\n\nThe tool returned no verified news from the last 24 hours on AI. Watch Nvidia's upcoming earnings and any IPO filing news.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Motley Fool",
+          "url": "https://www.fool.com/investing/2026/07/14/openai-and-anthropic-are-developing-their-own-cust/"
+        },
+        {
+          "name": "Ground News (FT report)",
+          "url": "https://groundnews.lakegeneva.lib.wi.us/article/openai-to-launch-its-first-ai-chip-in-2026-with-broadcom-ft-reports_921e36"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "No verified overnight news. Background: OpenAI's Broadcom-built custom chip is rolling out, and Anthropic IPO and compute-deal reports are circulating, all unconfirmed by primary outlets."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Democrats reportedly won both chambers in the midterms. Fed independence and the Fed chair succession remain live issues after the Supreme Court's Cook ruling."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "The Iran war remains the central driver, with Trump signaling no change in policy. Reports also point to strain on US munitions and continued Chinese drills near Taiwan. No dated confirmation for today."
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "Crude fell on November 10 on Iran policy continuity, and gold slipped on Fed hike expectations after CPI. Yields are elevated near 4.7-4.9% on the 10-year, per conflicting sources."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "Bitcoin traded around $76-78K in early November. One report of $105K is unreliable."
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Brent was above $100 in early November and has been volatile on Iran headlines. Oil fell on November 10."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Wed 11",
+      "event": "Veterans Day: US stock markets open, bond market closed, federal offices closed",
+      "tag": "other"
+    },
+    {
+      "day": "Thu 12",
+      "event": "Typical timing for US PPI and weekly jobless claims; confirm exact schedule",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 12",
+      "event": "Fed speakers likely, as markets weigh rate-hike expectations after CPI",
+      "tag": "policy"
+    },
+    {
+      "day": "Fri 13",
+      "event": "Typical timing for US retail sales or University of Michigan sentiment; confirm schedule",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 12",
+      "event": "Ongoing Iran policy headlines to watch for oil and defense impact",
+      "tag": "critical"
+    },
+    {
+      "day": "Fri 13",
+      "event": "Late retail and tech earnings season continues; Nvidia is expected to report the following week",
+      "tag": "earnings"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "The Iran Oil Shock Is a Rates Story in Disguise",
+      "subtitle": "Trump's Iran standstill isn't calming markets. It's handing the Fed a reason to hike.",
+      "categories": [
+        "Markets",
+        "Energy",
+        "Geopolitics"
+      ],
+      "content": "Speculative: the market is reading the November 10 crude decline as relief. It's the wrong read. Oil fell because Trump said he'd keep the Iran status quo, which means no de-escalation and no supply recovery. A stalemate that keeps Brent above $100 is exactly the inflation impulse that pushes the Fed toward another hike. Gold falling as the dollar rose on hike bets is the tell. The market has decided the Fed matters more than the war.\n\nThe Treasury intervention on long-dated borrowing costs, if the Bloomberg wrap is accurate, is the more important signal. A government leaning on the long end of the curve during an oil shock is admitting that its own deficit is now part of the inflation problem. My bold call: the 10-year near 4.9% is not the ceiling. The next leg is a bear steepener, and the first casualty is not equities but the Treasury's ability to pretend the Iran war is a short-term cost.\n\nWatch two things. First, whether Fed pricing after CPI moves toward a hike rather than a pause. Second, whether crude rallies again on any Iran headline. If oil ignores de-escalation talk, the stalemate is priced in, and the rates shock becomes the main transmission channel for the war into the US economy."
+    },
+    {
+      "title": "A Democratic Congress Turns AI Compute Into an Oversight Target",
+      "subtitle": "Divided government means the fight moves from legislation to subpoenas, appropriations and power bills.",
+      "categories": [
+        "US Policy & Power",
+        "Frontier Tech / AI"
+      ],
+      "content": "Speculative: with Democrats reportedly winning both chambers, the White House stays Republican and divided government is the baseline. Federal AI legislation is unlikely to pass in a form either side fully wants. So the real action shifts to oversight, appropriations and the cost of electricity. My bold prediction is that the first serious congressional target is not a model developer's safety policy. It is the compute financing: custom chips, multi-hundred-billion-dollar data center commitments, and the pre-IPO compute deals that Anthropic and OpenAI are reportedly signing.\n\nThe mechanism is simple. Data center demand raises local power prices, power prices are a midterm issue, and a Democratic House gets subpoena power over the companies and their financing partners. OpenAI's Broadcom-built inference chip becomes a Congressional exhibit about who subsidizes the grid. Nvidia gets asked about its supply chain and any Hugging Face deal, if real, gets reviewed as a concentration issue.\n\nWhat would falsify this: a bipartisan AI preemption bill passing with Democratic votes, or Congress ignoring energy costs entirely. Both are possible. I'd bet on the subpoena path, because it's the one that requires no 60-vote Senate."
+    },
+    {
+      "title": "Gold Failed the Fed Test. Bitcoin Is Next.",
+      "subtitle": "If the Fed's independence is under threat and neither gold nor bitcoin rallies, the 'hedge' narrative is dead.",
+      "categories": [
+        "Markets",
+        "US Policy & Power",
+        "Digital Finance"
+      ],
+      "content": "Speculative: the standard story is that threats to Fed independence drive money into gold and bitcoin. The current tape doesn't support it. Gold slipped on expectations of a Fed hike after CPI, and bitcoin sits around $76-78K with no sign of a monetary-independence bid. The unverified reports that the Supreme Court ruled 5-4 that Trump could not remove Fed governor Lisa Cook, and that Kevin Warsh is advancing toward the chair, are exactly the kind of news that should have produced a flight to hard assets. It didn't. Either the market doesn't believe the threat is real, or it believes the Fed will still hike and independence is a second-order issue.\n\nMy sharp take: bitcoin is being traded as a levered liquidity asset, not digital gold. It rises when real rates fall and falls when the Fed tightens, which is the opposite of the hedge thesis. If a Warsh-led Fed is seen as politically pliable, the reaction should show up first in the long end and in the dollar, not in crypto. A flat bitcoin during a Fed-independence scare is the clearest evidence that the asset class is still a risk trade.\n\nWatch for a divergence test: if long yields rise while gold and bitcoin both fall, the market is pricing fiscal dominance as a credit problem, not a monetary one. That would confirm that the hedge narrative only works when the hedge is needed by someone with capital to move."
+    },
+    {
+      "title": "Taiwan Risk Is Why Nvidia's Moat Is Already Cracking",
+      "subtitle": "Custom inference chips and strained munitions budgets point to a Pacific shock that hits the GPU monopoly first.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Geopolitics",
+        "Defense & Security"
+      ],
+      "content": "Speculative: most analysts frame the threat to Nvidia as competition from custom silicon. The bigger risk is geography. OpenAI's Jalape\u00f1o inference chip, co-designed with Broadcom, is reportedly rolling out, and Broadcom's claim that it matches Blackwell and TPU parts is the self-interested kind of claim you discount. Still, the strategic logic is clear: hyperscalers and labs want inference capacity that doesn't depend on a single foundry chain running through Taiwan. Continued Chinese drills near Taiwan make that dependence more expensive to hold, and the cost of holding it rises every time the drills make headlines.\n\nAdd the reported strain on US munitions from the Iran war. A Washington that is burning through interceptors and precision weapons has less political bandwidth and budget for a second theater. That makes deterrence in the Pacific more fragile in the minds of planners, and it pushes the AI industry to diversify supply faster than its earnings call admit. My bold call: the first real hit to Nvidia's valuation won't be a benchmark loss to Broadcom. It will be a Taiwan-related supply scare that forces buyers to pay up for alternative inference silicon.\n\nWatch Nvidia's next earnings guidance for any mention of supply concentration or sovereign-compute demand, and watch whether Broadcom's custom-chip backlog is discussed as a hedge rather than a substitute. Either would confirm the thesis."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "Longreads + Open Thread",
+      "url": "https://www.antoinebuteau.com/daily-digest-2026-11-07/",
+      "summary": "A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.",
+      "connection": "Loosely related to the AI compute and valuations theme and to market structure. The link is indirect."
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Sold 25% of chip puts, still very bearish",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.",
+      "connection": "Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley",
+      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
+      "summary": "Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.",
+      "connection": "Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Lightcone: How To Build The Future (with Amjad Masad)",
+      "url": "https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad",
+      "summary": "Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.",
+      "connection": "Loosely tied to the AI-built software and startup theme. The link is weak."
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #218",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-218",
+      "summary": "The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.",
+      "connection": "Applied tech and industry. It is a counterweight to the market-selloff and political news."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "State of the tech job market: late 2026",
+      "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
+      "summary": "Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.",
+      "connection": "Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

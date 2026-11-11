@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Wednesday, November 11, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Wednesday, November 11, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;0 URGENT</span>
+    <span class="status-count">6 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Oil slides as Trump keeps Iran status quo; Fed hike bets build</h3>
+          <div class="one-liner">Energy and rates are the main market drivers, and the Iran war links them.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Aggregated market coverage says crude fell on November 10 after Trump confirmed he would keep the status quo on Iran. A day earlier the dollar had slipped as inflation worries eased when he softened his stance on Iran attacks. Gold reportedly fell on November 10 as the dollar rose on expectations of a Fed rate hike after CPI data.</p>
+<p>On November 4 Brent was near $102.55 and WTI near $95.55. The 10-year Treasury yield was about 4.93%, and sources disagree on exact yield levels. Another report says central banks are raising rates and warning of more tightening as energy prices surge. Separately, a Bloomberg wrap carried by Swissinfo said bond-yield spikes over inflation and government borrowing prompted Treasury intervention on long-dated borrowing costs.</p>
+<p>Caveat: this briefing could not reach Reuters, FT, WSJ or AP through the search tool today. These figures come from secondary aggregators and should be checked against primary sources. Watch for oil's reaction to any Iran policy change, and for Fed pricing after the CPI data.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.rttnews.com/3709503/markets-react-to-democrats-midterm-performance.aspx" target="_blank" rel="noopener">RTTNews</a><span class="source-sep">·</span><a class="source-link" href="https://www.swissinfo.ch/eng/stocks-and-bonds-rise-as-oil-ends-run-of-gains%3a-markets-wrap/91930924" target="_blank" rel="noopener">Swissinfo (Bloomberg markets wrap)</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">US Policy & Power</span>
+          </div>
+          <h3>Democrats win House and Senate, reshaping Washington</h3>
+          <div class="one-liner">Divided government changes the outlook for spending, oversight and tech and AI policy.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>RTTNews reported on November 4 that Democrats swept both the Senate and the House in the midterms, and markets were still assessing the impact. U.S. equity futures rose that morning and the dollar slipped.</p>
+<p>A separate item referenced optimism about resolving a possible U.S. government shutdown, but that source was unreliable and I could not confirm it. Also unconfirmed today: the Supreme Court ruled 5-4 in June that Trump could not remove Fed governor Lisa Cook, and Kevin Warsh has reportedly been advancing toward a Fed chair nomination.</p>
+<p>Watch for the incoming Congress's priorities on oversight, appropriations and AI legislation, and for the Fed leadership transition.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.rttnews.com/3709503/markets-react-to-democrats-midterm-performance.aspx" target="_blank" rel="noopener">RTTNews</a><span class="source-sep">·</span><a class="source-link" href="https://www.realestatenews.com/2026/06/29/fed-gov-fired-by-trump-can-stay-for-now-scotus-says" target="_blank" rel="noopener">Real Estate News</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>AI compute race: custom chips and mega-valuations</h3>
+          <div class="one-liner">Custom silicon from OpenAI and others is a growing challenge to Nvidia's dominance.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Earlier reporting, including the FT, says OpenAI is deploying Jalapeño, its first custom inference chip co-designed with Broadcom. Broadcom's CEO reportedly said it matches Nvidia Blackwell and Google TPU parts. OpenAI's performance claims are its own.</p>
+<p>Other reports say Anthropic secured large compute commitments ahead of an IPO, with talk of a roughly $1.2-1.3 trillion valuation, and that Nvidia is reportedly nearing a Hugging Face acquisition. These come from weaker aggregator sources and need confirmation.</p>
+<p>The tool returned no verified news from the last 24 hours on AI. Watch Nvidia's upcoming earnings and any IPO filing news.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.fool.com/investing/2026/07/14/openai-and-anthropic-are-developing-their-own-cust/" target="_blank" rel="noopener">Motley Fool</a><span class="source-sep">·</span><a class="source-link" href="https://groundnews.lakegeneva.lib.wi.us/article/openai-to-launch-its-first-ai-chip-in-2026-with-broadcom-ft-reports_921e36" target="_blank" rel="noopener">Ground News (FT report)</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">No verified overnight news. Background: OpenAI's Broadcom-built custom chip is rolling out, and Anthropic IPO and compute-deal reports are circulating, all unconfirmed by primary outlets.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">Democrats reportedly won both chambers in the midterms. Fed independence and the Fed chair succession remain live issues after the Supreme Court's Cook ruling.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The Iran war remains the central driver, with Trump signaling no change in policy. Reports also point to strain on US munitions and continued Chinese drills near Taiwan. No dated confirmation for today.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">China</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">Crude fell on November 10 on Iran policy continuity, and gold slipped on Fed hike expectations after CPI. Yields are elevated near 4.7-4.9% on the 10-year, per conflicting sources.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      <div class="sector-summary">Bitcoin traded around $76-78K in early November. One report of $105K is unreliable.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Brent was above $100 in early November and has been volatile on Iran headlines. Oil fell on November 10.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Wed 11</span>
+      <span class="week-event">Veterans Day: US stock markets open, bond market closed, federal offices closed</span>
+      <span class="week-tag" style="color:#fff;background:#6B7280">other</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">Typical timing for US PPI and weekly jobless claims; confirm exact schedule</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">Fed speakers likely, as markets weigh rate-hike expectations after CPI</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 13</span>
+      <span class="week-event">Typical timing for US retail sales or University of Michigan sentiment; confirm schedule</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">Ongoing Iran policy headlines to watch for oil and defense impact</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 13</span>
+      <span class="week-event">Late retail and tech earnings season continues; Nvidia is expected to report the following week</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Iran Oil Shock Is a Rates Story in Disguise</h3>
+          <div class="subtitle">Trump's Iran standstill isn't calming markets. It's handing the Fed a reason to hike.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Markets</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Geopolitics</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the market is reading the November 10 crude decline as relief. It's the wrong read. Oil fell because Trump said he'd keep the Iran status quo, which means no de-escalation and no supply recovery. A stalemate that keeps Brent above $100 is exactly the inflation impulse that pushes the Fed toward another hike. Gold falling as the dollar rose on hike bets is the tell. The market has decided the Fed matters more than the war.</p>
+<p>The Treasury intervention on long-dated borrowing costs, if the Bloomberg wrap is accurate, is the more important signal. A government leaning on the long end of the curve during an oil shock is admitting that its own deficit is now part of the inflation problem. My bold call: the 10-year near 4.9% is not the ceiling. The next leg is a bear steepener, and the first casualty is not equities but the Treasury's ability to pretend the Iran war is a short-term cost.</p>
+<p>Watch two things. First, whether Fed pricing after CPI moves toward a hike rather than a pause. Second, whether crude rallies again on any Iran headline. If oil ignores de-escalation talk, the stalemate is priced in, and the rates shock becomes the main transmission channel for the war into the US economy.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>A Democratic Congress Turns AI Compute Into an Oversight Target</h3>
+          <div class="subtitle">Divided government means the fight moves from legislation to subpoenas, appropriations and power bills.</div>
+          <div class="pattern-cats"><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: with Democrats reportedly winning both chambers, the White House stays Republican and divided government is the baseline. Federal AI legislation is unlikely to pass in a form either side fully wants. So the real action shifts to oversight, appropriations and the cost of electricity. My bold prediction is that the first serious congressional target is not a model developer's safety policy. It is the compute financing: custom chips, multi-hundred-billion-dollar data center commitments, and the pre-IPO compute deals that Anthropic and OpenAI are reportedly signing.</p>
+<p>The mechanism is simple. Data center demand raises local power prices, power prices are a midterm issue, and a Democratic House gets subpoena power over the companies and their financing partners. OpenAI's Broadcom-built inference chip becomes a Congressional exhibit about who subsidizes the grid. Nvidia gets asked about its supply chain and any Hugging Face deal, if real, gets reviewed as a concentration issue.</p>
+<p>What would falsify this: a bipartisan AI preemption bill passing with Democratic votes, or Congress ignoring energy costs entirely. Both are possible. I'd bet on the subpoena path, because it's the one that requires no 60-vote Senate.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Gold Failed the Fed Test. Bitcoin Is Next.</h3>
+          <div class="subtitle">If the Fed's independence is under threat and neither gold nor bitcoin rallies, the 'hedge' narrative is dead.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Digital Finance</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the standard story is that threats to Fed independence drive money into gold and bitcoin. The current tape doesn't support it. Gold slipped on expectations of a Fed hike after CPI, and bitcoin sits around $76-78K with no sign of a monetary-independence bid. The unverified reports that the Supreme Court ruled 5-4 that Trump could not remove Fed governor Lisa Cook, and that Kevin Warsh is advancing toward the chair, are exactly the kind of news that should have produced a flight to hard assets. It didn't. Either the market doesn't believe the threat is real, or it believes the Fed will still hike and independence is a second-order issue.</p>
+<p>My sharp take: bitcoin is being traded as a levered liquidity asset, not digital gold. It rises when real rates fall and falls when the Fed tightens, which is the opposite of the hedge thesis. If a Warsh-led Fed is seen as politically pliable, the reaction should show up first in the long end and in the dollar, not in crypto. A flat bitcoin during a Fed-independence scare is the clearest evidence that the asset class is still a risk trade.</p>
+<p>Watch for a divergence test: if long yields rise while gold and bitcoin both fall, the market is pricing fiscal dominance as a credit problem, not a monetary one. That would confirm that the hedge narrative only works when the hedge is needed by someone with capital to move.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Taiwan Risk Is Why Nvidia's Moat Is Already Cracking</h3>
+          <div class="subtitle">Custom inference chips and strained munitions budgets point to a Pacific shock that hits the GPU monopoly first.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: most analysts frame the threat to Nvidia as competition from custom silicon. The bigger risk is geography. OpenAI's Jalapeño inference chip, co-designed with Broadcom, is reportedly rolling out, and Broadcom's claim that it matches Blackwell and TPU parts is the self-interested kind of claim you discount. Still, the strategic logic is clear: hyperscalers and labs want inference capacity that doesn't depend on a single foundry chain running through Taiwan. Continued Chinese drills near Taiwan make that dependence more expensive to hold, and the cost of holding it rises every time the drills make headlines.</p>
+<p>Add the reported strain on US munitions from the Iran war. A Washington that is burning through interceptors and precision weapons has less political bandwidth and budget for a second theater. That makes deterrence in the Pacific more fragile in the minds of planners, and it pushes the AI industry to diversify supply faster than its earnings call admit. My bold call: the first real hit to Nvidia's valuation won't be a benchmark loss to Broadcom. It will be a Taiwan-related supply scare that forces buyers to pay up for alternative inference silicon.</p>
+<p>Watch Nvidia's next earnings guidance for any mention of supply concentration or sovereign-compute demand, and watch whether Broadcom's custom-chip backlog is discussed as a hedge rather than a substitute. Either would confirm the thesis.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.antoinebuteau.com/daily-digest-2026-11-07/" target="_blank" rel="noopener">Longreads + Open Thread</a><div class="sig-summary">A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.</div><div class="sig-connection">↳ Loosely related to the AI compute and valuations theme and to market structure. The link is indirect.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/" target="_blank" rel="noopener">Sold 25% of chip puts, still very bearish</a><div class="sig-summary">After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.</div><div class="sig-connection">↳ Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/" target="_blank" rel="noopener">The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley</a><div class="sig-summary">Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.</div><div class="sig-connection">↳ Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad" target="_blank" rel="noopener">Lightcone: How To Build The Future (with Amjad Masad)</a><div class="sig-summary">Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.</div><div class="sig-connection">↳ Loosely tied to the AI-built software and startup theme. The link is weak.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-218" target="_blank" rel="noopener">Weekly Dose of Optimism #218</a><div class="sig-summary">The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.</div><div class="sig-connection">↳ Applied tech and industry. It is a counterweight to the market-selloff and political news.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late" target="_blank" rel="noopener">State of the tech job market: late 2026</a><div class="sig-summary">Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.</div><div class="sig-connection">↳ Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 10 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
