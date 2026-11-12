@@ -1,0 +1,400 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Nvidia board reportedly weighing replacements for CEO Jensen Huang",
+      "one_liner": "Bloomberg-sourced reports say Nvidia's board has engaged an outside firm to identify potential successors, a leadership shock for the company at the center of the AI trade.",
+      "detail": "Nvidia shares slid on Wednesday after reports of a second affair involving CEO Jensen Huang and a possible removal. Bloomberg reported that the board has started working with an outside firm on potential replacements. Nvidia has not been confirmed in the search results to have commented, and the reports rest on anonymous sourcing, so treat the details as unverified.\n\nThe market impact was muted. Tech rebounded despite the 'Nvidia CEO crisis' (Stocktwits framing), and the Nasdaq Composite rose about 1.6% on the day. Investors seem to be separating the company-specific governance risk from the broader AI-capex story.\n\nWhy it matters: Nvidia is the keystone of GPU supply and the AI compute buildout. A leadership change would raise questions about product roadmap execution (Vera Rubin is just starting to ship), customer relationships with hyperscalers and OpenAI, and the company's China export strategy. It also lands as OpenAI's in-house Jalapeno inference chip and other custom silicon increase pressure on Nvidia.\n\nWatch next: any formal board statement or 8-K, Huang's response, further Bloomberg or WSJ reporting, and how the stock trades once the initial reaction fades.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-11-dow-sp-500-nasdaq-nvidia-treasurys-veterans-day-140638547.html"
+        },
+        {
+          "name": "Stocktwits",
+          "url": "https://stocktwits.com/news-articles/markets/equity/dow-s-and-p-500-nasdaq-futures-mixed-as-tech-rebounds-despite-nvidia-ceo-crisis-amd-csco-amat-in-focus/cNGzKh7R99W"
+        }
+      ]
+    },
+    {
+      "priority": "urgent",
+      "headline": "Hot inflation and 5% Treasury yields raise odds of a December Fed hike",
+      "one_liner": "Strong inflation data has pushed the 10-year yield to about 5% and shifted expectations toward a rate increase next month.",
+      "detail": "Hot inflation data earlier this week pushed Treasury yields up, with the 10-year quoted near 5% (one snapshot showed 4.986%, with the 30-year at 5.356%). Markets are now pricing in expectations of a Fed rate hike in December. US bond markets were closed Wednesday for Veterans Day, so those levels are last-trade quotes, not a fresh close.\n\nEquities have been volatile. The S&P 500 recently had its worst week since the April 2025 'Liberation Day' period, then rallied about 1.3% Wednesday to roughly 7,619. The Nasdaq gained about 1.6% to about 25,466, and the Dow added 0.5% to about 52,485. Sources differ slightly on exact levels.\n\nWhy it matters: a hiking cycle with 5% long yields is a headwind for richly valued AI equities, venture funding, and the fiscal outlook. It also complicates the White House's long-running pressure on the Fed.\n\nWatch next: Thursday's trading when bond markets reopen, upcoming producer-price and retail data, and Fed speakers' signals on December.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Rio Times",
+          "url": "https://www.riotimesonline.com/global-economy-briefing-november-12-2026"
+        },
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/dow-p-500-nasdaq-futures-035115158.html"
+        },
+        {
+          "name": "Investing.com",
+          "url": "https://investing.com/news/stock-market-news/us-stock-futures-tick-higher-after-wall-st-slips-on-hot-cpi-nvidia-losses-5017417"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "OpenAI pares fundraising goal to up to $20 billion amid tech selloff",
+      "one_liner": "The lower target from about $30 billion signals tougher investor scrutiny of AI spending.",
+      "detail": "CNBC reported on October 31 that OpenAI is now seeking up to $20 billion in its latest round, reduced from an earlier target of about $30 billion. The cut came amid a broader tech selloff and heightened scrutiny of AI capital spending.\n\nOther signals are mixed. CoreWeave's results eased AI spending worries and lifted AI chip stocks, per Reuters as summarized in search results. CNBC's November 1 analysis looks at how companies' promised AI gains are showing up in earnings. Anthropic's planned IPO and a reported $3.4 billion deal for gas-powered data centers are also drawing attention, though I did not verify those directly.\n\nWatch next: whether the OpenAI round closes at that size, and whether rising yields further pressure AI valuations and IPO timing.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/10/31/openai-fundraising-20-billion-valuation.html"
+        },
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/01/ai-investments-company-earnings.html"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "EU AI Act: Digital Omnibus delays high-risk rules to 2027-2028",
+      "one_liner": "Compliance timelines have shifted, though sources are secondary and some dates should be verified.",
+      "detail": "Law-firm and compliance sources say the Digital Omnibus on AI, now in force (reported as Regulation (EU) 2026/1744, in force since 27 July 2026), moved standalone high-risk obligations to 2 December 2027 and product-embedded rules to 2 August 2028. The Council gave final approval on 29 June 2026 after a provisional deal on 7 May.\n\nTransparency duties under Article 50 are reported to apply from August 2026, with one source citing a separate watermarking deadline of 2 November 2026. Those dates conflict across sources and should be checked against the Official Journal.\n\nWatch next: Commission guidance and codes of practice, and any US-EU friction over AI rules.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "White & Case",
+          "url": "https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act"
+        },
+        {
+          "name": "FPF",
+          "url": "https://fpf.org/blog/the-ai-act-implementation-timeline-what-changes-under-the-ai-omnibus"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Nvidia fell on reports that its board is exploring CEO replacements. OpenAI's Jalapeno inference chip continues to pressure Nvidia's dominance narrative."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "OpenAI cut its fundraising goal to up to $20 billion. CoreWeave results eased AI spending worries, and Anthropic IPO chatter continues."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The EU Digital Omnibus has delayed high-risk AI Act obligations to December 2027 and August 2028. Reported dates vary by source."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "Background only, no confirmed new developments from the last 24 hours. US-Iran indirect talks mediated by Oman and Qatar continue, and Ukraine alleges Chinese support for Russia."
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The S&P 500 rose about 1.3% on Wednesday and the Nasdaq about 1.6%, after a bruising week. The 10-year yield is near 5% and markets are pricing in a possible December Fed hike."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Thu 12",
+      "event": "US bond markets reopen after Veterans Day; first trading reaction to the 5% 10-year yield",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 12",
+      "event": "Follow-up on Nvidia board and CEO reports; watch for company statement",
+      "tag": "tech"
+    },
+    {
+      "day": "Thu 12",
+      "event": "Expected weekly jobless claims and possible producer-price data (unverified schedule)",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 13",
+      "event": "Expected retail sales and other US data (unverified schedule)",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 13",
+      "event": "Fed speakers likely to address December hike expectations",
+      "tag": "policy"
+    },
+    {
+      "day": "Fri 13",
+      "event": "OpenAI funding round progress at up to $20B",
+      "tag": "tech"
+    },
+    {
+      "day": "Week",
+      "event": "Anthropic IPO preparation news flow",
+      "tag": "tech"
+    },
+    {
+      "day": "Week",
+      "event": "US-Iran indirect talks mediated by Oman and Qatar",
+      "tag": "critical"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Nvidia's Huang Scandal Collides With Chip Export Fight",
+    "headline": "A CEO's Alleged Spy Entanglement Hands China Hawks Their Best Weapon Against Nvidia",
+    "standfirst": "The Huang affair is as much a lever in the fight over chip exports as it is a governance crisis, and the lame-duck NDAA is where that fight will be decided.",
+    "body": "The facts are still moving, and several of the most explosive claims rest on unnamed sources. According to CNBC, Nvidia chief executive Jensen Huang acknowledged on Sunday, November 8, an affair with a woman identified as Alice Huang, who is no relation to him. She is reportedly a Megaspeed executive, and news outlets say US intelligence concluded she is a Chinese spy. The public record contains no evidence of that designation beyond those reports and lawmakers' characterizations. It also contains no evidence that the relationship affected any Nvidia decision or compromised any secrets. Nvidia's board has said it has no reason to believe national security or company secrets were compromised. It has hired Wachtell Lipton to run an internal inquiry, which Huang says he supports. The Wall Street Journal reported on Wednesday that the board is preparing to remove him, citing unnamed sources, and Nvidia has not confirmed it. Shares fell on the reports.\n\nThe political machinery moved quickly. On November 4, the chairs of the House Foreign Affairs, China, and intelligence committees (Brian Mast, John Moolenaar and Rick Crawford) asked Huang for a closed-door briefing, with a November 18 date. On Wednesday Mast and Moolenaar said they had not heard back, and Bloomberg reported that a subpoena is coming. Senator Kevin Cramer, Representative Don Bacon and Democrat Suhas Subramanyam have all said Huang should resign. Cramer cited vulnerability to blackmail, which he presented as a concern rather than a finding.\n\nThe context explains the intensity. Huang has been the most effective corporate opponent of tight AI chip export controls, arguing that restricting sales to China only accelerates Chinese substitutes and cedes the market. He has repeatedly won, most recently when Washington allowed Nvidia to sell to China again. China hawks in both parties have regarded that influence with suspicion for years. A scandal that casts the sales as possibly serving a foreign intelligence operation gives them a narrative that policy arguments never provided. It lands just as Nvidia has been pressing cloud partners to cut their China exposure and as the chip stocks have been volatile after the midterms.\n\nThere are three competing readings. The first is a straightforward counterintelligence story. A chief executive with unrivaled access to the most strategically important hardware in the world, who is involved with someone intelligence services regard as a foreign agent, warrants scrutiny whatever his policy views. On this reading, the burden is on Nvidia and Huang to show that nothing leaked. The second reading is that this is opportunism. Hawks who lost the export argument on the merits are using a personal scandal to relitigate it, and the spy label itself is unverified. Representative Jay Obernolte has voiced the worry that the episode could derail serious export-control negotiations rather than improve them. The third reading is about governance. Whatever the truth of the espionage claim, a company worth trillions that depends on one founder, and is exposed to a single point of failure, faces a different risk from the one lawmakers are citing. The board's choice between backing Huang and removing him will be read as a verdict on that dependence.\n\nThe policy consequences may arrive before the facts do. Senators Elizabeth Warren and Jim Banks are pushing to attach the AI Overwatch Act to the NDAA, and the MATCH Act and the Chip Security Act are also candidates. All three would tighten controls on chips and chipmaking technology reaching adversaries. The lame-duck session is the window to move them while Republicans still control both chambers. In January Democrats are expected to take over both chambers, and they would likely open their own investigations, so Nvidia faces scrutiny from both parties.\n\nWatch the following. A board decision on Huang could come at any time and is the biggest swing factor for the stock. Whether he answers the request by November 18, or is subpoenaed, will show whether he is cooperating or fighting. NDAA text in the coming weeks will show whether export amendments survive conference. Beijing's response matters too. The APEC summit in Shenzhen next week gives both governments a stage, and the fragile trade truce could be strained if the US ties the affair to Chinese espionage. The risk for Nvidia is that a personal scandal becomes the reason for structural limits on its largest overseas market.",
+    "why_today": "The board's possible decision on Huang, a House subpoena threat ahead of a November 18 deadline, and moves to attach chip export bills to the NDAA are all converging this week.",
+    "sources": [
+      {
+        "name": "CNBC",
+        "url": "https://www.cnbc.com/2026/11/11/nvidia-jensen-huang-congress-resign-ai-chips.html"
+      },
+      {
+        "name": "TechCrunch",
+        "url": "https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/"
+      },
+      {
+        "name": "Bloomberg",
+        "url": "https://www.bloomberg.com/news/articles/2026-11-11/congress-set-to-subpoena-nvidia-s-jensen-huang-republican-says"
+      },
+      {
+        "name": "ABC News",
+        "url": "https://abcnews.com/Politics/house-republicans-issuing-subpoena-nvidia-ceo-jensen-huang/story?id=138022782"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "The Nvidia succession story is really a bond story",
+      "subtitle": "Speculative: 5% long yields, not the CEO rumors, are what can break the AI multiple",
+      "categories": [
+        "Frontier Tech / AI",
+        "Markets"
+      ],
+      "content": "Speculative: the reports about Jensen Huang and a board search are unverified, anonymously sourced, and the market already shrugged them off with a Nasdaq rally. Treat the succession story as a headline, not a thesis. The real threat to Nvidia's valuation is the cost of money. With the 10-year near 5% and the 30-year above 5.3%, every long-duration AI cash flow gets discounted harder, and a multiple built on 2027 and 2028 earnings is the most rate-sensitive asset class in the S&P.\n\nSpeculative: my wrong take is that a CEO change at Nvidia would be bullish in the short run. A board that goes outside to find a replacement is signaling it wants an operator who can defend margins against custom silicon and manage hyperscaler customers who are building their own chips. That reads as a push for execution discipline, not a collapse. The bear case is the timing: Vera Rubin is just shipping, and any leadership transition during a ramp invites questions about supply and roadmap slips.\n\nSpeculative: watch for the combination, not the individual items. If yields keep pushing toward 5% and a formal board statement or 8-K lands in the same week, the stock will trade as a rates-and-governance double hit. If the yield move stalls, the succession noise will fade, and the stock will look like a cheap, boring compounder. I expect the second outcome to be more common than the market currently prices."
+    },
+    {
+      "title": "OpenAI shrinking its raise is the first crack in the Nvidia tax",
+      "subtitle": "Speculative: a capital-constrained OpenAI pushes inference onto its own silicon, and Nvidia's pricing power erodes first at the margin",
+      "categories": [
+        "Applied Tech & Industry",
+        "Frontier Tech / AI"
+      ],
+      "content": "Speculative: OpenAI cutting its target from about $30 billion to up to $20 billion is a signal that the most aggressive buyer of AI compute is getting more selective about what it funds. Pair that with the reported Jalapeno inference chip and the picture gets sharper. A company that wants to spend less on capital and reduce its dependence on a single GPU supplier will move inference first, because inference is the repeatable, high-volume workload where a custom chip pays back fastest. Training stays on Nvidia for now.\n\nSpeculative: my sharp take is that the first real damage to Nvidia will not be a lost training contract. It will be a slow leak in inference pricing, where hyperscalers and labs use custom silicon as negotiating leverage to squeeze GPU margins. Nvidia's gross margin is the number that matters, and it is the one nobody is watching. The CoreWeave results that eased AI spending fears were a relief for chip stocks, but they tell you about demand, not about who captures the margin on that demand.\n\nSpeculative: the Anthropic IPO chatter and a reported $3.4 billion gas-powered data center deal point to a broader trend: AI companies are moving from venture-style spending to infrastructure-style financing, with power and capital as the binding constraints. If that is right, the winners are the companies that control power, interconnects, and cheap custom silicon, not the ones with the best model benchmarks. I have not verified the Anthropic and data center details, so treat them as a direction, not a fact."
+    },
+    {
+      "title": "Brussels bought the AI industry two years, and the real regulator is the bond market",
+      "subtitle": "Speculative: the Digital Omnibus delay helps incumbents with compliance budgets while rates do the work regulators cannot",
+      "categories": [
+        "AI Regulation & Governance",
+        "Markets"
+      ],
+      "content": "Speculative: the Digital Omnibus pushed standalone high-risk obligations to 2 December 2027 and product-embedded rules to 2 August 2028. The dates are reported inconsistently, so check the Official Journal before acting on any of them. But the direction is clear. The EU has traded near-term enforcement for regulatory certainty, and that trade mostly benefits large firms that can afford to carry compliance costs later. Smaller model developers and European startups do not get the same relief in practice, because they lack the lawyers to exploit the delay.\n\nSpeculative: my bold take is that the EU delay matters less than the cost of capital. A 5% long yield will do more to slow the marginal AI data center or venture round than any Brussels rulebook. If a December Fed hike gets priced in, the compliance debate becomes a sideshow for anyone trying to finance a build. Regulators write rules; rates decide who can afford to follow them.\n\nSpeculative: the US-EU friction angle is the one to watch. Washington has every incentive to frame the Omnibus as a trade barrier, especially if Commission codes of practice start to bite American model providers. A transatlantic fight over AI rules during a tightening cycle is a plausible way for both sides to score points while the actual risk sits in the bond market."
+    },
+    {
+      "title": "A December hike would be a political event, and I bet it does not happen",
+      "subtitle": "Speculative: hot CPI and 5% yields create hike odds, but the White House, the bond market, and the AI trade all push against it",
+      "categories": [
+        "Markets",
+        "US Policy & Power"
+      ],
+      "content": "Speculative: markets are pricing a possible December hike after hot inflation and a 10-year near 5%. The bond markets were closed on Veterans Day, so those levels are last trades, not a clean close. My contrarian call is that the hike gets priced out before it is delivered. A Fed that hikes into a 5% long end and a fragile equity market, with the S&P just off its worst week since April 2025, risks tightening financial conditions faster than inflation requires. Some of the move in yields may be term premium and supply rather than policy expectations, and the Fed cannot fix supply.\n\nSpeculative: the White House's long-running pressure on the Fed makes any hike a political event, not just a monetary one. A hike would hand the administration a clean villain and a reason to attack Fed independence again. That does not mean the Fed bends. It means the hike bar is higher than the futures market assumes, because the central bank would need inflation data that is unambiguously hot, not one hot CPI print.\n\nSpeculative: the second-order effect is the AI trade. If long yields keep climbing, the companies most exposed are the ones financing data centers and IPOs with long-dated capital. Watch Thursday's reopening, the producer-price and retail data, and Fed speakers. If the Fed sounds comfortable, the hike odds collapse and the rally has legs. If speakers lean hawkish while the 30-year holds above 5.3%, the story shifts from inflation to a broader repricing of AI duration."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "Longreads + Open Thread",
+      "url": "https://www.antoinebuteau.com/daily-digest-2026-11-07/",
+      "summary": "A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.",
+      "connection": "Loosely related to the AI compute and valuations theme and to market structure. The link is indirect."
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Sold 25% of chip puts, still very bearish",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.",
+      "connection": "Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley",
+      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
+      "summary": "Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.",
+      "connection": "Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Lightcone: How To Build The Future (with Amjad Masad)",
+      "url": "https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad",
+      "summary": "Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.",
+      "connection": "Loosely tied to the AI-built software and startup theme. The link is weak."
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #218",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-218",
+      "summary": "The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.",
+      "connection": "Applied tech and industry. It is a counterweight to the market-selloff and political news."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "State of the tech job market: late 2026",
+      "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
+      "summary": "Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.",
+      "connection": "Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

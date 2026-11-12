@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Thursday, November 12, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Thursday, November 12, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;2 URGENT</span>
+    <span class="status-count">5 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Nvidia board reportedly weighing replacements for CEO Jensen Huang</h3>
+          <div class="one-liner">Bloomberg-sourced reports say Nvidia's board has engaged an outside firm to identify potential successors, a leadership shock for the company at the center of the AI trade.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Nvidia shares slid on Wednesday after reports of a second affair involving CEO Jensen Huang and a possible removal. Bloomberg reported that the board has started working with an outside firm on potential replacements. Nvidia has not been confirmed in the search results to have commented, and the reports rest on anonymous sourcing, so treat the details as unverified.</p>
+<p>The market impact was muted. Tech rebounded despite the 'Nvidia CEO crisis' (Stocktwits framing), and the Nasdaq Composite rose about 1.6% on the day. Investors seem to be separating the company-specific governance risk from the broader AI-capex story.</p>
+<p>Why it matters: Nvidia is the keystone of GPU supply and the AI compute buildout. A leadership change would raise questions about product roadmap execution (Vera Rubin is just starting to ship), customer relationships with hyperscalers and OpenAI, and the company's China export strategy. It also lands as OpenAI's in-house Jalapeno inference chip and other custom silicon increase pressure on Nvidia.</p>
+<p>Watch next: any formal board statement or 8-K, Huang's response, further Bloomberg or WSJ reporting, and how the stock trades once the initial reaction fades.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-11-dow-sp-500-nasdaq-nvidia-treasurys-veterans-day-140638547.html" target="_blank" rel="noopener">Yahoo Finance</a><span class="source-sep">·</span><a class="source-link" href="https://stocktwits.com/news-articles/markets/equity/dow-s-and-p-500-nasdaq-futures-mixed-as-tech-rebounds-despite-nvidia-ceo-crisis-amd-csco-amat-in-focus/cNGzKh7R99W" target="_blank" rel="noopener">Stocktwits</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Hot inflation and 5% Treasury yields raise odds of a December Fed hike</h3>
+          <div class="one-liner">Strong inflation data has pushed the 10-year yield to about 5% and shifted expectations toward a rate increase next month.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Hot inflation data earlier this week pushed Treasury yields up, with the 10-year quoted near 5% (one snapshot showed 4.986%, with the 30-year at 5.356%). Markets are now pricing in expectations of a Fed rate hike in December. US bond markets were closed Wednesday for Veterans Day, so those levels are last-trade quotes, not a fresh close.</p>
+<p>Equities have been volatile. The S&P 500 recently had its worst week since the April 2025 'Liberation Day' period, then rallied about 1.3% Wednesday to roughly 7,619. The Nasdaq gained about 1.6% to about 25,466, and the Dow added 0.5% to about 52,485. Sources differ slightly on exact levels.</p>
+<p>Why it matters: a hiking cycle with 5% long yields is a headwind for richly valued AI equities, venture funding, and the fiscal outlook. It also complicates the White House's long-running pressure on the Fed.</p>
+<p>Watch next: Thursday's trading when bond markets reopen, upcoming producer-price and retail data, and Fed speakers' signals on December.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.riotimesonline.com/global-economy-briefing-november-12-2026" target="_blank" rel="noopener">Rio Times</a><span class="source-sep">·</span><a class="source-link" href="https://finance.yahoo.com/markets/stocks/articles/dow-p-500-nasdaq-futures-035115158.html" target="_blank" rel="noopener">Yahoo Finance</a><span class="source-sep">·</span><a class="source-link" href="https://investing.com/news/stock-market-news/us-stock-futures-tick-higher-after-wall-st-slips-on-hot-cpi-nvidia-losses-5017417" target="_blank" rel="noopener">Investing.com</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>OpenAI pares fundraising goal to up to $20 billion amid tech selloff</h3>
+          <div class="one-liner">The lower target from about $30 billion signals tougher investor scrutiny of AI spending.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>CNBC reported on October 31 that OpenAI is now seeking up to $20 billion in its latest round, reduced from an earlier target of about $30 billion. The cut came amid a broader tech selloff and heightened scrutiny of AI capital spending.</p>
+<p>Other signals are mixed. CoreWeave's results eased AI spending worries and lifted AI chip stocks, per Reuters as summarized in search results. CNBC's November 1 analysis looks at how companies' promised AI gains are showing up in earnings. Anthropic's planned IPO and a reported $3.4 billion deal for gas-powered data centers are also drawing attention, though I did not verify those directly.</p>
+<p>Watch next: whether the OpenAI round closes at that size, and whether rising yields further pressure AI valuations and IPO timing.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/10/31/openai-fundraising-20-billion-valuation.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://www.cnbc.com/2026/11/01/ai-investments-company-earnings.html" target="_blank" rel="noopener">CNBC</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>EU AI Act: Digital Omnibus delays high-risk rules to 2027-2028</h3>
+          <div class="one-liner">Compliance timelines have shifted, though sources are secondary and some dates should be verified.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Law-firm and compliance sources say the Digital Omnibus on AI, now in force (reported as Regulation (EU) 2026/1744, in force since 27 July 2026), moved standalone high-risk obligations to 2 December 2027 and product-embedded rules to 2 August 2028. The Council gave final approval on 29 June 2026 after a provisional deal on 7 May.</p>
+<p>Transparency duties under Article 50 are reported to apply from August 2026, with one source citing a separate watermarking deadline of 2 November 2026. Those dates conflict across sources and should be checked against the Official Journal.</p>
+<p>Watch next: Commission guidance and codes of practice, and any US-EU friction over AI rules.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.whitecase.com/insight-alert/eu-ai-omnibus-enters-force-amending-ai-act" target="_blank" rel="noopener">White & Case</a><span class="source-sep">·</span><a class="source-link" href="https://fpf.org/blog/the-ai-act-implementation-timeline-what-changes-under-the-ai-omnibus" target="_blank" rel="noopener">FPF</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Nvidia fell on reports that its board is exploring CEO replacements. OpenAI's Jalapeno inference chip continues to pressure Nvidia's dominance narrative.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">OpenAI cut its fundraising goal to up to $20 billion. CoreWeave results eased AI spending worries, and Anthropic IPO chatter continues.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">The EU Digital Omnibus has delayed high-risk AI Act obligations to December 2027 and August 2028. Reported dates vary by source.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Background only, no confirmed new developments from the last 24 hours. US-Iran indirect talks mediated by Oman and Qatar continue, and Ukraine alleges Chinese support for Russia.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">China</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      <div class="sector-summary">The S&P 500 rose about 1.3% on Wednesday and the Nasdaq about 1.6%, after a bruising week. The 10-year yield is near 5% and markets are pricing in a possible December Fed hike.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">US bond markets reopen after Veterans Day; first trading reaction to the 5% 10-year yield</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">Follow-up on Nvidia board and CEO reports; watch for company statement</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 12</span>
+      <span class="week-event">Expected weekly jobless claims and possible producer-price data (unverified schedule)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 13</span>
+      <span class="week-event">Expected retail sales and other US data (unverified schedule)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 13</span>
+      <span class="week-event">Fed speakers likely to address December hike expectations</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 13</span>
+      <span class="week-event">OpenAI funding round progress at up to $20B</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Week</span>
+      <span class="week-event">Anthropic IPO preparation news flow</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Week</span>
+      <span class="week-event">US-Iran indirect talks mediated by Oman and Qatar</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Nvidia succession story is really a bond story</h3>
+          <div class="subtitle">Speculative: 5% long yields, not the CEO rumors, are what can break the AI multiple</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the reports about Jensen Huang and a board search are unverified, anonymously sourced, and the market already shrugged them off with a Nasdaq rally. Treat the succession story as a headline, not a thesis. The real threat to Nvidia's valuation is the cost of money. With the 10-year near 5% and the 30-year above 5.3%, every long-duration AI cash flow gets discounted harder, and a multiple built on 2027 and 2028 earnings is the most rate-sensitive asset class in the S&P.</p>
+<p>Speculative: my wrong take is that a CEO change at Nvidia would be bullish in the short run. A board that goes outside to find a replacement is signaling it wants an operator who can defend margins against custom silicon and manage hyperscaler customers who are building their own chips. That reads as a push for execution discipline, not a collapse. The bear case is the timing: Vera Rubin is just shipping, and any leadership transition during a ramp invites questions about supply and roadmap slips.</p>
+<p>Speculative: watch for the combination, not the individual items. If yields keep pushing toward 5% and a formal board statement or 8-K lands in the same week, the stock will trade as a rates-and-governance double hit. If the yield move stalls, the succession noise will fade, and the stock will look like a cheap, boring compounder. I expect the second outcome to be more common than the market currently prices.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>OpenAI shrinking its raise is the first crack in the Nvidia tax</h3>
+          <div class="subtitle">Speculative: a capital-constrained OpenAI pushes inference onto its own silicon, and Nvidia's pricing power erodes first at the margin</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Frontier Tech / AI</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: OpenAI cutting its target from about $30 billion to up to $20 billion is a signal that the most aggressive buyer of AI compute is getting more selective about what it funds. Pair that with the reported Jalapeno inference chip and the picture gets sharper. A company that wants to spend less on capital and reduce its dependence on a single GPU supplier will move inference first, because inference is the repeatable, high-volume workload where a custom chip pays back fastest. Training stays on Nvidia for now.</p>
+<p>Speculative: my sharp take is that the first real damage to Nvidia will not be a lost training contract. It will be a slow leak in inference pricing, where hyperscalers and labs use custom silicon as negotiating leverage to squeeze GPU margins. Nvidia's gross margin is the number that matters, and it is the one nobody is watching. The CoreWeave results that eased AI spending fears were a relief for chip stocks, but they tell you about demand, not about who captures the margin on that demand.</p>
+<p>Speculative: the Anthropic IPO chatter and a reported $3.4 billion gas-powered data center deal point to a broader trend: AI companies are moving from venture-style spending to infrastructure-style financing, with power and capital as the binding constraints. If that is right, the winners are the companies that control power, interconnects, and cheap custom silicon, not the ones with the best model benchmarks. I have not verified the Anthropic and data center details, so treat them as a direction, not a fact.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Brussels bought the AI industry two years, and the real regulator is the bond market</h3>
+          <div class="subtitle">Speculative: the Digital Omnibus delay helps incumbents with compliance budgets while rates do the work regulators cannot</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">Markets</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the Digital Omnibus pushed standalone high-risk obligations to 2 December 2027 and product-embedded rules to 2 August 2028. The dates are reported inconsistently, so check the Official Journal before acting on any of them. But the direction is clear. The EU has traded near-term enforcement for regulatory certainty, and that trade mostly benefits large firms that can afford to carry compliance costs later. Smaller model developers and European startups do not get the same relief in practice, because they lack the lawyers to exploit the delay.</p>
+<p>Speculative: my bold take is that the EU delay matters less than the cost of capital. A 5% long yield will do more to slow the marginal AI data center or venture round than any Brussels rulebook. If a December Fed hike gets priced in, the compliance debate becomes a sideshow for anyone trying to finance a build. Regulators write rules; rates decide who can afford to follow them.</p>
+<p>Speculative: the US-EU friction angle is the one to watch. Washington has every incentive to frame the Omnibus as a trade barrier, especially if Commission codes of practice start to bite American model providers. A transatlantic fight over AI rules during a tightening cycle is a plausible way for both sides to score points while the actual risk sits in the bond market.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>A December hike would be a political event, and I bet it does not happen</h3>
+          <div class="subtitle">Speculative: hot CPI and 5% yields create hike odds, but the White House, the bond market, and the AI trade all push against it</div>
+          <div class="pattern-cats"><span class="pattern-cat">Markets</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: markets are pricing a possible December hike after hot inflation and a 10-year near 5%. The bond markets were closed on Veterans Day, so those levels are last trades, not a clean close. My contrarian call is that the hike gets priced out before it is delivered. A Fed that hikes into a 5% long end and a fragile equity market, with the S&P just off its worst week since April 2025, risks tightening financial conditions faster than inflation requires. Some of the move in yields may be term premium and supply rather than policy expectations, and the Fed cannot fix supply.</p>
+<p>Speculative: the White House's long-running pressure on the Fed makes any hike a political event, not just a monetary one. A hike would hand the administration a clean villain and a reason to attack Fed independence again. That does not mean the Fed bends. It means the hike bar is higher than the futures market assumes, because the central bank would need inflation data that is unambiguously hot, not one hot CPI print.</p>
+<p>Speculative: the second-order effect is the AI trade. If long yields keep climbing, the companies most exposed are the ones financing data centers and IPOs with long-dated capital. Watch Thursday's reopening, the producer-price and retail data, and Fed speakers. If the Fed sounds comfortable, the hike odds collapse and the rally has legs. If speakers lean hawkish while the 30-year holds above 5.3%, the story shifts from inflation to a broader repricing of AI duration.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>A CEO's Alleged Spy Entanglement Hands China Hawks Their Best Weapon Against Nvidia</h2>
+    <div class="standfirst">The Huang affair is as much a lever in the fight over chip exports as it is a governance crisis, and the lame-duck NDAA is where that fight will be decided.</div>
+    <div class="deep-dive-why">The board's possible decision on Huang, a House subpoena threat ahead of a November 18 deadline, and moves to attach chip export bills to the NDAA are all converging this week.</div>
+    <div class="body"><p>The facts are still moving, and several of the most explosive claims rest on unnamed sources. According to CNBC, Nvidia chief executive Jensen Huang acknowledged on Sunday, November 8, an affair with a woman identified as Alice Huang, who is no relation to him. She is reportedly a Megaspeed executive, and news outlets say US intelligence concluded she is a Chinese spy. The public record contains no evidence of that designation beyond those reports and lawmakers' characterizations. It also contains no evidence that the relationship affected any Nvidia decision or compromised any secrets. Nvidia's board has said it has no reason to believe national security or company secrets were compromised. It has hired Wachtell Lipton to run an internal inquiry, which Huang says he supports. The Wall Street Journal reported on Wednesday that the board is preparing to remove him, citing unnamed sources, and Nvidia has not confirmed it. Shares fell on the reports.</p>
+<p>The political machinery moved quickly. On November 4, the chairs of the House Foreign Affairs, China, and intelligence committees (Brian Mast, John Moolenaar and Rick Crawford) asked Huang for a closed-door briefing, with a November 18 date. On Wednesday Mast and Moolenaar said they had not heard back, and Bloomberg reported that a subpoena is coming. Senator Kevin Cramer, Representative Don Bacon and Democrat Suhas Subramanyam have all said Huang should resign. Cramer cited vulnerability to blackmail, which he presented as a concern rather than a finding.</p>
+<p>The context explains the intensity. Huang has been the most effective corporate opponent of tight AI chip export controls, arguing that restricting sales to China only accelerates Chinese substitutes and cedes the market. He has repeatedly won, most recently when Washington allowed Nvidia to sell to China again. China hawks in both parties have regarded that influence with suspicion for years. A scandal that casts the sales as possibly serving a foreign intelligence operation gives them a narrative that policy arguments never provided. It lands just as Nvidia has been pressing cloud partners to cut their China exposure and as the chip stocks have been volatile after the midterms.</p>
+<p>There are three competing readings. The first is a straightforward counterintelligence story. A chief executive with unrivaled access to the most strategically important hardware in the world, who is involved with someone intelligence services regard as a foreign agent, warrants scrutiny whatever his policy views. On this reading, the burden is on Nvidia and Huang to show that nothing leaked. The second reading is that this is opportunism. Hawks who lost the export argument on the merits are using a personal scandal to relitigate it, and the spy label itself is unverified. Representative Jay Obernolte has voiced the worry that the episode could derail serious export-control negotiations rather than improve them. The third reading is about governance. Whatever the truth of the espionage claim, a company worth trillions that depends on one founder, and is exposed to a single point of failure, faces a different risk from the one lawmakers are citing. The board's choice between backing Huang and removing him will be read as a verdict on that dependence.</p>
+<p>The policy consequences may arrive before the facts do. Senators Elizabeth Warren and Jim Banks are pushing to attach the AI Overwatch Act to the NDAA, and the MATCH Act and the Chip Security Act are also candidates. All three would tighten controls on chips and chipmaking technology reaching adversaries. The lame-duck session is the window to move them while Republicans still control both chambers. In January Democrats are expected to take over both chambers, and they would likely open their own investigations, so Nvidia faces scrutiny from both parties.</p>
+<p>Watch the following. A board decision on Huang could come at any time and is the biggest swing factor for the stock. Whether he answers the request by November 18, or is subpoenaed, will show whether he is cooperating or fighting. NDAA text in the coming weeks will show whether export amendments survive conference. Beijing's response matters too. The APEC summit in Shenzhen next week gives both governments a stage, and the fragile trade truce could be strained if the US ties the affair to Chinese espionage. The risk for Nvidia is that a personal scandal becomes the reason for structural limits on its largest overseas market.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cnbc.com/2026/11/11/nvidia-jensen-huang-congress-resign-ai-chips.html" target="_blank" rel="noopener">CNBC</a><span class="source-sep">·</span><a class="source-link" href="https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair/" target="_blank" rel="noopener">TechCrunch</a><span class="source-sep">·</span><a class="source-link" href="https://www.bloomberg.com/news/articles/2026-11-11/congress-set-to-subpoena-nvidia-s-jensen-huang-republican-says" target="_blank" rel="noopener">Bloomberg</a><span class="source-sep">·</span><a class="source-link" href="https://abcnews.com/Politics/house-republicans-issuing-subpoena-nvidia-ceo-jensen-huang/story?id=138022782" target="_blank" rel="noopener">ABC News</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.antoinebuteau.com/daily-digest-2026-11-07/" target="_blank" rel="noopener">Longreads + Open Thread</a><div class="sig-summary">A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.</div><div class="sig-connection">↳ Loosely related to the AI compute and valuations theme and to market structure. The link is indirect.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/" target="_blank" rel="noopener">Sold 25% of chip puts, still very bearish</a><div class="sig-summary">After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.</div><div class="sig-connection">↳ Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/" target="_blank" rel="noopener">The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley</a><div class="sig-summary">Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.</div><div class="sig-connection">↳ Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      <a class="sig-title" href="https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad" target="_blank" rel="noopener">Lightcone: How To Build The Future (with Amjad Masad)</a><div class="sig-summary">Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.</div><div class="sig-connection">↳ Loosely tied to the AI-built software and startup theme. The link is weak.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-218" target="_blank" rel="noopener">Weekly Dose of Optimism #218</a><div class="sig-summary">The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.</div><div class="sig-connection">↳ Applied tech and industry. It is a counterweight to the market-selloff and political news.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late" target="_blank" rel="noopener">State of the tech job market: late 2026</a><div class="sig-summary">Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.</div><div class="sig-connection">↳ Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 10 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
