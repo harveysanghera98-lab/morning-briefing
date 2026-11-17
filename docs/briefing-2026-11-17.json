@@ -1,0 +1,382 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Nvidia reports first earnings since Jensen Huang's resignation",
+      "one_liner": "Nvidia reports after the close today with interim CEO Colette Kress in charge, and the AI trade is already shaky.",
+      "detail": "Nvidia reports fiscal Q3 2027 results after the bell today. The report is its first since Jensen Huang resigned as CEO on Nov. 11. Colette Kress is serving as interim CEO. Guidance was about $108 billion in revenue, up from $96.2 billion last quarter. Consensus is about $109 billion and EPS of $2.47.\n\nThe numbers may matter less than the governance questions. Kress is expected to face questions on Huang's departure, a reported board investigation, and dealings with firms accused of violating US export controls. Shares were around $156 after falling about 4% in the latest session. Coverage describes Huang's exit as the trigger for a broad risk-asset sell-off.\n\nMonday's session was rough. The S&P 500 fell about 1.9% and the Nasdaq about 2.5%, and the S&P is down roughly 2.1% since the end of October. The sources I found are previews and market commentary, not original reporting from the FT, WSJ or Reuters, so views across outlets could not be compared. Watch the Q4 guidance, any CEO succession timeline, and comments on export-control exposure.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Motley Fool",
+          "url": "https://www.fool.com/investing/2026/11/16/this-is-a-huge-week-for-the-stock-market-nvidia-earnings-fed-minutes-and-anthropic-s-ipo/"
+        },
+        {
+          "name": "CoinDesk",
+          "url": "https://www.coindesk.com/markets/2026/11/16/fomc-minutes-nvidia-earnings-russia-s-retail-crypto-rules-crypto-week-ahead"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Anthropic IPO set to price this week, up to $82B total raise",
+      "one_liner": "One of the largest tech listings ever lands in a falling AI market, with huge compute commitments attached.",
+      "detail": "Anthropic is set to debut under the ticker ANT, with trading implied for Thursday, Nov. 19. It plans to sell 825 million shares at $70-$78, raising up to $64 billion. A separate $26 billion private placement goes to investors including Google, Nvidia and AMD. The total raise is about $82 billion, which would bring its war chest to roughly $212.7 billion.\n\nRevenue was $33.2 billion in the first nine months of 2026, versus $2.5 billion a year earlier. The GAAP net loss was $104 billion, mostly from a non-cash charge tied to revaluing convertible notes and other instruments. Anthropic also has roughly $900 billion in compute and infrastructure commitments, much of it non-cancelable. If growth falls short, it could struggle to meet them.\n\nThe timing is awkward. Nvidia's earnings and Huang's exit have unsettled AI stocks just ahead of the pricing. Anthropic's long-running dispute with the Pentagon over its supply-chain-risk designation is also a risk factor. I could not find the latest status of that case. Watch for the final price range and first-day trading.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "Motley Fool",
+          "url": "https://www.fool.com/investing/2026/11/16/this-is-a-huge-week-for-the-stock-market-nvidia-earnings-fed-minutes-and-anthropic-s-ipo/"
+        },
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/economy/2026/3/9/anthropic-sues-trump-administration-to-undo-us-supply-chain-risk-tag"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Fed minutes loom as rate-hike debate heats up",
+      "one_liner": "Two Fed dissenters wanted a hike in October, and hot inflation data has since reinforced that case.",
+      "detail": "The Fed holds the minutes of its Oct. 27-28 meeting for release Wednesday at 2 p.m. ET. It held rates at 3.75%-4.00%. Governors Lisa Cook and Beth Hammack dissented in favor of a quarter-point hike. Since then, October CPI came in hotter than expected and jobs data looked better than expected.\n\nFed Chair Kevin Warsh spoke Monday at a San Francisco conference. Today's October retail sales are expected to show no monthly growth after September's 0.8% gain. A strong print would strengthen the case for another hike. Weakness would ease the pressure.\n\nI did not find the original Reuters, FT or WSJ coverage. Earlier Reuters reporting from late October put the market odds of a December hike at about 85%. Oil was also elevated then, with Brent near $114 on Oct. 27. Watch how many officials the minutes show were open to a hike.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Motley Fool",
+          "url": "https://www.fool.com/investing/2026/11/16/this-is-a-huge-week-for-the-stock-market-nvidia-earnings-fed-minutes-and-anthropic-s-ipo/"
+        },
+        {
+          "name": "CoinDesk",
+          "url": "https://www.coindesk.com/markets/2026/11/16/fomc-minutes-nvidia-earnings-russia-s-retail-crypto-rules-crypto-week-ahead"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "Bitcoin near $64,700 as Russia opens retail crypto access",
+      "one_liner": "Crypto is selling off alongside AI stocks, while Russia's new retail rules take effect today.",
+      "detail": "Bitcoin was around $64,700 at CoinDesk's publication. One headline there warned it could fall below $60,000 if Nvidia's results deepen the sell-off. It has not benefited from the AI stock slump.\n\nRussia's crypto-access ordinance takes effect today. It lets non-qualified investors buy bitcoin, ether and USDT up to an annual limit per intermediary. Russian exchanges may begin organized trading from Nov. 22 if the Bank of Russia approves their rules. Strong retail sales would raise the odds of a Fed hike, which would weigh on crypto.",
+      "sector": "Digital Finance",
+      "sources": [
+        {
+          "name": "CoinDesk",
+          "url": "https://www.coindesk.com/markets/2026/11/16/fomc-minutes-nvidia-earnings-russia-s-retail-crypto-rules-crypto-week-ahead"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Huang's resignation as Nvidia CEO and today's earnings dominate. Nvidia shares were around $156, down about 4% in the latest session. Coverage also points to a board investigation and export-control questions."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Anthropic's IPO is set for this week at $70-$78 per share, raising up to $64 billion, plus a $26 billion private placement. Walmart, Target and Home Depot report this week."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "The S&P 500 fell about 1.9% and the Nasdaq about 2.5% on Monday. Fed minutes are due Wednesday and the market is weighing a possible hike. Rates are 3.75%-4.00% and October CPI was hot."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "Bitcoin is near $64,700 and under pressure. Russia's retail crypto access rules took effect today."
+    },
+    {
+      "name": "Energy",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Tue 17",
+      "event": "Nvidia fiscal Q3 earnings after the close, with the first call since Huang's resignation",
+      "tag": "earnings"
+    },
+    {
+      "day": "Tue 17",
+      "event": "US October retail sales, with consensus at roughly flat",
+      "tag": "data"
+    },
+    {
+      "day": "Tue 17",
+      "event": "Russia's retail crypto access ordinance takes effect",
+      "tag": "policy"
+    },
+    {
+      "day": "Wed 18",
+      "event": "FOMC minutes from the Oct 27-28 meeting, 2pm ET",
+      "tag": "critical"
+    },
+    {
+      "day": "Wed 18",
+      "event": "Bullish and CoinShares earnings; UK FCA consultation CP26/36 closes",
+      "tag": "policy"
+    },
+    {
+      "day": "Wed-Thu",
+      "event": "Home Depot, Target and Walmart earnings this week; exact dates unconfirmed",
+      "tag": "earnings"
+    },
+    {
+      "day": "Thu 19",
+      "event": "Anthropic (ANT) IPO debut, expected from reporting",
+      "tag": "critical"
+    },
+    {
+      "day": "Thu 19",
+      "event": "US jobless claims and Philadelphia Fed manufacturing index",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 20",
+      "event": "University of Michigan consumer sentiment",
+      "tag": "data"
+    },
+    {
+      "day": "Sun 22",
+      "event": "Russian exchanges may begin organized crypto trading if the Bank of Russia approves their rules",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "The Anthropic IPO Is a Pentagon Settlement With a Ticker",
+      "subtitle": "Speculative: the supply-chain-risk fight ends in a government-blessed deal that lifts the IPO to the top of its range.",
+      "categories": [
+        "Applied Tech & Industry",
+        "Defense & Security",
+        "US Policy & Power"
+      ],
+      "content": "Speculative: the market is treating Anthropic's Pentagon supply-chain-risk designation as a footnote in the S-1 risk factors. I think that is backwards. A company raising up to $64 billion in public money, plus a $26 billion private placement from Google, Nvidia and AMD, cannot afford an open-ended federal blacklist on its roster. My guess is the Pentagon case gets quietly settled before or shortly after pricing, with the designation narrowed or lifted in exchange for tighter access controls and classified-workload commitments. Anthropic gets the clean story it needs; the administration gets a visible win on AI security and a 'domestic champion' headline.\n\nThe second-order call: the price range gets pushed to the top, or the deal is upsized, if that settlement lands in the next two weeks. Investors pricing a company with roughly $900 billion in non-cancelable compute commitments will pay for political de-risking more than for the revenue line. Revenue went from $2.5 billion to $33.2 billion year over year, but the $104 billion GAAP loss is mostly non-cash and will get ignored by anyone who wants the ticker to work.\n\nThe contrarian part: if the settlement does not come, the IPO still prices, but the first-day trade looks weaker than the bulls expect, because the Pentagon overhang becomes a permanent discount on any federal contract revenue. Either way, the Defense & Security side of this story is the real pricing input, not the consumer AI hype."
+    },
+    {
+      "title": "Hike Odds, Bitcoin Below 60K, and Russia's Retail Crypto Valve",
+      "subtitle": "Speculative: tightening plus Russian retail access turns crypto into a capital-flight and sanctions-adjacent story, not a risk-on one.",
+      "categories": [
+        "Markets",
+        "Digital Finance",
+        "Geopolitics"
+      ],
+      "content": "Speculative: Bitcoin near $64,700 is being sold with AI stocks, which is the wrong reflex for an asset that is supposed to hedge monetary debasement. With Cook and Hammack already dissenting for a hike in October and October CPI running hot, I expect the minutes Wednesday to show a larger group open to tightening. Chair Kevin Warsh has a choice between credibility and a growth scare, and the market is pricing that choice into every high-beta asset. Bitcoin is the first casualty because it is the most levered expression of 'cheap money forever.' My call: BTC trades below $60,000 before the December meeting if the retail sales print is strong.\n\nNow the Russia angle. Russia's ordinance lets non-qualified investors buy bitcoin, ether and USDT up to an annual limit per intermediary, with organized exchange trading possibly starting Nov. 22. Speculatively, this is less a consumer product than a dollar-stablecoin and crypto pipeline for a sanctioned economy facing tight Western finance and a strong-dollar rate environment. Tether's USDT being explicitly named is the tell. Expect Western compliance teams and Treasury's sanctions staff to treat intermediaries that onboard Russian retail flows as the next enforcement target, with the Bank of Russia's approval of exchange rules as the trigger to watch.\n\nThe bold version: a Fed hike in December plus a Russian retail crypto channel produces a two-sided squeeze where crypto falls in price in the West and rises in volume in Russia. The price story and the sanctions story get told separately, and nobody connects them until a stablecoin freeze makes the headlines."
+    },
+    {
+      "title": "Nvidia's Interim CEO Inherits a Circular-Revenue Problem",
+      "subtitle": "Speculative: Kress's first big decision is how to sell into China and the Anthropic buildout without making the export-control probe worse.",
+      "categories": [
+        "Frontier Tech / AI",
+        "China",
+        "AI Regulation & Governance"
+      ],
+      "content": "Speculative: the Nvidia print is about governance, but the real question is exposure. Colette Kress is an interim CEO with a reported board investigation hanging over her and dealings with firms accused of export-control violations under review. A sensible interim CEO in that position does not make a bold move. I think she does the opposite: she leans on a conservative guide, avoids any new China-specific announcements, and lets the investigation play out quietly. Anyone expecting Nvidia to publicly hint at a new China chip SKU this quarter is likely to be disappointed, and that disappointment is the actual catalyst.\n\nThe overlap that nobody on the sell side wants to say out loud: Anthropic is raising capital from Nvidia and AMD while also holding roughly $900 billion in compute commitments that flow largely to hardware suppliers. If a meaningful share of Nvidia's demand is coming from companies that Nvidia is also investing in, the revenue quality question becomes a governance question. Speculatively, the first analyst to ask Kress about circular financing on the call gets a non-answer, and that non-answer becomes the week's headline.\n\nMy sharp take: the export-control probe is the thing to watch, not Q4 guidance. If Commerce or the Justice Department signals a broader inquiry into Nvidia's channel partners in Southeast Asia within 90 days, Kress becomes the CEO who presided over the company's biggest legal exposure, and a permanent CEO is named under pressure rather than on a planned timeline."
+    },
+    {
+      "title": "Oil at $114 Is the Hidden Hand Behind the AI Capex Bubble",
+      "subtitle": "Speculative: energy-driven inflation keeps the Fed hawkish, and that makes Anthropic's $900 billion compute promise a power and credit problem.",
+      "categories": [
+        "Energy",
+        "Markets",
+        "Applied Tech & Industry"
+      ],
+      "content": "Speculative: almost every AI story this week is being told as an equity story, but the binding constraints are power and the cost of money. Brent was near $114 in late October, and energy costs feed directly into the inflation prints that are pushing the Fed toward a hike. The chain is simple: oil stays high, headline CPI stays hot, Warsh's Fed stays hawkish, and the cost of financing multi-year data center buildouts rises at exactly the moment those buildouts are being contracted. Speculatively, that is the real reason the AI trade is shaky, and Nvidia's earnings are a symptom, not the cause.\n\nAnthropic is the cleanest test case. Its roughly $900 billion in mostly non-cancelable compute and infrastructure commitments are, in practice, long-dated power purchase agreements with a software company stapled on top. If revenue growth slows while rates stay high, the company cannot easily walk away from those commitments, and the first credit-style question about AI infrastructure will be asked about a company that just went public. Revenue of $33.2 billion through nine months is strong, but it is measured against obligations that run for a decade.\n\nThe bold call: the first real stress signal in AI infrastructure will come from utilities and power developers signing data center contracts at higher rates, not from the chip companies. Watch for a utility or independent power producer to disclose a renegotiation or a delayed campus tied to a hyperscale or frontier-lab customer in the first half of next year. That is the moment the 'AI is infinite' narrative meets the Fed and the oil market."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "Longreads + Open Thread",
+      "url": "https://www.antoinebuteau.com/daily-digest-2026-11-07/",
+      "summary": "A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.",
+      "connection": "Loosely related to the AI compute and valuations theme and to market structure. The link is indirect."
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Sold 25% of chip puts, still very bearish",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.",
+      "connection": "Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley",
+      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
+      "summary": "Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.",
+      "connection": "Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "light",
+      "latest_title": "Lightcone: How To Build The Future (with Amjad Masad)",
+      "url": "https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad",
+      "summary": "Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.",
+      "connection": "Loosely tied to the AI-built software and startup theme. The link is weak."
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #218",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-218",
+      "summary": "The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.",
+      "connection": "Applied tech and industry. It is a counterweight to the market-selloff and political news."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "State of the tech job market: late 2026",
+      "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
+      "summary": "Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.",
+      "connection": "Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
