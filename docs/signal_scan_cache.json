@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-18",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -45,46 +45,46 @@
       "name": "Byrne Hobart",
       "handle": "@byrnehobart",
       "source": "newsletter",
-      "signal": "light",
-      "latest_title": "Longreads + Open Thread",
-      "url": "https://www.antoinebuteau.com/daily-digest-2026-11-07/",
-      "summary": "A third-party digest dated Nov 7 lists a Diff longreads roundup covering quant funds, online subcultures and frontier AI, and the limits of private-market prediction exchanges. I haven't checked it against the original on thediff.co.",
-      "connection": "Loosely related to the AI compute and valuations theme and to market structure. The link is indirect."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
       "source": "substack",
       "signal": "light",
-      "latest_title": "Sold 25% of chip puts, still very bearish",
+      "latest_title": "Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)",
       "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
-      "summary": "After the semiconductor ETF (SMH) fell about 11% on Nov 5, Burry told paid Cassandra Unchained subscribers he sold 25% of his SMH puts. He remains very bearish. This is secondhand coverage of his paywalled post.",
-      "connection": "Ties to the AI compute race and mega-valuations story and to falling stocks. It is a bearish counterpoint to the chip-spending boom."
+      "summary": "Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.",
+      "connection": "Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI."
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "The Jensen Huang Story Gets Worse, Washington vs. New York, Silicon Valley",
-      "url": "https://stratechery.com/2026/the-jensen-huang-story-gets-worse-washington-vs-new-york-silicon-valley/",
-      "summary": "Thompson wrote two pieces this week on Nvidia CEO Jensen Huang's admitted affair with a Chinese spy. He argues the bigger risk to Huang is governance, more than national security, and says Huang's influence will never be the same. The week's roundup also covered AI on the ballot, a Google state of the union, and China.",
-      "connection": "Bears on the AI compute race and on Nvidia's mega-valuation. It also touches US-China tech policy, AI governance and the post-election Washington shift."
+      "latest_title": "Apple Permissions Update, The New App Paradigm, My iPhone Duo Review",
+      "url": "https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/",
+      "summary": "On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.",
+      "connection": "Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech."
     },
     {
       "name": "Paul Graham",
       "handle": "@paulg",
       "source": "x",
-      "signal": "light",
-      "latest_title": "Lightcone: How To Build The Future (with Amjad Masad)",
-      "url": "https://www.teahose.com/podcast/Lightcone/How%20To%20Build%20The%20Future_%20Paul%20Graham%20%26%20Amjad%20Masad",
-      "summary": "Graham appeared on a YC Lightcone episode with Amjad Masad dated Nov 7. I only saw the listing, not the content. I found no posts of his own from the last 7 days.",
-      "connection": "Loosely tied to the AI-built software and startup theme. The link is weak."
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
     },
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "x",
+      "source": "newsletter",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -95,11 +95,11 @@
       "name": "Packy McCormick",
       "handle": "@packym",
       "source": "substack",
-      "signal": "light",
-      "latest_title": "Weekly Dose of Optimism #218",
-      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-218",
-      "summary": "The weekly roundup of positive science and tech news covers plasmid DNA immunotherapy, Zipline, DREADDs and NOM4D, plus extra items.",
-      "connection": "Applied tech and industry. It is a counterweight to the market-selloff and political news."
+      "signal": "strong",
+      "latest_title": "Of Miracles and Moats",
+      "url": "https://www.notboring.co/p/of-miracles-and-moats",
+      "summary": "On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.",
+      "connection": "His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech."
     },
     {
       "name": "CJ Gustafson",
@@ -115,11 +115,11 @@
       "name": "Lenny Rachitsky",
       "handle": "@lennysan",
       "source": "newsletter",
-      "signal": "strong",
-      "latest_title": "State of the tech job market: late 2026",
-      "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
-      "summary": "Lenny reports that product managers are doing well, engineers have plateaued and designers are struggling. He says the biggest AI hiring boom is outside software. He also posted a Fable 5.2 video review, covering what it built and where it fell short, and a How I AI episode.",
-      "connection": "Directly on the labor and workforce topic and on AI's effect on jobs. The Fable 5.2 review ties to frontier AI."
+      "signal": "light",
+      "latest_title": "How I fight token fraud as a solo founder",
+      "url": "https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo",
+      "summary": "His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.",
+      "connection": "Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products."
     },
     {
       "name": "Andrej Karpathy",
@@ -143,7 +143,7 @@
     },
     {
       "name": "Noam Brown",
-      "handle": "@noambrown",
+      "handle": "@polynoamial",
       "source": "x",
       "signal": "none",
       "latest_title": "",

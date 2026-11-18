@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-07-01",
-    "topic": "Colossus Turns Commercial: SpaceX's AI Landlord Gambit"
-  },
-  {
     "date": "2026-07-02",
     "topic": "Trump's AI Security Order: First Deadlines Arrive"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-11-16",
     "topic": "Hormuz Mine Claims Meet a Calm Oil Market"
+  },
+  {
+    "date": "2026-11-18",
+    "topic": "Fed's Barr Warns AI Agents Could Trigger Bank Runs"
   }
 ]

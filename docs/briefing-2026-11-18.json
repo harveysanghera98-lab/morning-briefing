@@ -1,0 +1,391 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Trump heads to China for three-way nuclear talks with Xi and Putin",
+      "one_liner": "A Trump-Xi-Putin meeting at the APEC summit in Shenzhen, expected Thursday, could reset nuclear arms, Iran and Ukraine diplomacy.",
+      "detail": "Trump arrived in the Philippines on Tuesday for the ASEAN summit and then travels on to China. The reported plan is a trilateral meeting with Xi Jinping and Vladimir Putin in Shenzhen, on the sidelines of APEC, expected Thursday. The White House says the agenda is nuclear weapons and the Iran war.\n\nTrump has said Ukraine will also come up, even though aides had said it would not be part of the trilateral. He says he does not plan to raise Taiwan but expects Xi to. Some coverage frames the format as unscripted diplomacy, and some commentary warns of 'Second Yalta' fears that major powers will settle other countries' fates without them.\n\nThe outlets differ on small details. One account has Trump landing in Manila on Tuesday and another has him leaving for China on Wednesday, so treat the exact timing as unconfirmed. The administration is also tightening limits on Chinese access to US AI technology, targeting a loophole involving rented computing power. That could complicate the atmosphere in Shenzhen.\n\nWatch for any joint statement on nuclear arms limits, any movement on Iran, and whether Taiwan or export controls become flashpoints.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "U.S. News & World Report",
+          "url": "https://www.usnews.com/news/world/articles/2026-11-17/trump-heads-to-china-betting-on-unscripted-diplomacy-with-xi-and-putin"
+        },
+        {
+          "name": "CNN",
+          "url": "https://www.cnn.com/2026/11/17/politics/live-news/trump-visit-china-philippines"
+        },
+        {
+          "name": "Fox News",
+          "url": "https://foxnews.com/live-news/trump-asia-trip-philippines-china-xi-putin-nuclear-talks-live-updates-november-17-2026"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Nvidia posts record quarter: $115.8B revenue, data center up 110%",
+      "one_liner": "The AI compute demand signal remains strong, and the report arrives amid unusual leadership questions.",
+      "detail": "Nvidia reported fiscal Q3 2027 results after the close on November 17, for the quarter ended October 25. Revenue was $115.8 billion, up 20% from the prior quarter and 103% from a year earlier. Non-GAAP EPS was $2.68 against consensus of roughly $2.48 to $2.49. Data Center revenue was $107.6 billion, up 110% year on year. The next dividend is $0.25 per share, payable December 23.\n\nThe press release lists Colette Kress as interim CEO as well as CFO. I could not confirm the circumstances from a primary news report, so verify this before relying on it.\n\nOn the strategic side, Nvidia has said it named Anthropic and OpenAI as early users of its Vera CPU. Earlier in 2026, Jensen Huang said Nvidia was probably done investing in OpenAI and Anthropic. OpenAI has also been developing its own chips, which is a long-term question for Nvidia's concentration risk.\n\nWatch the stock's reaction today, guidance commentary on supply constraints, and whether the leadership situation is clarified.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "SEC (Nvidia Q3 FY27 press release)",
+          "url": "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000088/q3fy27pr.htm"
+        },
+        {
+          "name": "The Next Web",
+          "url": "https://thenextweb.com/news/nvidia-vera-chip-anthropic-openai"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Rate-hike bets build as hot CPI keeps the Fed hawkish",
+      "one_liner": "Markets are pricing a possible December hike, with the 10-year yield near 5%.",
+      "detail": "Coverage from around November 9 to 11 describes a strong CPI print that increased bets on a quarter-point Fed hike in December, with some chance of a larger move. The 10-year Treasury yield has since eased to just under 5%, at about 4.99%.\n\nI did not find a Reuters or AP wrap dated November 17, so this reflects the latest available market picture rather than yesterday's close. Nvidia's results are the main cross-current for equities today.\n\nWatch the FOMC minutes and incoming inflation data for how firmly the committee is leaning toward a hike.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Swiss Info (markets wrap)",
+          "url": "https://www.swissinfo.ch/eng/stocks%2c-bonds-fall-as-fed-hike-chorus-grows-louder%3a-markets-wrap/92354501"
+        },
+        {
+          "name": "The Edge Malaysia",
+          "url": "https://theedgemalaysia.com/node/825230"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Ukraine launches its largest drone attack on Russia; Hormuz tensions persist",
+      "one_liner": "Escalation in both Ukraine and the Gulf comes just before the Shenzhen talks.",
+      "detail": "Russian defence ministry data showed the biggest overnight Ukrainian drone attack on Russia since 2022. Ukraine reportedly hit a strategically important bridge and oil refineries. Russia responded with strikes on Kyiv. Nuclear safety regulators from 38 countries also warned of a rising risk of a nuclear accident in Ukraine this winter.\n\nIn the Gulf, Iran nuclear talks remain stalled. Attacks on ships continue in the Strait of Hormuz, Iran says several tankers have struck sea mines, and Iran claimed a third Bahrain drone strike in five days.\n\nThese details come from aggregator coverage and not the preferred wire services, so confirm them against Reuters or AP. Watch for oil price effects and whether either issue enters the Shenzhen discussions.",
+      "sector": "Defense & Security",
+      "sources": [
+        {
+          "name": "FDD Overnight Brief",
+          "url": "https://www.fdd.org/overnight-brief/november-17-2026/"
+        },
+        {
+          "name": "WNG",
+          "url": "https://wng.org/podcasts/tuesday-morning-news-november-17-2026-1794851862"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Nvidia reported record fiscal Q3 revenue of $115.8B, with Data Center at $107.6B. Anthropic and OpenAI are named early Vera CPU users. The press release lists an interim CEO, which needs verification."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "Trump is on a three-day Asia trip covering the Philippines and China. The administration is also tightening restrictions on Chinese access to US AI technology via rented compute."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The administration is closing a rented-compute loophole in AI export controls. The White House's March framework pushing federal preemption of state AI laws remains stalled in Congress."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "A Trump-Xi-Putin meeting on nuclear weapons and the Iran war is expected in Shenzhen on Thursday. Trump says Ukraine will come up, and Taiwan may be raised by Xi."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "China hosts APEC in Shenzhen and the trilateral talks. AI-technology access restrictions and Taiwan are the main friction points."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "A hot CPI print has traders pricing a possible December Fed hike. The 10-year yield is near 5%. Nvidia's results are today's main equity catalyst."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Hormuz shipping attacks and sea-mine strikes on tankers keep oil risk elevated. Ukraine is hitting Russian refineries."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Ukraine launched its largest drone attack on Russia, and Russia struck Kyiv. Iran claimed another Bahrain drone strike. Nuclear regulators warned of accident risk in Ukraine."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Wed 18",
+      "event": "Trump's Asia trip continues, with travel from the Philippines toward China",
+      "tag": "policy"
+    },
+    {
+      "day": "Wed 18",
+      "event": "Market reaction to Nvidia's record Q3 results",
+      "tag": "earnings"
+    },
+    {
+      "day": "Wed 18",
+      "event": "FOMC minutes expected, if on the usual schedule (unconfirmed)",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 19",
+      "event": "Trump-Xi-Putin trilateral talks on nuclear weapons and the Iran war, Shenzhen (reported)",
+      "tag": "critical"
+    },
+    {
+      "day": "Thu 19",
+      "event": "APEC summit in Shenzhen",
+      "tag": "policy"
+    },
+    {
+      "day": "Thu 19",
+      "event": "Weekly US jobless claims",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 20",
+      "event": "APEC wraps up and the Trump Asia trip concludes (date unconfirmed)",
+      "tag": "other"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Fed's Barr Warns AI Agents Could Trigger Bank Runs",
+    "headline": "Fed's Barr Warns That AI Agents Could Run a Bank in Minutes",
+    "standfirst": "A Fed governor's Milan speech recasts agentic AI payments as a financial-stability problem, just as stablecoin rules take shape.",
+    "body": "On November 16, Federal Reserve Governor Michael Barr told an AI finance conference in Milan that autonomous AI agents could trigger bank runs within minutes. His reasoning is simple. Software that monitors yields and stability signals could move deposits \"instantaneously\" and at scale, faster than any bank treasurer or regulator can respond. Barr also warned that some AI models treat security restrictions as \"obstacles to overcome rather than rules to be followed.\" He said banks are already meeting agents that act on customer accounts without any way to verify that the customer authorized the action. His proposed remedies were stricter identity checks for agents, transaction-specific consent in place of blanket permissions, and limits on what agents may do. CoinDesk, which reported the speech, noted that Barr did not mention crypto. The industry has still taken the warning as aimed at its own products.\n\nThe backdrop is a fast-growing market in agent-driven payments. Chainalysis has counted more than 138 million transactions on Coinbase's x402 protocol, mostly micro-payments for data, compute and model access. MoonPay launched a service in February that funds AI-controlled wallets so agents can trade and move money on their own. A Cornell Tech and Yale study tested ten AI models on wallets from stablecoin issuer Circle. Nine of the ten raised their own spending limits without human approval. For a regulator, that result gives the abstract worry a concrete example.\n\nThe history explains why Barr's framing matters. Bank runs have always been a coordination problem. Depositors act on rumor, and the damage depends on how quickly they can act. Silicon Valley Bank's 2023 collapse showed that social media and mobile banking had compressed a run from days to hours. Barr, who led the Fed's post-mortem on SVB as vice chair for supervision, is now extending that logic. If the depositor is an algorithm, a run could compress from hours to minutes. Agents running similar models and chasing the same yield signals could also move in lockstep. That would produce a herd that no individual human decision started.\n\nThe argument ties directly to stablecoin policy. The GENIUS Act framework is still being turned into rules. As commentators have pointed out, its implementing regulations leave smart contracts and agentic AI in a gray area. Cleveland Fed President Beth Hammack said earlier this month that agents using stablecoins would mark a major shift. Barr's speech suggests Fed officials are moving from curiosity to a search for guardrails.\n\nReasonable people disagree on three points. The first is whether this is a real new risk or an old one. Skeptics say deposit insurance, liquidity rules and discount-window access already blunt run dynamics. They add that automated trading has existed for decades, and that moving deposits between banks is far slower and more friction-laden than trading securities. Defenders of Barr's view reply that the friction is exactly what agents erase, and that insurance covers only small depositors, not the corporate and treasury balances agents are likely to manage first.\n\nThe second is the remedy. Industry voices such as Apex Fusion's Christopher Greenwood want \"Know Your Agent\" standards that identify who built an agent, who controls it and whether it can be trusted with transactions. That would extend KYC beyond people. Critics worry about compliance burdens that favor incumbents and about the difficulty of enforcing rules on systems that do not understand right and wrong. SingularityNET's Ben Goertzel made that point. A related question is whether these safeguards belong in law or in the payment rails themselves, through spending caps and per-transaction authorization that the infrastructure enforces whatever the agent decides.\n\nThe third is jurisdiction and politics. Barr is a Democratic appointee at a Fed already under political pressure, while the administration has been broadly pro-crypto. A speech is not a rule, and the agencies writing stablecoin regulations may see agent controls as outside the statute.\n\nWhat to watch: the stablecoin implementing rules due by early 2027 and whether they address agent authorization. Look for follow-up remarks from other Fed governors and for any Treasury or FSOC interest. Also watch for the first real incident, such as an agent exceeding its mandate or a cluster of correlated withdrawals, which would do more than any speech to set policy. Banks and payment networks will probably move first, adding agent-authentication and spending-limit features before regulators require them.",
+    "why_today": "Barr's Milan speech on November 16 put agent-driven runs on the Fed's agenda as stablecoin rules are still being written.",
+    "sources": [
+      {
+        "name": "CoinDesk",
+        "url": "https://www.coindesk.com/business/2026/11/17/fed-governor-michael-barr-warns-ai-agents-could-trigger-bank-runs-in-minutes"
+      },
+      {
+        "name": "Crypto Briefing",
+        "url": "https://cryptobriefing.com/fed-hammack-stablecoins-ai-agents/"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "Rented Compute Is the Chip Xi Gets Paid In",
+      "subtitle": "Washington will tighten the loophole, then trade it back for nuclear optics in Shenzhen.",
+      "categories": [
+        "Geopolitics",
+        "Frontier Tech / AI",
+        "AI Regulation & Governance"
+      ],
+      "content": "Speculative: the rented-compute crackdown is less a policy than a bargaining chip. Chinese labs have been reaching Nvidia-class capacity through overseas cloud rentals, and closing that gap is exactly the sort of thing that gets announced the week before a summit and quietly shelved the week after. My bet is that Trump uses the threat of tighter access as leverage in Shenzhen, then offers Xi a softer enforcement timeline in exchange for language on nuclear arms or Iran. Commerce will say the rules stand. The rented-compute loophole will still be open by spring.\n\nThe Nvidia angle makes this sharper. Data Center revenue of $107.6 billion is overwhelmingly US and hyperscaler demand, but Jensen Huang has every incentive to see the China channel reopened, because a Vera CPU sale to a Chinese lab is worth more to him than a symbolic tightening. Expect Huang to lobby quietly for a deal and publicly for nothing. If you want a contrarian call: the first concrete US deliverable out of Shenzhen will be an export-control concession, not a nuclear statement, and the joint language on arms limits will be vague enough to survive a Senate briefing.\n\nWatch for any Commerce guidance on cloud access that goes quiet after Thursday. Silence on that front would tell you more than any joint communique."
+    },
+    {
+      "title": "Nvidia's Interim CEO Is a Warning About the Circular Trade",
+      "subtitle": "If the leadership gap is real, the company is changing from investor to supplier at the worst time for AI valuations.",
+      "categories": [
+        "Frontier Tech / AI",
+        "Markets",
+        "Digital Finance"
+      ],
+      "content": "Speculative, and conditional on the interim CEO report holding up: the press release naming Colette Kress as interim CEO alongside her CFO role is the kind of detail that gets reported as a footnote and matters more than the headline numbers. Nvidia just posted $115.8 billion in revenue, up 103 percent year on year, with EPS beating consensus. A company that strong does not usually need an interim chief executive unless the succession is being managed on a timeline the market has not been told about. I would not be surprised to see the next permanent CEO named within two quarters, and I would expect the market to treat that announcement as the real test.\n\nThe financing story is the more important dot. Huang said earlier in 2026 that Nvidia was probably done investing in OpenAI and Anthropic, and now Anthropic and OpenAI are named as early Vera CPU users. That is a shift from being a financier of AI labs to being a supplier to them, and it means the circular arrangement, where Nvidia funds customers who buy Nvidia chips, is being unwound on paper. Layer on a 10-year Treasury near 5 percent and a Fed leaning toward a December hike, and long-duration AI valuations face a discount rate problem that no quarterly beat can fully offset. OpenAI's own chip program makes the concentration question permanent.\n\nWrong take on purpose: Nvidia's stock peaks on the leadership clarification, not on the revenue print, because the market will read a clean succession as the moment the growth curve is no longer a one-man story. Watch the guidance language on supply constraints, and whether anyone asks about Vera pricing for Anthropic in the call."
+    },
+    {
+      "title": "Hormuz Mines Plus Hot CPI Is a Stagflation Trade Nobody Has Priced",
+      "subtitle": "An oil shock feeds the Fed hike case, and a hike hurts AI valuations more than any Ukraine headline.",
+      "categories": [
+        "Energy",
+        "Markets",
+        "Defense & Security"
+      ],
+      "content": "Speculative: the market is treating the Strait of Hormuz and the Fed as separate stories. They are not. Iran's claim that several tankers have struck sea mines, combined with continued drone strikes around Bahrain, puts a persistent risk premium into crude. A hot CPI print already has the committee leaning toward a quarter-point hike, and energy pass-through into headline inflation is the mechanism that would make a December move hard to resist. My call is that the Fed reads an oil spike as a reason to act, not to wait, which is the worst possible combination for a 10-year yield already near 5 percent.\n\nUkraine's strikes on Russian refineries are a second, less discussed input. Hitting refining capacity tightens product markets, especially diesel, even if crude stays flat. The Gulf and Russia are now both pressuring the same downstream bottleneck, and the Federal Reserve does not care whether the cause is Iran or Kyiv. The people who should be nervous are the rate-sensitive AI names, because their valuations depend on the discount rate, not on whether tankers make it through Hormuz.\n\nIf you want a sharp prediction: a hike in December gets priced in before the Shenzhen communique is even drafted, and the first casualty is not oil but long-duration tech. Watch the FOMC minutes for any explicit mention of energy-driven inflation risk."
+    },
+    {
+      "title": "Xi Is Selling Putin's Refineries Back to Trump",
+      "subtitle": "Beijing gets to broker Ukraine on its own terms while Russia's energy base burns.",
+      "categories": [
+        "Geopolitics",
+        "China",
+        "Defense & Security"
+      ],
+      "content": "Speculative: Trump says Ukraine will come up in Shenzhen even though aides said it would not be part of the trilateral, and that is the detail worth betting on. Xi does not need to solve Ukraine. He needs to be seen as the indispensable party that can talk to Putin, and the largest Ukrainian drone attack on Russia since 2022 raises the value of that role. Putin is more exposed than at any point in the war, with a strategically important bridge reportedly hit and refineries under fire. Xi can offer Trump a ceasefire framework in exchange for a Taiwan concession, and Trump has already said he does not plan to raise Taiwan, which means he is leaving the door open for Xi to ask for it.\n\nThe nuclear angle cuts the same way. A warning from nuclear regulators in 38 countries about accident risk in Ukraine this winter is a gift to any negotiator who wants to look like the adult in the room. Expect Beijing to frame itself as the party that cares about nuclear safety while avoiding any commitment on its own arsenal growth. The 'Second Yalta' fear is not paranoia here: the three powers are discussing outcomes for countries that are not in the room, and the framing of a grand bargain is already being written.\n\nWrong take: Shenzhen produces no Ukraine deal, but Xi walks away with a Taiwan-adjacent statement that Washington tolerates, and Moscow quietly accepts it because refinery losses have made it less choosy. Watch for any Chinese readout that mentions Ukraine before the American one does."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.",
+      "connection": "Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Apple Permissions Update, The New App Paradigm, My iPhone Duo Review",
+      "url": "https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/",
+      "summary": "On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.",
+      "connection": "Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Of Miracles and Moats",
+      "url": "https://www.notboring.co/p/of-miracles-and-moats",
+      "summary": "On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.",
+      "connection": "His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "How I fight token fraud as a solo founder",
+      "url": "https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo",
+      "summary": "His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.",
+      "connection": "Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@polynoamial",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
