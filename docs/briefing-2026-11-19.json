@@ -1,0 +1,366 @@
+{
+  "top_stories": [
+    {
+      "priority": "high",
+      "headline": "Nvidia posts $115.8B quarter, guides to $130B with no China",
+      "one_liner": "The AI compute buildout is still accelerating, and Nvidia's guidance assumes no China data-center sales.",
+      "detail": "Nvidia reported fiscal Q3 2027 results on November 17. Revenue was $115.8 billion, up 103% year over year and 20% sequentially. Data Center revenue was a record $107.6 billion. Non-GAAP EPS was $2.68 against about $2.48 expected, and revenue beat the roughly $109.1 billion consensus. Non-GAAP gross margin was 74.9%.\n\nFourth-quarter guidance is $130 billion, plus or minus 3%, and includes an extra week. Gross margin is guided to 71-72%, below the current quarter, and the outlook assumes no China data-center compute revenue. Nvidia returned $28.1 billion to shareholders in the quarter.\n\nNvidia's press release also says it will acquire Hugging Face. CNBC's coverage describes this as the first earnings call since Jensen Huang's departure. I found that claim only in that coverage and did not confirm it elsewhere, so treat it with caution.\n\nWatch the margin step-down, how much of the $130 billion guide is Rubin, and whether the Hugging Face deal draws antitrust attention. Also watch whether the China exclusion becomes a lasting feature of the guidance.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/17/nvidia-nvda-earnings-report-q3-2027.html"
+        },
+        {
+          "name": "Nvidia Newsroom",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027"
+        },
+        {
+          "name": "GlobeNewswire",
+          "url": "https://www.globenewswire.com/news-release/2026/11/17/3405200/0/en/nvidia-announces-financial-results-for-third-quarter-fiscal-2027.html"
+        }
+      ]
+    },
+    {
+      "priority": "urgent",
+      "headline": "Fed minutes signal more rate hikes; dollar at 19-month high",
+      "one_liner": "The Fed is leaning toward tightening, not cutting, which is a major repricing for equities, gold and crypto.",
+      "detail": "Minutes of the October 27-28 meeting, released Wednesday, show the Fed held its policy rate at 3.75-4%. Almost all participants judged that further hikes would likely be appropriate given their inflation and labor-market outlooks.\n\nGovernor Waller has argued for a 50bp hike in December if the committee will not signal a January move. Chair Warsh has declined to give forward guidance, so markets are leaning harder on data and on other officials' remarks.\n\nThe dollar is near a 19-month high (CNBC). Gold fell below $3,800 an ounce (TRT World). One report links the hawkish repricing and Iran tensions to a large Bitcoin liquidation wave.\n\nThe Iran war is pushing energy prices and inflation higher, and the Fed has said little about that. Watch incoming inflation data and Fed speakers for hints on whether December brings 25bp or 50bp.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "CNBC",
+          "url": "https://www.cnbc.com/2026/11/18/dollar-holds-near-19-month-high-as-data-supports-case-for-rate-hikes.html"
+        },
+        {
+          "name": "KuCoin News (minutes summary)",
+          "url": "https://www.kucoin.com/news/flash/fed-minutes-show-broad-support-for-further-rate-hikes"
+        },
+        {
+          "name": "InvestingLive",
+          "url": "https://investinglive.com/cryptocurrency/hawkish-fed-repricing-and-iran-tensions-trigger-a-major-bitcoin-liquidation-wave"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Iran war continues; Trump-Xi-Putin Shenzhen meeting floated",
+      "one_liner": "Ongoing US-Iran strikes on energy assets and a possible three-way summit could shape the war and Ukraine.",
+      "detail": "The US and Iran again exchanged strikes on crude-related assets. Iran is drafting next year's budget on the assumption that oil revenue could fall to zero. Oil is about 30% of its government budget, according to analysts cited by Yahoo Finance.\n\nSeparately, a trilateral meeting of Trump, Xi Jinping and Vladimir Putin in Shenzhen has been floated, possibly on the sidelines of an Asia-Pacific summit. It could cover both Ukraine and Iran. Critics say this risks sidelining Ukraine, and AP reported last month that US-Ukraine ties had hit a new low.\n\nThe UK is providing Ukraine a \u00a3240 million military aid package, and an IMF mission on Ukraine's program reviews has finished its in-person stage in Warsaw.\n\nWatch confirmation of the summit, further energy-infrastructure strikes, and the war's effect on inflation and the Fed.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/economy/policy/articles/iran-braces-budget-without-oil-230000830.html"
+        },
+        {
+          "name": "AP via WPXI",
+          "url": "https://www.click2houston.com/news/politics/2026/10/20/the-latest-us-ties-with-ukraine-hit-a-new-low-as-trump-slights-zelenskyy-and-eases-up-on-russia/"
+        },
+        {
+          "name": "TRT World",
+          "url": "https://www.trtworld.com/article/c07bce358cf3"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Nvidia reported $115.8B revenue and guided to $130B for Q4 without China data-center sales. It also announced an agreement to acquire Hugging Face."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Nvidia's planned Hugging Face acquisition is a notable platform and M&A move. Hyperscaler demand for Rubin remains strong."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "US-Iran strikes on energy assets continue. A Trump-Xi-Putin meeting in Shenzhen has been floated. The UK announced \u00a3240M in aid for Ukraine."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Nvidia now guides with no China data-center revenue. A Shenzhen leaders' meeting is under discussion."
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "Fed minutes show broad support for more hikes. The dollar is at a 19-month high and gold is below $3,800."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": true,
+      "summary": "Bitcoin saw a major liquidation wave on the hawkish Fed repricing and Iran tensions."
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "US-Iran strikes on crude assets continue to pressure energy markets. Iran is budgeting for possible zero oil revenue."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "The Iran conflict continues, and the UK is sending Ukraine a \u00a3240M military package."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Thu 19",
+      "event": "Fed speakers react to the minutes; watch the hike-size debate for December",
+      "tag": "policy"
+    },
+    {
+      "day": "Thu 19",
+      "event": "Weekly jobless claims",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 20",
+      "event": "Market reaction to the dollar surge and gold slide continues; options expiration",
+      "tag": "other"
+    },
+    {
+      "day": "Fri 20",
+      "event": "Possible updates on the Trump-Xi-Putin Shenzhen meeting",
+      "tag": "critical"
+    },
+    {
+      "day": "Fri 20",
+      "event": "IMF Ukraine program review follow-up after the Warsaw mission",
+      "tag": "policy"
+    },
+    {
+      "day": "Thu 19",
+      "event": "Iran-US exchanges of fire on energy assets; monitor oil prices",
+      "tag": "defense"
+    },
+    {
+      "day": "Fri 20",
+      "event": "Nvidia post-earnings analyst follow-through and Hugging Face deal scrutiny",
+      "tag": "tech"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "Nvidia's China Zero Is a Hostage Note, Not a Forecast",
+      "subtitle": "Guiding to $130B with no China data-center revenue is a bargaining position that Washington and Beijing will both try to cash in at Shenzhen.",
+      "categories": [
+        "China",
+        "Frontier Tech / AI",
+        "Geopolitics"
+      ],
+      "content": "Speculative: Nvidia's fourth-quarter guide assumes no China data-center compute revenue. Reading that as a line item misses the point. A company this size does not give up a market by accident. The guide tells Washington that the China lever is already priced as gone, which removes Nvidia's incentive to lobby for licenses. Either way, the number works as a hostage note waiting to be redeemed.\n\nSpeculative: The floated Trump-Xi-Putin meeting in Shenzhen is the obvious redemption venue. My bold call is that a licensed next-generation chip export to China gets traded inside a broader package, most likely tied to Iran oil flows and to something Moscow wants, while Ukraine is treated as a footnote. Beijing would accept a smaller chip allowance if it came with energy purchases it can finance. The Hugging Face acquisition then becomes what Nvidia offers regulators on both sides of the Atlantic to look clean while the China question gets settled.\n\nSpeculative: If I am wrong, the margin step-down to 71-72 percent is the tell. A company confident in a permanent China exit would not need to explain it. Watch whether the China exclusion language survives the next call unchanged."
+    },
+    {
+      "title": "The Fed Is Quietly Auctioning Off Open-Source AI",
+      "subtitle": "Higher-for-longer money squeezes unprofitable AI platforms, and Nvidia gets to buy Hugging Face at a discount.",
+      "categories": [
+        "Markets",
+        "Frontier Tech / AI",
+        "Applied Tech & Industry"
+      ],
+      "content": "Speculative: Minutes from the October meeting show near-unanimous support for further hikes, and Governor Waller is pushing for 50bp in December. Chair Warsh is refusing forward guidance. That combination raises the cost of capital for every AI company that depends on venture money rather than cash flow. Open-source model platforms are the most exposed, because they monetize through hosting, enterprise contracts and developer goodwill, none of which pays down debt quickly.\n\nSpeculative: My bold read is that the Hugging Face deal is a distressed-asset purchase dressed as a platform move. A hawkish Fed does not kill the open-source ecosystem, but it does force consolidation, and the buyer with the balance sheet to absorb it is the company that already sells the chips those models run on. The Applied Tech angle matters here: a hyperscaler-adjacent supplier that also owns the model hub gets to shape default inference stacks, which is a far more valuable position than the $115.8B quarter suggests.\n\nSpeculative: The wrong-footed group will be antitrust staff, who are distracted by the Iran war and by Washington's fights over other platform deals. If I am right, the review is slow, the price is low and the model community quietly accepts the terms."
+    },
+    {
+      "title": "Gold Falling During a War Means the Dollar Is Eating the Hedge",
+      "subtitle": "The dollar at a 19-month high, gold under $3,800 and a Bitcoin liquidation wave show the market is selling geopolitical hedges to fund margin.",
+      "categories": [
+        "Markets",
+        "Digital Finance",
+        "Geopolitics"
+      ],
+      "content": "Speculative: Gold should rise when US and Iranian forces trade strikes on energy assets and a summit to settle the wars is being floated. It is falling below $3,800 instead. My bold read is that the market is not pricing the war out. It is pricing the dollar in. A hawkish Fed and a 19-month-high dollar make the funding currency expensive, and levered positions get sold to meet it. Gold is being liquidated as collateral, not bought as insurance.\n\nSpeculative: Bitcoin is the first leg of that cascade because it is the most levered, most liquid and most loved by people who think of it as a war hedge. The liquidation wave is the proof of concept. I expect the same mechanism to repeat if the committee moves to 50bp in December: crypto breaks first, gold second, and the Iran-driven energy spike gets blamed for a selloff that was really about dollar funding.\n\nSpeculative: The contrarian case is that a Shenzhen summit producing any real Iran deal would crush oil, relieve inflation pressure and let gold recover fast. The timing is the trap. Positioning should be checked against the Fed speakers and the inflation prints before anyone calls the war trade dead."
+    },
+    {
+      "title": "Iran's Zero-Oil Budget Is an AI Capex Threat, Not Just an Energy Story",
+      "subtitle": "A war-driven energy shock pushes the Fed toward hikes, and that breaks the debt-funded data-center buildout before the chips run out of demand.",
+      "categories": [
+        "Energy",
+        "Frontier Tech / AI",
+        "Markets"
+      ],
+      "content": "Speculative: Iran is drafting next year's budget on the assumption that oil revenue could fall to zero, and oil is roughly 30 percent of its government spending. A state with nothing left to lose does not stop striking crude assets because prices are high. My bold call is that the energy shock lasts longer than the market expects, and the first casualty is not oil demand. It is the financing of AI infrastructure.\n\nSpeculative: The chain runs like this. Energy-driven inflation keeps the Fed hiking, which raises the cost of the debt that hyperscalers and data-center developers use to fund buildouts. Gas-linked power prices push up the electricity bill that every AI cluster has to pay. Nvidia's $130B guide assumes Rubin ramps on schedule, and that schedule depends on customers who are funding it with borrowed money at rising rates. Demand for chips is not the constraint. The cost of the power and the money behind it is.\n\nSpeculative: The wrong take the market is making is that AI capex is insulated from the Iran war because the orders are real. Orders are real. The question is whether the customers can keep paying for them at 50bp per meeting. If the first cracks show up in data-center financing rather than in Nvidia's own numbers, the energy desk will have called it first."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.",
+      "connection": "Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Apple Permissions Update, The New App Paradigm, My iPhone Duo Review",
+      "url": "https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/",
+      "summary": "On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.",
+      "connection": "Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Of Miracles and Moats",
+      "url": "https://www.notboring.co/p/of-miracles-and-moats",
+      "summary": "On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.",
+      "connection": "His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "How I fight token fraud as a solo founder",
+      "url": "https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo",
+      "summary": "His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.",
+      "connection": "Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@polynoamial",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
