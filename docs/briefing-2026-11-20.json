@@ -1,0 +1,379 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Trump, Xi and Putin meet in Shenzhen, with little to show for it",
+      "one_liner": "The first three-way meeting of the US, Chinese and Russian leaders took place on the sidelines of APEC, and reports say it produced few concrete results.",
+      "detail": "Trump, Xi and Putin met in Shenzhen on the sidelines of the APEC summit. Trump met Putin for 42 minutes and Xi for about an hour before the three-way session. Chinese officials called it a 'trilateral meeting' rather than a summit.\n\nUkraine, Iran and nuclear risk were reportedly on the agenda. The Kremlin's readout said the leaders agreed to boost oil and gas production and 'reaffirmed that there can be no winners in a nuclear war'. It also said they would keep talking about reducing nuclear risks. China has never agreed to limits on its arsenal.\n\nCBS News said the meeting appeared to achieve little. The Washington Post framed it as Xi and Putin sharing the stage with a weakened Trump, and as a sign of a shifting global order. The Globe and Mail called it historic, which shows the framing split between 'historic' and 'hollow'.\n\nTrump leaves China and is due to brief the press Friday. Watch for any follow-up on Ukraine talks, chip export controls and tariffs. Also watch how Congress, where Democrats now hold at least one chamber, reacts.\n\nCoverage this morning was thin and came mostly from US broadcasters and newspapers. I could not retrieve the FT, WSJ or Reuters versions.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "CBS News",
+          "url": "https://www.cbsnews.com/news/trump-xi-putin-china-apec-summit/"
+        },
+        {
+          "name": "The Washington Post",
+          "url": "https://www.washingtonpost.com/politics/2026/11/18/trump-xi-putin-meet-with-conflicting-agendas-sharp-divides/"
+        },
+        {
+          "name": "NPR",
+          "url": "https://www.npr.org/2026/11/18/nx-s1-6040432/trump-xi-and-putin-shenzhen-china-russia-usa"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "US-Iran war and Hormuz keep oil elevated",
+      "one_liner": "The conflict is more than eight months old and the US now has three carriers in the Middle East.",
+      "detail": "The USS Theodore Roosevelt has arrived in the Middle East, which brings the US carrier total there back to three. That points to continued military escalation and not a wind-down. Iran has controlled traffic through the Strait of Hormuz for months, requiring permission and transit fees.\n\nThe most recent oil coverage I could find dates from September, when crude was above $100 after reported attacks on vessels. I could not confirm current prices or the state of the strait this week. Iran was reportedly on the agenda in Shenzhen, but no outcome has been reported.\n\nWatch for any change in strait access and for Brent moves after the Shenzhen meeting.",
+      "sector": "Energy",
+      "sources": [
+        {
+          "name": "Al Jazeera",
+          "url": "https://www.aljazeera.com/economy/2026/8/10/oil-prices-climb-as-iranian-demands-cloud-outlook-for-strait-of-hormuz"
+        },
+        {
+          "name": "Al-Monitor",
+          "url": "https://www.al-monitor.com/originals/2026/09/oil-prices-flare-iran-tightens-grip-hormuz"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "White House tightens control over agency testimony to Congress",
+      "one_liner": "A memo from White House counsel Will Scharf requires agencies to get sign-off before appearing before Congress, as Democrats take at least one chamber.",
+      "detail": "The memo says agencies need approval from the White House counsel's office and the Office of Legislative Affairs before agreeing to appear before Congress. That limits oversight access just as Democrats control at least one chamber after the midterms.\n\nSeparately, reversing Trump's tariffs will not be easy for the new majority. The newly approved defense bill includes $400 million a year in Ukraine aid for the next two fiscal years and removes the 2019 congressional sanctions on Syria's government.\n\nThese details come from secondary reports and I did not verify them against the FT, WSJ or Reuters. Watch for committee subpoena fights.",
+      "sector": "US Policy & Power",
+      "sources": [
+        {
+          "name": "Council on Foreign Relations",
+          "url": "https://www.cfr.org/articles/congress-approves-2026-us-defense-bill"
+        },
+        {
+          "name": "WCAX Week Ahead in Washington",
+          "url": "https://www.wcax.com/2026/11/15/week-ahead-washington-november-15/?outputType=amp"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "State AI laws still face the December 2025 federal preemption order",
+      "one_liner": "The DOJ AI Litigation Task Force and funding threats are the federal tools, while states keep legislating.",
+      "detail": "The December 2025 executive order does not repeal any state AI law. Its tools are a DOJ AI Litigation Task Force that challenges state laws in court and possible withholding of federal funds. Lawyers question whether it can preempt states without Congress. Preemption legislation would need 60 Senate votes.\n\nStates have pushed back. California asserted authority over AI procurement, and Colorado repealed and replaced its AI law. I found no November 2026 developments. The EU AI Act timeline is also unconfirmed.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "Fenwick",
+          "url": "https://www.fenwick.com/insights/publications/white-house-executive-order-creates-national-ai-policy-overriding-states"
+        },
+        {
+          "name": "Axios",
+          "url": "https://www.axios.com/2025/12/12/trump-states-defiant-ai-executive-order"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": true,
+      "summary": "A White House counsel memo requires approval before agencies appear before Congress. The newly approved defense bill funds Ukraine aid at $400 million a year for two years."
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "No new developments found. The DOJ task force and the December 2025 preemption order remain the main federal levers against state AI laws."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "Trump, Xi and Putin met in Shenzhen with modest results. US-Ukraine ties are strained. Three US carriers are in the Middle East amid the Iran war."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "China hosted the Shenzhen trilateral meeting at APEC. The US has also issued new rules limiting remote access to advanced computing chips."
+    },
+    {
+      "name": "Markets",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "The Iran war and Iranian control of Hormuz traffic continue to weigh on oil. I could not confirm current prices."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "A third US carrier is in the Middle East, and the defense bill has been approved by Congress."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Fri 20",
+      "event": "Trump press briefing after leaving China",
+      "tag": "policy"
+    },
+    {
+      "day": "Fri 20",
+      "event": "Follow-up from the APEC Shenzhen trilateral meeting on Ukraine and nuclear risk",
+      "tag": "other"
+    },
+    {
+      "day": "Fri 20",
+      "event": "Monitor Iran and Hormuz developments and US carrier posture",
+      "tag": "defense"
+    },
+    {
+      "day": "Fri 20",
+      "event": "Watch for oil and Treasury yield reaction to the summit",
+      "tag": "data"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Shenzhen Trilateral: Trump, Xi, Putin Meet",
+    "headline": "Three Nuclear Powers, One Vague Statement: What Shenzhen Actually Changed",
+    "standfirst": "Trump, Xi and Putin's first three-way summit produced no deals, but its language on oil, immunity and nuclear risk may matter more than its lack of breakthroughs.",
+    "body": "On November 19, on the sidelines of the APEC leaders' meeting in Shenzhen, Donald Trump, Xi Jinping and Vladimir Putin held the first three-way summit of the leaders of the world's three largest nuclear powers. The talks lasted a little over an hour. The three then released a roughly 250-word statement on peace, which Xinhua published. It had four points: reform of the United Nations, higher output and supply of refined petroleum products, a warning that the International Criminal Court 'must not abuse' its jurisdiction, and a commitment to dialogue on nuclear risk.\n\nThe statement does not mention Ukraine, and it does not mention the Iran war. Trump had hoped to discuss Iran, but neither Xi nor Putin raised it publicly. It sets no date or venue for the nuclear dialogue.\n\nThe summit looks thin, but the setting matters. Putin was at APEC for the first time since 2017. Russia has been diplomatically isolated since the 2022 invasion, and Putin first floated this meeting only last month. Elizabeth Wishnick of the CNA Corporation called him 'the biggest winner.' He got a photograph and a joint text alongside the American president. The text also backs state immunity for officials, which is language that protects him from the ICC warrant issued in March 2023. Trump, whose administration has sanctioned ICC officials, called the court 'a rogue globalist organization.' Washington and Moscow therefore now share a formal position on the court.\n\nThe oil language is the most consequential practical element, despite offering no volumes or timetable. At an energy-crisis moment, few governments object to a pledge to raise refined-product supply. But it appears alongside reports that Washington has moved to suspend sanctions on Russian oil, which has drawn criticism from allies. In that light, the pledge reads as political cover for easing pressure on Russia's struggling energy sector. Trump also said he and Xi share an interest in keeping oil flowing through the Strait of Hormuz, although the statement does not name the strait.\n\nOn nuclear arms, the substance is weakest. Key US-Russia treaties have expired. Trump wants China in the room, but Beijing has about 620 warheads against more than 5,000 each for the US and Russia, according to SIPRI, and it regards limits as premature. Xi's contribution was long-standing boilerplate that a nuclear war cannot be won and must never be fought. Analysts read that as accommodating Trump's interest without committing to anything.\n\nThere are competing readings. The optimistic one is that three leaders speaking directly lowers the risk of miscalculation, and that a vague text is the price of getting any text. Yun Sun of the Stimson Center called the event well-choreographed and said vagueness is the trade-off in trilateral statements. A former US Commerce Department official said Trump can claim success, noting that Xi greeted him at the airport with a hug that Trump called 'a big win for us.' The skeptical reading is that Trump has traded legitimacy for atmospherics. Putin has ended his isolation, Xi has shown he is in the driver's seat, and Ukraine and Europe were sidelined. Zelensky called the Trump-Putin meeting a mistake. Sari Arho Havren of RUSI argues Xi 'got what he wanted.'\n\nThe summit also shows the limits of great-power choreography. Ukrainian strikes reportedly collapsed part of the Crimean Bridge roadway just before the summit, and Zelensky says Russia has hit Ukrainian energy sites more than 310 times since early November. On November 18, Iran struck Bahrain and Kuwait, its first Gulf attacks in about two months. Analysts expect China and Russia to call for peace in Iran but not to pressure Tehran. Beijing also has no interest in damaging its economic ties with Europe, which is why Ukraine stayed off the agenda.\n\nWhat to watch: whether a date is set for the nuclear-risk dialogue, and whether China sends anything beyond working-level officials. Watch the formal status of US sanctions on Russian oil, and the allied reaction, in the coming weeks. The Kremlin has not confirmed Witkoff's claim that Putin agreed to let Europeans join the next round of Ukraine talks, so that is a near-term test of whether Shenzhen opened or closed space for a settlement. Finally, watch the ICC language: if Washington and Moscow cite it in future disputes, the 'peace statement' will turn out to have been less vague than it looked.",
+    "why_today": "The trilateral summit and its joint statement came out of Shenzhen within the last day, and its follow-ups on oil sanctions, Ukraine and arms control will play out over coming weeks.",
+    "sources": [
+      {
+        "name": "RFE/RL",
+        "url": "https://www.rferl.org/a/trump-xi-putin-summit-four-key-takeaways/33902100.html"
+      },
+      {
+        "name": "Sunday Guardian",
+        "url": "https://sundayguardianlive.com/world/trump-xi-and-putin-apec-summit-key-takeaways-from-historic-shenzhen-trilateral-as-four-point-peace-declaration-omits-ukraine-and-iran-324770/"
+      },
+      {
+        "name": "Eurasia Review",
+        "url": "https://www.eurasiareview.com/20112026-trump-xi-putin-make-history-but-no-breakthroughs-4-takeaways-from-the-trilateral-summit-analysis/"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "Shenzhen Was a Chip Deal Dressed as a Summit",
+      "subtitle": "The only concrete output was the oil pledge, and the real currency is export controls.",
+      "categories": [
+        "Geopolitics",
+        "China",
+        "Energy"
+      ],
+      "content": "Speculative: the coverage calls Shenzhen a flop, and that's the wrong read. The Kremlin's readout had one hard item, a pledge to raise oil and gas production, and a leader who needs to show he can move oil prices before a Congress that now holds at least one chamber is not making a soft gesture. My bet is the quiet trade involved the remote-access chip rules. Beijing gets a slower enforcement timeline on those rules, and Washington gets Russian barrels and Chinese pressure on Tehran over Hormuz transit fees that have throttled supply for months. The Iran item is the tell: Iran was reportedly on the agenda, and a Hormuz outcome would show up in Brent before any official says so.\n\nThe framing split the briefing flagged, historic versus hollow, is a distraction. Nuclear 'no winners' language costs nothing and binds nobody, and China has never accepted arsenal limits, so the nuclear section was theater for the Western press. Trump gets a photo with Xi and Putin, which is what he came for, while the substance moves through agencies that do not brief the press Friday.\n\nWatch the Friday briefing for any mention of chip licensing or tariff pauses, not Ukraine. If Commerce quietly loosens or delays the remote-access rule within 60 days, this thesis is right. If it tightens, I am wrong and Shenzhen was hollow in the literal sense."
+    },
+    {
+      "title": "The Memo Is the Opening Move in a Losing Subpoena Fight",
+      "subtitle": "Scharf's sign-off rule makes the must-pass defense bill the only leverage a new Democratic chamber will have.",
+      "categories": [
+        "US Policy & Power",
+        "Defense & Security"
+      ],
+      "content": "Speculative: the White House counsel memo requiring counsel and Office of Legislative Affairs approval before agencies testify is a pre-emptive wall, and Democrats who go to subpoenas first will lose. Subpoena enforcement runs through the Justice Department, which answers to the same White House that wrote the memo. Any committee that wants documents will spend a year in litigation and get a contempt referral that goes nowhere. The majority that matters is the one that controls must-pass legislation, and the new defense bill is the template.\n\nThat bill already carries $400 million a year in Ukraine aid for two fiscal years and repeals the 2019 congressional sanctions on Syria's government. Those were not bipartisan side deals. They were policy outcomes that a Congress with a Democratic chamber can defend against a president who is weakened, by the briefing's own account, after Shenzhen. The lever is not oversight hearings. It is appropriations riders attached to the next funding deadline, with Ukraine and Syria as the bargaining chips and agency budgets as the penalty for stonewalling testimony.\n\nThe bold call: within six months, a Democratic chamber will hold up an agency budget line over testimony access, and the White House will concede a narrower sign-off process rather than let a shutdown fight define the midterm story. Watch Will Scharf's office and the Appropriations committees, not the judiciary panels. I have not verified the memo's text against the FT, WSJ or Reuters, so treat the exact scope as unconfirmed."
+    },
+    {
+      "title": "Hormuz Is the Real Tax on the AI Buildout",
+      "subtitle": "Iranian transit fees and a carrier surge will reprice Gulf AI capital, and export rules will follow the oil money.",
+      "categories": [
+        "Energy",
+        "Frontier Tech / AI",
+        "AI Regulation & Governance"
+      ],
+      "content": "Speculative: most AI-policy coverage treats the Iran war as a separate story, but the Gulf is where a large share of the sovereign capital for data centers and chip purchases sits, and that capital runs through the Strait of Hormuz. Iran has spent months requiring permission and fees for transit. Every month of that raises the risk premium on Gulf energy and makes the states that fund AI infrastructure more dependent on Washington's naval presence. Three US carriers in the region are a signal that the military cost of that dependence is rising too. I could not confirm current oil prices, so the exact figure is an open question, but the direction is clear.\n\nThe chip export angle is where the briefing's AI section and its energy section connect. The new rule limiting remote access to advanced computing chips is the most consequential AI policy in the set, and it matters more than the state-law fight. If Gulf buyers face higher energy costs and tighter access rules at the same time, the pressure lands on the licensing regime, and the likeliest outcome is case-by-case waivers for sovereign buyers in the UAE and Saudi Arabia tied to security commitments on Hormuz. That turns chip access into a bargaining chip in the same deal space as the Shenzhen trade.\n\nBold call: by the next Commerce licensing cycle, a large Gulf sovereign AI deal gets approved on conditions tied to shipping security, and critics in Congress frame it as a China hawk's betrayal. Watch Brent after any Hormuz headline and any new licensing announcements. This is a thesis about incentives, not a confirmed reporting finding."
+    },
+    {
+      "title": "The Preemption Order Is a Bluff, and California Is the Test Case",
+      "subtitle": "DOJ will pick procurement fights with California, not safety laws, to set a precedent it can win without Congress.",
+      "categories": [
+        "AI Regulation & Governance",
+        "US Policy & Power",
+        "China"
+      ],
+      "content": "Speculative: the December 2025 order cannot repeal a state AI law, and preemption legislation needs 60 Senate votes that do not exist. So the executive is left with two tools, litigation through the DOJ AI Litigation Task Force and threats to withhold federal funds. Lawyers already doubt the order can preempt states without Congress. The administration knows this. It is not trying to win a preemption case in one swing. It is trying to build a record that makes states' AI rules look like trade barriers or threats to the race with China, and the China framing is the justification that matters most.\n\nCalifornia's assertion of authority over AI procurement is the obvious target, and it is the weakest place for a state to be challenged. Procurement is a market-participant argument, and courts are more reluctant to strike a state acting as a buyer. Colorado's repeal and replace move suggests the states that fold are the ones with the most exposure to federal grants. If the Task Force sues California, the case will be framed around national competitiveness against China, which gives the DOJ a national security story it can sell without a statute.\n\nBold call: the Task Force's first major filing targets California procurement rules, not a headline safety law, and Colorado's replacement law becomes the template other states copy to avoid funding fights. I found no November 2026 developments, and the EU AI Act timeline is unconfirmed, so this is a bet on the federal playbook rather than on any reported filing."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.",
+      "connection": "Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Apple Permissions Update, The New App Paradigm, My iPhone Duo Review",
+      "url": "https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/",
+      "summary": "On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.",
+      "connection": "Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Of Miracles and Moats",
+      "url": "https://www.notboring.co/p/of-miracles-and-moats",
+      "summary": "On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.",
+      "connection": "His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "How I fight token fraud as a solo founder",
+      "url": "https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo",
+      "summary": "His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.",
+      "connection": "Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@polynoamial",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}

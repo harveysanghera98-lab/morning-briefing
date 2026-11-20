@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Friday, November 20, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Friday, November 20, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">6 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Trump, Xi and Putin meet in Shenzhen, with little to show for it</h3>
+          <div class="one-liner">The first three-way meeting of the US, Chinese and Russian leaders took place on the sidelines of APEC, and reports say it produced few concrete results.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Trump, Xi and Putin met in Shenzhen on the sidelines of the APEC summit. Trump met Putin for 42 minutes and Xi for about an hour before the three-way session. Chinese officials called it a 'trilateral meeting' rather than a summit.</p>
+<p>Ukraine, Iran and nuclear risk were reportedly on the agenda. The Kremlin's readout said the leaders agreed to boost oil and gas production and 'reaffirmed that there can be no winners in a nuclear war'. It also said they would keep talking about reducing nuclear risks. China has never agreed to limits on its arsenal.</p>
+<p>CBS News said the meeting appeared to achieve little. The Washington Post framed it as Xi and Putin sharing the stage with a weakened Trump, and as a sign of a shifting global order. The Globe and Mail called it historic, which shows the framing split between 'historic' and 'hollow'.</p>
+<p>Trump leaves China and is due to brief the press Friday. Watch for any follow-up on Ukraine talks, chip export controls and tariffs. Also watch how Congress, where Democrats now hold at least one chamber, reacts.</p>
+<p>Coverage this morning was thin and came mostly from US broadcasters and newspapers. I could not retrieve the FT, WSJ or Reuters versions.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cbsnews.com/news/trump-xi-putin-china-apec-summit/" target="_blank" rel="noopener">CBS News</a><span class="source-sep">·</span><a class="source-link" href="https://www.washingtonpost.com/politics/2026/11/18/trump-xi-putin-meet-with-conflicting-agendas-sharp-divides/" target="_blank" rel="noopener">The Washington Post</a><span class="source-sep">·</span><a class="source-link" href="https://www.npr.org/2026/11/18/nx-s1-6040432/trump-xi-and-putin-shenzhen-china-russia-usa" target="_blank" rel="noopener">NPR</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Energy</span>
+          </div>
+          <h3>US-Iran war and Hormuz keep oil elevated</h3>
+          <div class="one-liner">The conflict is more than eight months old and the US now has three carriers in the Middle East.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The USS Theodore Roosevelt has arrived in the Middle East, which brings the US carrier total there back to three. That points to continued military escalation and not a wind-down. Iran has controlled traffic through the Strait of Hormuz for months, requiring permission and transit fees.</p>
+<p>The most recent oil coverage I could find dates from September, when crude was above $100 after reported attacks on vessels. I could not confirm current prices or the state of the strait this week. Iran was reportedly on the agenda in Shenzhen, but no outcome has been reported.</p>
+<p>Watch for any change in strait access and for Brent moves after the Shenzhen meeting.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.aljazeera.com/economy/2026/8/10/oil-prices-climb-as-iranian-demands-cloud-outlook-for-strait-of-hormuz" target="_blank" rel="noopener">Al Jazeera</a><span class="source-sep">·</span><a class="source-link" href="https://www.al-monitor.com/originals/2026/09/oil-prices-flare-iran-tightens-grip-hormuz" target="_blank" rel="noopener">Al-Monitor</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">US Policy & Power</span>
+          </div>
+          <h3>White House tightens control over agency testimony to Congress</h3>
+          <div class="one-liner">A memo from White House counsel Will Scharf requires agencies to get sign-off before appearing before Congress, as Democrats take at least one chamber.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The memo says agencies need approval from the White House counsel's office and the Office of Legislative Affairs before agreeing to appear before Congress. That limits oversight access just as Democrats control at least one chamber after the midterms.</p>
+<p>Separately, reversing Trump's tariffs will not be easy for the new majority. The newly approved defense bill includes $400 million a year in Ukraine aid for the next two fiscal years and removes the 2019 congressional sanctions on Syria's government.</p>
+<p>These details come from secondary reports and I did not verify them against the FT, WSJ or Reuters. Watch for committee subpoena fights.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.cfr.org/articles/congress-approves-2026-us-defense-bill" target="_blank" rel="noopener">Council on Foreign Relations</a><span class="source-sep">·</span><a class="source-link" href="https://www.wcax.com/2026/11/15/week-ahead-washington-november-15/?outputType=amp" target="_blank" rel="noopener">WCAX Week Ahead in Washington</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">AI Regulation & Governance</span>
+          </div>
+          <h3>State AI laws still face the December 2025 federal preemption order</h3>
+          <div class="one-liner">The DOJ AI Litigation Task Force and funding threats are the federal tools, while states keep legislating.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The December 2025 executive order does not repeal any state AI law. Its tools are a DOJ AI Litigation Task Force that challenges state laws in court and possible withholding of federal funds. Lawyers question whether it can preempt states without Congress. Preemption legislation would need 60 Senate votes.</p>
+<p>States have pushed back. California asserted authority over AI procurement, and Colorado repealed and replaced its AI law. I found no November 2026 developments. The EU AI Act timeline is also unconfirmed.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.fenwick.com/insights/publications/white-house-executive-order-creates-national-ai-policy-overriding-states" target="_blank" rel="noopener">Fenwick</a><span class="source-sep">·</span><a class="source-link" href="https://www.axios.com/2025/12/12/trump-states-defiant-ai-executive-order" target="_blank" rel="noopener">Axios</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      <div class="sector-summary">A White House counsel memo requires approval before agencies appear before Congress. The newly approved defense bill funds Ukraine aid at $400 million a year for two years.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">No new developments found. The DOJ task force and the December 2025 preemption order remain the main federal levers against state AI laws.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">Trump, Xi and Putin met in Shenzhen with modest results. US-Ukraine ties are strained. Three US carriers are in the Middle East amid the Iran war.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">China hosted the Shenzhen trilateral meeting at APEC. The US has also issued new rules limiting remote access to advanced computing chips.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">The Iran war and Iranian control of Hormuz traffic continue to weigh on oil. I could not confirm current prices.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">A third US carrier is in the Middle East, and the defense bill has been approved by Congress.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Fri 20</span>
+      <span class="week-event">Trump press briefing after leaving China</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 20</span>
+      <span class="week-event">Follow-up from the APEC Shenzhen trilateral meeting on Ukraine and nuclear risk</span>
+      <span class="week-tag" style="color:#fff;background:#6B7280">other</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 20</span>
+      <span class="week-event">Monitor Iran and Hormuz developments and US carrier posture</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 20</span>
+      <span class="week-event">Watch for oil and Treasury yield reaction to the summit</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Shenzhen Was a Chip Deal Dressed as a Summit</h3>
+          <div class="subtitle">The only concrete output was the oil pledge, and the real currency is export controls.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">China</span><span class="pattern-cat">Energy</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the coverage calls Shenzhen a flop, and that's the wrong read. The Kremlin's readout had one hard item, a pledge to raise oil and gas production, and a leader who needs to show he can move oil prices before a Congress that now holds at least one chamber is not making a soft gesture. My bet is the quiet trade involved the remote-access chip rules. Beijing gets a slower enforcement timeline on those rules, and Washington gets Russian barrels and Chinese pressure on Tehran over Hormuz transit fees that have throttled supply for months. The Iran item is the tell: Iran was reportedly on the agenda, and a Hormuz outcome would show up in Brent before any official says so.</p>
+<p>The framing split the briefing flagged, historic versus hollow, is a distraction. Nuclear 'no winners' language costs nothing and binds nobody, and China has never accepted arsenal limits, so the nuclear section was theater for the Western press. Trump gets a photo with Xi and Putin, which is what he came for, while the substance moves through agencies that do not brief the press Friday.</p>
+<p>Watch the Friday briefing for any mention of chip licensing or tariff pauses, not Ukraine. If Commerce quietly loosens or delays the remote-access rule within 60 days, this thesis is right. If it tightens, I am wrong and Shenzhen was hollow in the literal sense.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Memo Is the Opening Move in a Losing Subpoena Fight</h3>
+          <div class="subtitle">Scharf's sign-off rule makes the must-pass defense bill the only leverage a new Democratic chamber will have.</div>
+          <div class="pattern-cats"><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the White House counsel memo requiring counsel and Office of Legislative Affairs approval before agencies testify is a pre-emptive wall, and Democrats who go to subpoenas first will lose. Subpoena enforcement runs through the Justice Department, which answers to the same White House that wrote the memo. Any committee that wants documents will spend a year in litigation and get a contempt referral that goes nowhere. The majority that matters is the one that controls must-pass legislation, and the new defense bill is the template.</p>
+<p>That bill already carries $400 million a year in Ukraine aid for two fiscal years and repeals the 2019 congressional sanctions on Syria's government. Those were not bipartisan side deals. They were policy outcomes that a Congress with a Democratic chamber can defend against a president who is weakened, by the briefing's own account, after Shenzhen. The lever is not oversight hearings. It is appropriations riders attached to the next funding deadline, with Ukraine and Syria as the bargaining chips and agency budgets as the penalty for stonewalling testimony.</p>
+<p>The bold call: within six months, a Democratic chamber will hold up an agency budget line over testimony access, and the White House will concede a narrower sign-off process rather than let a shutdown fight define the midterm story. Watch Will Scharf's office and the Appropriations committees, not the judiciary panels. I have not verified the memo's text against the FT, WSJ or Reuters, so treat the exact scope as unconfirmed.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Hormuz Is the Real Tax on the AI Buildout</h3>
+          <div class="subtitle">Iranian transit fees and a carrier surge will reprice Gulf AI capital, and export rules will follow the oil money.</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">AI Regulation & Governance</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: most AI-policy coverage treats the Iran war as a separate story, but the Gulf is where a large share of the sovereign capital for data centers and chip purchases sits, and that capital runs through the Strait of Hormuz. Iran has spent months requiring permission and fees for transit. Every month of that raises the risk premium on Gulf energy and makes the states that fund AI infrastructure more dependent on Washington's naval presence. Three US carriers in the region are a signal that the military cost of that dependence is rising too. I could not confirm current oil prices, so the exact figure is an open question, but the direction is clear.</p>
+<p>The chip export angle is where the briefing's AI section and its energy section connect. The new rule limiting remote access to advanced computing chips is the most consequential AI policy in the set, and it matters more than the state-law fight. If Gulf buyers face higher energy costs and tighter access rules at the same time, the pressure lands on the licensing regime, and the likeliest outcome is case-by-case waivers for sovereign buyers in the UAE and Saudi Arabia tied to security commitments on Hormuz. That turns chip access into a bargaining chip in the same deal space as the Shenzhen trade.</p>
+<p>Bold call: by the next Commerce licensing cycle, a large Gulf sovereign AI deal gets approved on conditions tied to shipping security, and critics in Congress frame it as a China hawk's betrayal. Watch Brent after any Hormuz headline and any new licensing announcements. This is a thesis about incentives, not a confirmed reporting finding.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Preemption Order Is a Bluff, and California Is the Test Case</h3>
+          <div class="subtitle">DOJ will pick procurement fights with California, not safety laws, to set a precedent it can win without Congress.</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">China</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the December 2025 order cannot repeal a state AI law, and preemption legislation needs 60 Senate votes that do not exist. So the executive is left with two tools, litigation through the DOJ AI Litigation Task Force and threats to withhold federal funds. Lawyers already doubt the order can preempt states without Congress. The administration knows this. It is not trying to win a preemption case in one swing. It is trying to build a record that makes states' AI rules look like trade barriers or threats to the race with China, and the China framing is the justification that matters most.</p>
+<p>California's assertion of authority over AI procurement is the obvious target, and it is the weakest place for a state to be challenged. Procurement is a market-participant argument, and courts are more reluctant to strike a state acting as a buyer. Colorado's repeal and replace move suggests the states that fold are the ones with the most exposure to federal grants. If the Task Force sues California, the case will be framed around national competitiveness against China, which gives the DOJ a national security story it can sell without a statute.</p>
+<p>Bold call: the Task Force's first major filing targets California procurement rules, not a headline safety law, and Colorado's replacement law becomes the template other states copy to avoid funding fights. I found no November 2026 developments, and the EU AI Act timeline is unconfirmed, so this is a bet on the federal playbook rather than on any reported filing.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  
+  <div class="deep-dive">
+    <div class="deep-dive-kicker">
+      <span class="deep-dive-kicker-dot"></span>TODAY'S DEEP DIVE
+    </div>
+    <h2>Three Nuclear Powers, One Vague Statement: What Shenzhen Actually Changed</h2>
+    <div class="standfirst">Trump, Xi and Putin's first three-way summit produced no deals, but its language on oil, immunity and nuclear risk may matter more than its lack of breakthroughs.</div>
+    <div class="deep-dive-why">The trilateral summit and its joint statement came out of Shenzhen within the last day, and its follow-ups on oil sanctions, Ukraine and arms control will play out over coming weeks.</div>
+    <div class="body"><p>On November 19, on the sidelines of the APEC leaders' meeting in Shenzhen, Donald Trump, Xi Jinping and Vladimir Putin held the first three-way summit of the leaders of the world's three largest nuclear powers. The talks lasted a little over an hour. The three then released a roughly 250-word statement on peace, which Xinhua published. It had four points: reform of the United Nations, higher output and supply of refined petroleum products, a warning that the International Criminal Court 'must not abuse' its jurisdiction, and a commitment to dialogue on nuclear risk.</p>
+<p>The statement does not mention Ukraine, and it does not mention the Iran war. Trump had hoped to discuss Iran, but neither Xi nor Putin raised it publicly. It sets no date or venue for the nuclear dialogue.</p>
+<p>The summit looks thin, but the setting matters. Putin was at APEC for the first time since 2017. Russia has been diplomatically isolated since the 2022 invasion, and Putin first floated this meeting only last month. Elizabeth Wishnick of the CNA Corporation called him 'the biggest winner.' He got a photograph and a joint text alongside the American president. The text also backs state immunity for officials, which is language that protects him from the ICC warrant issued in March 2023. Trump, whose administration has sanctioned ICC officials, called the court 'a rogue globalist organization.' Washington and Moscow therefore now share a formal position on the court.</p>
+<p>The oil language is the most consequential practical element, despite offering no volumes or timetable. At an energy-crisis moment, few governments object to a pledge to raise refined-product supply. But it appears alongside reports that Washington has moved to suspend sanctions on Russian oil, which has drawn criticism from allies. In that light, the pledge reads as political cover for easing pressure on Russia's struggling energy sector. Trump also said he and Xi share an interest in keeping oil flowing through the Strait of Hormuz, although the statement does not name the strait.</p>
+<p>On nuclear arms, the substance is weakest. Key US-Russia treaties have expired. Trump wants China in the room, but Beijing has about 620 warheads against more than 5,000 each for the US and Russia, according to SIPRI, and it regards limits as premature. Xi's contribution was long-standing boilerplate that a nuclear war cannot be won and must never be fought. Analysts read that as accommodating Trump's interest without committing to anything.</p>
+<p>There are competing readings. The optimistic one is that three leaders speaking directly lowers the risk of miscalculation, and that a vague text is the price of getting any text. Yun Sun of the Stimson Center called the event well-choreographed and said vagueness is the trade-off in trilateral statements. A former US Commerce Department official said Trump can claim success, noting that Xi greeted him at the airport with a hug that Trump called 'a big win for us.' The skeptical reading is that Trump has traded legitimacy for atmospherics. Putin has ended his isolation, Xi has shown he is in the driver's seat, and Ukraine and Europe were sidelined. Zelensky called the Trump-Putin meeting a mistake. Sari Arho Havren of RUSI argues Xi 'got what he wanted.'</p>
+<p>The summit also shows the limits of great-power choreography. Ukrainian strikes reportedly collapsed part of the Crimean Bridge roadway just before the summit, and Zelensky says Russia has hit Ukrainian energy sites more than 310 times since early November. On November 18, Iran struck Bahrain and Kuwait, its first Gulf attacks in about two months. Analysts expect China and Russia to call for peace in Iran but not to pressure Tehran. Beijing also has no interest in damaging its economic ties with Europe, which is why Ukraine stayed off the agenda.</p>
+<p>What to watch: whether a date is set for the nuclear-risk dialogue, and whether China sends anything beyond working-level officials. Watch the formal status of US sanctions on Russian oil, and the allied reaction, in the coming weeks. The Kremlin has not confirmed Witkoff's claim that Putin agreed to let Europeans join the next round of Ukraine talks, so that is a near-term test of whether Shenzhen opened or closed space for a settlement. Finally, watch the ICC language: if Washington and Moscow cite it in future disputes, the 'peace statement' will turn out to have been less vague than it looked.</p></div>
+    <div class="deep-dive-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://www.rferl.org/a/trump-xi-putin-summit-four-key-takeaways/33902100.html" target="_blank" rel="noopener">RFE/RL</a><span class="source-sep">·</span><a class="source-link" href="https://sundayguardianlive.com/world/trump-xi-and-putin-apec-summit-key-takeaways-from-historic-shenzhen-trilateral-as-four-point-peace-declaration-omits-ukraine-and-iran-324770/" target="_blank" rel="noopener">Sunday Guardian</a><span class="source-sep">·</span><a class="source-link" href="https://www.eurasiareview.com/20112026-trump-xi-putin-make-history-but-no-breakthroughs-4-takeaways-from-the-trilateral-summit-analysis/" target="_blank" rel="noopener">Eurasia Review</a></div></div>
+  </div>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/" target="_blank" rel="noopener">Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)</a><div class="sig-summary">Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.</div><div class="sig-connection">↳ Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/" target="_blank" rel="noopener">Apple Permissions Update, The New App Paradigm, My iPhone Duo Review</a><div class="sig-summary">On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.</div><div class="sig-connection">↳ Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/of-miracles-and-moats" target="_blank" rel="noopener">Of Miracles and Moats</a><div class="sig-summary">On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.</div><div class="sig-connection">↳ His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo" target="_blank" rel="noopener">How I fight token fraud as a solo founder</a><div class="sig-summary">His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.</div><div class="sig-connection">↳ Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 12 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@polynoamial</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

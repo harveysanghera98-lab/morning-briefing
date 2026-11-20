@@ -1,9 +1,5 @@
 [
   {
-    "date": "2026-07-02",
-    "topic": "Trump's AI Security Order: First Deadlines Arrive"
-  },
-  {
     "date": "2026-07-03",
     "topic": "Geneva's UN AI Dialogue: Geopolitics Meets Global Governance"
   },
@@ -118,5 +114,9 @@
   {
     "date": "2026-11-18",
     "topic": "Fed's Barr Warns AI Agents Could Trigger Bank Runs"
+  },
+  {
+    "date": "2026-11-20",
+    "topic": "Shenzhen Trilateral: Trump, Xi, Putin Meet"
   }
 ]
