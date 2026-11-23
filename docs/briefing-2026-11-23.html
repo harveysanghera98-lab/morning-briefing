@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Monday, November 23, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Monday, November 23, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;1 URGENT</span>
+    <span class="status-count">7 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="urgent" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-urgent"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-urgent">URGENT</span>
+            <span class="sector-label">Frontier Tech / AI</span>
+          </div>
+          <h3>Nvidia in leadership crisis as Huang exits as CEO</h3>
+          <div class="one-liner">The world's most important AI chip supplier is run by an interim CEO while export-control investigations continue.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Fortune reported on Nov 17 that Jensen Huang has resigned as Nvidia CEO. Colette Kress is interim CEO, and Nvidia's first earnings call without Huang was set for Nov 17. Huang said he would be 'honored' to return. Nvidia's board told CNBC it is not considering that, and sources say it is working with several search firms.</p>
+<p>Investigations into alleged chip sales to China are underway. The board has set up an oversight committee for US export-control compliance. Huang has agreed to a closed-door House hearing on December 1.</p>
+<p>The stakes are large because Nvidia sits at the center of the AI supply chain. OpenAI relies almost entirely on Nvidia GPUs. Anthropic spreads its compute across Google TPUs, AMD, Amazon Trainium and Nvidia. A prolonged leadership vacuum could affect customer commitments and the China export-control debate.</p>
+<p>To watch: the CEO search, the December 1 hearing, and any customer shift toward AMD or custom silicon. I could not retrieve the earnings figures in this run, so check the results directly.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://fortune.com/2026/11/17/openai-reveals-first-amd-neocloud-provider-amid-nvidia-collapsejensen-huang-launching-his-comeback-campaign/" target="_blank" rel="noopener">Fortune</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Trump, Xi and Putin meet in Shenzhen as Ukraine war escalates</h3>
+          <div class="one-liner">A three-way summit is overshadowed by strikes on key bridges, and Kyiv fears a great-power carve-up.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Asharq Al-Awsat reported that Trump, Xi and Putin were scheduled to meet in Shenzhen on Thursday, Nov 19. Trump said Ukraine would be a topic, although the White House had earlier said it was not expected to be. China gave few details. I could not find a report of the summit's outcome in this run.</p>
+<p>Before the summit, Ukraine hit the Crimean bridge for a second night in a row. Russian ballistic missiles struck Kyiv's Northern and Southern bridges, disrupting heating and water. Russia said it downed 1,441 Ukrainian drones in one night, the second-highest daily figure this year.</p>
+<p>Zelensky warned the meeting could resemble Yalta, a 'redistribution of spheres of influence'. Moscow wants a broad deal reshaping European security. Kyiv and European states want a ceasefire first.</p>
+<p>To watch: any read-out from Shenzhen, further strikes on infrastructure, and European and Ukrainian meetings on defense support.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://english.aawsat.com/world/5342205-ukraine-russia-hit-key-bridges-ahead-putin-xi-trump-summit" target="_blank" rel="noopener">Asharq Al-Awsat</a><span class="source-sep">·</span><a class="source-link" href="https://www.fdd.org/overnight-brief/november-19-2026/" target="_blank" rel="noopener">FDD Overnight Brief</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Applied Tech & Industry</span>
+          </div>
+          <h3>OpenAI diversifies compute toward AMD and custom chips</h3>
+          <div class="one-liner">Frontier labs are reducing their dependence on Nvidia as it faces turmoil.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Fortune reports OpenAI signed a 6 GW compute deal with AMD in October 2026. TensorWave is the first neocloud tied to it, with 457 MW expected in the first half of 2027 and full deployment by early 2028. OpenAI's own Broadcom-built chip, Jalapeño, is set to scale in 2027.</p>
+<p>Anthropic already uses four chip suppliers. The timing, alongside Nvidia's leadership upheaval, makes chip diversification a bigger strategic theme for compute buyers.</p>
+<p>To watch: further neocloud announcements and how Nvidia's new leadership handles its biggest customers.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://fortune.com/2026/11/17/openai-reveals-first-amd-neocloud-provider-amid-nvidia-collapsejensen-huang-launching-his-comeback-campaign/" target="_blank" rel="noopener">Fortune</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      <div class="sector-summary">Nvidia CEO Jensen Huang has resigned. Colette Kress is interim CEO, and export-control probes are ongoing. OpenAI is scaling AMD capacity and custom chips.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      <div class="sector-summary">Compute diversification continues, with OpenAI's 6 GW AMD deal and neocloud buildouts. Nvidia's leadership search is the major corporate story.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      <div class="sector-summary">No new federal action found this run. The preemption fight continues, with the December 2025 executive order and the White House's March legislative blueprint still the reference points. Nvidia's export-control compliance is under House scrutiny.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">A Trump-Xi-Putin summit was scheduled for Shenzhen on Nov 19. Ukraine and Russia exchanged strikes on key bridges beforehand. Outcomes were not confirmed in my searches.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">Shenzhen hosted the three-leader summit. Nvidia's alleged China chip sales are under investigation.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Per WSJ via FDD, Ukrainian drone attacks have reportedly nearly halved Russia's November oil refining.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      <div class="sector-summary">Ukraine and Russia are hitting bridges and infrastructure. Russia reported 1,441 drones downed in one night.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Mon 23</span>
+      <span class="week-event">Ukraine and allies continue meetings on defense support and negotiating positions</span>
+      <span class="week-tag" style="color:#fff;background:#7C3AED">defense</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 23</span>
+      <span class="week-event">Nvidia CEO search and board developments (ongoing)</span>
+      <span class="week-tag" style="color:#fff;background:#0891B2">tech</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue 24</span>
+      <span class="week-event">Typical pre-Thanksgiving US data releases; check calendar for exact schedule</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed 25</span>
+      <span class="week-event">Pre-holiday US data and market positioning; check calendar for exact schedule</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Thu 26</span>
+      <span class="week-event">US Thanksgiving: US markets closed</span>
+      <span class="week-tag" style="color:#fff;background:#6B7280">other</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Fri 27</span>
+      <span class="week-event">US markets close early; Black Friday retail read</span>
+      <span class="week-tag" style="color:#fff;background:#D97706">earnings</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Sun 29</span>
+      <span class="week-event">Run-up to Huang's Dec 1 closed-door House hearing on chip exports</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Huang's Exit Is a Bargaining Chip for Shenzhen</h3>
+          <div class="subtitle">Speculative: Nvidia's leadership vacuum gives Washington a reason to trade China chip licenses at the summit</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">China</span><span class="pattern-cat">Geopolitics</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: Jensen Huang resigned as Nvidia CEO in the same week that Trump, Xi and Putin were scheduled to meet in Shenzhen, and the China chip-sales investigation is still open. My bet is that these are linked. A company with an interim CEO, a new oversight committee and a December 1 House hearing is a company that cannot easily defend its China business in public. That makes Nvidia's China export licenses a useful thing to trade, not a fixed rule. Expect the White House to treat Beijing's access to advanced accelerators as a lever it can loosen or tighten, and expect Nvidia's board to be too weak to push back.</p>
+<p>The sharpest wrong take here is that the summit is about Ukraine. Trump said Ukraine would come up, but Xi's agenda is almost certainly technology controls and Trump's is trade. Ukraine is the thing that gets mentioned so the leaders can leave with something to announce. If a chip-access concession shows up in any read-out, it will be framed as a trade deal and not as an export-control decision, and the House hearing will be asked to bless a decision that has already been made.</p>
+<p>The thing to watch is not the CEO search. It is whether the December 1 hearing turns into a referendum on China sales, and whether Huang, who wants to come back, uses his testimony to argue for looser licensing. He would have an incentive to do so, and that would put him in direct conflict with the compliance committee his own board created.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Drones Are Refinery-Bombing Moscow to the Table</h3>
+          <div class="subtitle">Speculative: halving Russia's November refining makes a bad-faith summit deal more attractive to the Kremlin</div>
+          <div class="pattern-cats"><span class="pattern-cat">Energy</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: WSJ, via FDD, reports Ukrainian drone attacks have nearly halved Russia's November oil refining. Pair that with Ukraine hitting the Crimean bridge two nights running and Russia's claimed 1,441 drones downed in one night, and the picture is a Kremlin whose fuel revenue and logistics are both under direct attack. My contrarian read is that this makes Moscow more willing to sign a broad European security framework, not less. A government losing refining capacity wants sanctions relief and a freeze on the front more than it wants a Yalta-style carve-up it has to defend to its own elites.</p>
+<p>The bait for Kyiv is that the Shenzhen summit could become the place where Russia's oil leaves the sanctions box. China is the obvious buyer of discounted crude and has the most to gain from Russia being a cheap, dependable supplier. If Xi and Trump discuss energy alongside chips, Zelensky's fear of a redistribution of spheres of influence stops sounding paranoid. Europe would be the party left out of the room, paying for the security guarantees that the deal leaves undefined.</p>
+<p>What would falsify this: Russia escalating against Ukrainian energy and grid targets to offset its own refining losses, which is what the Kyiv bridge and heating strikes already look like. If Moscow doubles down on infrastructure strikes after the summit, my thesis is wrong and the refining hit is just a cost it is willing to absorb. Watch the Kremlin's response to the refining numbers and whether any Shenzhen read-out mentions oil.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Compute Race Is Now a Target Set</h3>
+          <div class="subtitle">Speculative: OpenAI's AMD and custom-chip pivot, and the strikes on Kyiv's bridges, point to the same vulnerability</div>
+          <div class="pattern-cats"><span class="pattern-cat">Applied Tech & Industry</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: OpenAI's 6 GW AMD deal, with TensorWave's 457 MW expected in the first half of 2027, and Broadcom's Jalapeño chip scaling in 2027 are a plan to make frontier compute less dependent on one supplier. Nvidia's leadership turmoil makes that plan look urgent rather than prudent. But the bigger point is physical. Gigawatt-scale data centers are power and cooling projects that happen to contain chips. The same week Russian missiles knocked out Kyiv's Northern and Southern bridges and disrupted heating and water, the AI buildout was being sold as a grid problem that is solvable with more capacity. My bold claim: the first serious state-level sabotage or strike on a major AI site will come from a conflict that has nothing to do with AI, and the operators have not planned for it.</p>
+<p>The wrong take many readers will reach for is that diversification protects the buyer. It mostly protects the chip vendor's competitors. AMD and custom silicon are gaining customers because Nvidia looks unstable, not because the alternatives are clearly better. If the CEO search drags on past the December 1 hearing, the winners are AMD, Broadcom and whoever builds the neoclouds. Anthropic already spreads compute across Google TPUs, AMD, Amazon Trainium and Nvidia, so it is positioned to look prudent in every scenario, which is why it should be watched less for its choices and more for who gets power first.</p>
+<p>What to watch: the next neocloud announcement that names a power source or a grid interconnect date, and any state or defense body that starts treating data centers as critical infrastructure. If neither appears, this thesis is premature and the compute race stays a chip story. If one does, the energy and defense sectors become the real competitive field.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The December Hearing Will Set Chip Policy, Not Congress</h3>
+          <div class="subtitle">Speculative: the export-control fight will be settled by executive action and a closed-door record, not by federal AI law</div>
+          <div class="pattern-cats"><span class="pattern-cat">AI Regulation & Governance</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">China</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>Speculative: the House has a closed-door hearing with Huang on December 1, Nvidia has an oversight committee for export-control compliance, and the December 2025 executive order and the White House's March legislative blueprint remain the reference points for AI policy. My claim is that Congress will not pass a federal AI framework in this window. The preemption fight will keep stalling, and the real rules on chip exports will be written by the executive branch through licensing and enforcement, with Congress holding hearings it can't convert into law. A closed-door session is the tell: the House wants the record and the leverage, not a public fight it has to lose.</p>
+<p>The sharp wrong take is that this helps the AI industry. A closed-door hearing with a departed CEO who wants his job back is a bad environment for a company that needs predictable rules. Nvidia's compliance committee is now the only institution with an incentive to show that its China sales were clean, and that incentive could push it to cut off Chinese customers faster than any regulation would. That would hurt Nvidia's revenue and China's supply, and it would hand the advantage to domestic Chinese chip suppliers and to whoever is selling into the gap.</p>
+<p>What would falsify this: a federal bill on AI preemption or export controls moving through committee in the next few weeks, or a public Commerce or White House rule on chip licensing that gets published before the hearing. Watch for whether the December 1 session is closed because the testimony is sensitive, and whether the executive branch uses the hearing as cover for a licensing change at the same time.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/" target="_blank" rel="noopener">Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)</a><div class="sig-summary">Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.</div><div class="sig-connection">↳ Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/" target="_blank" rel="noopener">Apple Permissions Update, The New App Paradigm, My iPhone Duo Review</a><div class="sig-summary">On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.</div><div class="sig-connection">↳ Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">SUBSTACK</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/of-miracles-and-moats" target="_blank" rel="noopener">Of Miracles and Moats</a><div class="sig-summary">On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.</div><div class="sig-connection">↳ His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo" target="_blank" rel="noopener">How I fight token fraud as a solo founder</a><div class="sig-summary">His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.</div><div class="sig-connection">↳ Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 12 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@polynoamial</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>

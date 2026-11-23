@@ -1,0 +1,346 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Nvidia in leadership crisis as Huang exits as CEO",
+      "one_liner": "The world's most important AI chip supplier is run by an interim CEO while export-control investigations continue.",
+      "detail": "Fortune reported on Nov 17 that Jensen Huang has resigned as Nvidia CEO. Colette Kress is interim CEO, and Nvidia's first earnings call without Huang was set for Nov 17. Huang said he would be 'honored' to return. Nvidia's board told CNBC it is not considering that, and sources say it is working with several search firms.\n\nInvestigations into alleged chip sales to China are underway. The board has set up an oversight committee for US export-control compliance. Huang has agreed to a closed-door House hearing on December 1.\n\nThe stakes are large because Nvidia sits at the center of the AI supply chain. OpenAI relies almost entirely on Nvidia GPUs. Anthropic spreads its compute across Google TPUs, AMD, Amazon Trainium and Nvidia. A prolonged leadership vacuum could affect customer commitments and the China export-control debate.\n\nTo watch: the CEO search, the December 1 hearing, and any customer shift toward AMD or custom silicon. I could not retrieve the earnings figures in this run, so check the results directly.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/11/17/openai-reveals-first-amd-neocloud-provider-amid-nvidia-collapsejensen-huang-launching-his-comeback-campaign/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "Trump, Xi and Putin meet in Shenzhen as Ukraine war escalates",
+      "one_liner": "A three-way summit is overshadowed by strikes on key bridges, and Kyiv fears a great-power carve-up.",
+      "detail": "Asharq Al-Awsat reported that Trump, Xi and Putin were scheduled to meet in Shenzhen on Thursday, Nov 19. Trump said Ukraine would be a topic, although the White House had earlier said it was not expected to be. China gave few details. I could not find a report of the summit's outcome in this run.\n\nBefore the summit, Ukraine hit the Crimean bridge for a second night in a row. Russian ballistic missiles struck Kyiv's Northern and Southern bridges, disrupting heating and water. Russia said it downed 1,441 Ukrainian drones in one night, the second-highest daily figure this year.\n\nZelensky warned the meeting could resemble Yalta, a 'redistribution of spheres of influence'. Moscow wants a broad deal reshaping European security. Kyiv and European states want a ceasefire first.\n\nTo watch: any read-out from Shenzhen, further strikes on infrastructure, and European and Ukrainian meetings on defense support.",
+      "sector": "Geopolitics",
+      "sources": [
+        {
+          "name": "Asharq Al-Awsat",
+          "url": "https://english.aawsat.com/world/5342205-ukraine-russia-hit-key-bridges-ahead-putin-xi-trump-summit"
+        },
+        {
+          "name": "FDD Overnight Brief",
+          "url": "https://www.fdd.org/overnight-brief/november-19-2026/"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "OpenAI diversifies compute toward AMD and custom chips",
+      "one_liner": "Frontier labs are reducing their dependence on Nvidia as it faces turmoil.",
+      "detail": "Fortune reports OpenAI signed a 6 GW compute deal with AMD in October 2026. TensorWave is the first neocloud tied to it, with 457 MW expected in the first half of 2027 and full deployment by early 2028. OpenAI's own Broadcom-built chip, Jalape\u00f1o, is set to scale in 2027.\n\nAnthropic already uses four chip suppliers. The timing, alongside Nvidia's leadership upheaval, makes chip diversification a bigger strategic theme for compute buyers.\n\nTo watch: further neocloud announcements and how Nvidia's new leadership handles its biggest customers.",
+      "sector": "Applied Tech & Industry",
+      "sources": [
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/11/17/openai-reveals-first-amd-neocloud-provider-amid-nvidia-collapsejensen-huang-launching-his-comeback-campaign/"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Nvidia CEO Jensen Huang has resigned. Colette Kress is interim CEO, and export-control probes are ongoing. OpenAI is scaling AMD capacity and custom chips."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Compute diversification continues, with OpenAI's 6 GW AMD deal and neocloud buildouts. Nvidia's leadership search is the major corporate story."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "No new federal action found this run. The preemption fight continues, with the December 2025 executive order and the White House's March legislative blueprint still the reference points. Nvidia's export-control compliance is under House scrutiny."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "A Trump-Xi-Putin summit was scheduled for Shenzhen on Nov 19. Ukraine and Russia exchanged strikes on key bridges beforehand. Outcomes were not confirmed in my searches."
+    },
+    {
+      "name": "China",
+      "has_news": true,
+      "summary": "Shenzhen hosted the three-leader summit. Nvidia's alleged China chip sales are under investigation."
+    },
+    {
+      "name": "Markets",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Per WSJ via FDD, Ukrainian drone attacks have reportedly nearly halved Russia's November oil refining."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Ukraine and Russia are hitting bridges and infrastructure. Russia reported 1,441 drones downed in one night."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Mon 23",
+      "event": "Ukraine and allies continue meetings on defense support and negotiating positions",
+      "tag": "defense"
+    },
+    {
+      "day": "Mon 23",
+      "event": "Nvidia CEO search and board developments (ongoing)",
+      "tag": "tech"
+    },
+    {
+      "day": "Tue 24",
+      "event": "Typical pre-Thanksgiving US data releases; check calendar for exact schedule",
+      "tag": "data"
+    },
+    {
+      "day": "Wed 25",
+      "event": "Pre-holiday US data and market positioning; check calendar for exact schedule",
+      "tag": "data"
+    },
+    {
+      "day": "Thu 26",
+      "event": "US Thanksgiving: US markets closed",
+      "tag": "other"
+    },
+    {
+      "day": "Fri 27",
+      "event": "US markets close early; Black Friday retail read",
+      "tag": "earnings"
+    },
+    {
+      "day": "Sun 29",
+      "event": "Run-up to Huang's Dec 1 closed-door House hearing on chip exports",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": null,
+  "pattern_watch": [
+    {
+      "title": "Huang's Exit Is a Bargaining Chip for Shenzhen",
+      "subtitle": "Speculative: Nvidia's leadership vacuum gives Washington a reason to trade China chip licenses at the summit",
+      "categories": [
+        "Frontier Tech / AI",
+        "China",
+        "Geopolitics"
+      ],
+      "content": "Speculative: Jensen Huang resigned as Nvidia CEO in the same week that Trump, Xi and Putin were scheduled to meet in Shenzhen, and the China chip-sales investigation is still open. My bet is that these are linked. A company with an interim CEO, a new oversight committee and a December 1 House hearing is a company that cannot easily defend its China business in public. That makes Nvidia's China export licenses a useful thing to trade, not a fixed rule. Expect the White House to treat Beijing's access to advanced accelerators as a lever it can loosen or tighten, and expect Nvidia's board to be too weak to push back.\n\nThe sharpest wrong take here is that the summit is about Ukraine. Trump said Ukraine would come up, but Xi's agenda is almost certainly technology controls and Trump's is trade. Ukraine is the thing that gets mentioned so the leaders can leave with something to announce. If a chip-access concession shows up in any read-out, it will be framed as a trade deal and not as an export-control decision, and the House hearing will be asked to bless a decision that has already been made.\n\nThe thing to watch is not the CEO search. It is whether the December 1 hearing turns into a referendum on China sales, and whether Huang, who wants to come back, uses his testimony to argue for looser licensing. He would have an incentive to do so, and that would put him in direct conflict with the compliance committee his own board created."
+    },
+    {
+      "title": "Drones Are Refinery-Bombing Moscow to the Table",
+      "subtitle": "Speculative: halving Russia's November refining makes a bad-faith summit deal more attractive to the Kremlin",
+      "categories": [
+        "Energy",
+        "Geopolitics",
+        "Defense & Security"
+      ],
+      "content": "Speculative: WSJ, via FDD, reports Ukrainian drone attacks have nearly halved Russia's November oil refining. Pair that with Ukraine hitting the Crimean bridge two nights running and Russia's claimed 1,441 drones downed in one night, and the picture is a Kremlin whose fuel revenue and logistics are both under direct attack. My contrarian read is that this makes Moscow more willing to sign a broad European security framework, not less. A government losing refining capacity wants sanctions relief and a freeze on the front more than it wants a Yalta-style carve-up it has to defend to its own elites.\n\nThe bait for Kyiv is that the Shenzhen summit could become the place where Russia's oil leaves the sanctions box. China is the obvious buyer of discounted crude and has the most to gain from Russia being a cheap, dependable supplier. If Xi and Trump discuss energy alongside chips, Zelensky's fear of a redistribution of spheres of influence stops sounding paranoid. Europe would be the party left out of the room, paying for the security guarantees that the deal leaves undefined.\n\nWhat would falsify this: Russia escalating against Ukrainian energy and grid targets to offset its own refining losses, which is what the Kyiv bridge and heating strikes already look like. If Moscow doubles down on infrastructure strikes after the summit, my thesis is wrong and the refining hit is just a cost it is willing to absorb. Watch the Kremlin's response to the refining numbers and whether any Shenzhen read-out mentions oil."
+    },
+    {
+      "title": "The Compute Race Is Now a Target Set",
+      "subtitle": "Speculative: OpenAI's AMD and custom-chip pivot, and the strikes on Kyiv's bridges, point to the same vulnerability",
+      "categories": [
+        "Applied Tech & Industry",
+        "Energy",
+        "Defense & Security"
+      ],
+      "content": "Speculative: OpenAI's 6 GW AMD deal, with TensorWave's 457 MW expected in the first half of 2027, and Broadcom's Jalape\u00f1o chip scaling in 2027 are a plan to make frontier compute less dependent on one supplier. Nvidia's leadership turmoil makes that plan look urgent rather than prudent. But the bigger point is physical. Gigawatt-scale data centers are power and cooling projects that happen to contain chips. The same week Russian missiles knocked out Kyiv's Northern and Southern bridges and disrupted heating and water, the AI buildout was being sold as a grid problem that is solvable with more capacity. My bold claim: the first serious state-level sabotage or strike on a major AI site will come from a conflict that has nothing to do with AI, and the operators have not planned for it.\n\nThe wrong take many readers will reach for is that diversification protects the buyer. It mostly protects the chip vendor's competitors. AMD and custom silicon are gaining customers because Nvidia looks unstable, not because the alternatives are clearly better. If the CEO search drags on past the December 1 hearing, the winners are AMD, Broadcom and whoever builds the neoclouds. Anthropic already spreads compute across Google TPUs, AMD, Amazon Trainium and Nvidia, so it is positioned to look prudent in every scenario, which is why it should be watched less for its choices and more for who gets power first.\n\nWhat to watch: the next neocloud announcement that names a power source or a grid interconnect date, and any state or defense body that starts treating data centers as critical infrastructure. If neither appears, this thesis is premature and the compute race stays a chip story. If one does, the energy and defense sectors become the real competitive field."
+    },
+    {
+      "title": "The December Hearing Will Set Chip Policy, Not Congress",
+      "subtitle": "Speculative: the export-control fight will be settled by executive action and a closed-door record, not by federal AI law",
+      "categories": [
+        "AI Regulation & Governance",
+        "US Policy & Power",
+        "China"
+      ],
+      "content": "Speculative: the House has a closed-door hearing with Huang on December 1, Nvidia has an oversight committee for export-control compliance, and the December 2025 executive order and the White House's March legislative blueprint remain the reference points for AI policy. My claim is that Congress will not pass a federal AI framework in this window. The preemption fight will keep stalling, and the real rules on chip exports will be written by the executive branch through licensing and enforcement, with Congress holding hearings it can't convert into law. A closed-door session is the tell: the House wants the record and the leverage, not a public fight it has to lose.\n\nThe sharp wrong take is that this helps the AI industry. A closed-door hearing with a departed CEO who wants his job back is a bad environment for a company that needs predictable rules. Nvidia's compliance committee is now the only institution with an incentive to show that its China sales were clean, and that incentive could push it to cut off Chinese customers faster than any regulation would. That would hurt Nvidia's revenue and China's supply, and it would hand the advantage to domestic Chinese chip suppliers and to whoever is selling into the gap.\n\nWhat would falsify this: a federal bill on AI preemption or export controls moving through committee in the next few weeks, or a public Commerce or White House rule on chip licensing that gets published before the hearing. Watch for whether the December 1 session is closed because the testimony is sensitive, and whether the executive branch uses the hearing as cover for a licensing change at the same time."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "substack",
+      "signal": "light",
+      "latest_title": "Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)",
+      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
+      "summary": "Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.",
+      "connection": "Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "Apple Permissions Update, The New App Paradigm, My iPhone Duo Review",
+      "url": "https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/",
+      "summary": "On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.",
+      "connection": "Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "newsletter",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "substack",
+      "signal": "strong",
+      "latest_title": "Of Miracles and Moats",
+      "url": "https://www.notboring.co/p/of-miracles-and-moats",
+      "summary": "On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.",
+      "connection": "His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "How I fight token fraud as a solo founder",
+      "url": "https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo",
+      "summary": "His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.",
+      "connection": "Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@polynoamial",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
