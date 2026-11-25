@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-18",
+  "date": "2026-11-25",
   "signals": [
     {
       "name": "Leopold Aschenbrenner",
@@ -34,17 +34,17 @@
     {
       "name": "Stanley Druckenmiller",
       "handle": "",
-      "source": "x",
-      "signal": "none",
-      "latest_title": "",
-      "url": "",
-      "summary": "",
-      "connection": ""
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Stan Druckenmiller Says He's \"Taking a Break\" From Stocks",
+      "url": "https://247wallst.com/investing/2026/11/18/stan-druckenmiller-says-hes-taking-a-break-from-stocks/",
+      "summary": "At the TomorrowX conference in Austin (about Nov 17), he said he is pulling back from stocks and that Duquesne is roughly flat equities and short copper. He said he has rarely had less clarity on the next 12 months. This comes from secondary reports, and they disagree on some details.",
+      "connection": "His caution fits today's AI-led selloff and the Dow's move past 50,000. It also fits the whipsaw in chip stocks."
     },
     {
       "name": "Byrne Hobart",
       "handle": "@byrnehobart",
-      "source": "newsletter",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -54,22 +54,22 @@
     {
       "name": "Michael Burry",
       "handle": "@michaeljburry",
-      "source": "substack",
-      "signal": "light",
-      "latest_title": "Cassandra Unchained: Trading Post (Nov 5 and Nov 12 updates)",
-      "url": "https://247wallst.com/investing/2026/11/06/michael-burry-sold-25-of-his-chip-puts-and-says-hes-still-very-bearish/",
-      "summary": "Per secondary reports, Burry sold 25% of his semiconductor ETF puts after a sharp Nov 5 drop but says he remains very bearish. On Nov 12 he reportedly used a Nasdaq 100 bounce off 27,000 to double his put position. These come from news coverage of his paid Substack, not his posts directly.",
-      "connection": "Bearish chip and AI positioning set against Nvidia's record $115.8B quarter and the Fed hawkishness from hot CPI."
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Burry Substack post on Nvidia (Nov 10)",
+      "url": "https://www.ibtimes.co.uk/michael-burry-nvidia-short-term-trade-long-term-warning-1831723",
+      "summary": "In a Nov 10 Substack post, he said Nvidia could be a short-term trade after its drop but that its edge will shrink within five years. Other coverage reports he holds Nvidia puts. It also reports his claims that customers are paying more slowly and that depreciation accounting inflates industry earnings. These come from secondary reports.",
+      "connection": "This bears directly on the Nvidia and Jensen Huang CEO turmoil and the chip-stock whipsaw. It also bears on the AI-trade selloff."
     },
     {
       "name": "Ben Thompson",
       "handle": "@stratechery",
       "source": "newsletter",
       "signal": "strong",
-      "latest_title": "Apple Permissions Update, The New App Paradigm, My iPhone Duo Review",
-      "url": "https://stratechery.com/2026/apple-permissions-update-the-new-app-paradigm-my-iphone-duo-review/",
-      "summary": "On Nov 17 he argued Apple isn't ruining the Mac but isn't solving the agent problem, and questioned whether it can think outside the app paradigm. His Nov 16 'Obituaries' and the Nov 13 weekly 'The End of Jensen' piece cover the demise of Jensen Huang and what it means for Nvidia's long-term prospects, the AI bubble, and how the U.S. views itself.",
-      "connection": "Directly relevant to today's Nvidia record-quarter story, since he frames Huang's exit as a turning point for Nvidia and the AI cycle. The agent and app-paradigm piece ties to frontier AI and applied tech."
+      "latest_title": "The Individual Exception",
+      "url": "https://stratechery.com/2026/the-individual-exception/",
+      "summary": "He argues that Jensen Huang has been granted an exception from managerial oversight and that, in the age of AI, he won't be the last. A separate piece on Amazon earnings says Amazon is willing to give up margin to serve the frontier, and it also covers the chip question and agents.",
+      "connection": "The first piece speaks directly to Huang's reinstatement as Nvidia CEO. The Amazon piece ties to custom chips and AI compute economics."
     },
     {
       "name": "Paul Graham",
@@ -84,7 +84,7 @@
     {
       "name": "Benedict Evans",
       "handle": "@benedictevans",
-      "source": "newsletter",
+      "source": "x",
       "signal": "none",
       "latest_title": "",
       "url": "",
@@ -94,12 +94,12 @@
     {
       "name": "Packy McCormick",
       "handle": "@packym",
-      "source": "substack",
-      "signal": "strong",
-      "latest_title": "Of Miracles and Moats",
-      "url": "https://www.notboring.co/p/of-miracles-and-moats",
-      "summary": "On Nov 11 he wrote on cycles, bubbles and the golden age of consumer surplus. His Nov 13 Weekly Dose of Optimism #219 rounds up AlphaGenome 2, Unnatural Products x Argenx, SpaceX Solar, Voyager 1 and more. Only the RSS blurbs were available, not the full text.",
-      "connection": "His bubbles-and-moats framing bears on the debate over Nvidia's record quarter and whether the AI boom is a bubble. The optimism roundup covers frontier tech."
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #220",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-220",
+      "summary": "A roundup of optimistic tech and science news. It covers SpaceX reusability, a leukemia vaccine and a pancreatic pill, Tesla Powercore, and Earth AI's gold discovery.",
+      "connection": "It offers a counterweight to the AI-selloff mood. It also touches on energy and applied tech."
     },
     {
       "name": "CJ Gustafson",
@@ -116,10 +116,10 @@
       "handle": "@lennysan",
       "source": "newsletter",
       "signal": "light",
-      "latest_title": "How I fight token fraud as a solo founder",
-      "url": "https://www.lennysnewsletter.com/p/how-i-fight-token-fraud-as-a-solo",
-      "summary": "His Nov 16 How I AI episode (40 min) walks through six token-fraud attack patterns, the defenses built after losing tens of thousands of dollars, and why the guest killed free trials. The same week's roundup includes a Fable 5.2 review and a Claude Code family OS. The other Nov 17 post is a promo for free tools, which I skipped.",
-      "connection": "Ties to frontier AI and applied tech, covering the practical costs and risks of running AI products."
+      "latest_title": "OpenClaw for executives: Automate every 1% annoyance | Ankit Maheshwari (Innovaccer)",
+      "url": "https://www.lennysnewsletter.com/p/openclaw-for-executives-automate",
+      "summary": "Innovaccer CTO Ankit Maheshwari shows the OpenClaw agent assistant he runs on a Mac Mini. A separate interview covers what makes a great PM in the AI era, with juniors as a secret weapon.",
+      "connection": "Both pieces are about agents and AI's effect on work. That ties to the labor and workforce theme."
     },
     {
       "name": "Andrej Karpathy",
@@ -143,7 +143,7 @@
     },
     {
       "name": "Noam Brown",
-      "handle": "@polynoamial",
+      "handle": "@noambrown",
       "source": "x",
       "signal": "none",
       "latest_title": "",
