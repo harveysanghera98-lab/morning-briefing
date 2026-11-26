@@ -1,0 +1,417 @@
+{
+  "top_stories": [
+    {
+      "priority": "urgent",
+      "headline": "Hot October PCE locks in a December Fed hike as stocks whip through an AI sell-off",
+      "one_liner": "Inflation is re-accelerating, and markets now price a Fed rate hike on Dec 8-9 at roughly 98%.",
+      "detail": "October PCE inflation was reported at about 3.8% year over year, up from 3.6% in September. Core PCE reached about 3.3%, which one summary describes as a three-year high. Markets now put the odds of a 25bp Fed hike at the December 8-9 FOMC at close to certain.\n\nThe Wednesday session before Thanksgiving was volatile. The S&P 500 fell as much as 3.2% intraday amid AI-related selling, then recovered to close down about 0.25% at roughly 7,183. The Nasdaq fell about 0.6% and the Dow rose about 0.3%. The 10-year Treasury yield fell about six basis points to around 4.84% despite the hot print. US markets are closed today for Thanksgiving, and Friday is a half session.\n\nThe sources I found differ on whether core PCE beat or matched expectations. I could not verify the figures against the BEA release or a Reuters, FT or WSJ report, so treat the numbers as approximate. Eurozone inflation reportedly hit 4% in October, so tightening pressure is global.\n\nWatch the Fed blackout period, which begins Saturday, the November jobs report and CPI before the December meeting, and whether AI-linked equities keep showing intraday fragility.",
+      "sector": "Markets",
+      "sources": [
+        {
+          "name": "Yahoo Finance",
+          "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html"
+        },
+        {
+          "name": "The Market Breakdown",
+          "url": "https://www.themarketbreakdown.com/p/the-s-and-p-fell-32-by-dinner-almost"
+        },
+        {
+          "name": "Anadolu Agency",
+          "url": "https://aa.com.tr/en/economy/global-markets-mixed-amid-hawkish-fed-minutes-ai-uncertainties/4131098"
+        }
+      ]
+    },
+    {
+      "priority": "urgent",
+      "headline": "Hormuz disrupted as tankers hit mines, yet oil sinks on US-Iran talk hopes",
+      "one_liner": "Crude is near three-month lows even though shipping through the strait has reportedly collapsed.",
+      "detail": "Brent fell to about $88.7 and WTI to about $79.6 this week, near three-month lows. Prices dropped almost 4% on Monday after reports that Washington was willing to engage Tehran. Traders are largely discounting claims of mine strikes in the Strait of Hormuz.\n\nIran's Revolutionary Guard reportedly said two or three tankers hit naval mines in the strait. One tracker says transits have dropped from about 85 a day to a handful. These claims come from lower-tier sources that I could not corroborate with Reuters, AP or Al Jazeera.\n\nThe status of diplomacy is contested. Indirect contacts through Oman and Qatar are reported to continue. Another report quotes Iran's Foreign Ministry as denying direct negotiations with the US and as demanding recognition of its sovereignty over the strait and war compensation. One analyst says nothing has moved.\n\nWatch for confirmed talks, any verified shipping incident, and the gap between the oil price and physical flows. If the market is wrong to discount the mine reports, it could reprice sharply.",
+      "sector": "Energy",
+      "sources": [
+        {
+          "name": "Business Standard",
+          "url": "https://www.business-standard.com/amp/markets/commodities/oil-prices-extend-losses-hover-near-three-month-lows-on-supply-concerns-126112400254_1.html"
+        },
+        {
+          "name": "FXStreet",
+          "url": "https://www.fxstreet.com/news/wti-holds-steady-above-8100-as-traders-weigh-middle-east-tensions-202611250130"
+        },
+        {
+          "name": "IndexBox",
+          "url": "https://www.indexbox.io/blog/oil-prices-stay-near-three-month-lows-despite-hormuz-mine-claims/"
+        }
+      ]
+    },
+    {
+      "priority": "high",
+      "headline": "AI compute alliances shift: OpenAI diversifies chips as Nvidia's investor role is questioned",
+      "one_liner": "Reports point to labs spreading compute across Nvidia, AMD and Google while Nvidia limits its investments.",
+      "detail": "Fortune reported on Nov 17 that OpenAI named its first AMD neocloud provider. The report ties this to its October AMD deal for 6 gigawatts of capacity. It also says OpenAI plans to buy Google TPUs. Other outlets report that Nvidia has signaled it is probably done making large investments in OpenAI and Anthropic. One of those sources links that to bubble concerns.\n\nNvidia says Anthropic and OpenAI are among the first users of its Vera chip. That points to continued close ties even as financing arrangements loosen.\n\nThis is mostly from secondary outlets and some items are undated, so I would verify against FT or WSJ reporting. The pre-holiday AI sell-off is consistent with investor unease about AI capital spending.\n\nWatch for Nvidia commentary on customer financing and for further multi-vendor compute announcements.",
+      "sector": "Frontier Tech / AI",
+      "sources": [
+        {
+          "name": "Fortune",
+          "url": "https://fortune.com/2026/11/17/openai-reveals-first-amd-neocloud-provider-amid-nvidia-collapsejensen-huang-launching-his-comeback-campaign/"
+        },
+        {
+          "name": "Decrypt",
+          "url": "https://decrypt.co/360195/nvidia-probably-done-investing-openai-anthropic-ceo-why"
+        },
+        {
+          "name": "The Next Web",
+          "url": "https://thenextweb.com/news/nvidia-vera-chip-anthropic-openai"
+        }
+      ]
+    },
+    {
+      "priority": "tracking",
+      "headline": "AI regulation: US preemption push and a delayed EU AI Act",
+      "one_liner": "State-law preemption and the EU rollback keep the compliance picture unsettled.",
+      "detail": "The Dec 2025 executive order directed a DOJ AI Litigation Task Force to challenge state AI laws and used federal funding as leverage. Congress has repeatedly stalled on statutory preemption, so the legal footing is unsettled.\n\nThe EU has pushed back high-risk AI Act obligations. One source says standalone systems slip to December 2027 and embedded ones to August 2028. Sources disagree on the transparency dates, including a possible Dec 2 deadline for marking AI-generated content.\n\nThis summary comes from law-firm and trade sources rather than preferred outlets. Check the EU Official Journal before acting on any date.",
+      "sector": "AI Regulation & Governance",
+      "sources": [
+        {
+          "name": "Paul Hastings",
+          "url": "https://www.paulhastings.com/insights/client-alerts/president-trump-signs-executive-order-challenging-state-ai-laws"
+        },
+        {
+          "name": "Computing",
+          "url": "https://www.computing.co.uk/news/2026/ai/eu-agrees-to-delay-ai-act-rules"
+        }
+      ]
+    }
+  ],
+  "sectors": [
+    {
+      "name": "Frontier Tech / AI",
+      "has_news": true,
+      "summary": "Reports point to labs diversifying compute across Nvidia, AMD and Google TPUs. Nvidia says Anthropic and OpenAI are early Vera users, while other outlets say it is pulling back from investing in them. An AI-linked sell-off hit equities intraday on Wednesday."
+    },
+    {
+      "name": "Applied Tech & Industry",
+      "has_news": true,
+      "summary": "Memory and AI-outlook worries drove choppy trading in tech names. Dell earnings are due this week."
+    },
+    {
+      "name": "US Policy & Power",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "AI Regulation & Governance",
+      "has_news": true,
+      "summary": "The DOJ task force and executive order on state AI laws remain the main US lever. The EU has delayed high-risk AI Act obligations. Transparency-related dates are disputed across sources."
+    },
+    {
+      "name": "Geopolitics",
+      "has_news": true,
+      "summary": "US-Iran contacts are reported via Oman and Qatar, but Iran's Foreign Ministry reportedly denies direct talks. Hormuz shipping is reportedly disrupted."
+    },
+    {
+      "name": "China",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Markets",
+      "has_news": true,
+      "summary": "October PCE ran at about 3.8% with core at about 3.3%, and a December Fed hike is priced at roughly 98%. The S&P 500 closed at about 7,183 after a 3.2% intraday drop. The 10-year yield is about 4.84%. US markets are closed today and open for a half session Friday."
+    },
+    {
+      "name": "Digital Finance",
+      "has_news": false,
+      "summary": ""
+    },
+    {
+      "name": "Energy",
+      "has_news": true,
+      "summary": "Brent is near $88.7 and WTI near $79.6, close to three-month lows, on hopes of US-Iran talks. Hormuz mine claims are being discounted by traders."
+    },
+    {
+      "name": "Defense & Security",
+      "has_news": true,
+      "summary": "Reports of tankers hitting mines in Hormuz are unverified, and the US-Israel war with Iran continues."
+    },
+    {
+      "name": "Labor & Workforce",
+      "has_news": false,
+      "summary": ""
+    }
+  ],
+  "week_ahead": [
+    {
+      "day": "Thu 26",
+      "event": "US Thanksgiving: markets closed",
+      "tag": "other"
+    },
+    {
+      "day": "Fri 27",
+      "event": "US equity markets open for a half session (early close)",
+      "tag": "data"
+    },
+    {
+      "day": "Fri 27",
+      "event": "Black Friday retail traffic and early holiday spending read",
+      "tag": "data"
+    },
+    {
+      "day": "Sat 28",
+      "event": "Fed blackout period begins ahead of the Dec 8-9 FOMC",
+      "tag": "policy"
+    },
+    {
+      "day": "Sun 29",
+      "event": "Watch for US-Iran contacts via Oman and Qatar and any Hormuz shipping updates",
+      "tag": "critical"
+    },
+    {
+      "day": "Mon 30",
+      "event": "Oil and Hormuz headlines drive the week's first full session",
+      "tag": "other"
+    },
+    {
+      "day": "Tue Dec 1",
+      "event": "OPEC+ and oil market positioning after three-month lows (date unconfirmed)",
+      "tag": "other"
+    },
+    {
+      "day": "Tue Dec 2",
+      "event": "Possible EU deadline for marking AI-generated content (sources disagree)",
+      "tag": "policy"
+    }
+  ],
+  "deep_dive": {
+    "topic": "Beige Book and PCE: AI Boom Meets Fed Hike",
+    "headline": "The Beige Book Says AI Is Heating the Economy While Freezing Hiring, and Warsh Has to Decide What That Means",
+    "standfirst": "Wednesday's hot October PCE and a Beige Book full of AI-driven talent shortages and headcount freezes have made a December hike look like the base case. It's less clear that rates are the right tool.",
+    "body": "Two data releases landed together on Wednesday, November 25, and they point the same way. October PCE inflation, the Fed's preferred gauge, ran at roughly 3.8 percent headline and 3.3 percent core. Core is a three-year high and above the 3.2 percent consensus. The Fed's Beige Book came out the same afternoon. It reported that eight of twelve districts saw slight to moderate growth, wage gains picked up, and firms expect costs to keep climbing. Futures now price a quarter-point hike at the December 8-9 meeting, with a small chance of fifty basis points. I haven't checked these figures against the primary BEA and Fed releases, so treat them as reported by secondary outlets.\n\nThe detail that matters most is in the labor and AI passages. Employment edged up, but most firms held headcount flat and hired mainly to replace departures. At the same time, AI infrastructure is propping up industrial activity, and a shortage of AI-related talent is pushing up wages in particular places. Some firms in Boston, Cleveland and San Francisco said they are using AI tools to avoid adding staff. The result is an unusual mix. Demand from the AI capital-spending boom is strong and inflationary, while the labor market looks like a low-hire, low-fire plateau. The Beige Book also describes a K-shaped consumer, with high costs squeezing lower-income households while others keep spending.\n\nThe context is Kevin Warsh's first months as Fed chair. He has said he doesn't believe in forward guidance absent a crisis and doesn't want to prejudge meetings. That gives the committee's hawks room to set the tone. Waller, Logan, Hammack and Williams have all signaled openness to tightening. The backdrop is an energy shock from the Iran conflict that has fed through to costs, and an AI investment cycle that Warsh himself has described as running the economy hot. Equities have noticed. The S&P 500 has reportedly fallen more than ten percent from its October high, on a run of down sessions that began after the midterms.\n\nThe first view is that this is a straightforward case for a hike. Core inflation is accelerating, price pressures are broadening beyond energy, and wage growth is firming. Waiting risks letting expectations de-anchor, and a new chair wants credibility. On this reading, equity weakness is a feature, because it tightens financial conditions at the margin.\n\nThe second view is that rates are a poor instrument for this inflation. Much of the pressure comes from energy prices and from AI-specific bottlenecks in power, memory, chips and skilled labor. Higher rates will not create more electricians or HBM capacity. They would, however, raise financing costs for the very data-center buildout that the Beige Book says is holding up industry. Skeptics also point out that the hiring freeze suggests slack in the broader labor market, so a hike could hit the non-AI economy hardest and deepen the K-shape.\n\nA third, more speculative view is that AI is already a labor-market story. If firms are substituting software for headcount, wage pressure should stay confined to scarce technical roles, and the Fed would be responding to a narrow inflation source with a broad tool. The counterargument is that localized wage pressure tends to spread, and the Beige Book's mention of rising wage and benefit increases suggests it already is.\n\nThe timeline is short. Markets reopen Friday for a shortened session. The November jobs report on December 4 is the next test of whether hiring is really frozen. The more important event is Dec. 9, which also brings Broadcom and Micron earnings that will show whether AI demand is bending. One strategist expects a dovish tone from Warsh that could spark a year-end rally. A hawkish message paired with any wobble in AI earnings is the scenario that would push stocks lower. Watch the dot plot, any change in how the Fed describes AI's productivity effects, and whether Warsh frames the hike as a one-off or the start of a cycle.",
+    "why_today": "The October PCE and the November Beige Book both landed Wednesday, and Thanksgiving closes US markets today, leaving a December hike as the main thing traders are weighing.",
+    "sources": [
+      {
+        "name": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/economy/policy/article/feds-beige-book-shows-evidence-of-broadening-price-pressures-200555194.html"
+      },
+      {
+        "name": "Futunn",
+        "url": "https://news.futunn.com/en/post/1005658364/fed-beige-book-ai-infrastructure-supports-industrial-expansion-high-costs"
+      },
+      {
+        "name": "IndexBox",
+        "url": "https://www.indexbox.io/blog/fed-beige-book-signals-persistent-inflation-pressures-across-the-country/"
+      },
+      {
+        "name": "MLQ",
+        "url": "https://mlq.ai/news/fed-beige-book-8-of-12-districts-grew-as-wage-gains-picked-up/"
+      },
+      {
+        "name": "Kalkine",
+        "url": "https://kalkine.com/news/general-news/how-fed-chair-kevin-warshs-hawkish-fed-is-shaping-thanksgiving-week"
+      }
+    ]
+  },
+  "pattern_watch": [
+    {
+      "title": "The December Hike Is the Real AI Capex Stress Test",
+      "subtitle": "A near-certain Fed hike will expose which AI financing loops were built on cheap money, and Nvidia pulling back from OpenAI and Anthropic may be the first visible crack.",
+      "categories": [
+        "Markets",
+        "Frontier Tech / AI",
+        "Applied Tech & Industry"
+      ],
+      "content": "Speculative: The market has priced a December hike at roughly 98%, and the pre-holiday AI sell-off looks like the first tremor. The story most people are telling is that AI demand is fine and the selloff is noise. I think that is wrong. The AI buildout of 2024 to 2026 was financed by a mix of cheap debt, vendor financing and circular investment, where Nvidia funds the labs that buy Nvidia chips. A Fed that is hiking into 3.8 percent headline PCE makes every one of those loops more expensive at the exact moment reports say Nvidia is stepping back from large direct investments in OpenAI and Anthropic.\n\nSpeculative: Read the reported Nvidia retreat as a financing signal, not a demand signal. If Jensen Huang's company is no longer willing to be the lender of last resort to its own customers, then OpenAI and Anthropic have to fund compute from revenue or from credit markets that are about to reprice. OpenAI's diversification into AMD and Google TPUs looks less like strategy and more like a hedge against a single supplier who may no longer subsidize the bill. My bold call is that the first hard evidence of stress will show up in neocloud debt spreads and GPU-backed loan pricing before it appears in any Nvidia earnings line.\n\nSpeculative: Watch Dell this week as the read-through on enterprise AI server orders. If Dell guides cautiously on AI infrastructure while memory names keep wobbling, the market will stop treating the December hike as a macro event and start treating it as a capex event. The hike does not need to crash the S&P 500. It only needs to make the next round of multi-gigawatt commitments look overpriced, and that is enough to slow the whole chain from chip designers to memory makers."
+    },
+    {
+      "title": "Oil Is Pricing a Deal That Has Not Happened, and the Strait Is the Tell",
+      "subtitle": "Brent near $88 assumes diplomacy through Oman and Qatar, but any verified mine strike in Hormuz would reprice crude and feed straight into the inflation problem the Fed is already fighting.",
+      "categories": [
+        "Energy",
+        "Geopolitics",
+        "Defense & Security",
+        "Markets"
+      ],
+      "content": "Speculative: The market is treating the Hormuz mine reports as noise and treating reports of US willingness to talk as signal. That is the wrong ordering. Crude near three-month lows while one tracker says transits have fallen from about 85 a day to a handful is a contradiction the market is resolving in the direction it wants to believe. Physical flows, not Brent, are the thing to watch. If the Revolutionary Guard's mine claims are even partly true, the oil price is mispriced by a wide margin, and the mispricing is biggest in the Asian crude buyers who have the least slack.\n\nSpeculative: Look at the insurance market rather than the futures market. War-risk premiums for Gulf tankers, Lloyd's Joint War Committee listings and rerouting around the Cape are the cleanest read on whether shipowners believe the mine reports. If premiums are spiking while Brent drifts lower, one of those two markets is wrong, and my bet is on the insurers. Iran's demand for recognition of sovereignty over the strait and war compensation is not a negotiating position that Washington can accept quickly, so the 'talk hopes' trade has a short shelf life.\n\nSpeculative: The second-order effect is the one that matters for the Fed. A verified shipping incident that pushes Brent back above $100 would hit the same PCE components that just printed hot, and it would make a December hike look like the cheap option compared with the stagflation alternative. The Fed would be tightening into a supply shock it cannot fix. Anyone long duration and short oil is betting that the market keeps believing the diplomacy story. I think that bet is crowded and fragile."
+    },
+    {
+      "title": "The EU Delay Hands US Labs a Regulatory Vacuum and Google the Winning Hand",
+      "subtitle": "With the EU pushing high-risk obligations to 2027 and 2028 and Washington using federal funding to attack state AI laws, the biggest beneficiary of regulatory drift may be the company with the most compute independence.",
+      "categories": [
+        "AI Regulation & Governance",
+        "Frontier Tech / AI",
+        "US Policy & Power"
+      ],
+      "content": "Speculative: The consensus reading is that the EU delay is a compliance win for everyone. I think it is a competitive win for Google. Google owns its TPU stack, has the deepest cloud footprint in Europe and is now a reported supplier to OpenAI's compute plans. A regulatory vacuum in Brussels favors the company that can sell compute to every lab while also building its own models. When a rulebook slips, the companies that already run the infrastructure set the defaults, and the transparency dispute, including the possible December 2 deadline for marking AI-generated content, will be settled by whoever has the most lobbyists in the room.\n\nSpeculative: In the US, the December 2025 executive order and the DOJ AI Litigation Task Force are a bet that Congress will never pass preemption, so the administration will use litigation and federal grant conditions to chill state laws instead. My bold call is that the first target will be a state law with a clear consumer-protection hook, not a frontier-safety statute, because that is where the Commerce Department and DOJ can argue interstate commerce without touching the labs' core business. Colorado's AI Act is the obvious candidate. The state laws most likely to survive are the ones that impose disclosure rather than liability, and that is exactly what the EU is now softening.\n\nSpeculative: The combined picture is a race to the least binding regime, with the US using litigation and the EU using delay. Anthropic and OpenAI benefit from the uncertainty in the short run, but the labs that sell infrastructure, not models, gain the most. If you want one name to watch, it is not the model maker. It is the cloud and chip vendor that can offer compliance tooling as a bundle with compute. That is where regulatory drift becomes margin."
+    },
+    {
+      "title": "Memory Makers Are the First Casualty of an AI Capex Turn",
+      "subtitle": "Choppy trading in memory and AI names this week may be the early price action of a cycle turn that a December hike and the reported lab compute diversification would accelerate.",
+      "categories": [
+        "Applied Tech & Industry",
+        "Frontier Tech / AI",
+        "Markets"
+      ],
+      "content": "Speculative: Memory is the most cyclical part of the AI supply chain, and it is usually the first to turn. HBM demand has been priced as if the hyperscalers and labs will keep ordering at current rates through 2027. Reports that OpenAI is spreading orders across Nvidia, AMD and Google TPUs matter for memory because each platform carries its own HBM qualification and supplier mix. Multi-vendor compute is good for chip designers who win share, but it can strand memory inventory tuned to a single platform. My bold take is that SK Hynix and Micron are more exposed to this than Nvidia is.\n\nSpeculative: Samsung is the name I would short if I had to pick one. It has been trying to recover HBM share from SK Hynix, and any sign of softening orders from the AI buildout would hit Samsung's memory margins hardest because it has the most capacity still ramping. A December Fed hike would tighten the financing for the data center projects that are the end customers for all of this memory, so the demand signal would arrive from two directions at once. Watch whether memory contract prices soften before equity analysts change their numbers, because pricing always leads the earnings revisions.\n\nSpeculative: Dell's earnings this week are the cleanest test. If Dell reports strong AI server backlog but weaker guidance for the first half of 2027, that is the sign that enterprise buyers are pausing while the labs sort out their compute mix. Dell is the market's proxy for whether the AI boom is spreading beyond the handful of labs and hyperscalers. If it is not, the memory cycle turns first, and the chipmakers follow."
+    }
+  ],
+  "signal_scan": [
+    {
+      "name": "Leopold Aschenbrenner",
+      "handle": "@leopoldasch",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Dan Wang",
+      "handle": "@dkwang",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Nathan Benaich",
+      "handle": "@nathanbenaich",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Stanley Druckenmiller",
+      "handle": "",
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Stan Druckenmiller Says He's \"Taking a Break\" From Stocks",
+      "url": "https://247wallst.com/investing/2026/11/18/stan-druckenmiller-says-hes-taking-a-break-from-stocks/",
+      "summary": "At the TomorrowX conference in Austin (about Nov 17), he said he is pulling back from stocks and that Duquesne is roughly flat equities and short copper. He said he has rarely had less clarity on the next 12 months. This comes from secondary reports, and they disagree on some details.",
+      "connection": "His caution fits today's AI-led selloff and the Dow's move past 50,000. It also fits the whipsaw in chip stocks."
+    },
+    {
+      "name": "Byrne Hobart",
+      "handle": "@byrnehobart",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Michael Burry",
+      "handle": "@michaeljburry",
+      "source": "mixed",
+      "signal": "strong",
+      "latest_title": "Burry Substack post on Nvidia (Nov 10)",
+      "url": "https://www.ibtimes.co.uk/michael-burry-nvidia-short-term-trade-long-term-warning-1831723",
+      "summary": "In a Nov 10 Substack post, he said Nvidia could be a short-term trade after its drop but that its edge will shrink within five years. Other coverage reports he holds Nvidia puts. It also reports his claims that customers are paying more slowly and that depreciation accounting inflates industry earnings. These come from secondary reports.",
+      "connection": "This bears directly on the Nvidia and Jensen Huang CEO turmoil and the chip-stock whipsaw. It also bears on the AI-trade selloff."
+    },
+    {
+      "name": "Ben Thompson",
+      "handle": "@stratechery",
+      "source": "newsletter",
+      "signal": "strong",
+      "latest_title": "The Individual Exception",
+      "url": "https://stratechery.com/2026/the-individual-exception/",
+      "summary": "He argues that Jensen Huang has been granted an exception from managerial oversight and that, in the age of AI, he won't be the last. A separate piece on Amazon earnings says Amazon is willing to give up margin to serve the frontier, and it also covers the chip question and agents.",
+      "connection": "The first piece speaks directly to Huang's reinstatement as Nvidia CEO. The Amazon piece ties to custom chips and AI compute economics."
+    },
+    {
+      "name": "Paul Graham",
+      "handle": "@paulg",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Benedict Evans",
+      "handle": "@benedictevans",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Packy McCormick",
+      "handle": "@packym",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "Weekly Dose of Optimism #220",
+      "url": "https://www.notboring.co/p/weekly-dose-of-optimism-220",
+      "summary": "A roundup of optimistic tech and science news. It covers SpaceX reusability, a leukemia vaccine and a pancreatic pill, Tesla Powercore, and Earth AI's gold discovery.",
+      "connection": "It offers a counterweight to the AI-selloff mood. It also touches on energy and applied tech."
+    },
+    {
+      "name": "CJ Gustafson",
+      "handle": "@cjgus",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Lenny Rachitsky",
+      "handle": "@lennysan",
+      "source": "newsletter",
+      "signal": "light",
+      "latest_title": "OpenClaw for executives: Automate every 1% annoyance | Ankit Maheshwari (Innovaccer)",
+      "url": "https://www.lennysnewsletter.com/p/openclaw-for-executives-automate",
+      "summary": "Innovaccer CTO Ankit Maheshwari shows the OpenClaw agent assistant he runs on a Mac Mini. A separate interview covers what makes a great PM in the AI era, with juniors as a secret weapon.",
+      "connection": "Both pieces are about agents and AI's effect on work. That ties to the labor and workforce theme."
+    },
+    {
+      "name": "Andrej Karpathy",
+      "handle": "@karpathy",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Ilya Sutskever",
+      "handle": "@ilyasut",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Noam Brown",
+      "handle": "@noambrown",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    },
+    {
+      "name": "Fran\u00e7ois Chollet",
+      "handle": "@fchollet",
+      "source": "x",
+      "signal": "none",
+      "latest_title": "",
+      "url": "",
+      "summary": "",
+      "connection": ""
+    }
+  ]
+}
