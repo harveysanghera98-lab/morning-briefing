@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — Friday, November 27, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    max-width: 720px; margin: 0 auto; padding: 0 24px 80px;
+    color: #111827; background: #fff; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .header { padding-top: 40px; margin-bottom: 32px; }
+  .header-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+    color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header h1 {
+    font-size: 30px; font-weight: 700; color: #111827;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.2; margin-bottom: 14px;
+  }
+  .status-bar {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .status-urgent {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; color: #DC2626;
+    background: #FEE2E2; padding: 4px 12px; border-radius: 4px;
+  }
+  .pulse-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #DC2626;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .status-count { font-size: 12px; color: #6B7280; }
+
+  /* ── Tabs ────────────────────────────────────────────────── */
+  .tabs {
+    display: flex; gap: 2px; border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    padding: 10px 16px; font-size: 13px; font-weight: 500; color: #6B7280;
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; font-family: inherit; margin-bottom: -1px;
+    white-space: nowrap; transition: color 0.15s ease;
+  }
+  .tab:hover { color: #374151; }
+  .tab.active { font-weight: 700; color: #111827; border-bottom-color: #111827; }
+  .arc-nav-link {
+    margin-left: auto; padding: 9px 0 9px 12px;
+    font-size: 12px; color: #6B7280; text-decoration: none;
+    white-space: nowrap; display: flex; align-items: center; gap: 5px;
+    flex-shrink: 0; transition: color 0.15s ease;
+  }
+  .arc-nav-link:hover { color: #374151; }
+  .arc-nav-link svg { width: 13px; height: 13px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .hint { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+
+  /* ── Story cards ─────────────────────────────────────────── */
+  .story {
+    border: 1.5px solid #D1D5DB; border-radius: 10px;
+    padding: 20px 24px; margin-bottom: 16px;
+    cursor: pointer; background: #FAFAFA;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
+  }
+  .story:hover { border-color: #9CA3AF; }
+  .story.expanded-urgent  { background: #FEF2F2; border-color: #DC2626; }
+  .story.expanded-high    { background: #FFFBEB; border-color: #D97706; }
+  .story.expanded-tracking{ background: #F9FAFB; border-color: #6B7280; }
+  .story-top { display: flex; align-items: flex-start; gap: 16px; }
+  .story-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    margin-top: 13px; flex-shrink: 0;
+  }
+  .dot-urgent   { background: #DC2626; }
+  .dot-high     { background: #D97706; }
+  .dot-tracking { background: #6B7280; }
+  .story-content { flex: 1; min-width: 0; }
+  .story-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .priority-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 3px; text-transform: uppercase;
+  }
+  .tag-urgent   { color: #991B1B; background: #FEE2E2; border: 1px solid #FECACA; }
+  .tag-high     { color: #92400E; background: #FEF3C7; border: 1px solid #FDE68A; }
+  .tag-tracking { color: #374151; background: #F3F4F6; border: 1px solid #D1D5DB; }
+  .sector-label {
+    font-size: 9px; font-weight: 500; color: #9CA3AF;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .story h3 {
+    font-size: 17px; font-weight: 700; color: #111827;
+    margin: 0 0 6px; line-height: 1.3;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .story .one-liner { font-size: 13.5px; color: #4B5563; line-height: 1.5; }
+  .chevron {
+    font-size: 18px; color: #9CA3AF; margin-top: 8px; flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  .story.expanded .chevron { transform: rotate(180deg); }
+  .story-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .story.expanded .story-detail { max-height: 3000px; }
+  .story-detail-inner {
+    margin-top: 20px; padding-top: 18px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+  }
+  .story-detail p {
+    font-size: 14px; color: #1F2937; line-height: 1.8;
+    margin-bottom: 16px; padding-left: 24px;
+  }
+  .story-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Sector items ────────────────────────────────────────── */
+  .sector-item {
+    padding: 14px 18px; border-radius: 8px; cursor: pointer;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: 8px;
+  }
+  .sector-item:hover { border-color: #9CA3AF; background: #F9FAFB; }
+  .sector-item.expanded { background: #EFF6FF; border-color: #3B82F6; }
+  .sector-top { display: flex; align-items: center; gap: 14px; }
+  .sector-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .sector-dot.active { background: #10B981; }
+  .sector-dot.quiet  { background: transparent; border: 1.5px solid #D1D5DB; }
+  .sector-name { font-size: 13.5px; font-weight: 600; color: #1F2937; }
+  .sector-summary {
+    font-size: 13.5px; color: #374151; line-height: 1.75;
+    margin: 12px 0 2px 23px; display: none;
+  }
+  .sector-item.expanded .sector-summary { display: block; }
+
+  /* ── Week ahead ──────────────────────────────────────────── */
+  .week-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 14px 20px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+  }
+  .week-item.critical { background: #FEF2F2; border-color: #FECACA; }
+  .week-day {
+    font-size: 12px; font-weight: 700; color: #374151;
+    font-family: 'JetBrains Mono', monospace; min-width: 72px; flex-shrink: 0;
+  }
+  .week-event { font-size: 13.5px; color: #1F2937; flex: 1; line-height: 1.4; }
+  .week-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 3px 10px; border-radius: 3px; text-transform: uppercase; flex-shrink: 0;
+  }
+
+  /* ── Pattern cards ───────────────────────────────────────── */
+  .pattern {
+    padding: 22px 26px; border-radius: 10px; cursor: pointer;
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid #334155; margin-bottom: 16px;
+    transition: border-color 0.2s ease; overflow: hidden;
+  }
+  .pattern:hover { border-color: #475569; }
+  .pattern.expanded { border-color: #64748B; }
+  .pattern-top {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 16px;
+  }
+  .pattern-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    color: #94A3B8; margin-bottom: 8px; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pattern h3 {
+    font-size: 18px; font-weight: 700; margin: 0 0 6px;
+    font-family: 'Source Serif 4', Georgia, serif; color: #F1F5F9;
+  }
+  .pattern .subtitle {
+    font-size: 13.5px; color: #94A3B8; font-weight: 500;
+    margin-bottom: 10px; line-height: 1.5;
+  }
+  .pattern-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pattern-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.04em;
+    color: #CBD5E1; background: #334155; padding: 2px 8px; border-radius: 3px;
+  }
+  .pattern .chevron { color: #64748B; flex-shrink: 0; }
+  .pattern.expanded .chevron { transform: rotate(180deg); }
+  .pattern-detail {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .pattern.expanded .pattern-detail { max-height: 2000px; }
+  .pattern-detail-inner {
+    margin-top: 18px; border-top: 1px solid #1E293B; padding-top: 18px;
+  }
+  .pattern-detail p {
+    font-size: 14px; color: #CBD5E1; line-height: 1.8; margin-bottom: 16px;
+  }
+  .pattern-detail p:last-child { margin-bottom: 4px; }
+
+  /* ── Deep Dive ───────────────────────────────────────────── */
+  .deep-dive { padding: 4px 0 0; }
+  .deep-dive-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    color: #6366F1; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 16px;
+  }
+  .deep-dive-kicker-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+  }
+  .deep-dive h2 {
+    font-size: 26px; font-weight: 700; color: #111827; line-height: 1.25;
+    font-family: 'Source Serif 4', Georgia, serif; margin-bottom: 14px;
+  }
+  .deep-dive .standfirst {
+    font-size: 16px; color: #374151; line-height: 1.6; font-weight: 500;
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  .deep-dive-why {
+    font-size: 12.5px; color: #6B7280; font-style: italic;
+    margin-bottom: 28px; padding: 12px 16px;
+    background: #F5F3FF; border-left: 3px solid #6366F1;
+    border-radius: 0 6px 6px 0; line-height: 1.5;
+  }
+  .deep-dive .body p {
+    font-size: 15.5px; color: #1F2937; line-height: 1.85; margin-bottom: 22px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .deep-dive .body p:last-child { margin-bottom: 0; }
+
+  /* ── Signal Scan ─────────────────────────────────────────── */
+  .sig-card {
+    padding: 14px 18px; border-radius: 8px; margin-bottom: 8px;
+    background: #FAFAFA; border: 1px solid #E5E7EB;
+    transition: border-color 0.15s ease;
+  }
+  .sig-card:not(.sig-quiet):hover { border-color: #D1D5DB; }
+  .sig-quiet { opacity: 0.45; }
+  .sig-header {
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 7px;
+  }
+  .sig-left { display: flex; align-items: center; gap: 10px; }
+  .sig-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .sig-strong { background: #10B981; }
+  .sig-light  { background: #F59E0B; }
+  .sig-none   { background: #D1D5DB; }
+  .sig-name {
+    font-size: 13.5px; font-weight: 700; color: #111827; margin-right: 5px;
+  }
+  .sig-handle {
+    font-size: 11px; color: #9CA3AF;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .sig-source-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+    color: #6B7280; background: #F3F4F6; border: 1px solid #E5E7EB;
+    padding: 2px 7px; border-radius: 3px; text-transform: uppercase;
+  }
+  .sig-title {
+    display: block; font-size: 13.5px; font-weight: 600; color: #111827;
+    text-decoration: none; margin-bottom: 5px; line-height: 1.35;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .sig-title:hover { color: #3B82F6; }
+  .sig-summary {
+    font-size: 13px; color: #374151; line-height: 1.65; margin-bottom: 5px;
+  }
+  .sig-connection { font-size: 12px; color: #6366F1; font-style: italic; }
+  .sig-quiet-section { margin-top: 20px; }
+  .sig-quiet-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #D1D5DB; text-transform: uppercase; margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Sources ─────────────────────────────────────────────── */
+  .story-sources, .deep-dive-sources {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .deep-dive-sources { margin-top: 28px; padding-top: 22px; border-top: 1px solid #E5E7EB; }
+  .sources-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+    color: #9CA3AF; text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace; flex-shrink: 0;
+  }
+  .sources-list { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .source-link {
+    font-size: 12px; color: #3B82F6; text-decoration: none;
+    border-bottom: 1px solid #BFDBFE; line-height: 1.3; transition: color 0.15s;
+  }
+  .source-link:hover { color: #1D4ED8; border-bottom-color: #93C5FD; }
+  .source-sep { font-size: 11px; color: #D1D5DB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">DAILY INTELLIGENCE BRIEFING</div>
+  <h1>Friday, November 27, 2026</h1>
+  <div class="status-bar">
+    <span class="status-urgent"><span class="pulse-dot"></span>&nbsp;0 URGENT</span>
+    <span class="status-count">4 of 11 sectors active</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('stories', this)">Top Stories</button>
+  <button class="tab" onclick="showSection('sectors', this)">Sector Scan</button>
+  <button class="tab" onclick="showSection('week', this)">Week Ahead</button>
+  <button class="tab" onclick="showSection('patterns', this)">Pattern Watch</button>
+  <button class="tab" onclick="showSection('deepdive', this)">Deep Dive</button>
+  <button class="tab" onclick="showSection('signals', this)">Signal Scan</button>
+  <a class="arc-nav-link" href="./archive.html">
+    Archive
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+  </a>
+</div>
+
+<div id="stories" class="section active">
+  <p class="hint">Click any story to expand the full analysis.</p>
+  
+    <div class="story" data-priority="high" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-high"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-high">HIGH</span>
+            <span class="sector-label">Geopolitics</span>
+          </div>
+          <h3>Trump, Xi and Putin hold first-ever trilateral summit in Shenzhen</h3>
+          <div class="one-liner">The three nuclear powers issued a symbolic peace declaration, but Ukraine, Iran, nuclear arms and trade remain unresolved.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>The leaders of the US, China and Russia met on the sidelines of the APEC summit in Shenzhen on November 19. It was the first sit-down among the three. They released a peace declaration, which Al Jazeera reports included a pointed critique of the International Criminal Court. Trump said the three agree that Iran cannot obtain a nuclear weapon. AP found no sign he secured any commitment from Xi or Putin to help resolve the Iran conflict.</p>
+<p>Trump had pushed nuclear arms control to the centre of the agenda despite past Chinese objections. No agreement to reduce arsenals was confirmed.</p>
+<p>Coverage splits on how to read it. Some outlets, including Al Jazeera, call it groundbreaking. Others stress the deep divides on Ukraine, Iran, nuclear weapons and trade, and doubt that anything durable will follow. One syndicated piece says Xi and Putin shared the global stage with a weakened Trump.</p>
+<p>Watch for the next Trump-Xi meeting at the G20 that Trump is hosting at his Florida golf resort. Reuters notes that tensions could resurface there. Also watch whether the declaration produces any follow-up on Ukraine talks or arms-control dialogue.</p>
+<p>Caveat: this item is a week old. My searches did not surface reliable reporting from the last 24 hours.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://aljazeera.com/news/2026/11/19/groundbreaking-trump-xi-putin-summit-five-key-takeaways" target="_blank" rel="noopener">Al Jazeera</a><span class="source-sep">·</span><a class="source-link" href="https://rfa.org/english/china/2026/11/19/trump-xi-putin-apec-summit/" target="_blank" rel="noopener">Radio Free Asia</a><span class="source-sep">·</span><a class="source-link" href="https://www.al-monitor.com/originals/2026/11/trump-xi-and-putin-release-peace-declaration-unprecedented-summit" target="_blank" rel="noopener">Al-Monitor</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Energy</span>
+          </div>
+          <h3>Oil retreats from October highs as OPEC+ output recovers</h3>
+          <div class="one-liner">Falling crude is easing one inflation pressure, but the Fed outlook stays uncertain.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>Mid-November reports put Brent around $91 to $93. That is about 21% below its October highs. OPEC+ output had rebounded to roughly 97% of prewar levels, led by a Saudi increase of about two million barrels a day in October. JPMorgan reportedly believes the market has already returned to a surplus.</p>
+<p>The EIA's November 11 outlook still projected oil near $100 through December. That is a notable gap between the agency forecast and where futures were trading.</p>
+<p>One crypto-industry outlet links OPEC+ output decisions to Fed policy. It reports that the Fed raised rates in September and held at 3.75% to 4% on October 28, with two dissenters favouring another hike. I could not corroborate this with a preferred source, so treat it with caution.</p>
+<p>Bitcoin was reported near $64,600 on November 17, with its recovery tied to energy costs and financial conditions.</p>
+<p>Watch the next OPEC+ decision and the December Fed meeting. These figures are from mid-November, not the last 24 hours.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://coinalertnews.com/news/2026/11/12/eia-oil-100-opec-rebound" target="_blank" rel="noopener">CoinAlert (EIA/OPEC+ summary)</a><span class="source-sep">·</span><a class="source-link" href="https://cryptoslate.com/bitcoin-catches-a-break-from-falling-oil-prices-but-opec-raises-new-fed-concerns/" target="_blank" rel="noopener">CryptoSlate</a></div></div></div>
+      </div>
+    </div>
+    <div class="story" data-priority="tracking" onclick="toggleStory(this)">
+      <div class="story-top">
+        <div class="story-dot dot-tracking"></div>
+        <div class="story-content">
+          <div class="story-meta">
+            <span class="priority-tag tag-tracking">TRACKING</span>
+            <span class="sector-label">Markets</span>
+          </div>
+          <h3>Thin holiday trading: no verified market or AI news from the last 24 hours</h3>
+          <div class="one-liner">Thanksgiving week limited coverage, and my searches did not surface reliable same-day reporting.</div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="story-detail">
+        <div class="story-detail-inner"><p>This briefing is limited. My searches returned mostly 2025 material and some mid-November 2026 items. They returned no dependable reporting dated November 26 or 27, 2026 on AI, chips, Wall Street or Washington.</p>
+<p>US markets were closed Thursday for Thanksgiving. Today is normally a shortened session with an early close, but I could not verify today's index levels.</p>
+<p>In AI infrastructure, the last verified background is the 2025 OpenAI-Nvidia plan for at least 10 gigawatts of Nvidia systems. It had a first phase planned for the second half of 2026 on Vera Rubin chips. I found no confirmation of its current status.</p>
+<p>For a full read, check FT, WSJ and Reuters directly for today's market close and AI headlines.</p><div class="story-sources"><span class="sources-label">SOURCES</span><div class="sources-list"><a class="source-link" href="https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems" target="_blank" rel="noopener">Nvidia</a><span class="source-sep">·</span><a class="source-link" href="https://www.aljazeera.com/economy/2025/9/22/nvidia-to-invest-billions-in-openai-as-ai-race-heats-up" target="_blank" rel="noopener">Al Jazeera</a></div></div></div>
+      </div>
+    </div>
+</div>
+
+<div id="sectors" class="section">
+  <p class="hint">Green dot = real news today. Click to expand.</p>
+  
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Frontier Tech / AI</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Applied Tech & Industry</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">US Policy & Power</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">AI Regulation & Governance</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Geopolitics</span>
+      </div>
+      <div class="sector-summary">The Trump-Xi-Putin trilateral at APEC in Shenzhen (Nov 19) produced a symbolic peace declaration but no arms-control deal. Earlier in November, reporting described a stressed US-led Ukraine peace drive, and the US charged three alleged Iranian operatives over a plot against a UK air base. Israel's parliament elected a Netanyahu opponent as speaker on Nov 18.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">China</span>
+      </div>
+      <div class="sector-summary">China hosted APEC and the first US-China-Russia leaders' summit in Shenzhen. A Trump-Xi meeting is expected again at the G20 in Florida.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Markets</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Digital Finance</span>
+      </div>
+      <div class="sector-summary">Bitcoin was reported near $64,600 on Nov 17 with no clear rebound. I found no new stablecoin or crypto regulatory news for November 2026.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot active"></div>
+        <span class="sector-name">Energy</span>
+      </div>
+      <div class="sector-summary">Brent was around $91 to $93 in mid-November, about 21% below October highs, as OPEC+ output recovered to roughly 97% of prewar levels. The EIA still projects oil near $100 through December.</div>
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Defense & Security</span>
+      </div>
+      
+    </div>
+    <div class="sector-item" onclick="toggleSector(this)">
+      <div class="sector-top">
+        <div class="sector-dot quiet"></div>
+        <span class="sector-name">Labor & Workforce</span>
+      </div>
+      
+    </div>
+</div>
+
+<div id="week" class="section">
+  
+    <div class="week-item">
+      <span class="week-day">Fri 27</span>
+      <span class="week-event">US equity markets on abbreviated Black Friday session (early close expected)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Mon 30</span>
+      <span class="week-event">Cyber Monday online retail spending; month-end positioning in markets</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue Dec 1</span>
+      <span class="week-event">Typical start-of-month US ISM manufacturing PMI release (verify date)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Tue Dec 1</span>
+      <span class="week-event">OPEC+ output-policy decisions are closely watched after the recent supply rebound (verify timing)</span>
+      <span class="week-tag" style="color:#fff;background:#6366F1">policy</span>
+    </div>
+    <div class="week-item">
+      <span class="week-day">Wed Dec 2</span>
+      <span class="week-event">Typical timing for ADP employment and Fed Beige Book (verify dates)</span>
+      <span class="week-tag" style="color:#fff;background:#059669">data</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Fri Dec 4</span>
+      <span class="week-event">US jobs report is typically released the first Friday of the month (verify date)</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+    <div class="week-item critical">
+      <span class="week-day">Tue Dec 8</span>
+      <span class="week-event">FOMC meeting expected in the second week of December (verify dates)</span>
+      <span class="week-tag" style="color:#fff;background:#DC2626">critical</span>
+    </div>
+</div>
+
+<div id="patterns" class="section">
+  <p class="hint">Speculative analysis connecting dots across sectors. Click to expand.</p>
+  
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Shenzhen Declaration Is an Oil Trade, Not a Peace Deal</h3>
+          <div class="subtitle">Moscow and Beijing are locking in cheap crude while Washington talks about arms control</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Energy</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE. Read the Shenzhen peace declaration next to the oil data and the summit looks less like diplomacy and more like a price arrangement. Brent has fallen about 21% from its October highs to roughly $91 to $93, and OPEC+ output is back near 97% of prewar levels. Saudi Arabia's roughly two-million-barrel October increase is the kind of move a producer makes when it wants to keep Russia's and China's energy bills manageable and the Western sanctions regime toothless. My bold take: Putin came to Shenzhen to secure a crude price floor and a Chinese buyer that will not blink at discounts, and he gave Trump a declaration in return. Nothing in the Ukraine or arms-control language is binding, which is exactly what you would want if you are trading barrels rather than commitments.</p>
+<p>The EIA's November 11 outlook still projects oil near $100 through December. I think that forecast is wrong and the market is right. JPMorgan's reported view that the market is already back in surplus fits the price action. If I am right, the surplus is the real story, and the summit's 'groundbreaking' framing is cover for a producer and consumer bargain that suits Xi and Putin better than it suits Trump. Trump said all three agree Iran cannot get a nuclear weapon, but AP found no evidence he secured help on Iran from either of them, so the Iran piece of the bargain probably was not on the table.</p>
+<p>What would falsify this: a Saudi or OPEC+ statement that explicitly defends a higher price band, Chinese crude import data showing a Russian discount widening rather than narrowing, or a follow-up Ukraine channel that produces sanctions relief. If you see any of those in the next month, drop this thesis. If you see Brent break toward the low $80s without a demand shock, it is confirmed in my view.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Bitcoin Is Pricing the Florida G20, Not the Fed</h3>
+          <div class="subtitle">Crypto at $64,600 is a bet on a Trump-Xi side deal at his own resort</div>
+          <div class="pattern-cats"><span class="pattern-cat">Digital Finance</span><span class="pattern-cat">US Policy & Power</span><span class="pattern-cat">China</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE, AND THE INPUTS ARE WEAK. Bitcoin was reported near $64,600 on November 17 with no clear rebound, and I found no new stablecoin or crypto regulatory news for November. The crypto-industry outlet that tied OPEC+ and the Fed together is the only source for the Fed claims, and I could not corroborate them, so I am ignoring the rate-hike narrative. Instead I think the market is pricing the next Trump-Xi meeting. Reuters notes tensions could resurface at the G20 Trump is hosting at his Florida golf resort, and a host with a commercial stake in the venue has every reason to make that meeting a deal. My sharp take: a crypto-friendly US stance, including stablecoin or digital-asset carve-outs, is one of the easier concessions Trump can offer Beijing without touching chips or tariffs, and it would be a cheap win he can announce from his own property.</p>
+<p>The counter-argument is that Beijing has been hostile to private crypto for years and would not let a US stablecoin regime pass through its trade talks. I think that is the strongest objection, and it is why this is a contrarian call. If China wants the yuan-linked settlement and cross-border payments story, it may trade a stablecoin concession for something it values more, such as easing on fentanyl or soybean purchases. Either way, the conversion of a summit into a digital-asset deal is a real possibility that the price is not reflecting.</p>
+<p>Falsifiers: no crypto or stablecoin language in any G20 pre-brief, a Chinese regulator reaffirming its ban on crypto transactions during the window, or Bitcoin failing to hold above $60,000 into the meeting. A clean pre-meeting read-out that mentions digital assets would make me much more confident.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>The Nvidia-OpenAI Vera Rubin Phase Is a Chip Export Bargaining Chip</h3>
+          <div class="subtitle">The 10-gigawatt buildout's first phase lands in H2 2026, the same window as the trade talks</div>
+          <div class="pattern-cats"><span class="pattern-cat">Frontier Tech / AI</span><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">US Policy & Power</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE, BUILT ON 2025 FACTS. The last verified background is the 2025 OpenAI-Nvidia plan for at least 10 gigawatts of Nvidia systems, with a first phase planned for the second half of 2026 on Vera Rubin chips. I found no confirmation of its current status, so treat everything below as a hypothesis. My bold take is that the real counterparty on this deal is Washington, not OpenAI. A multi-gigawatt rollout of the newest Nvidia architecture only happens if US export policy lets the most capable chips move where the customers are, and the first phase timing overlaps almost exactly with the period when Trump and Xi are still negotiating after Shenzhen. Jensen Huang does not need to say this out loud. The licence regime for China-bound and Gulf-bound accelerators is the lever, and a summit that produces even a partial trade thaw is the moment to adjust it.</p>
+<p>The Shenzhen declaration gives this a geopolitical frame. Trump says all three powers agree Iran cannot get a nuclear weapon, and the US has just charged three alleged Iranian operatives over a plot against a UK air base. Chip access for the Gulf and for allied data centres is a way to reward partners who share that Iran position. I would expect any export loosening for the Gulf to be justified in exactly those terms, and any tightening for China to be justified by the same security language, which means the policy will be decided by the security narrative, not the commercial one.</p>
+<p>What would falsify this: a public Nvidia or OpenAI statement that Vera Rubin deliveries are on a purely commercial schedule with no licence dependency, a new BIS rule that tightens China access before the G20, or a delay announcement for the first phase. If the first phase is announced on time and the G20 produces any tech language, I will be quite confident the chips were on the table.</p></div>
+      </div>
+    </div>
+    <div class="pattern" onclick="togglePattern(this)">
+      <div class="pattern-top">
+        <div>
+          <div class="pattern-label">SPECULATIVE ANALYSIS</div>
+          <h3>Netanyahu's Speaker Defeat Is Pricing Out an Iran Strike</h3>
+          <div class="subtitle">Israeli parliamentary fracture is quietly removing a war premium from oil</div>
+          <div class="pattern-cats"><span class="pattern-cat">Geopolitics</span><span class="pattern-cat">Energy</span><span class="pattern-cat">Defense & Security</span></div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="pattern-detail">
+        <div class="pattern-detail-inner"><p>SPECULATIVE. On November 18 Israel's parliament elected a Netanyahu opponent as speaker. Headlines will call it a procedural vote. I think it is a signal that the coalition's capacity to act unilaterally against Iran has narrowed, and that matters more to oil than anything said at Shenzhen. The Iranian conflict is still unresolved, Trump says Iran cannot get a bomb, and the US has just charged three alleged Iranian operatives over a UK air base plot. In a world where Israel might strike Iranian nuclear or military sites, Brent carries a risk premium. My sharp take: the slide from October highs to the low $90s is partly the market quietly removing that premium because Netanyahu's room to manoeuvre has shrunk. The EIA is still projecting near $100 through December, and I think that forecast is pricing a war that the Knesset vote has made less likely.</p>
+<p>Defense and security analysts will argue the opposite, that a weakened Netanyahu has more incentive to act before the next election to rally the country. I take that seriously, and it is the main risk to this thesis. But a speaker elected against him limits control of the parliamentary agenda, including any emergency or war-related votes, and that raises the political cost of an unauthorised strike. Washington's Iran language at Shenzhen, with no sign of a commitment from Xi or Putin to help on Iran, leaves Israel with fewer external brakes or backing in the short term.</p>
+<p>What would falsify this: a sudden Israeli cabinet emergency session, a major Iranian nuclear site move reported by the IAEA, or Brent rising above $100 without an OPEC+ supply shock. If any of those happen, the premium is back and the Knesset vote was a footnote. If Brent drifts into the $80s through December with no supply news, that supports the thesis.</p></div>
+      </div>
+    </div>
+</div>
+
+<div id="deepdive" class="section">
+  <p class="hint">Deep dive unavailable for this briefing.</p>
+</div>
+
+<div id="signals" class="section">
+  <p class="hint">Recent output from tracked voices. Green = substantive new piece. Amber = light post. Grey = quiet.</p>
+  
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Stanley Druckenmiller</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      <a class="sig-title" href="https://247wallst.com/investing/2026/11/18/stan-druckenmiller-says-hes-taking-a-break-from-stocks/" target="_blank" rel="noopener">Stan Druckenmiller Says He's "Taking a Break" From Stocks</a><div class="sig-summary">At the TomorrowX conference in Austin (about Nov 17), he said he is pulling back from stocks and that Duquesne is roughly flat equities and short copper. He said he has rarely had less clarity on the next 12 months. This comes from secondary reports, and they disagree on some details.</div><div class="sig-connection">↳ His caution fits today's AI-led selloff and the Dow's move past 50,000. It also fits the whipsaw in chip stocks.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Michael Burry</span><span class="sig-handle">@michaeljburry</span></div>
+        </div>
+        <span class="sig-source-badge">MIXED</span>
+      </div>
+      <a class="sig-title" href="https://www.ibtimes.co.uk/michael-burry-nvidia-short-term-trade-long-term-warning-1831723" target="_blank" rel="noopener">Burry Substack post on Nvidia (Nov 10)</a><div class="sig-summary">In a Nov 10 Substack post, he said Nvidia could be a short-term trade after its drop but that its edge will shrink within five years. Other coverage reports he holds Nvidia puts. It also reports his claims that customers are paying more slowly and that depreciation accounting inflates industry earnings. These come from secondary reports.</div><div class="sig-connection">↳ This bears directly on the Nvidia and Jensen Huang CEO turmoil and the chip-stock whipsaw. It also bears on the AI-trade selloff.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-strong"></div>
+          <div><span class="sig-name">Ben Thompson</span><span class="sig-handle">@stratechery</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://stratechery.com/2026/the-individual-exception/" target="_blank" rel="noopener">The Individual Exception</a><div class="sig-summary">He argues that Jensen Huang has been granted an exception from managerial oversight and that, in the age of AI, he won't be the last. A separate piece on Amazon earnings says Amazon is willing to give up margin to serve the frontier, and it also covers the chip question and agents.</div><div class="sig-connection">↳ The first piece speaks directly to Huang's reinstatement as Nvidia CEO. The Amazon piece ties to custom chips and AI compute economics.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Packy McCormick</span><span class="sig-handle">@packym</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.notboring.co/p/weekly-dose-of-optimism-220" target="_blank" rel="noopener">Weekly Dose of Optimism #220</a><div class="sig-summary">A roundup of optimistic tech and science news. It covers SpaceX reusability, a leukemia vaccine and a pancreatic pill, Tesla Powercore, and Earth AI's gold discovery.</div><div class="sig-connection">↳ It offers a counterweight to the AI-selloff mood. It also touches on energy and applied tech.</div>
+    </div>
+    <div class="sig-card">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-light"></div>
+          <div><span class="sig-name">Lenny Rachitsky</span><span class="sig-handle">@lennysan</span></div>
+        </div>
+        <span class="sig-source-badge">NEWSLETTER</span>
+      </div>
+      <a class="sig-title" href="https://www.lennysnewsletter.com/p/openclaw-for-executives-automate" target="_blank" rel="noopener">OpenClaw for executives: Automate every 1% annoyance | Ankit Maheshwari (Innovaccer)</a><div class="sig-summary">Innovaccer CTO Ankit Maheshwari shows the OpenClaw agent assistant he runs on a Mac Mini. A separate interview covers what makes a great PM in the AI era, with juniors as a secret weapon.</div><div class="sig-connection">↳ Both pieces are about agents and AI's effect on work. That ties to the labor and workforce theme.</div>
+    </div>
+    <div class="sig-quiet-section">
+      <div class="sig-quiet-label">QUIET THIS PERIOD — 11 voices</div>
+      
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Leopold Aschenbrenner</span><span class="sig-handle">@leopoldasch</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Dan Wang</span><span class="sig-handle">@dkwang</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Nathan Benaich</span><span class="sig-handle">@nathanbenaich</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Byrne Hobart</span><span class="sig-handle">@byrnehobart</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Paul Graham</span><span class="sig-handle">@paulg</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Benedict Evans</span><span class="sig-handle">@benedictevans</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">CJ Gustafson</span><span class="sig-handle">@cjgus</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Andrej Karpathy</span><span class="sig-handle">@karpathy</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Ilya Sutskever</span><span class="sig-handle">@ilyasut</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">Noam Brown</span><span class="sig-handle">@noambrown</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    <div class="sig-card sig-quiet">
+      <div class="sig-header">
+        <div class="sig-left">
+          <div class="sig-dot sig-none"></div>
+          <div><span class="sig-name">François Chollet</span><span class="sig-handle">@fchollet</span></div>
+        </div>
+        <span class="sig-source-badge">X</span>
+      </div>
+      
+    </div>
+    </div>
+</div>
+
+<script>
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleStory(el) {
+  const p = el.dataset.priority;
+  if (el.classList.contains('expanded')) {
+    el.classList.remove('expanded', 'expanded-urgent', 'expanded-high', 'expanded-tracking');
+  } else {
+    el.classList.add('expanded', 'expanded-' + p);
+  }
+}
+function toggleSector(el)  { el.classList.toggle('expanded'); }
+function togglePattern(el) { el.classList.toggle('expanded'); }
+</script>
+</body>
+</html>
